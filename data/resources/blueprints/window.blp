@@ -199,7 +199,7 @@ template $AppWindow : $AdwApplicationWindow {
       StackPage {
         name: "flashing";
         child:
-        $AdwStatusPage {
+        $AdwStatusPage flashing_page {
           title: _("Flashing…");
           description: _("This might take a while.");
 
@@ -211,7 +211,6 @@ template $AppWindow : $AdwApplicationWindow {
               valign: center;
               halign: center;
               show-text: true;
-              text: _("Loading…");
             }
 
             Button cancel_button {

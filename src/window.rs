@@ -4,7 +4,7 @@ use adw::prelude::*;
 use ashpd::desktop::file_chooser::{FileFilter, SelectedFiles};
 use dbus_udisks2::DiskDevice;
 use gettextrs::gettext;
-use glib::clone;
+use glib::{clone, timeout_add_seconds_local};
 use gtk::{gio, glib, subclass::prelude::*};
 
 use crate::{
@@ -56,6 +56,8 @@ mod imp {
         pub progress_bar: TemplateChild<gtk::ProgressBar>,
         #[template_child]
         pub cancel_button: TemplateChild<gtk::Button>,
+        #[template_child]
+        pub flashing_page: TemplateChild<adw::StatusPage>,
 
         pub selected_device_index: Cell<usize>,
         pub is_running: std::sync::Arc<AtomicBool>,
@@ -93,6 +95,7 @@ mod imp {
                 loading_spinner: TemplateChild::default(),
                 progress_bar: TemplateChild::default(),
                 cancel_button: TemplateChild::default(),
+                flashing_page: TemplateChild::default(),
 
                 is_running: std::sync::Arc::new(AtomicBool::new(false)),
                 selected_device_index: Cell::new(0),
@@ -150,6 +153,7 @@ impl AppWindow {
             .build();
 
         win.setup_callbacks();
+        win.imp().open_image_button.grab_focus();
 
         win
     }
@@ -229,12 +233,12 @@ impl AppWindow {
                         match p {
                             FlashPhase::Copy => this
                             .imp()
-                            .progress_bar
-                            .set_text(Some(&gettext("Copying files…"))),
+                            .flashing_page
+                            .set_description(Some(&gettext("Copying files…"))),
                             _ => this
                             .imp()
-                            .progress_bar
-                            .set_text(Some(&gettext("Validating"))),
+                            .flashing_page
+                            .set_description(Some(&gettext("Validating"))),
                         }
                         this.imp().progress_bar.set_fraction(x)
                     }
@@ -301,11 +305,13 @@ impl AppWindow {
             .connect_clicked(clone!(@weak self as this => move |_| {
                 this.set_selected_device_index(0);
                 this.imp().stack.set_visible_child_name("welcome");
+                this.imp().open_image_button.grab_focus();
             }));
         imp.try_again_button
             .connect_clicked(clone!(@weak self as this => move |_| {
                 this.set_selected_device_index(0);
                 this.imp().stack.set_visible_child_name("welcome");
+                this.imp().open_image_button.grab_focus();
             }));
         imp.refresh_button
             .connect_clicked(clone!(@weak self as this => move |_| {
@@ -314,6 +320,38 @@ impl AppWindow {
                     this.refresh_devices().await.ok();
                 });
             }));
+        timeout_add_seconds_local(
+            2,
+            clone!(@weak self as this => @default-return Continue(false), move || {
+                if this.imp().stack.visible_child_name().unwrap() == "no_devices" {
+                    spawn!(async move {
+                        let (sender, receiver) = glib::MainContext::channel(glib::PRIORITY_DEFAULT);
+
+                        std::thread::spawn(move || {
+                            let rt = tokio::runtime::Builder::new_multi_thread()
+                                .enable_all()
+                                .build()
+                                .unwrap();
+
+                            sender
+                                .send(rt.block_on(async { refresh_devices().await.unwrap() }))
+                                .expect("Concurrency Issues");
+                        });
+
+                        receiver.attach(
+                            None,
+                            clone!(@weak this as that => @default-return Continue(false), move |new_devices| {
+                                if ne_disk_devices(&new_devices, &that.imp().available_devices.borrow().clone()) {
+                                    that.load_devices(new_devices);
+                                }
+                                Continue(false)
+                            }),
+                        );
+                    });
+                }
+                Continue(true)
+            }),
+        );
     }
 
     async fn open_dialog(&self) -> ashpd::Result<()> {
@@ -452,4 +490,12 @@ impl SettingsStore for AppWindow {
             self.maximize();
         }
     }
+}
+
+fn ne_disk_devices(first: &Vec<DiskDevice>, second: &Vec<DiskDevice>) -> bool {
+    first.len() != second.len()
+        || first
+            .iter()
+            .zip(second.iter())
+            .any(|(a, b)| a.parent.preferred_device != b.parent.preferred_device)
 }
