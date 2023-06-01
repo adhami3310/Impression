@@ -1,5 +1,5 @@
 {
-    "app-id": "io.gitlab.adhami3310.Impression",
+    "app-id": "io.gitlab.adhami3310.impression",
     "runtime": "org.gnome.Platform",
     "runtime-version": "44",
     "sdk": "org.gnome.Sdk",

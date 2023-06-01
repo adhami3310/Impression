@@ -92,7 +92,7 @@ impl Default for App {
         glib::Object::builder::<Self>()
             .property("application-id", Some(APP_ID))
             .property("flags", gio::ApplicationFlags::HANDLES_OPEN)
-            .property("resource-base-path", "/io/gitlab/adhami3310/Impression/")
+            .property("resource-base-path", "/io/gitlab/adhami3310/impression/")
             .build()
     }
 }

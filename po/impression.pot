@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: impression\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-01 06:20-0400\n"
+"POT-Creation-Date: 2023-06-01 06:36-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,59 +17,59 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: data/io.gitlab.adhami3310.Impression.desktop.in.in:3
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:5
+#: data/io.gitlab.adhami3310.impression.desktop.in.in:3
+#: data/io.gitlab.adhami3310.impression.metainfo.xml.in.in:5
 #: data/resources/blueprints/window.blp:9
-#: data/resources/blueprints/window.blp:37 src/main.rs:56 src/window.rs:403
+#: data/resources/blueprints/window.blp:37 src/main.rs:56 src/window.rs:404
 msgid "Impression"
 msgstr ""
 
-#: data/io.gitlab.adhami3310.Impression.desktop.in.in:4
+#: data/io.gitlab.adhami3310.impression.desktop.in.in:4
 msgid "Media Writer"
 msgstr ""
 
-#: data/io.gitlab.adhami3310.Impression.desktop.in.in:5
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:7
+#: data/io.gitlab.adhami3310.impression.desktop.in.in:5
+#: data/io.gitlab.adhami3310.impression.metainfo.xml.in.in:7
 msgid "Flash ISO images"
 msgstr ""
 
-#: data/io.gitlab.adhami3310.Impression.desktop.in.in:11
+#: data/io.gitlab.adhami3310.impression.desktop.in.in:11
 msgid "flash;usb;drive;bootable"
 msgstr ""
 
-#: data/io.gitlab.adhami3310.Impression.gschema.xml.in:6
+#: data/io.gitlab.adhami3310.impression.gschema.xml.in:6
 msgid "Window width"
 msgstr ""
 
-#: data/io.gitlab.adhami3310.Impression.gschema.xml.in:10
+#: data/io.gitlab.adhami3310.impression.gschema.xml.in:10
 msgid "Window height"
 msgstr ""
 
-#: data/io.gitlab.adhami3310.Impression.gschema.xml.in:14
+#: data/io.gitlab.adhami3310.impression.gschema.xml.in:14
 msgid "Window maximized state"
 msgstr ""
 
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:6
+#: data/io.gitlab.adhami3310.impression.metainfo.xml.in.in:6
 msgid "Khaleel Al-Adhami"
 msgstr ""
 
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:13
+#: data/io.gitlab.adhami3310.impression.metainfo.xml.in.in:13
 msgid "Flash ISO images into USB drives"
 msgstr ""
 
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:28
+#: data/io.gitlab.adhami3310.impression.metainfo.xml.in.in:28
 msgid "usb"
 msgstr ""
 
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:29
+#: data/io.gitlab.adhami3310.impression.metainfo.xml.in.in:29
 msgid "flash"
 msgstr ""
 
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:30
+#: data/io.gitlab.adhami3310.impression.metainfo.xml.in.in:30
 msgid "bootable"
 msgstr ""
 
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:31
+#: data/io.gitlab.adhami3310.impression.metainfo.xml.in.in:31
 msgid "drive"
 msgstr ""
 
@@ -182,10 +182,10 @@ msgstr ""
 msgid "_Stop"
 msgstr ""
 
-#: src/window.rs:232
+#: src/window.rs:233
 msgid "Copying files…"
 msgstr ""
 
-#: src/window.rs:236
+#: src/window.rs:237
 msgid "Validating"
 msgstr ""

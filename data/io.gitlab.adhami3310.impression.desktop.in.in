@@ -2,7 +2,7 @@
 Name=Impression
 GenericName=Media Writer
 Comment=Flash ISO images
-Exec=impression %U
+Exec=impression %u
 Icon=@icon@
 Terminal=false
 Type=Application
