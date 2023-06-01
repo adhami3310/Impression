@@ -1,22 +1,27 @@
 using Gtk 4.0;
 using Adw 1;
 
-template $AppWindow : $AdwApplicationWindow {
-  default-width: "400";
-  default-height: "400";
-  width-request: "300";
-  height-request: "300";
+template $AppWindow : Adw.ApplicationWindow {
+  default-width: 400;
+  default-height: 400;
+  width-request: 300;
+  height-request: 300;
   title: _("Impression");
 
   Box {
     orientation: vertical;
-    $AdwHeaderBar headerbar {
+
+    Adw.HeaderBar headerbar {
       Button refresh_button {
-        icon-name: 'view-refresh-symbolic';
-        tooltip-text: _('Refresh Devices');
+        icon-name: "view-refresh-symbolic";
+        tooltip-text: _("Refresh Devices");
         visible: false;
-        styles ['flat']
+
+        styles [
+          "flat",
+        ]
       }
+
       [end]
       MenuButton {
         icon-name: "open-menu-symbolic";
@@ -24,21 +29,21 @@ template $AppWindow : $AdwApplicationWindow {
         tooltip-text: _("Primary Menu");
         primary: true;
       }
-
     }
+
     Stack stack {
       transition-type: crossfade;
 
       StackPage {
         name: "welcome";
-        child:
-        $AdwStatusPage {
+        child: 
+        Adw.StatusPage {
           icon-name: "usb-stick-symbolic";
           title: _("Flash Images");
           description: _("Open a disk image to flash to a USB drive.");
           hexpand: true;
           vexpand: true;
-          child:
+          child: 
           Box {
             orientation: vertical;
             spacing: 12;
@@ -54,7 +59,9 @@ template $AppWindow : $AdwApplicationWindow {
                 "pill",
               ]
             }
-          };
+          }
+
+          ;
         }
 
         ;
@@ -62,18 +69,24 @@ template $AppWindow : $AdwApplicationWindow {
 
       StackPage {
         name: "device_list";
-        child:
-        $AdwPreferencesPage {
+        child: 
+        Adw.PreferencesPage {
           valign: center;
-          $AdwPreferencesGroup {
+
+          Adw.PreferencesGroup {
             Box {
               orientation: vertical;
               spacing: 12;
+
               Image {
                 icon-name: "application-x-generic";
                 pixel-size: 64;
-                styles ["icon-dropshadow"]
+
+                styles [
+                  "icon-dropshadow",
+                ]
               }
+
               Label name_value_label {
                 label: "arch.iso";
                 wrap: true;
@@ -81,22 +94,33 @@ template $AppWindow : $AdwApplicationWindow {
                 lines: 3;
                 justify: center;
                 max-width-chars: 24;
-                styles ["title-3"]
+
+                styles [
+                  "title-3",
+                ]
               }
+
               Label size_label {
                 justify: center;
-                styles ["caption"]
+
+                styles [
+                  "caption",
+                ]
               }
             }
           }
-          $AdwPreferencesGroup {
+
+          Adw.PreferencesGroup {
             ListBox available_devices_list {
-              
               selection-mode: none;
-              styles ["boxed-list"]
+
+              styles [
+                "boxed-list",
+              ]
             }
           }
-          $AdwPreferencesGroup {
+
+          Adw.PreferencesGroup {
             valign: end;
             halign: center;
             description: _("Warning: This will erase all data on the selected drive.");
@@ -104,21 +128,27 @@ template $AppWindow : $AdwApplicationWindow {
             Button flash_button {
               label: _("Flash!");
               halign: center;
-              styles ["destructive-action", "pill"]
+
+              styles [
+                "destructive-action",
+                "pill",
+              ]
             }
           }
         }
+
         ;
       }
 
       StackPage {
         name: "loading";
-        child:
-        $AdwStatusPage {
+        child: 
+        Adw.StatusPage {
           Box {
             orientation: vertical;
             spacing: 12;
-            Spinner loading_spinner {  
+
+            Spinner loading_spinner {
               valign: center;
               halign: center;
               height-request: 28;
@@ -127,30 +157,37 @@ template $AppWindow : $AdwApplicationWindow {
 
             Label {
               label: _("Updating device list…");
-              styles ["title-3"]
+
+              styles [
+                "title-3",
+              ]
             }
           }
-        };
+        }
+
+        ;
       }
 
       StackPage {
         name: "no_devices";
-        child:
-        $AdwStatusPage {
+        child: 
+        Adw.StatusPage {
           icon-name: "usb-stick-symbolic";
           title: _("No Drives");
           description: _("Insert a USB drive to flash the image onto.");
-        };
+        }
+
+        ;
       }
 
       StackPage {
         name: "success";
-        child:
-        $AdwStatusPage {
+        child: 
+        Adw.StatusPage {
           icon-name: "check-round-outline-symbolic";
           title: _("Image Flashed");
           description: _("Have a nice day!");
-          child:
+          child: 
           Box {
             orientation: vertical;
             spacing: 12;
@@ -166,17 +203,21 @@ template $AppWindow : $AdwApplicationWindow {
                 "pill",
               ]
             }
-          };
-        };
+          }
+
+          ;
+        }
+
+        ;
       }
 
       StackPage {
         name: "failure";
-        child:
-        $AdwStatusPage {
+        child: 
+        Adw.StatusPage {
           icon-name: "error-symbolic";
           title: _("Flashing Image Unsuccessful");
-          child:
+          child: 
           Box {
             orientation: vertical;
             spacing: 12;
@@ -192,8 +233,12 @@ template $AppWindow : $AdwApplicationWindow {
                 "pill",
               ]
             }
-          };
-        };
+          }
+
+          ;
+        }
+
+        ;
       }
 
       StackPage {
@@ -225,10 +270,10 @@ template $AppWindow : $AdwApplicationWindow {
               ]
             }
           }
-        };
+        }
+
+        ;
       }
-
-
     }
   }
 }
@@ -239,6 +284,7 @@ menu primary_menu {
       label: _("Open File");
       action: "win.open";
     }
+
     item {
       label: _("New Window");
       action: "app.new-window";
