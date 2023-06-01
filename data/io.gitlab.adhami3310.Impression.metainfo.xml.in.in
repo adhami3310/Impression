@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+    <id>@app-id@</id>
+
+    <name>Impression</name>
+    <developer_name>Khaleel Al-Adhami</developer_name>
+    <summary>Flash ISO images</summary>
+
+    <metadata_license>CC-BY-SA-4.0</metadata_license>
+    <project_license>GPL-3.0-only</project_license>
+
+    <description>
+        <p>
+            Flash ISO images into USB drives
+        </p>
+    </description>
+
+    <translation type="gettext">@gettext-package@</translation>
+
+    <categories>
+        <category>System</category>
+        <category>Utility</category>
+        <category>GTK</category>
+        <category>GNOME</category>
+    </categories>
+
+    <keywords>
+        <keyword>usb</keyword>
+        <keyword>flash</keyword>
+        <keyword>bootable</keyword>
+        <keyword>drive</keyword>
+    </keywords>
+
+    <requires>
+        <internet>offline-only</internet>
+    </requires>
+
+    <recommends>
+        <control>pointing</control>
+        <control>keyboard</control>
+        <control>touch</control>
+    </recommends>
+
+    <screenshots>
+    </screenshots>
+
+    <launchable type="desktop-id">@app-id@.desktop</launchable>
+
+    <url type="homepage">https://gitlab.com/adhami3310/Impression</url>
+    <url type="bugtracker">https://gitlab.com/adhami3310/Impression/-/issues</url>
+    <url type="help">https://gitlab.com/adhami3310/Impression/-/issues</url>
+    <url type="vcs-browser">https://gitlab.com/adhami3310/Impression</url>
+    <url type="contribute">https://gitlab.com/adhami3310/Impression</url>
+    <url type="contact">https://matrix.to/#/@adhami:matrix.org</url>
+
+    <update_contact>khaleel.aladhami@gmail.com</update_contact>
+
+    <content_rating type="oars-1.1" />
+
+    <releases>
+    </releases>
+</component>

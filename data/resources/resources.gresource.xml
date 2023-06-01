@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gresources>
+    <gresource prefix="/io/gitlab/adhami3310/Impression/">
+        <file compressed="true" preprocess="xml-stripblanks">blueprints/window.ui</file>
+        <file compressed="true" preprocess="xml-stripblanks" alias="gtk/help-overlay.ui">blueprints/help-overlay.ui</file>
+        <file compressed="true">style.css</file>
+        <file compressed="true">style-hc.css</file>
+        <file preprocess="xml-stripblanks">icons/hicolor/symbolic/apps/io.gitlab.adhami3310.Impression-symbolic.svg</file>
+        <file preprocess="xml-stripblanks">icons/hicolor/scalable/apps/io.gitlab.adhami3310.Impression.svg</file>
+        <file preprocess="xml-stripblanks">icons/hicolor/scalable/apps/io.gitlab.adhami3310.Impression.Devel.svg</file>
+    </gresource>
+
+</gresources>

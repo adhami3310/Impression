@@ -1,0 +1,254 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $AppWindow : $AdwApplicationWindow {
+  default-width: "400";
+  default-height: "400";
+  width-request: "300";
+  height-request: "300";
+  title: _("Impression");
+
+  Box {
+    orientation: vertical;
+    $AdwHeaderBar headerbar {
+      Button refresh_button {
+        icon-name: 'view-refresh-symbolic';
+        tooltip-text: _('Refresh Device List');
+        visible: false;
+        styles ['flat']
+      }
+      [end]
+      MenuButton {
+        icon-name: "open-menu-symbolic";
+        menu-model: primary_menu;
+        tooltip-text: _("Primary Menu");
+        primary: true;
+      }
+
+    }
+    Stack stack {
+      transition-type: crossfade;
+
+      StackPage {
+        name: "welcome";
+        child:
+        $AdwStatusPage {
+          icon-name: "usb-stick-symbolic";
+          title: _("Impression");
+          description: _("Choose a file to flash onto the selected drive.");
+          hexpand: true;
+          vexpand: true;
+          child:
+          Box {
+            orientation: vertical;
+            spacing: 12;
+
+            Button open_image_button {
+              valign: center;
+              halign: center;
+              label: _("Open File…");
+              use-underline: true;
+
+              styles [
+                "suggested-action",
+                "pill",
+              ]
+            }
+          };
+        }
+
+        ;
+      }
+
+      StackPage {
+        name: "device_list";
+        child:
+        $AdwPreferencesPage {
+          $AdwPreferencesGroup {
+            Box {
+              orientation: vertical;
+              spacing: 12;
+              Image {
+                icon-name: "paper-symbolic";
+                icon-size: large;
+              }
+              Label name_value_label {
+                label: "arch.iso";
+                wrap: true;
+                wrap-mode: word_char;
+                lines: 3;
+                justify: center;
+                max-width-chars: 24;
+                styles ["title-3"]
+              }
+              Label size_label {
+                justify: center;
+                styles ["caption"]
+              }
+            }
+          }
+          $AdwPreferencesGroup {
+            ListBox available_devices_list {
+              
+              selection-mode: none;
+              styles ["boxed-list"]
+            }
+          }
+          $AdwPreferencesGroup {
+            valign: end;
+            halign: center;
+
+            Button flash_button {
+              label: _("Flash");              
+              styles ["suggested-action", "pill"]
+            }
+          }
+        }
+        ;
+      }
+
+      StackPage {
+        name: "loading";
+        child:
+        $AdwStatusPage {
+          Box {
+            orientation: vertical;
+            spacing: 12;
+            Spinner loading_spinner {  
+              valign: center;
+              halign: center;
+              height-request: 28;
+              width-request: 28;
+            }
+
+            Label {
+              label: _("Updating device list…");
+              styles ["title-3"]
+            }
+          }
+        };
+      }
+
+      StackPage {
+        name: "no_devices";
+        child:
+        $AdwStatusPage {
+          icon-name: "usb-stick-symbolic";
+          title: _("No Drive Detected");
+          description: _("Insert a drive to start flashing.");
+        };
+      }
+
+      StackPage {
+        name: "success";
+        child:
+        $AdwStatusPage {
+          icon-name: "check-round-outline-symbolic";
+          title: _("Flashing Completed");
+          child:
+          Box {
+            orientation: vertical;
+            spacing: 12;
+
+            Button done_button {
+              valign: center;
+              halign: center;
+              label: _("Done");
+              use-underline: true;
+
+              styles [
+                "suggested-action",
+                "pill",
+              ]
+            }
+          };
+        };
+      }
+
+      StackPage {
+        name: "failure";
+        child:
+        $AdwStatusPage {
+          icon-name: "error-symbolic";
+          title: _("Flashing Unsuccessful");
+          child:
+          Box {
+            orientation: vertical;
+            spacing: 12;
+
+            Button try_again_button {
+              valign: center;
+              halign: center;
+              label: _("Flash Again");
+              use-underline: true;
+
+              styles [
+                "suggested-action",
+                "pill",
+              ]
+            }
+          };
+        };
+      }
+
+      StackPage {
+        name: "flashing";
+        child:
+        $AdwStatusPage {
+          title: _("Flashing…");
+
+          Box {
+            orientation: vertical;
+            spacing: 36;
+
+            ProgressBar progress_bar {
+              valign: center;
+              halign: center;
+              show-text: true;
+              text: _("Loading…");
+            }
+
+            Button cancel_button {
+              valign: center;
+              halign: center;
+              label: _("_Cancel");
+              use-underline: true;
+
+              styles [
+                "destructive-action",
+                "pill",
+              ]
+            }
+          }
+        };
+      }
+
+
+    }
+  }
+}
+
+menu primary_menu {
+  section {
+    item {
+      label: _("Open File");
+      action: "win.open";
+    }
+    item {
+      label: _("New Window");
+      action: "app.new-window";
+    }
+  }
+
+  section {
+    item {
+      label: _("Keyboard Shortcuts");
+      action: "win.show-help-overlay";
+    }
+
+    item {
+      label: _("About Impression");
+      action: "win.about";
+    }
+  }
+}

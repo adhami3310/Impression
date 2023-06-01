@@ -1,0 +1,14 @@
+[Desktop Entry]
+Name=Impression
+GenericName=Media Writer
+Comment=Flash ISO images
+Exec=impression %U
+Icon=@icon@
+Terminal=false
+Type=Application
+Categories=GTK;GNOME;System;Utility;
+Keywords=flash;usb;drive;bootable
+StartupNotify=true
+# Translators: Do NOT translate or transliterate this text (these are enum types)!
+X-Purism-FormFactor=Workstation;Mobile;
+MimeType=application/x-iso9660-image
