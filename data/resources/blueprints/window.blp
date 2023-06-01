@@ -13,7 +13,7 @@ template $AppWindow : $AdwApplicationWindow {
     $AdwHeaderBar headerbar {
       Button refresh_button {
         icon-name: 'view-refresh-symbolic';
-        tooltip-text: _('Refresh Device List');
+        tooltip-text: _('Refresh Devices');
         visible: false;
         styles ['flat']
       }
@@ -34,7 +34,8 @@ template $AppWindow : $AdwApplicationWindow {
         child:
         $AdwStatusPage {
           icon-name: "usb-stick-symbolic";
-          title: _("Impression");
+          title: _("Flash Images");
+          description: _("Open a disk image to flash to a USB drive.");
           hexpand: true;
           vexpand: true;
           child:
@@ -63,13 +64,15 @@ template $AppWindow : $AdwApplicationWindow {
         name: "device_list";
         child:
         $AdwPreferencesPage {
+          valign: center;
           $AdwPreferencesGroup {
             Box {
               orientation: vertical;
               spacing: 12;
               Image {
-                icon-name: "paper-symbolic";
-                icon-size: large;
+                icon-name: "application-x-generic";
+                pixel-size: 64;
+                styles ["icon-dropshadow"]
               }
               Label name_value_label {
                 label: "arch.iso";
@@ -96,10 +99,12 @@ template $AppWindow : $AdwApplicationWindow {
           $AdwPreferencesGroup {
             valign: end;
             halign: center;
+            description: _("Warning: This will erase all data on the selected drive.");
 
             Button flash_button {
-              label: _("Flash");              
-              styles ["suggested-action", "pill"]
+              label: _("Flash!");
+              halign: center;
+              styles ["destructive-action", "pill"]
             }
           }
         }
@@ -133,8 +138,8 @@ template $AppWindow : $AdwApplicationWindow {
         child:
         $AdwStatusPage {
           icon-name: "usb-stick-symbolic";
-          title: _("No Drive Detected");
-          description: _("Insert a drive to flash the image onto.");
+          title: _("No Drives");
+          description: _("Insert a USB drive to flash the image onto.");
         };
       }
 
@@ -143,7 +148,8 @@ template $AppWindow : $AdwApplicationWindow {
         child:
         $AdwStatusPage {
           icon-name: "check-round-outline-symbolic";
-          title: _("Disk Flashed");
+          title: _("Image Flashed");
+          description: _("Have a nice day!");
           child:
           Box {
             orientation: vertical;
@@ -169,7 +175,7 @@ template $AppWindow : $AdwApplicationWindow {
         child:
         $AdwStatusPage {
           icon-name: "error-symbolic";
-          title: _("Flashing Unsuccessful");
+          title: _("Flashing Image Unsuccessful");
           child:
           Box {
             orientation: vertical;
@@ -195,6 +201,7 @@ template $AppWindow : $AdwApplicationWindow {
         child:
         $AdwStatusPage {
           title: _("Flashing…");
+          description: _("This might take a while.");
 
           Box {
             orientation: vertical;
