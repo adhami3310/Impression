@@ -407,6 +407,14 @@ impl AppWindow {
             .version(VERSION)
             .build();
 
+        about.add_acknowledgement_section(
+            Some(&gettext("Code and Design Borrowed from")),
+            &[
+                "Flasher Mockup https://gitlab.gnome.org/Teams/Design/whiteboards/-/issues/143",
+                "Popsicle https://github.com/pop-os/popsicle",
+            ],
+        );
+
         about.present();
     }
 }
