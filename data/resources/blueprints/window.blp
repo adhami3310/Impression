@@ -35,7 +35,6 @@ template $AppWindow : $AdwApplicationWindow {
         $AdwStatusPage {
           icon-name: "usb-stick-symbolic";
           title: _("Impression");
-          description: _("Choose a file to flash onto the selected drive.");
           hexpand: true;
           vexpand: true;
           child:
@@ -135,7 +134,7 @@ template $AppWindow : $AdwApplicationWindow {
         $AdwStatusPage {
           icon-name: "usb-stick-symbolic";
           title: _("No Drive Detected");
-          description: _("Insert a drive to start flashing.");
+          description: _("Insert a drive to flash the image onto.");
         };
       }
 
@@ -144,7 +143,7 @@ template $AppWindow : $AdwApplicationWindow {
         child:
         $AdwStatusPage {
           icon-name: "check-round-outline-symbolic";
-          title: _("Flashing Completed");
+          title: _("Disk Flashed");
           child:
           Box {
             orientation: vertical;
