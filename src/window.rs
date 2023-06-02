@@ -245,10 +245,12 @@ impl AppWindow {
                     FlashStatus::Done(Some(_)) => {
                         this.imp().stack.set_visible_child_name("failure");
                         this.imp().is_running.store(false, std::sync::atomic::Ordering::SeqCst);
+                        this.send_notification(gettext("Failed to flash image"));
                     }
                     FlashStatus::Done(None) => {
                         this.imp().stack.set_visible_child_name("success");
                         this.imp().is_running.store(false, std::sync::atomic::Ordering::SeqCst);
+                        this.send_notification(gettext("Image flashed"));
                     }
                 }
                 glib::MainContext::default().iteration(true);
@@ -258,6 +260,26 @@ impl AppWindow {
         std::thread::spawn(move || {
             f.perform();
         });
+    }
+
+    fn send_notification(&self, _message: String) {
+        // let n = gio::Notification::new("Impression");
+        // n.set_priority(gio::NotificationPriority::High);
+        // self.application()
+        //     .unwrap()
+        //     .send_notification(Some("dsasda"), &n);
+        // spawn!(async move {
+        //     let proxy = NotificationProxy::new().await.unwrap();
+        //     proxy
+        //         .add_notification(
+        //             APP_ID,
+        //             Notification::new(&gettext("Impression"))
+        //                 .body(Some(message.as_ref()))
+        //                 .priority(Some(ashpd::desktop::notification::Priority::Normal)),
+        //         )
+        //         .await
+        //         .unwrap();
+        // });
     }
 
     fn image_path(&self) -> String {
