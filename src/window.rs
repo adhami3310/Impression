@@ -8,7 +8,7 @@ use glib::{clone, timeout_add_seconds_local};
 use gtk::{gio, glib, subclass::prelude::*};
 
 use crate::{
-    config::VERSION,
+    config::{VERSION, APP_ID},
     flash::{refresh_devices, FlashPhase, FlashRequest, FlashStatus},
     get_size_string, spawn,
     widgets::device_list,
@@ -461,8 +461,13 @@ impl AppWindow {
     fn show_about(&self) {
         let about = adw::AboutWindow::builder()
             .transient_for(self)
+            .application_icon(APP_ID)
             .application_name(gettext("Impression"))
             .developer_name("Khaleel Al-Adhami")
+            .website("https://gitlab.com/adhami3310/Impression")
+            .issue_url("https://gitlab.com/adhami3310/Impression/-/issues")
+            .developers(vec!["Khaleel Al-Adhami"])
+            .artists(vec!["Brage Fuglseth"])
             .license_type(gtk::License::Gpl30)
             .version(VERSION)
             .build();
