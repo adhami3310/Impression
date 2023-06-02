@@ -30,7 +30,7 @@ mod imp {
     use gtk::CompositeTemplate;
 
     #[derive(Debug, CompositeTemplate)]
-    #[template(resource = "/io/gitlab/adhami3310/impression/blueprints/window.ui")]
+    #[template(resource = "/io/gitlab/adhami3310/Impression/blueprints/window.ui")]
     pub struct AppWindow {
         #[template_child]
         pub stack: TemplateChild<gtk::Stack>,

@@ -8,7 +8,7 @@ project('impression',
 i18n = import('i18n')
 gnome = import('gnome')
 
-base_id = 'io.gitlab.adhami3310.impression'
+base_id = 'io.gitlab.adhami3310.Impression'
 
 dependency('gtk4', version: '>= 4.10.0')
 dependency('libadwaita-1')

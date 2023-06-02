@@ -7,9 +7,9 @@
 	<name xml:lang="en">Impression</name>
 	<shortdesc xml:lang="en">Flash ISO images</shortdesc>
 
-	<homepage rdf:resource="https://gitlab.com/adhami3310/impression"/>
-	<download-page rdf:resource="https://flathub.org/apps/details/io.gitlab.adhami3310.impression"/>
-	<bug-database rdf:resource="https://gitlab.com/adhami3310/impression/-/issues"/>
+	<homepage rdf:resource="https://gitlab.com/adhami3310/Impression"/>
+	<download-page rdf:resource="https://flathub.org/apps/details/io.gitlab.adhami3310.Impression"/>
+	<bug-database rdf:resource="https://gitlab.com/adhami3310/Impression/-/issues"/>
 
 	<programming-language>Rust</programming-language>
 	<platform>GTK 4</platform>
@@ -17,8 +17,8 @@
 
 	<repository>
 		<GitRepository>
-			<location rdf:resource="https://gitlab.com/adhami3310/impression.git"/>
-			<browse rdf:resource="https://gitlab.com/adhami3310/impression"/>
+			<location rdf:resource="https://gitlab.com/adhami3310/Impression.git"/>
+			<browse rdf:resource="https://gitlab.com/adhami3310/Impression"/>
 		</GitRepository>
 	</repository>
 

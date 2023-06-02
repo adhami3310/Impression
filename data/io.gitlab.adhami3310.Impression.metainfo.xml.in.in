@@ -46,11 +46,11 @@
 
     <launchable type="desktop-id">@app-id@.desktop</launchable>
 
-    <url type="homepage">https://gitlab.com/adhami3310/impression</url>
-    <url type="bugtracker">https://gitlab.com/adhami3310/impression/-/issues</url>
-    <url type="help">https://gitlab.com/adhami3310/impression/-/issues</url>
-    <url type="vcs-browser">https://gitlab.com/adhami3310/impression</url>
-    <url type="contribute">https://gitlab.com/adhami3310/impression</url>
+    <url type="homepage">https://gitlab.com/adhami3310/Impression</url>
+    <url type="bugtracker">https://gitlab.com/adhami3310/Impression/-/issues</url>
+    <url type="help">https://gitlab.com/adhami3310/Impression/-/issues</url>
+    <url type="vcs-browser">https://gitlab.com/adhami3310/Impression</url>
+    <url type="contribute">https://gitlab.com/adhami3310/Impression</url>
     <url type="contact">https://matrix.to/#/@adhami:matrix.org</url>
 
     <update_contact>khaleel.aladhami@gmail.com</update_contact>
