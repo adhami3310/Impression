@@ -20,7 +20,6 @@ itertools = "0.10.5"
 tokio = { version = "1.27.0", features = ["process", "rt", "rt-multi-thread"] }
 futures = "0.3.28"
 ashpd = "0.4.0"
-popsicle = "0.1.5"
 dbus-udisks2 = { version = "0.3", features = ["futures"] }
 anyhow = "1.0.71"
 dbus = "0.9.7"

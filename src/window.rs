@@ -241,20 +241,24 @@ impl AppWindow {
                             .set_description(Some(&gettext("Validating"))),
                         }
                         this.imp().progress_bar.set_fraction(x)
+                        glib::MainContext::default().iteration(true);
+                        Continue(true)
                     }
                     FlashStatus::Done(Some(_)) => {
                         this.imp().stack.set_visible_child_name("failure");
                         this.imp().is_running.store(false, std::sync::atomic::Ordering::SeqCst);
                         this.send_notification(gettext("Failed to flash image"));
+                        glib::MainContext::default().iteration(true);
+                        Continue(false)
                     }
                     FlashStatus::Done(None) => {
                         this.imp().stack.set_visible_child_name("success");
                         this.imp().is_running.store(false, std::sync::atomic::Ordering::SeqCst);
                         this.send_notification(gettext("Image flashed"));
+                        glib::MainContext::default().iteration(true);
+                        Continue(false)
                     }
                 }
-                glib::MainContext::default().iteration(true);
-                Continue(true)
             }),
         );
         std::thread::spawn(move || {
@@ -262,24 +266,19 @@ impl AppWindow {
         });
     }
 
-    fn send_notification(&self, _message: String) {
-        // let n = gio::Notification::new("Impression");
-        // n.set_priority(gio::NotificationPriority::High);
-        // self.application()
-        //     .unwrap()
-        //     .send_notification(Some("dsasda"), &n);
-        // spawn!(async move {
-        //     let proxy = NotificationProxy::new().await.unwrap();
-        //     proxy
-        //         .add_notification(
-        //             APP_ID,
-        //             Notification::new(&gettext("Impression"))
-        //                 .body(Some(message.as_ref()))
-        //                 .priority(Some(ashpd::desktop::notification::Priority::Normal)),
-        //         )
-        //         .await
-        //         .unwrap();
-        // });
+    fn send_notification(&self, message: String) {
+        spawn!(async move {
+            let proxy = ashpd::desktop::notification::NotificationProxy::new().await.unwrap();
+            proxy
+                .add_notification(
+                    APP_ID,
+                    ashpd::desktop::notification::Notification::new(&gettext("Impression"))
+                        .body(Some(message.as_ref()))
+                        .priority(Some(ashpd::desktop::notification::Priority::Normal)),
+                )
+                .await
+                .unwrap();
+        });
     }
 
     fn image_path(&self) -> String {

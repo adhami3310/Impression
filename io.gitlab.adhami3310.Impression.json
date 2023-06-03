@@ -17,7 +17,7 @@
     "build-options": {
         "append-path": "/usr/lib/sdk/rust-stable/bin",
         "env": {
-            "CARGO_HOME": "/run/build/popsicle/cargo"
+            "CARGO_HOME": "/run/build/impression/cargo"
         }
     },
     "cleanup": [
