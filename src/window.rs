@@ -240,7 +240,7 @@ impl AppWindow {
                             .flashing_page
                             .set_description(Some(&gettext("Validating"))),
                         }
-                        this.imp().progress_bar.set_fraction(x)
+                        this.imp().progress_bar.set_fraction(x);
                         glib::MainContext::default().iteration(true);
                         Continue(true)
                     }
