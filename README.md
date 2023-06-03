@@ -1,4 +1,14 @@
-# Impression
+<div align="center">
+<h1>Impression</h1>
+
+A straight-forward modern application to flash ISOs into drives.
+
+<img src="data/resources/icons/hicolor/scalable/apps/io.gitlab.adhami3310.Impression.svg" width="128" height="128" alt="Impression icon">
+
+[![Latest Tag](https://img.shields.io/gitlab/v/tag/adhami3310/Impression?sort=date&style=for-the-badge)](https://gitlab.com/adhami3310/Impression/-/tags)
+[![License](https://img.shields.io/gitlab/license/adhami3310/Impression?style=for-the-badge)](https://gitlab.com/adhami3310/Impression/-/raw/main/COPYING)
+
+</div>
 
 ## Contributing
 Issues and merge requests are more than welcome. However, please take the following into consideration:

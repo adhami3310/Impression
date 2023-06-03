@@ -42,6 +42,18 @@
     </recommends>
 
     <screenshots>
+        <screenshot>
+            <image>https://gitlab.com/adhami3310/Impression/-/raw/main/data/resources/screenshots/0.png</image>
+            <caption>Impression main screen with chosen file "GNOME OS" and two USB memories.</caption>
+        </screenshot>
+        <screenshot>
+            <image>https://gitlab.com/adhami3310/Impression/-/raw/main/data/resources/screenshots/1.png</image>
+            <caption>Flashing the ISO in progress at 63%. The current phase is "Copying files".</caption>
+        </screenshot>
+        <screenshot>
+            <image>https://gitlab.com/adhami3310/Impression/-/raw/main/data/resources/screenshots/2.png</image>
+            <caption>Success screen with a big check mark. With "Image Flashed", and "Have a nice day!", and a button says "Done".</caption>
+        </screenshot>
     </screenshots>
 
     <launchable type="desktop-id">@app-id@.desktop</launchable>
