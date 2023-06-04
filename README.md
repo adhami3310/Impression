@@ -10,6 +10,10 @@ A straight-forward modern application to flash ISOs into drives.
 
 </div>
 
+## Interface
+
+<img src="data/resources/screenshots/0.png" alt="Main screen with a chosen ISO and two USB memories">
+
 ## Contributing
 Issues and merge requests are more than welcome. However, please take the following into consideration:
 
