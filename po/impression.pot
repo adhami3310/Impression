@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: impression\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-01 20:30-0400\n"
+"POT-Creation-Date: 2023-06-06 03:20-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,7 +19,8 @@ msgstr ""
 
 #: data/io.gitlab.adhami3310.Impression.desktop.in.in:3
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:5
-#: data/resources/blueprints/window.blp:9 src/main.rs:56 src/window.rs:442
+#: data/resources/blueprints/window.blp:9 src/main.rs:56 src/window.rs:275
+#: src/window.rs:464
 msgid "Impression"
 msgstr ""
 
@@ -70,6 +71,22 @@ msgstr ""
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:31
 msgid "drive"
+msgstr ""
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:47
+msgid "Main screen with a chosen ISO and two USB memories"
+msgstr ""
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:51
+msgid "Flashing the ISO in progress"
+msgstr ""
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:55
+msgid "Success screen with a big check mark"
+msgstr ""
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:75
+msgid "Initial version."
 msgstr ""
 
 #: data/resources/blueprints/help-overlay.blp:11
@@ -201,6 +218,18 @@ msgstr ""
 msgid "Validating"
 msgstr ""
 
-#: src/window.rs:449
+#: src/window.rs:250
+msgid "Failed to flash image"
+msgstr ""
+
+#: src/window.rs:257
+msgid "Image flashed"
+msgstr ""
+
+#: src/window.rs:382
+msgid "Disk Images"
+msgstr ""
+
+#: src/window.rs:475
 msgid "Code and Design Borrowed from"
 msgstr ""

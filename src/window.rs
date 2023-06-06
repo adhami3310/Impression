@@ -379,7 +379,7 @@ impl AppWindow {
         let files = SelectedFiles::open_file()
             .modal(true)
             .multiple(Some(false))
-            .filter(FileFilter::new("Disk Images").mimetype("application/x-iso9660-image"))
+            .filter(FileFilter::new(&gettext("Disk Images")).mimetype("application/x-iso9660-image"))
             .send()
             .await?
             .response()?;
