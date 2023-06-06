@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=Impression
 GenericName=Media Writer
-Comment=Flash ISO images
+Comment=Create bootable drives
 Exec=impression %u
 Icon=@icon@
 Terminal=false

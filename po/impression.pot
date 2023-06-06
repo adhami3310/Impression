@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: impression\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-06 03:20-0400\n"
+"POT-Creation-Date: 2023-06-06 06:08-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -30,7 +30,7 @@ msgstr ""
 
 #: data/io.gitlab.adhami3310.Impression.desktop.in.in:5
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:7
-msgid "Flash ISO images"
+msgid "Create bootable drives"
 msgstr ""
 
 #: data/io.gitlab.adhami3310.Impression.desktop.in.in:11
@@ -54,7 +54,7 @@ msgid "Khaleel Al-Adhami"
 msgstr ""
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:13
-msgid "Flash ISO images into USB drives"
+msgid "Flash disk images (ISOs/IMGs) to create bootable devices"
 msgstr ""
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:28

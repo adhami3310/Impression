@@ -5,7 +5,7 @@
 		xmlns:gnome="http://api.gnome.org/doap-extensions#">
 
 	<name xml:lang="en">Impression</name>
-	<shortdesc xml:lang="en">Flash ISO images</shortdesc>
+	<shortdesc xml:lang="en">Crete bootable drives</shortdesc>
 
 	<homepage rdf:resource="https://gitlab.com/adhami3310/Impression"/>
 	<download-page rdf:resource="https://flathub.org/apps/details/io.gitlab.adhami3310.Impression"/>

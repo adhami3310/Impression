@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: impression\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-06 03:20-0400\n"
+"POT-Creation-Date: 2023-06-06 06:08-0400\n"
 "PO-Revision-Date: 2023-06-06 09:48+0200\n"
 "Last-Translator: Irénée Thirion <irenee.thirion@e.email>\n"
 "Language-Team: \n"
@@ -30,8 +30,8 @@ msgstr "Graveur de médias"
 
 #: data/io.gitlab.adhami3310.Impression.desktop.in.in:5
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:7
-msgid "Flash ISO images"
-msgstr "Flashage d’images ISO"
+msgid "Create bootable drives"
+msgstr ""
 
 #: data/io.gitlab.adhami3310.Impression.desktop.in.in:11
 msgid "flash;usb;drive;bootable"
@@ -54,8 +54,8 @@ msgid "Khaleel Al-Adhami"
 msgstr "Khaleel Al-Adhami"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:13
-msgid "Flash ISO images into USB drives"
-msgstr "Flashez des images ISO sur des clés USB"
+msgid "Flash disk images (ISOs/IMGs) to create bootable devices"
+msgstr ""
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:28
 msgid "usb"
@@ -75,7 +75,8 @@ msgstr "clé"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:47
 msgid "Main screen with a chosen ISO and two USB memories"
-msgstr "Écran principal avec une image ISO sélectionnée et deux périphériques USB"
+msgstr ""
+"Écran principal avec une image ISO sélectionnée et deux périphériques USB"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:51
 msgid "Flashing the ISO in progress"
@@ -136,7 +137,8 @@ msgstr "Ouvrir un fichier…"
 
 #: data/resources/blueprints/window.blp:126
 msgid "Warning: This will erase all data on the selected drive."
-msgstr "Attention : cela effacera toutes les données sur le support sélectionné."
+msgstr ""
+"Attention : cela effacera toutes les données sur le support sélectionné."
 
 #: data/resources/blueprints/window.blp:129
 msgid "Flash!"
@@ -233,3 +235,9 @@ msgstr "Images disque"
 #: src/window.rs:475
 msgid "Code and Design Borrowed from"
 msgstr "Code et Design empruntés à"
+
+#~ msgid "Flash ISO images"
+#~ msgstr "Flashage d’images ISO"
+
+#~ msgid "Flash ISO images into USB drives"
+#~ msgstr "Flashez des images ISO sur des clés USB"

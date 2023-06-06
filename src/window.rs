@@ -467,6 +467,7 @@ impl AppWindow {
             .issue_url("https://gitlab.com/adhami3310/Impression/-/issues")
             .developers(vec!["Khaleel Al-Adhami"])
             .artists(vec!["Brage Fuglseth"])
+            .translator_credits(vec!["rene-coty", "Óscar Fernández Díaz"].join("\n"))
             .license_type(gtk::License::Gpl30)
             .version(VERSION)
             .build();

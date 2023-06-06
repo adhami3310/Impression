@@ -1,7 +1,7 @@
 <div align="center">
 <h1>Impression</h1>
 
-A straight-forward modern application to flash ISOs into drives.
+A straight-forward modern application to create bootable drives.
 
 <img src="data/resources/icons/hicolor/scalable/apps/io.gitlab.adhami3310.Impression.svg" width="128" height="128" alt="Impression icon">
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: impression\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-06 09:38+0200\n"
+"POT-Creation-Date: 2023-06-06 06:08-0400\n"
 "PO-Revision-Date: 2023-06-06 09:36+0200\n"
 "Last-Translator: Óscar Fernández Díaz <oscfdezdz@tuta.io>\n"
 "Language-Team: Spanish; Castilian < >\n"
@@ -32,8 +32,8 @@ msgstr "Escritor de medios"
 
 #: data/io.gitlab.adhami3310.Impression.desktop.in.in:5
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:7
-msgid "Flash ISO images"
-msgstr "Grabar imágenes ISO"
+msgid "Create bootable drives"
+msgstr ""
 
 #: data/io.gitlab.adhami3310.Impression.desktop.in.in:11
 msgid "flash;usb;drive;bootable"
@@ -56,8 +56,8 @@ msgid "Khaleel Al-Adhami"
 msgstr "Khaleel Al-Adhami"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:13
-msgid "Flash ISO images into USB drives"
-msgstr "Grabar imágenes ISO en unidades USB"
+msgid "Flash disk images (ISOs/IMGs) to create bootable devices"
+msgstr ""
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:28
 msgid "usb"
@@ -235,3 +235,9 @@ msgstr "Imágenes de disco"
 #: src/window.rs:475
 msgid "Code and Design Borrowed from"
 msgstr "Código y diseño tomados prestados de"
+
+#~ msgid "Flash ISO images"
+#~ msgstr "Grabar imágenes ISO"
+
+#~ msgid "Flash ISO images into USB drives"
+#~ msgstr "Grabar imágenes ISO en unidades USB"
