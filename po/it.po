@@ -1,0 +1,234 @@
+# ITALIAN TRANSLATION.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the impression package.
+# ALBANO BATTISTELLA <ALBANOBATTISTELLA@HOTMAIL.COM>, 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: impression\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-06-06 06:08-0400\n"
+"PO-Revision-Date: 2023-06-07 11:13+0100\n"
+"Last-Translator: Albano Battistella <albano_battistella@hotmail.com>\n"
+"Language-Team: Italian <LL@li.org>\n"
+"Language: it\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: data/io.gitlab.adhami3310.Impression.desktop.in.in:3
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:5
+#: data/resources/blueprints/window.blp:9 src/main.rs:56 src/window.rs:275
+#: src/window.rs:464
+msgid "Impression"
+msgstr "Impression"
+
+#: data/io.gitlab.adhami3310.Impression.desktop.in.in:4
+msgid "Media Writer"
+msgstr "Scrittore multimediale"
+
+#: data/io.gitlab.adhami3310.Impression.desktop.in.in:5
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:7
+msgid "Create bootable drives"
+msgstr "Crea unità avviabili"
+
+#: data/io.gitlab.adhami3310.Impression.desktop.in.in:11
+msgid "flash;usb;drive;bootable"
+msgstr "flash;usb;drive;avviabile"
+
+#: data/io.gitlab.adhami3310.Impression.gschema.xml.in:6
+msgid "Window width"
+msgstr "Larghezza della finestra"
+
+#: data/io.gitlab.adhami3310.Impression.gschema.xml.in:10
+msgid "Window height"
+msgstr "Altezza della finestra"
+
+#: data/io.gitlab.adhami3310.Impression.gschema.xml.in:14
+msgid "Window maximized state"
+msgstr "Stato della finestra massimizzato"
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:6
+msgid "Khaleel Al-Adhami"
+msgstr ""
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:13
+msgid "Flash disk images (ISOs/IMGs) to create bootable devices"
+msgstr "Flash immagini disco (ISO/IMAGE) per creare dispositivi avviabili"
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:28
+msgid "usb"
+msgstr "usb"
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:29
+msgid "flash"
+msgstr "flash"
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:30
+msgid "bootable"
+msgstr "Avviabile"
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:31
+msgid "drive"
+msgstr "drive"
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:47
+msgid "Main screen with a chosen ISO and two USB memories"
+msgstr "Schermata principale con un ISO scelto e due memorie USB"
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:51
+msgid "Flashing the ISO in progress"
+msgstr "Flashing della ISO in corso"
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:55
+msgid "Success screen with a big check mark"
+msgstr "Schermata di successo con un segno di spunta grande"
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:75
+msgid "Initial version."
+msgstr "Versione iniziale."
+
+#: data/resources/blueprints/help-overlay.blp:11
+msgctxt "shortcut window"
+msgid "General"
+msgstr "Generale"
+
+#: data/resources/blueprints/help-overlay.blp:14
+msgctxt "shortcut window"
+msgid "Open File"
+msgstr "Apri file"
+
+#: data/resources/blueprints/help-overlay.blp:19
+msgctxt "shortcut window"
+msgid "New Window"
+msgstr "Nuova finestra"
+
+#: data/resources/blueprints/help-overlay.blp:24
+msgctxt "shortcut window"
+msgid "Show Shortcuts"
+msgstr "Mostra scorciatoie"
+
+#: data/resources/blueprints/help-overlay.blp:29
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "Esci"
+
+#: data/resources/blueprints/window.blp:17
+msgid "Refresh Devices"
+msgstr "Aggiorna dispositivi"
+
+#: data/resources/blueprints/window.blp:29
+msgid "Primary Menu"
+msgstr "Menu principale"
+
+#: data/resources/blueprints/window.blp:42
+msgid "Flash Images"
+msgstr "Flach immagine"
+
+#: data/resources/blueprints/window.blp:43
+msgid "Open a disk image to flash to a USB drive."
+msgstr "Apri un'immagine disco da flashare su un'unità USB."
+
+#: data/resources/blueprints/window.blp:54
+msgid "Open File…"
+msgstr "Opri file…"
+
+#: data/resources/blueprints/window.blp:126
+msgid "Warning: This will erase all data on the selected drive."
+msgstr "Avviso: questo cancellerà tutti i dati sull'unità selezionata."
+
+#: data/resources/blueprints/window.blp:129
+msgid "Flash!"
+msgstr "Flash!"
+
+#: data/resources/blueprints/window.blp:159
+msgid "Updating device list…"
+msgstr "Aggiornamento elenco dispositivi…"
+
+#: data/resources/blueprints/window.blp:176
+msgid "No Drives"
+msgstr "Nessun drive"
+
+#: data/resources/blueprints/window.blp:177
+msgid "Insert a USB drive to flash the image onto."
+msgstr "Inserire un'unità USB su cui eseguire il flashing dell'immagine."
+
+#: data/resources/blueprints/window.blp:188
+msgid "Image Flashed"
+msgstr "Immagine fleshata"
+
+#: data/resources/blueprints/window.blp:189
+msgid "Have a nice day!"
+msgstr "Buona giornata!"
+
+#: data/resources/blueprints/window.blp:198
+msgid "Done"
+msgstr "Fatto"
+
+#: data/resources/blueprints/window.blp:219
+msgid "Flashing Image Unsuccessful"
+msgstr "Flashing dell'immagine non riuscito"
+
+#: data/resources/blueprints/window.blp:228
+msgid "Flash Again"
+msgstr "Flash ancora"
+
+#: data/resources/blueprints/window.blp:248
+msgid "Flashing…"
+msgstr "Flasching in corso…"
+
+#: data/resources/blueprints/window.blp:263 src/window.rs:192
+msgid "_Cancel"
+msgstr "_Cancella"
+
+#: data/resources/blueprints/window.blp:283
+msgid "Open File"
+msgstr "APri file"
+
+#: data/resources/blueprints/window.blp:288
+msgid "New Window"
+msgstr "Nuova finestra"
+
+#: data/resources/blueprints/window.blp:295
+msgid "Keyboard Shortcuts"
+msgstr "Scorciatoie da tastiera"
+
+#: data/resources/blueprints/window.blp:300
+msgid "About Impression"
+msgstr "Informazioni su Impression"
+
+#: src/window.rs:188
+msgid "Stop flashing?"
+msgstr "Fermare il flashing?"
+
+#: src/window.rs:189
+msgid "This might leave your drive in a faulty state."
+msgstr "Questo potrebbe lasciare il tuo drive in uno stato difettoso."
+
+#: src/window.rs:192
+msgid "_Stop"
+msgstr "_Ferma"
+
+#: src/window.rs:237
+msgid "Copying files…"
+msgstr "Copia dei file…"
+
+#: src/window.rs:241
+msgid "Validating"
+msgstr "Validazione"
+
+#: src/window.rs:250
+msgid "Failed to flash image"
+msgstr "Impossibile eseguire il flashing dell'immagine"
+
+#: src/window.rs:257
+msgid "Image flashed"
+msgstr "Immagine fleshata"
+
+#: src/window.rs:382
+msgid "Disk Images"
+msgstr "Immagini disco"
+
+#: src/window.rs:475
+msgid "Code and Design Borrowed from"
+msgstr "Codice e design presi in prestito da"
