@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: impression\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-07 10:45-0400\n"
+"POT-Creation-Date: 2023-06-07 13:45-0400\n"
 "PO-Revision-Date: 2023-06-06 09:36+0200\n"
 "Last-Translator: Óscar Fernández Díaz <oscfdezdz@tuta.io>\n"
 "Language-Team: Spanish; Castilian < >\n"
@@ -125,7 +125,7 @@ msgid "Refresh Devices"
 msgstr "Refrescar dispositivos"
 
 #: data/resources/blueprints/window.blp:29
-msgid "Menu Menu"
+msgid "Main Menu"
 msgstr ""
 
 #: data/resources/blueprints/window.blp:42

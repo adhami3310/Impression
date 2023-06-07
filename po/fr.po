@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: impression\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-07 10:45-0400\n"
+"POT-Creation-Date: 2023-06-07 13:45-0400\n"
 "PO-Revision-Date: 2023-06-07 18:36+0200\n"
 "Last-Translator: Irénée Thirion <irenee.thirion@e.email>\n"
 "Language-Team: \n"
@@ -55,7 +55,9 @@ msgstr "Khaleel Al-Adhami"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:13
 msgid "Flash disk images (ISOs/IMGs) to create bootable devices"
-msgstr "Flashez des images disque (type ISO/IMG) pour créer des périphériques de démarrage"
+msgstr ""
+"Flashez des images disque (type ISO/IMG) pour créer des périphériques de "
+"démarrage"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:28
 msgid "usb"
@@ -75,7 +77,8 @@ msgstr "clé"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:47
 msgid "Main screen with a chosen ISO and two USB memories"
-msgstr "Écran principal avec une image ISO sélectionnée et deux périphériques USB"
+msgstr ""
+"Écran principal avec une image ISO sélectionnée et deux périphériques USB"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:51
 msgid "Flashing the ISO in progress"
@@ -87,7 +90,8 @@ msgstr "Écran de tâche accomplie avec un symbole coché"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:75
 msgid "Added Spanish, French, German, Russia, and Italian translations."
-msgstr "Ajout de traductions espagnole, française, allemande, russe et italienne."
+msgstr ""
+"Ajout de traductions espagnole, française, allemande, russe et italienne."
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:80
 msgid "Initial version."
@@ -123,7 +127,8 @@ msgid "Refresh Devices"
 msgstr "Actualiser les appareils"
 
 #: data/resources/blueprints/window.blp:29
-msgid "Menu Menu"
+#, fuzzy
+msgid "Main Menu"
 msgstr "Menu principal"
 
 #: data/resources/blueprints/window.blp:42
@@ -140,7 +145,8 @@ msgstr "Ouvrir un fichier…"
 
 #: data/resources/blueprints/window.blp:126
 msgid "Warning: This will erase all data on the selected drive."
-msgstr "Attention : cela effacera toutes les données sur le support sélectionné."
+msgstr ""
+"Attention : cela effacera toutes les données sur le support sélectionné."
 
 #: data/resources/blueprints/window.blp:129
 msgid "Flash!"
