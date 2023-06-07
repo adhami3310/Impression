@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: impression\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-06 06:08-0400\n"
+"POT-Creation-Date: 2023-06-07 10:45-0400\n"
 "PO-Revision-Date: 2023-06-06 13:20+0200\n"
 "Last-Translator: FineFindus <FineFindus@proton.me>\n"
 "Language-Team: \n"
@@ -19,8 +19,8 @@ msgstr ""
 
 #: data/io.gitlab.adhami3310.Impression.desktop.in.in:3
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:5
-#: data/resources/blueprints/window.blp:9 src/main.rs:56 src/window.rs:275
-#: src/window.rs:464
+#: data/resources/blueprints/window.blp:9 src/main.rs:56 src/window.rs:277
+#: src/window.rs:468
 msgid "Impression"
 msgstr "Impression"
 
@@ -55,7 +55,8 @@ msgstr "Khaleel Al-Adhami"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:13
 msgid "Flash disk images (ISOs/IMGs) to create bootable devices"
-msgstr "Brenne Datenträgerabbilder (ISOs/IMGs) zur Erstellung bootfähiger Geräte"
+msgstr ""
+"Brenne Datenträgerabbilder (ISOs/IMGs) zur Erstellung bootfähiger Geräte"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:28
 msgid "usb"
@@ -86,6 +87,10 @@ msgid "Success screen with a big check mark"
 msgstr "Erfolgsanzeige mit einem großen Häkchen"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:75
+msgid "Added Spanish, French, German, Russia, and Italian translations."
+msgstr ""
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:80
 msgid "Initial version."
 msgstr "Anfängliche Version."
 
@@ -119,8 +124,8 @@ msgid "Refresh Devices"
 msgstr "Geräte aktualisieren"
 
 #: data/resources/blueprints/window.blp:29
-msgid "Primary Menu"
-msgstr "Primäres Menü"
+msgid "Menu Menu"
+msgstr ""
 
 #: data/resources/blueprints/window.blp:42
 msgid "Flash Images"
@@ -136,7 +141,8 @@ msgstr "Datei Öffnen…"
 
 #: data/resources/blueprints/window.blp:126
 msgid "Warning: This will erase all data on the selected drive."
-msgstr "Achtung: Dies wird alle Daten auf dem ausgewählten Laufwerk überschreiben."
+msgstr ""
+"Achtung: Dies wird alle Daten auf dem ausgewählten Laufwerk überschreiben."
 
 #: data/resources/blueprints/window.blp:129
 msgid "Flash!"
@@ -152,7 +158,8 @@ msgstr "Keine Laufwerke"
 
 #: data/resources/blueprints/window.blp:177
 msgid "Insert a USB drive to flash the image onto."
-msgstr "Schließe ein USB-Laufwerk an, auf das Datenträgerabbild gebrannt werden soll."
+msgstr ""
+"Schließe ein USB-Laufwerk an, auf das Datenträgerabbild gebrannt werden soll."
 
 #: data/resources/blueprints/window.blp:188
 msgid "Image Flashed"
@@ -204,7 +211,9 @@ msgstr "Aufhören zu Brennen?"
 
 #: src/window.rs:189
 msgid "This might leave your drive in a faulty state."
-msgstr "Dies kann dazu führen, dass sich das Laufwerk in einem fehlerhaften Zustand befindet."
+msgstr ""
+"Dies kann dazu führen, dass sich das Laufwerk in einem fehlerhaften Zustand "
+"befindet."
 
 #: src/window.rs:192
 msgid "_Stop"
@@ -226,10 +235,13 @@ msgstr "Brennen des Datenträgerabbilds fehlgeschlagen"
 msgid "Image flashed"
 msgstr "Datenträgerabbild gebrannt"
 
-#: src/window.rs:382
+#: src/window.rs:385
 msgid "Disk Images"
 msgstr "Datenträgerabbilder"
 
-#: src/window.rs:475
+#: src/window.rs:489
 msgid "Code and Design Borrowed from"
 msgstr "Code und Design Angelehnt an"
+
+#~ msgid "Primary Menu"
+#~ msgstr "Primäres Menü"

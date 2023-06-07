@@ -8,7 +8,7 @@ use glib::{clone, timeout_add_seconds_local};
 use gtk::{gio, glib, subclass::prelude::*};
 
 use crate::{
-    config::{VERSION, APP_ID},
+    config::{APP_ID, VERSION},
     flash::{refresh_devices, FlashPhase, FlashRequest, FlashStatus},
     get_size_string, spawn,
     widgets::device_list,
@@ -268,7 +268,9 @@ impl AppWindow {
 
     fn send_notification(&self, message: String) {
         spawn!(async move {
-            let proxy = ashpd::desktop::notification::NotificationProxy::new().await.unwrap();
+            let proxy = ashpd::desktop::notification::NotificationProxy::new()
+                .await
+                .unwrap();
             proxy
                 .add_notification(
                     APP_ID,
@@ -379,7 +381,9 @@ impl AppWindow {
         let files = SelectedFiles::open_file()
             .modal(true)
             .multiple(Some(false))
-            .filter(FileFilter::new(&gettext("Disk Images")).mimetype("application/x-iso9660-image"))
+            .filter(
+                FileFilter::new(&gettext("Disk Images")).mimetype("application/x-iso9660-image"),
+            )
             .send()
             .await?
             .response()?;
@@ -467,7 +471,16 @@ impl AppWindow {
             .issue_url("https://gitlab.com/adhami3310/Impression/-/issues")
             .developers(vec!["Khaleel Al-Adhami"])
             .artists(vec!["Brage Fuglseth"])
-            .translator_credits(vec!["rene-coty", "Óscar Fernández Díaz"].join("\n"))
+            .translator_credits(
+                vec![
+                    "rene-coty",
+                    "Óscar Fernández Díaz",
+                    "FineFindus",
+                    "Ворон",
+                    "albanobattistella",
+                ]
+                .join("\n"),
+            )
             .license_type(gtk::License::Gpl30)
             .version(VERSION)
             .build();

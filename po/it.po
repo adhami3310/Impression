@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: impression\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-06 06:08-0400\n"
+"POT-Creation-Date: 2023-06-07 10:45-0400\n"
 "PO-Revision-Date: 2023-06-07 11:13+0100\n"
 "Last-Translator: Albano Battistella <albano_battistella@hotmail.com>\n"
 "Language-Team: Italian <LL@li.org>\n"
@@ -18,8 +18,8 @@ msgstr ""
 
 #: data/io.gitlab.adhami3310.Impression.desktop.in.in:3
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:5
-#: data/resources/blueprints/window.blp:9 src/main.rs:56 src/window.rs:275
-#: src/window.rs:464
+#: data/resources/blueprints/window.blp:9 src/main.rs:56 src/window.rs:277
+#: src/window.rs:468
 msgid "Impression"
 msgstr "Impression"
 
@@ -85,6 +85,10 @@ msgid "Success screen with a big check mark"
 msgstr "Schermata di successo con un segno di spunta grande"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:75
+msgid "Added Spanish, French, German, Russia, and Italian translations."
+msgstr ""
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:80
 msgid "Initial version."
 msgstr "Versione iniziale."
 
@@ -118,8 +122,8 @@ msgid "Refresh Devices"
 msgstr "Aggiorna dispositivi"
 
 #: data/resources/blueprints/window.blp:29
-msgid "Primary Menu"
-msgstr "Menu principale"
+msgid "Menu Menu"
+msgstr ""
 
 #: data/resources/blueprints/window.blp:42
 msgid "Flash Images"
@@ -225,10 +229,13 @@ msgstr "Impossibile eseguire il flashing dell'immagine"
 msgid "Image flashed"
 msgstr "Immagine fleshata"
 
-#: src/window.rs:382
+#: src/window.rs:385
 msgid "Disk Images"
 msgstr "Immagini disco"
 
-#: src/window.rs:475
+#: src/window.rs:489
 msgid "Code and Design Borrowed from"
 msgstr "Codice e design presi in prestito da"
+
+#~ msgid "Primary Menu"
+#~ msgstr "Menu principale"
