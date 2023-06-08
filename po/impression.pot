@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: impression\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-07 13:45-0400\n"
+"POT-Creation-Date: 2023-06-08 11:17-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -131,15 +131,16 @@ msgid "Flash Images"
 msgstr ""
 
 #: data/resources/blueprints/window.blp:43
-msgid "Open a disk image to flash to a USB drive."
+msgid "Open a disk image to flash to a USB drive"
 msgstr ""
 
 #: data/resources/blueprints/window.blp:54
+#: data/resources/blueprints/window.blp:283
 msgid "Open File…"
 msgstr ""
 
 #: data/resources/blueprints/window.blp:126
-msgid "Warning: This will erase all data on the selected drive."
+msgid "Warning: This will erase all data on the selected drive"
 msgstr ""
 
 #: data/resources/blueprints/window.blp:129
@@ -155,7 +156,7 @@ msgid "No Drives"
 msgstr ""
 
 #: data/resources/blueprints/window.blp:177
-msgid "Insert a USB drive to flash the image onto."
+msgid "Insert a USB drive to flash the image onto"
 msgstr ""
 
 #: data/resources/blueprints/window.blp:188
@@ -184,10 +185,6 @@ msgstr ""
 
 #: data/resources/blueprints/window.blp:263 src/window.rs:192
 msgid "_Cancel"
-msgstr ""
-
-#: data/resources/blueprints/window.blp:283
-msgid "Open File"
 msgstr ""
 
 #: data/resources/blueprints/window.blp:288
@@ -234,6 +231,11 @@ msgstr ""
 msgid "Disk Images"
 msgstr ""
 
-#: src/window.rs:489
+#. Translators: Replace "translator-credits" with your names, one name per line
+#: src/window.rs:475
+msgid "translator-credits"
+msgstr ""
+
+#: src/window.rs:481
 msgid "Code and Design Borrowed from"
 msgstr ""
