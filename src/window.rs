@@ -471,16 +471,8 @@ impl AppWindow {
             .issue_url("https://gitlab.com/adhami3310/Impression/-/issues")
             .developers(vec!["Khaleel Al-Adhami"])
             .artists(vec!["Brage Fuglseth"])
-            .translator_credits(
-                vec![
-                    "rene-coty",
-                    "Óscar Fernández Díaz",
-                    "FineFindus",
-                    "Ворон",
-                    "albanobattistella",
-                ]
-                .join("\n"),
-            )
+            // Translators: Replace "translator-credits" with your names, one name per line
+            .translator_credits(gettext("translator-credits"))
             .license_type(gtk::License::Gpl30)
             .version(VERSION)
             .build();
