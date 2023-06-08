@@ -239,3 +239,6 @@ msgstr "Disk Görüntüleri"
 #: src/window.rs:489
 msgid "Code and Design Borrowed from"
 msgstr "Kod ve Tasarımın Ödünç Alındığı Kaynak"
+
+msgid "translator-credits"
+msgstr "Sabri Ünal <libreajans@gmail.com>"
