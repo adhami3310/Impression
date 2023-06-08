@@ -40,7 +40,7 @@ template $AppWindow : Adw.ApplicationWindow {
         Adw.StatusPage {
           icon-name: "io.gitlab.adhami3310.Impression-symbolic";
           title: _("Flash Images");
-          description: _("Open a disk image to flash to a USB drive.");
+          description: _("Open a disk image to flash to a USB drive");
           hexpand: true;
           vexpand: true;
           child: 
@@ -123,7 +123,7 @@ template $AppWindow : Adw.ApplicationWindow {
           Adw.PreferencesGroup {
             valign: end;
             halign: center;
-            description: _("Warning: This will erase all data on the selected drive.");
+            description: _("Warning: This will erase all data on the selected drive");
 
             Button flash_button {
               label: _("Flash!");
@@ -174,7 +174,7 @@ template $AppWindow : Adw.ApplicationWindow {
         Adw.StatusPage {
           icon-name: "usb-stick-symbolic";
           title: _("No Drives");
-          description: _("Insert a USB drive to flash the image onto.");
+          description: _("Insert a USB drive to flash the image onto");
         }
 
         ;
