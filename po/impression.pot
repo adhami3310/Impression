@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: impression\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-09 20:08+0200\n"
+"POT-Creation-Date: 2023-06-09 20:40+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -105,6 +105,10 @@ msgstr ""
 msgid "Main Menu"
 msgstr ""
 
+#: data/resources/blueprints/window.blp:47
+msgid "Choose an image to flash"
+msgstr ""
+
 #: data/resources/blueprints/window.blp:58
 #: data/resources/blueprints/window.blp:268
 msgid "Open File…"
@@ -199,10 +203,10 @@ msgid "Disk Images"
 msgstr ""
 
 #. Translators: Replace "translator-credits" with your names, one name per line
-#: src/window.rs:485
+#: src/window.rs:488
 msgid "translator-credits"
 msgstr ""
 
-#: src/window.rs:491
-msgid "Code and Design Borrowed from"
+#: src/window.rs:494
+msgid "Code borrowed from"
 msgstr ""

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: impression\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-09 20:08+0200\n"
+"POT-Creation-Date: 2023-06-09 20:40+0200\n"
 "PO-Revision-Date: 2023-06-06 13:20+0200\n"
 "Last-Translator: FineFindus <FineFindus@proton.me>\n"
 "Language-Team: \n"
@@ -103,6 +103,10 @@ msgstr "Geräte aktualisieren"
 
 #: data/resources/blueprints/window.blp:27
 msgid "Main Menu"
+msgstr ""
+
+#: data/resources/blueprints/window.blp:47
+msgid "Choose an image to flash"
 msgstr ""
 
 #: data/resources/blueprints/window.blp:58
@@ -208,12 +212,13 @@ msgid "Disk Images"
 msgstr "Datenträgerabbilder"
 
 #. Translators: Replace "translator-credits" with your names, one name per line
-#: src/window.rs:485
+#: src/window.rs:488
 msgid "translator-credits"
 msgstr ""
 
-#: src/window.rs:491
-msgid "Code and Design Borrowed from"
+#: src/window.rs:494
+#, fuzzy
+msgid "Code borrowed from"
 msgstr "Code und Design Angelehnt an"
 
 #~ msgid "Image Flashed"
