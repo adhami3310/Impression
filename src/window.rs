@@ -195,8 +195,8 @@ impl AppWindow {
     fn cancel_request(&self) {
         let dialog = adw::MessageDialog::new(
             Some(self),
-            Some(&gettext("Stop flashing?")),
-            Some(&gettext("This might leave your drive in a faulty state.")),
+            Some(&gettext("Stop Flashing?")),
+            Some(&gettext("This might leave the drive in a faulty state.")),
         );
 
         dialog.add_responses(&[("cancel", &gettext("_Cancel")), ("stop", &gettext("_Stop"))]);
@@ -248,7 +248,7 @@ impl AppWindow {
                             _ => this
                             .imp()
                             .flashing_page
-                            .set_description(Some(&gettext("Validating"))),
+                            .set_description(Some(&gettext("Validating…"))),
                         }
                         this.imp().progress_bar.set_fraction(x);
                         glib::MainContext::default().iteration(true);

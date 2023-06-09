@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: impression\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-08 11:17-0400\n"
+"POT-Creation-Date: 2023-06-09 20:03+0200\n"
 "PO-Revision-Date: 2023-06-06 09:36+0200\n"
 "Last-Translator: Óscar Fernández Díaz <oscfdezdz@tuta.io>\n"
 "Language-Team: Spanish; Castilian < >\n"
@@ -21,8 +21,8 @@ msgstr ""
 
 #: data/io.gitlab.adhami3310.Impression.desktop.in.in:3
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:5
-#: data/resources/blueprints/window.blp:9 src/main.rs:56 src/window.rs:277
-#: src/window.rs:468
+#: data/resources/blueprints/window.blp:7 src/main.rs:56 src/window.rs:287
+#: src/window.rs:478
 msgid "Impression"
 msgstr "Impresión"
 
@@ -56,44 +56,23 @@ msgid "Khaleel Al-Adhami"
 msgstr "Khaleel Al-Adhami"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:13
-msgid "Flash disk images (ISOs/IMGs) to create bootable devices"
+msgid ""
+"Flash disk images onto your drives with ease. Select an image, insert your "
+"drive, and you're good to go! Impression is a useful tool for both avid "
+"distro-hoppers and casual computer users."
 msgstr ""
 
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:28
-msgid "usb"
-msgstr "usb"
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:29
-msgid "flash"
-msgstr "grabar"
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:30
-msgid "bootable"
-msgstr "arrancable"
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:31
-msgid "drive"
-msgstr "unidad"
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:47
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:49
 msgid "Main screen with a chosen ISO and two USB memories"
 msgstr "Pantalla principal con una ISO elegida y dos memorias USB"
 
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:51
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:53
 msgid "Flashing the ISO in progress"
 msgstr "Grabación de la ISO en curso"
 
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:55
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:57
 msgid "Success screen with a big check mark"
 msgstr "Pantalla de éxito con una gran marca de verificación"
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:75
-msgid "Added Spanish, French, German, Russia, and Italian translations."
-msgstr ""
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:80
-msgid "Initial version."
-msgstr "Versión inicial."
 
 #: data/resources/blueprints/help-overlay.blp:11
 msgctxt "shortcut window"
@@ -120,130 +99,163 @@ msgctxt "shortcut window"
 msgid "Quit"
 msgstr "Salir"
 
-#: data/resources/blueprints/window.blp:17
+#: data/resources/blueprints/window.blp:15
 msgid "Refresh Devices"
 msgstr "Refrescar dispositivos"
 
-#: data/resources/blueprints/window.blp:29
+#: data/resources/blueprints/window.blp:27
 msgid "Main Menu"
 msgstr ""
 
-#: data/resources/blueprints/window.blp:42
-msgid "Flash Images"
-msgstr "Grabar imágenes"
-
-#: data/resources/blueprints/window.blp:43
-#, fuzzy
-msgid "Open a disk image to flash to a USB drive"
-msgstr "Abra una imagen de disco para grabarla en una unidad USB."
-
-#: data/resources/blueprints/window.blp:54
-#: data/resources/blueprints/window.blp:283
+#: data/resources/blueprints/window.blp:58
+#: data/resources/blueprints/window.blp:267
 msgid "Open File…"
 msgstr "Abrir archivo…"
 
 #: data/resources/blueprints/window.blp:126
-#, fuzzy
-msgid "Warning: This will erase all data on the selected drive"
-msgstr "Advertencia: Esto eliminará todos los datos de la unidad seleccionada."
+msgid "All data on the selected drive will be erased"
+msgstr ""
 
 #: data/resources/blueprints/window.blp:129
-msgid "Flash!"
+#, fuzzy
+msgid "Flash"
 msgstr "¡Grabar!"
 
-#: data/resources/blueprints/window.blp:159
-msgid "Updating device list…"
-msgstr "Actualizando la lista de dispositivos…"
-
-#: data/resources/blueprints/window.blp:176
+#: data/resources/blueprints/window.blp:161
 msgid "No Drives"
 msgstr "Sin unidades"
 
-#: data/resources/blueprints/window.blp:177
+#: data/resources/blueprints/window.blp:162
 #, fuzzy
-msgid "Insert a USB drive to flash the image onto"
+msgid "Insert a drive to flash the image onto"
 msgstr "Inserte una unidad USB en la que grabar la imagen."
 
-#: data/resources/blueprints/window.blp:188
-msgid "Image Flashed"
-msgstr "Imagen grabada"
+#: data/resources/blueprints/window.blp:173
+msgid "Flashing Completed"
+msgstr ""
 
-#: data/resources/blueprints/window.blp:189
-msgid "Have a nice day!"
-msgstr "¡Que tenga un buen día!"
+#: data/resources/blueprints/window.blp:174
+msgid "The drive can be safely removed"
+msgstr ""
 
-#: data/resources/blueprints/window.blp:198
-msgid "Done"
-msgstr "Hecho"
+#: data/resources/blueprints/window.blp:183
+msgid "Finish"
+msgstr ""
 
-#: data/resources/blueprints/window.blp:219
-msgid "Flashing Image Unsuccessful"
+#: data/resources/blueprints/window.blp:204
+#, fuzzy
+msgid "Flashing Unsuccessful"
 msgstr "Grabación de imagen fallida"
 
-#: data/resources/blueprints/window.blp:228
-msgid "Flash Again"
-msgstr "Grabar de nuevo"
+#: data/resources/blueprints/window.blp:213
+msgid "Retry"
+msgstr ""
 
-#: data/resources/blueprints/window.blp:248
+#: data/resources/blueprints/window.blp:233
 msgid "Flashing…"
 msgstr "Grabando…"
 
-#: data/resources/blueprints/window.blp:263 src/window.rs:192
+#: data/resources/blueprints/window.blp:248 src/window.rs:202
 msgid "_Cancel"
 msgstr "_Cancelar"
 
-#: data/resources/blueprints/window.blp:288
+#: data/resources/blueprints/window.blp:272
 msgid "New Window"
 msgstr "Ventana nueva"
 
-#: data/resources/blueprints/window.blp:295
+#: data/resources/blueprints/window.blp:279
 msgid "Keyboard Shortcuts"
 msgstr "Atajos del teclado"
 
-#: data/resources/blueprints/window.blp:300
+#: data/resources/blueprints/window.blp:284
 msgid "About Impression"
 msgstr "Acerca de Impresión"
 
-#: src/window.rs:188
-msgid "Stop flashing?"
+#: src/window.rs:198
+#, fuzzy
+msgid "Stop Flashing?"
 msgstr "¿Detener la grabación?"
 
-#: src/window.rs:189
-msgid "This might leave your drive in a faulty state."
+#: src/window.rs:199
+#, fuzzy
+msgid "This might leave the drive in a faulty state."
 msgstr "Esto podría dejar su unidad en un estado defectuoso."
 
-#: src/window.rs:192
+#: src/window.rs:202
 msgid "_Stop"
 msgstr "_Detener"
 
-#: src/window.rs:237
+#: src/window.rs:247
 msgid "Copying files…"
 msgstr "Copiando archivos…"
 
-#: src/window.rs:241
-msgid "Validating"
+#: src/window.rs:251
+#, fuzzy
+msgid "Validating…"
 msgstr "Validando"
 
-#: src/window.rs:250
+#: src/window.rs:260
 msgid "Failed to flash image"
 msgstr "Fallo al grabar la imagen"
 
-#: src/window.rs:257
+#: src/window.rs:267
 msgid "Image flashed"
 msgstr "Imagen grabada"
 
-#: src/window.rs:385
+#: src/window.rs:395
 msgid "Disk Images"
 msgstr "Imágenes de disco"
 
 #. Translators: Replace "translator-credits" with your names, one name per line
-#: src/window.rs:475
+#: src/window.rs:485
 msgid "translator-credits"
 msgstr ""
 
-#: src/window.rs:481
+#: src/window.rs:491
 msgid "Code and Design Borrowed from"
 msgstr "Código y diseño tomados prestados de"
+
+#~ msgid "Image Flashed"
+#~ msgstr "Imagen grabada"
+
+#~ msgid "usb"
+#~ msgstr "usb"
+
+#~ msgid "flash"
+#~ msgstr "grabar"
+
+#~ msgid "bootable"
+#~ msgstr "arrancable"
+
+#~ msgid "drive"
+#~ msgstr "unidad"
+
+#~ msgid "Initial version."
+#~ msgstr "Versión inicial."
+
+#~ msgid "Flash Images"
+#~ msgstr "Grabar imágenes"
+
+#, fuzzy
+#~ msgid "Open a disk image to flash to a USB drive"
+#~ msgstr "Abra una imagen de disco para grabarla en una unidad USB."
+
+#, fuzzy
+#~ msgid "Warning: This will erase all data on the selected drive"
+#~ msgstr ""
+#~ "Advertencia: Esto eliminará todos los datos de la unidad seleccionada."
+
+#~ msgid "Updating device list…"
+#~ msgstr "Actualizando la lista de dispositivos…"
+
+#~ msgid "Have a nice day!"
+#~ msgstr "¡Que tenga un buen día!"
+
+#~ msgid "Done"
+#~ msgstr "Hecho"
+
+#~ msgid "Flash Again"
+#~ msgstr "Grabar de nuevo"
 
 #~ msgid "Open File"
 #~ msgstr "Abrir archivo"

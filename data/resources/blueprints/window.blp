@@ -43,8 +43,8 @@ template $AppWindow : Adw.ApplicationWindow {
         child: 
         Adw.StatusPage welcome_page {
           icon-name: "io.gitlab.adhami3310.Impression-symbolic";
-          title: _("Flash Images");
-          description: _("Open a disk image to flash to a USB drive");
+          title: "Impression";
+          description: "Choose an image to flash";
           hexpand: true;
           vexpand: true;
           child: 
@@ -123,10 +123,10 @@ template $AppWindow : Adw.ApplicationWindow {
           Adw.PreferencesGroup {
             valign: end;
             halign: center;
-            description: _("Warning: This will erase all data on the selected drive");
+            description: _("All data on the selected drive will be erased");
 
             Button flash_button {
-              label: _("Flash!");
+              label: _("Flash");
               halign: center;
 
               styles [
@@ -159,7 +159,7 @@ template $AppWindow : Adw.ApplicationWindow {
         Adw.StatusPage {
           icon-name: "usb-stick-symbolic";
           title: _("No Drives");
-          description: _("Insert a USB drive to flash the image onto");
+          description: _("Insert a drive to flash the image onto");
         }
 
         ;
@@ -170,8 +170,8 @@ template $AppWindow : Adw.ApplicationWindow {
         child: 
         Adw.StatusPage {
           icon-name: "check-round-outline-symbolic";
-          title: _("Image Flashed");
-          description: _("Have a nice day!");
+          title: _("Flashing Completed");
+          description: _("The drive can be safely removed");
           child: 
           Box {
             orientation: vertical;
@@ -180,7 +180,7 @@ template $AppWindow : Adw.ApplicationWindow {
             Button done_button {
               valign: center;
               halign: center;
-              label: _("Done");
+              label: _("Finish");
               use-underline: true;
 
               styles [
@@ -201,7 +201,7 @@ template $AppWindow : Adw.ApplicationWindow {
         child: 
         Adw.StatusPage {
           icon-name: "error-symbolic";
-          title: _("Flashing Image Unsuccessful");
+          title: _("Flashing Unsuccessful");
           child: 
           Box {
             orientation: vertical;
@@ -210,7 +210,7 @@ template $AppWindow : Adw.ApplicationWindow {
             Button try_again_button {
               valign: center;
               halign: center;
-              label: _("Flash Again");
+              label: _("Retry");
               use-underline: true;
 
               styles [
@@ -249,7 +249,6 @@ template $AppWindow : Adw.ApplicationWindow {
               use-underline: true;
 
               styles [
-                "destructive-action",
                 "pill",
               ]
             }
