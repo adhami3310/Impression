@@ -480,7 +480,10 @@ impl AppWindow {
             .website("https://gitlab.com/adhami3310/Impression")
             .issue_url("https://gitlab.com/adhami3310/Impression/-/issues")
             .developers(vec!["Khaleel Al-Adhami"])
+            .designers(vec!["Brage Fuglseth", "Saptarshi Mondal"])
             .artists(vec!["Brage Fuglseth"])
+            .release_notes_version("1.0.1")
+            .release_notes("<p>Added Spanish, French, German, Russian, and Italian translations.</p>")
             // Translators: Replace "translator-credits" with your names, one name per line
             .translator_credits(gettext("translator-credits"))
             .license_type(gtk::License::Gpl30)
@@ -488,9 +491,8 @@ impl AppWindow {
             .build();
 
         about.add_acknowledgement_section(
-            Some(&gettext("Code and Design Borrowed from")),
+            Some(&gettext("Code borrowed from")),
             &[
-                "Flasher Mockup https://gitlab.gnome.org/Teams/Design/whiteboards/-/issues/143",
                 "Popsicle https://github.com/pop-os/popsicle",
             ],
         );
