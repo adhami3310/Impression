@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: impression\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-09 20:03+0200\n"
+"POT-Creation-Date: 2023-06-09 20:08+0200\n"
 "PO-Revision-Date: 2023-06-06 09:36+0200\n"
 "Last-Translator: Óscar Fernández Díaz <oscfdezdz@tuta.io>\n"
 "Language-Team: Spanish; Castilian < >\n"
@@ -108,7 +108,7 @@ msgid "Main Menu"
 msgstr ""
 
 #: data/resources/blueprints/window.blp:58
-#: data/resources/blueprints/window.blp:267
+#: data/resources/blueprints/window.blp:268
 msgid "Open File…"
 msgstr "Abrir archivo…"
 
@@ -155,19 +155,19 @@ msgstr ""
 msgid "Flashing…"
 msgstr "Grabando…"
 
-#: data/resources/blueprints/window.blp:248 src/window.rs:202
+#: data/resources/blueprints/window.blp:249 src/window.rs:202
 msgid "_Cancel"
 msgstr "_Cancelar"
 
-#: data/resources/blueprints/window.blp:272
+#: data/resources/blueprints/window.blp:273
 msgid "New Window"
 msgstr "Ventana nueva"
 
-#: data/resources/blueprints/window.blp:279
+#: data/resources/blueprints/window.blp:280
 msgid "Keyboard Shortcuts"
 msgstr "Atajos del teclado"
 
-#: data/resources/blueprints/window.blp:284
+#: data/resources/blueprints/window.blp:285
 msgid "About Impression"
 msgstr "Acerca de Impresión"
 
