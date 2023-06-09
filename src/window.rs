@@ -463,6 +463,8 @@ impl AppWindow {
             return;
         }
 
+        imp.selected_device_index.set(None);
+
         let selected_device = self
             .selected_device()
             .map(|x| x.parent.preferred_device.to_str().unwrap().to_owned());
