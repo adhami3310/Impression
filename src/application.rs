@@ -62,7 +62,7 @@ mod imp {
                 let application = self.obj();
                 application.present_main_window();
                 if let Some(window) = application.active_window() {
-                    let file_path = file.path().unwrap().to_str().unwrap().to_owned();
+                    let file_path = file.path().unwrap();
                     spawn!(async move {
                         window
                             .downcast_ref::<AppWindow>()

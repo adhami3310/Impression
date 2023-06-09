@@ -1,4 +1,4 @@
-use std::{path::PathBuf, str::FromStr};
+use std::path::PathBuf;
 
 use adw::prelude::*;
 use ashpd::desktop::file_chooser::{FileFilter, SelectedFiles};
@@ -6,10 +6,11 @@ use dbus_udisks2::DiskDevice;
 use gettextrs::gettext;
 use glib::{clone, timeout_add_seconds_local};
 use gtk::{gio, glib, subclass::prelude::*};
+use itertools::Itertools;
 
 use crate::{
     config::{APP_ID, VERSION},
-    flash::{refresh_devices, FlashPhase, FlashRequest, FlashStatus},
+    flash::{refresh_devices, FlashRequest, FlashStatus},
     get_size_string, spawn,
     widgets::device_list,
     RemoveAll,
@@ -53,17 +54,15 @@ mod imp {
         #[template_child]
         pub loading_spinner: TemplateChild<gtk::Spinner>,
         #[template_child]
-        pub refresh_button: TemplateChild<gtk::Button>,
-        #[template_child]
         pub progress_bar: TemplateChild<gtk::ProgressBar>,
         #[template_child]
         pub cancel_button: TemplateChild<gtk::Button>,
         #[template_child]
         pub flashing_page: TemplateChild<adw::StatusPage>,
 
-        pub selected_device_index: Cell<usize>,
+        pub selected_device_index: Cell<Option<usize>>,
         pub is_running: std::sync::Arc<AtomicBool>,
-        pub selected_image_path: RefCell<Option<String>>,
+        pub selected_image_path: RefCell<Option<PathBuf>>,
         pub available_devices: RefCell<Vec<DiskDevice>>,
         pub provider: gtk::CssProvider,
         pub settings: gio::Settings,
@@ -94,14 +93,13 @@ mod imp {
                 flash_button: TemplateChild::default(),
                 done_button: TemplateChild::default(),
                 try_again_button: TemplateChild::default(),
-                refresh_button: TemplateChild::default(),
                 loading_spinner: TemplateChild::default(),
                 progress_bar: TemplateChild::default(),
                 cancel_button: TemplateChild::default(),
                 flashing_page: TemplateChild::default(),
 
                 is_running: std::sync::Arc::new(AtomicBool::new(false)),
-                selected_device_index: Cell::new(0),
+                selected_device_index: Cell::new(None),
                 available_devices: RefCell::new(Vec::new()),
                 selected_image_path: RefCell::new(None),
                 provider: gtk::CssProvider::new(),
@@ -218,7 +216,6 @@ impl AppWindow {
     }
 
     fn flash(&self) {
-        self.imp().refresh_button.set_visible(false);
         self.imp().stack.set_visible_child_name("flashing");
         glib::MainContext::default().iteration(true);
         self.imp()
@@ -227,7 +224,7 @@ impl AppWindow {
         let (tx, rx) = glib::MainContext::channel(glib::PRIORITY_DEFAULT);
         let f = FlashRequest::new(
             self.image_path(),
-            self.selected_device(),
+            self.selected_device().unwrap(),
             tx,
             self.imp().is_running.clone(),
         );
@@ -239,17 +236,17 @@ impl AppWindow {
                     return Continue(false);
                 }
                 match x {
-                    FlashStatus::Active(p, x) => {
-                        match p {
-                            FlashPhase::Copy => this
-                            .imp()
-                            .flashing_page
-                            .set_description(Some(&gettext("Copying files…"))),
-                            _ => this
-                            .imp()
-                            .flashing_page
-                            .set_description(Some(&gettext("Validating…"))),
-                        }
+                    FlashStatus::Active(_, x) => {
+                        // match p {
+                        //     FlashPhase::Copy => this
+                        //     .imp()
+                        //     .flashing_page
+                        //     .set_description(Some(&gettext("Copying files…"))),
+                        //     _ => this
+                        //     .imp()
+                        //     .flashing_page
+                        //     .set_description(Some(&gettext("Validating…"))),
+                        // }
                         this.imp().progress_bar.set_fraction(x);
                         glib::MainContext::default().iteration(true);
                         Continue(true)
@@ -293,28 +290,33 @@ impl AppWindow {
         });
     }
 
-    fn image_path(&self) -> String {
+    fn image_path(&self) -> PathBuf {
         let x = self.imp().selected_image_path.borrow().to_owned();
         x.unwrap()
     }
 
-    fn selected_device_index(&self) -> usize {
+    fn selected_device_index(&self) -> Option<usize> {
         self.imp().selected_device_index.get()
     }
 
-    pub fn set_selected_device_index(&self, new: usize) {
+    pub fn set_selected_device_index(&self, new: Option<usize>) {
+        if new.is_some() {
+            self.imp().flash_button.set_sensitive(true);
+        }
         self.imp().selected_device_index.replace(new);
     }
 
-    fn selected_device(&self) -> DiskDevice {
+    fn selected_device(&self) -> Option<DiskDevice> {
         let index = self.selected_device_index();
-        self.imp()
-            .available_devices
-            .borrow()
-            .clone()
-            .get(index)
-            .unwrap()
-            .clone()
+        index.map(|index| {
+            self.imp()
+                .available_devices
+                .borrow()
+                .clone()
+                .get(index)
+                .unwrap()
+                .clone()
+        })
     }
 
     fn setup_callbacks(&self) {
@@ -336,27 +338,25 @@ impl AppWindow {
             }));
         imp.done_button
             .connect_clicked(clone!(@weak self as this => move |_| {
-                this.set_selected_device_index(0);
+                this.imp().available_devices.replace(vec![]);
+                this.imp().flash_button.set_sensitive(false);
+                this.set_selected_device_index(None);
                 this.imp().stack.set_visible_child_name("welcome");
                 this.imp().open_image_button.grab_focus();
             }));
         imp.try_again_button
             .connect_clicked(clone!(@weak self as this => move |_| {
-                this.set_selected_device_index(0);
+                this.imp().available_devices.replace(vec![]);
+                this.imp().flash_button.set_sensitive(false);
+                this.set_selected_device_index(None);
                 this.imp().stack.set_visible_child_name("welcome");
                 this.imp().open_image_button.grab_focus();
-            }));
-        imp.refresh_button
-            .connect_clicked(clone!(@weak self as this => move |_| {
-                spawn!(async move {
-                    this.imp().refresh_button.set_visible(false);
-                    this.refresh_devices().await.ok();
-                });
             }));
         timeout_add_seconds_local(
             2,
             clone!(@weak self as this => @default-return Continue(false), move || {
-                if this.imp().stack.visible_child_name().unwrap() == "no_devices" {
+                let current_stack = this.imp().stack.visible_child_name().unwrap();
+                if current_stack == "no_devices" || current_stack == "device_list" {
                     spawn!(async move {
                         let (sender, receiver) = glib::MainContext::channel(glib::PRIORITY_DEFAULT);
 
@@ -374,9 +374,7 @@ impl AppWindow {
                         receiver.attach(
                             None,
                             clone!(@weak this as that => @default-return Continue(false), move |new_devices| {
-                                if ne_disk_devices(&new_devices, &that.imp().available_devices.borrow().clone()) {
-                                    that.load_devices(new_devices);
-                                }
+                                that.load_devices(new_devices);
                                 Continue(false)
                             }),
                         );
@@ -398,19 +396,13 @@ impl AppWindow {
             .await?
             .response()?;
 
-        let path = files.uris().first().unwrap().path().to_owned();
+        let path = files.uris().first().unwrap().to_file_path().unwrap();
 
         self.open_file(path).await
     }
 
-    pub async fn open_file(&self, path: String) -> ashpd::Result<()> {
-        let filename = PathBuf::from_str(&path)
-            .unwrap()
-            .file_name()
-            .unwrap()
-            .to_str()
-            .unwrap()
-            .to_owned();
+    pub async fn open_file(&self, path: PathBuf) -> ashpd::Result<()> {
+        let filename = path.file_name().unwrap().to_str().unwrap().to_owned();
 
         self.imp().name_value_label.set_text(&filename);
 
@@ -456,14 +448,32 @@ impl AppWindow {
     fn load_devices(&self, devices: Vec<DiskDevice>) {
         let imp = self.imp();
 
+        let current_devices = imp.available_devices.borrow().clone();
+
+        if devices
+            .iter()
+            .map(|d| d.parent.preferred_device.as_path().to_str().unwrap())
+            .collect_vec()
+            == current_devices
+                .iter()
+                .map(|d| d.parent.preferred_device.as_path().to_str().unwrap())
+                .collect_vec()
+            && !devices.is_empty()
+        {
+            return;
+        }
+
+        let selected_device = self
+            .selected_device()
+            .map(|x| x.parent.preferred_device.to_str().unwrap().to_owned());
+
         imp.available_devices_list.remove_all();
         imp.available_devices.replace(devices.clone());
 
-        self.imp().refresh_button.set_visible(true);
         if devices.is_empty() {
             self.imp().stack.set_visible_child_name("no_devices");
         } else {
-            for device in device_list::new(self, devices) {
+            for device in device_list::new(self, devices, selected_device) {
                 imp.available_devices_list.append(&device);
             }
 
@@ -483,7 +493,9 @@ impl AppWindow {
             .designers(vec!["Brage Fuglseth", "Saptarshi Mondal"])
             .artists(vec!["Brage Fuglseth"])
             .release_notes_version("1.0.1")
-            .release_notes("<p>Added Spanish, French, German, Russian, and Italian translations.</p>")
+            .release_notes(
+                "<p>Added Spanish, French, German, Russian, and Italian translations.</p>",
+            )
             // Translators: Replace "translator-credits" with your names, one name per line
             .translator_credits(gettext("translator-credits"))
             .license_type(gtk::License::Gpl30)
@@ -492,9 +504,7 @@ impl AppWindow {
 
         about.add_acknowledgement_section(
             Some(&gettext("Code borrowed from")),
-            &[
-                "Popsicle https://github.com/pop-os/popsicle",
-            ],
+            &["Popsicle https://github.com/pop-os/popsicle"],
         );
 
         about.present();
@@ -534,12 +544,4 @@ impl SettingsStore for AppWindow {
             self.maximize();
         }
     }
-}
-
-fn ne_disk_devices(first: &Vec<DiskDevice>, second: &Vec<DiskDevice>) -> bool {
-    first.len() != second.len()
-        || first
-            .iter()
-            .zip(second.iter())
-            .any(|(a, b)| a.parent.preferred_device != b.parent.preferred_device)
 }

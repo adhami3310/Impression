@@ -5,6 +5,7 @@ use itertools::Itertools;
 use std::collections::HashMap;
 use std::fs::File;
 use std::os::unix::io::FromRawFd;
+use std::path::PathBuf;
 use std::str;
 use std::sync::atomic::AtomicBool;
 use std::sync::Arc;
@@ -46,7 +47,7 @@ pub enum FlashStatus {
 }
 
 pub struct FlashRequest {
-    source: String,
+    source: PathBuf,
     destination: DiskDevice,
     sender: glib::Sender<FlashStatus>,
     is_running: Arc<AtomicBool>,
@@ -54,7 +55,7 @@ pub struct FlashRequest {
 
 impl FlashRequest {
     pub fn new(
-        source: String,
+        source: PathBuf,
         destination: DiskDevice,
         sender: glib::Sender<FlashStatus>,
         is_running: Arc<AtomicBool>,

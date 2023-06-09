@@ -10,15 +10,6 @@ template $AppWindow : Adw.ApplicationWindow {
     orientation: vertical;
 
     Adw.HeaderBar headerbar {
-      Button refresh_button {
-        icon-name: "view-refresh-symbolic";
-        tooltip-text: _("Refresh Devices");
-        visible: false;
-
-        styles [
-          "flat",
-        ]
-      }
 
       [end]
       MenuButton {
@@ -127,6 +118,7 @@ template $AppWindow : Adw.ApplicationWindow {
 
             Button flash_button {
               label: _("Flash");
+              sensitive: false;
               halign: center;
 
               styles [
@@ -229,9 +221,10 @@ template $AppWindow : Adw.ApplicationWindow {
       StackPage {
         name: "flashing";
         child:
-        $AdwStatusPage flashing_page {
+        Adw.StatusPage flashing_page {
           title: _("Flashing…");
-          icon_name: "flash-symbolic";
+          icon-name: "flash-symbolic";
+          description: _("Do not remove the drive");
 
           Box {
             orientation: vertical;

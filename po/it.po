@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: impression\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-09 20:40+0200\n"
+"POT-Creation-Date: 2023-06-09 16:38-0400\n"
 "PO-Revision-Date: 2023-06-07 11:13+0100\n"
 "Last-Translator: Albano Battistella <albano_battistella@hotmail.com>\n"
 "Language-Team: Italian <LL@li.org>\n"
@@ -18,8 +18,8 @@ msgstr ""
 
 #: data/io.gitlab.adhami3310.Impression.desktop.in.in:3
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:5
-#: data/resources/blueprints/window.blp:7 src/main.rs:56 src/window.rs:287
-#: src/window.rs:478
+#: data/resources/blueprints/window.blp:7 src/main.rs:56 src/window.rs:284
+#: src/window.rs:488
 msgid "Impression"
 msgstr "Impression"
 
@@ -59,8 +59,34 @@ msgid ""
 "distro-hoppers and casual computer users."
 msgstr ""
 
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:28
+msgid "usb"
+msgstr "usb"
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:29
+msgid "flash"
+msgstr "flash"
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:30
+msgid "bootable"
+msgstr "Avviabile"
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:31
+msgid "drive"
+msgstr "drive"
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:32
+msgid "iso"
+msgstr ""
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:33
+#, fuzzy
+msgid "image"
+msgstr "Immagini disco"
+
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:49
-msgid "Main screen with a chosen ISO and two USB memories"
+#, fuzzy
+msgid "Main screen with a chosen ISO and available USB memories"
 msgstr "Schermata principale con un ISO scelto e due memorie USB"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:53
@@ -70,6 +96,14 @@ msgstr "Flashing della ISO in corso"
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:57
 msgid "Success screen with a big check mark"
 msgstr "Schermata di successo con un segno di spunta grande"
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:77
+msgid "Added Spanish, French, German, Russia, and Italian translations."
+msgstr ""
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:82
+msgid "Initial version."
+msgstr "Versione iniziale."
 
 #: data/resources/blueprints/help-overlay.blp:11
 msgctxt "shortcut window"
@@ -96,147 +130,133 @@ msgctxt "shortcut window"
 msgid "Quit"
 msgstr "Esci"
 
-#: data/resources/blueprints/window.blp:15
-msgid "Refresh Devices"
-msgstr "Aggiorna dispositivi"
-
-#: data/resources/blueprints/window.blp:27
+#: data/resources/blueprints/window.blp:18
 msgid "Main Menu"
 msgstr ""
 
-#: data/resources/blueprints/window.blp:47
+#: data/resources/blueprints/window.blp:38
 msgid "Choose an image to flash"
 msgstr ""
 
-#: data/resources/blueprints/window.blp:58
-#: data/resources/blueprints/window.blp:268
+#: data/resources/blueprints/window.blp:49
+#: data/resources/blueprints/window.blp:261
 msgid "Open File…"
 msgstr "Opri file…"
 
-#: data/resources/blueprints/window.blp:126
+#: data/resources/blueprints/window.blp:117
 msgid "All data on the selected drive will be erased"
 msgstr ""
 
-#: data/resources/blueprints/window.blp:129
+#: data/resources/blueprints/window.blp:120
 #, fuzzy
 msgid "Flash"
 msgstr "Flash!"
 
-#: data/resources/blueprints/window.blp:161
+#: data/resources/blueprints/window.blp:153
 msgid "No Drives"
 msgstr "Nessun drive"
 
-#: data/resources/blueprints/window.blp:162
+#: data/resources/blueprints/window.blp:154
 #, fuzzy
 msgid "Insert a drive to flash the image onto"
 msgstr "Inserire un'unità USB su cui eseguire il flashing dell'immagine."
 
-#: data/resources/blueprints/window.blp:173
+#: data/resources/blueprints/window.blp:165
 msgid "Flashing Completed"
 msgstr ""
 
-#: data/resources/blueprints/window.blp:174
+#: data/resources/blueprints/window.blp:166
 msgid "The drive can be safely removed"
 msgstr ""
 
-#: data/resources/blueprints/window.blp:183
+#: data/resources/blueprints/window.blp:175
 msgid "Finish"
 msgstr ""
 
-#: data/resources/blueprints/window.blp:204
+#: data/resources/blueprints/window.blp:196
 #, fuzzy
 msgid "Flashing Unsuccessful"
 msgstr "Flashing dell'immagine non riuscito"
 
-#: data/resources/blueprints/window.blp:213
+#: data/resources/blueprints/window.blp:205
 msgid "Retry"
 msgstr ""
 
-#: data/resources/blueprints/window.blp:233
+#: data/resources/blueprints/window.blp:225
 msgid "Flashing…"
 msgstr "Flasching in corso…"
 
-#: data/resources/blueprints/window.blp:249 src/window.rs:202
+#: data/resources/blueprints/window.blp:227
+msgid "Do not remove the drive"
+msgstr ""
+
+#: data/resources/blueprints/window.blp:242 src/window.rs:200
 msgid "_Cancel"
 msgstr "_Cancella"
 
-#: data/resources/blueprints/window.blp:273
+#: data/resources/blueprints/window.blp:266
 msgid "New Window"
 msgstr "Nuova finestra"
 
-#: data/resources/blueprints/window.blp:280
+#: data/resources/blueprints/window.blp:273
 msgid "Keyboard Shortcuts"
 msgstr "Scorciatoie da tastiera"
 
-#: data/resources/blueprints/window.blp:285
+#: data/resources/blueprints/window.blp:278
 msgid "About Impression"
 msgstr "Informazioni su Impression"
 
-#: src/window.rs:198
+#: src/window.rs:196
 #, fuzzy
 msgid "Stop Flashing?"
 msgstr "Fermare il flashing?"
 
-#: src/window.rs:199
+#: src/window.rs:197
 #, fuzzy
 msgid "This might leave the drive in a faulty state."
 msgstr "Questo potrebbe lasciare il tuo drive in uno stato difettoso."
 
-#: src/window.rs:202
+#: src/window.rs:200
 msgid "_Stop"
 msgstr "_Ferma"
 
-#: src/window.rs:247
-msgid "Copying files…"
-msgstr "Copia dei file…"
-
-#: src/window.rs:251
-#, fuzzy
-msgid "Validating…"
-msgstr "Validazione"
-
-#: src/window.rs:260
+#: src/window.rs:257
 msgid "Failed to flash image"
 msgstr "Impossibile eseguire il flashing dell'immagine"
 
-#: src/window.rs:267
+#: src/window.rs:264
 msgid "Image flashed"
 msgstr "Immagine fleshata"
 
-#: src/window.rs:395
+#: src/window.rs:393
 msgid "Disk Images"
 msgstr "Immagini disco"
 
 #. Translators: Replace "translator-credits" with your names, one name per line
-#: src/window.rs:488
+#: src/window.rs:500
 msgid "translator-credits"
 msgstr ""
 
-#: src/window.rs:494
+#: src/window.rs:506
 #, fuzzy
 msgid "Code borrowed from"
 msgstr "Codice e design presi in prestito da"
+
+#~ msgid "Refresh Devices"
+#~ msgstr "Aggiorna dispositivi"
+
+#~ msgid "Copying files…"
+#~ msgstr "Copia dei file…"
+
+#, fuzzy
+#~ msgid "Validating…"
+#~ msgstr "Validazione"
 
 #~ msgid "Image Flashed"
 #~ msgstr "Immagine fleshata"
 
 #~ msgid "Flash disk images (ISOs/IMGs) to create bootable devices"
 #~ msgstr "Flash immagini disco (ISO/IMAGE) per creare dispositivi avviabili"
-
-#~ msgid "usb"
-#~ msgstr "usb"
-
-#~ msgid "flash"
-#~ msgstr "flash"
-
-#~ msgid "bootable"
-#~ msgstr "Avviabile"
-
-#~ msgid "drive"
-#~ msgstr "drive"
-
-#~ msgid "Initial version."
-#~ msgstr "Versione iniziale."
 
 #~ msgid "Flash Images"
 #~ msgstr "Flach immagine"
