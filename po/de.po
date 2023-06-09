@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: impression\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-06-09 16:38-0400\n"
-"PO-Revision-Date: 2023-06-06 13:20+0200\n"
+"PO-Revision-Date: 2023-06-09 22:56+0200\n"
 "Last-Translator: FineFindus <FineFindus@proton.me>\n"
 "Language-Team: \n"
 "Language: de\n"
@@ -59,6 +59,10 @@ msgid ""
 "drive, and you're good to go! Impression is a useful tool for both avid "
 "distro-hoppers and casual computer users."
 msgstr ""
+"Brenne mit Leichtigkeit Datenträgerabbilder auf Laufwerke. Wähle ein "
+"dAtenträgerabbild aus, lege das Laufwerk ein, und schon kann es losgehen! "
+"Impression ist ein nützliches Tool sowohl für begeisterte Distro-Hopper als "
+"auch für gelegentliche Computerbenutzer."
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:28
 msgid "usb"
@@ -78,15 +82,13 @@ msgstr "Laufwerk"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:32
 msgid "iso"
-msgstr ""
+msgstr "iso"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:33
-#, fuzzy
 msgid "image"
 msgstr "Datenträgerabbilder"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:49
-#, fuzzy
 msgid "Main screen with a chosen ISO and available USB memories"
 msgstr "Hauptbildschirm mit ausgewählter ISO und zwei USB-Speichern"
 
@@ -101,6 +103,8 @@ msgstr "Erfolgsanzeige mit einem großen Häkchen"
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:77
 msgid "Added Spanish, French, German, Russia, and Italian translations."
 msgstr ""
+"Übersetzungen für Spanisch, Französisch, Deutsch, Russisch und Italienisch "
+"hinzugefügt."
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:82
 msgid "Initial version."
@@ -133,11 +137,11 @@ msgstr "Schließen"
 
 #: data/resources/blueprints/window.blp:18
 msgid "Main Menu"
-msgstr ""
+msgstr "Hauptmenü"
 
 #: data/resources/blueprints/window.blp:38
 msgid "Choose an image to flash"
-msgstr ""
+msgstr "Wähle ein Datenträgerabbild zum Brennen aus"
 
 #: data/resources/blueprints/window.blp:49
 #: data/resources/blueprints/window.blp:261
@@ -146,43 +150,41 @@ msgstr "Datei Öffnen…"
 
 #: data/resources/blueprints/window.blp:117
 msgid "All data on the selected drive will be erased"
-msgstr ""
+msgstr "Alle Daten auf dem ausgewählten Laufwerk werden gelöscht"
 
 #: data/resources/blueprints/window.blp:120
-#, fuzzy
 msgid "Flash"
-msgstr "Brennen!"
+msgstr "Brennen"
 
 #: data/resources/blueprints/window.blp:153
 msgid "No Drives"
 msgstr "Keine Laufwerke"
 
 #: data/resources/blueprints/window.blp:154
-#, fuzzy
 msgid "Insert a drive to flash the image onto"
 msgstr ""
-"Schließe ein USB-Laufwerk an, auf das Datenträgerabbild gebrannt werden soll."
+"Legen Sie ein Laufwerk ein, auf das Sie das Datenträgerabbild übertragen "
+"möchten"
 
 #: data/resources/blueprints/window.blp:165
 msgid "Flashing Completed"
-msgstr ""
+msgstr "Brennen abgeschlossen"
 
 #: data/resources/blueprints/window.blp:166
 msgid "The drive can be safely removed"
-msgstr ""
+msgstr "Das Laufwerk kann nun sicher entfernt werden"
 
 #: data/resources/blueprints/window.blp:175
 msgid "Finish"
-msgstr ""
+msgstr "Ende"
 
 #: data/resources/blueprints/window.blp:196
-#, fuzzy
 msgid "Flashing Unsuccessful"
 msgstr "Brennen des Datenträgerabbilds fehlgeschlagen"
 
 #: data/resources/blueprints/window.blp:205
 msgid "Retry"
-msgstr ""
+msgstr "Erneut versuchen"
 
 #: data/resources/blueprints/window.blp:225
 msgid "Flashing…"
@@ -190,7 +192,7 @@ msgstr "Brennen…"
 
 #: data/resources/blueprints/window.blp:227
 msgid "Do not remove the drive"
-msgstr ""
+msgstr "Das Laufwerk nicht entfernen"
 
 #: data/resources/blueprints/window.blp:242 src/window.rs:200
 msgid "_Cancel"
@@ -209,12 +211,10 @@ msgid "About Impression"
 msgstr "Info zu Impression"
 
 #: src/window.rs:196
-#, fuzzy
 msgid "Stop Flashing?"
 msgstr "Aufhören zu Brennen?"
 
 #: src/window.rs:197
-#, fuzzy
 msgid "This might leave the drive in a faulty state."
 msgstr ""
 "Dies kann dazu führen, dass sich das Laufwerk in einem fehlerhaften Zustand "
@@ -239,10 +239,9 @@ msgstr "Datenträgerabbilder"
 #. Translators: Replace "translator-credits" with your names, one name per line
 #: src/window.rs:500
 msgid "translator-credits"
-msgstr ""
+msgstr "FineFindus https://github.com/FineFindus"
 
 #: src/window.rs:506
-#, fuzzy
 msgid "Code borrowed from"
 msgstr "Code und Design Angelehnt an"
 
