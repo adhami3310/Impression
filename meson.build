@@ -39,7 +39,7 @@ if get_option('profile') == 'development'
   else
     version_suffix = '-@0@'.format(vcs_tag)
   endif
-  application_id = base_id
+  application_id = base_id + '.Devel'
 else
   profile = ''
   version_suffix = ''

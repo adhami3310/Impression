@@ -35,6 +35,8 @@ mod imp {
         #[template_child]
         pub stack: TemplateChild<gtk::Stack>,
         #[template_child]
+        pub welcome_page: TemplateChild<adw::StatusPage>,
+        #[template_child]
         pub open_image_button: TemplateChild<gtk::Button>,
         #[template_child]
         pub available_devices_list: TemplateChild<gtk::ListBox>,
@@ -84,6 +86,7 @@ mod imp {
         fn new() -> Self {
             Self {
                 stack: TemplateChild::default(),
+                welcome_page: TemplateChild::default(),
                 open_image_button: TemplateChild::default(),
                 available_devices_list: TemplateChild::default(),
                 name_value_label: TemplateChild::default(),
@@ -110,6 +113,13 @@ mod imp {
     impl ObjectImpl for AppWindow {
         fn constructed(&self) {
             self.parent_constructed();
+
+            if APP_ID.ends_with("Devel") {
+                self.obj().add_css_class("devel");
+            }
+
+            self.welcome_page.set_icon_name(Some(APP_ID));
+
             let obj = self.obj();
             obj.load_window_size();
             obj.setup_gactions();

@@ -2,10 +2,8 @@ using Gtk 4.0;
 using Adw 1;
 
 template $AppWindow : Adw.ApplicationWindow {
-  default-width: 400;
+  default-width: 500;
   default-height: 600;
-  width-request: 300;
-  height-request: 300;
   title: _("Impression");
 
   Box {
@@ -29,15 +27,21 @@ template $AppWindow : Adw.ApplicationWindow {
         tooltip-text: _("Main Menu");
         primary: true;
       }
+
+      styles [
+        "flat",
+      ]
     }
 
     Stack stack {
       transition-type: crossfade;
+      width-request: 400;
+      height-request: 400;
 
       StackPage {
         name: "welcome";
         child: 
-        Adw.StatusPage {
+        Adw.StatusPage welcome_page {
           icon-name: "io.gitlab.adhami3310.Impression-symbolic";
           title: _("Flash Images");
           description: _("Open a disk image to flash to a USB drive");
@@ -79,12 +83,8 @@ template $AppWindow : Adw.ApplicationWindow {
               spacing: 12;
 
               Image {
-                icon-name: "application-x-generic";
+                icon-name: "media-optical-cd-symbolic";
                 pixel-size: 64;
-
-                styles [
-                  "icon-dropshadow",
-                ]
               }
 
               Label name_value_label {
@@ -143,27 +143,12 @@ template $AppWindow : Adw.ApplicationWindow {
       StackPage {
         name: "loading";
         child: 
-        Adw.StatusPage {
-          Box {
-            orientation: vertical;
-            spacing: 12;
-
             Spinner loading_spinner {
               valign: center;
               halign: center;
               height-request: 28;
               width-request: 28;
             }
-
-            Label {
-              label: _("Updating device list…");
-
-              styles [
-                "title-3",
-              ]
-            }
-          }
-        }
 
         ;
       }
