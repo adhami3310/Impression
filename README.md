@@ -1,7 +1,7 @@
 <div align="center">
 <h1>Impression</h1>
 
-A straight-forward modern application to create bootable drives.
+A straight-forward and modern application to create bootable drives.
 
 <img src="data/resources/icons/hicolor/scalable/apps/io.gitlab.adhami3310.Impression.svg" width="128" height="128" alt="Impression icon">
 
@@ -19,6 +19,7 @@ Issues and merge requests are more than welcome. However, please take the follow
 
 - This project follows the [GNOME Code of Conduct](https://wiki.gnome.org/Foundation/CodeOfConduct)
 - Only Flatpak is supported
+- The amount of features is intentionally restricted, to keep the app minimal and optimized for the target use case. If you'd like a more general-purpose disk utility, check out [GNOME Disks](https://apps.gnome.org/app/org.gnome.DiskUtility/).
 
 ## Development
 
