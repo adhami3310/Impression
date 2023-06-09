@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: impression\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-08 11:17-0400\n"
+"POT-Creation-Date: 2023-06-09 20:40+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,8 +19,8 @@ msgstr ""
 
 #: data/io.gitlab.adhami3310.Impression.desktop.in.in:3
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:5
-#: data/resources/blueprints/window.blp:9 src/main.rs:56 src/window.rs:277
-#: src/window.rs:468
+#: data/resources/blueprints/window.blp:7 src/main.rs:56 src/window.rs:287
+#: src/window.rs:478
 msgid "Impression"
 msgstr ""
 
@@ -54,43 +54,22 @@ msgid "Khaleel Al-Adhami"
 msgstr ""
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:13
-msgid "Flash disk images (ISOs/IMGs) to create bootable devices"
+msgid ""
+"Flash disk images onto your drives with ease. Select an image, insert your "
+"drive, and you're good to go! Impression is a useful tool for both avid "
+"distro-hoppers and casual computer users."
 msgstr ""
 
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:28
-msgid "usb"
-msgstr ""
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:29
-msgid "flash"
-msgstr ""
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:30
-msgid "bootable"
-msgstr ""
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:31
-msgid "drive"
-msgstr ""
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:47
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:49
 msgid "Main screen with a chosen ISO and two USB memories"
 msgstr ""
 
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:51
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:53
 msgid "Flashing the ISO in progress"
 msgstr ""
 
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:55
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:57
 msgid "Success screen with a big check mark"
-msgstr ""
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:75
-msgid "Added Spanish, French, German, Russia, and Italian translations."
-msgstr ""
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:80
-msgid "Initial version."
 msgstr ""
 
 #: data/resources/blueprints/help-overlay.blp:11
@@ -118,124 +97,116 @@ msgctxt "shortcut window"
 msgid "Quit"
 msgstr ""
 
-#: data/resources/blueprints/window.blp:17
+#: data/resources/blueprints/window.blp:15
 msgid "Refresh Devices"
 msgstr ""
 
-#: data/resources/blueprints/window.blp:29
+#: data/resources/blueprints/window.blp:27
 msgid "Main Menu"
 msgstr ""
 
-#: data/resources/blueprints/window.blp:42
-msgid "Flash Images"
+#: data/resources/blueprints/window.blp:47
+msgid "Choose an image to flash"
 msgstr ""
 
-#: data/resources/blueprints/window.blp:43
-msgid "Open a disk image to flash to a USB drive"
-msgstr ""
-
-#: data/resources/blueprints/window.blp:54
-#: data/resources/blueprints/window.blp:283
+#: data/resources/blueprints/window.blp:58
+#: data/resources/blueprints/window.blp:268
 msgid "Open File…"
 msgstr ""
 
 #: data/resources/blueprints/window.blp:126
-msgid "Warning: This will erase all data on the selected drive"
+msgid "All data on the selected drive will be erased"
 msgstr ""
 
 #: data/resources/blueprints/window.blp:129
-msgid "Flash!"
+msgid "Flash"
 msgstr ""
 
-#: data/resources/blueprints/window.blp:159
-msgid "Updating device list…"
-msgstr ""
-
-#: data/resources/blueprints/window.blp:176
+#: data/resources/blueprints/window.blp:161
 msgid "No Drives"
 msgstr ""
 
-#: data/resources/blueprints/window.blp:177
-msgid "Insert a USB drive to flash the image onto"
+#: data/resources/blueprints/window.blp:162
+msgid "Insert a drive to flash the image onto"
 msgstr ""
 
-#: data/resources/blueprints/window.blp:188
-msgid "Image Flashed"
+#: data/resources/blueprints/window.blp:173
+msgid "Flashing Completed"
 msgstr ""
 
-#: data/resources/blueprints/window.blp:189
-msgid "Have a nice day!"
+#: data/resources/blueprints/window.blp:174
+msgid "The drive can be safely removed"
 msgstr ""
 
-#: data/resources/blueprints/window.blp:198
-msgid "Done"
+#: data/resources/blueprints/window.blp:183
+msgid "Finish"
 msgstr ""
 
-#: data/resources/blueprints/window.blp:219
-msgid "Flashing Image Unsuccessful"
+#: data/resources/blueprints/window.blp:204
+msgid "Flashing Unsuccessful"
 msgstr ""
 
-#: data/resources/blueprints/window.blp:228
-msgid "Flash Again"
+#: data/resources/blueprints/window.blp:213
+msgid "Retry"
 msgstr ""
 
-#: data/resources/blueprints/window.blp:248
+#: data/resources/blueprints/window.blp:233
 msgid "Flashing…"
 msgstr ""
 
-#: data/resources/blueprints/window.blp:263 src/window.rs:192
+#: data/resources/blueprints/window.blp:249 src/window.rs:202
 msgid "_Cancel"
 msgstr ""
 
-#: data/resources/blueprints/window.blp:288
+#: data/resources/blueprints/window.blp:273
 msgid "New Window"
 msgstr ""
 
-#: data/resources/blueprints/window.blp:295
+#: data/resources/blueprints/window.blp:280
 msgid "Keyboard Shortcuts"
 msgstr ""
 
-#: data/resources/blueprints/window.blp:300
+#: data/resources/blueprints/window.blp:285
 msgid "About Impression"
 msgstr ""
 
-#: src/window.rs:188
-msgid "Stop flashing?"
+#: src/window.rs:198
+msgid "Stop Flashing?"
 msgstr ""
 
-#: src/window.rs:189
-msgid "This might leave your drive in a faulty state."
+#: src/window.rs:199
+msgid "This might leave the drive in a faulty state."
 msgstr ""
 
-#: src/window.rs:192
+#: src/window.rs:202
 msgid "_Stop"
 msgstr ""
 
-#: src/window.rs:237
+#: src/window.rs:247
 msgid "Copying files…"
 msgstr ""
 
-#: src/window.rs:241
-msgid "Validating"
+#: src/window.rs:251
+msgid "Validating…"
 msgstr ""
 
-#: src/window.rs:250
+#: src/window.rs:260
 msgid "Failed to flash image"
 msgstr ""
 
-#: src/window.rs:257
+#: src/window.rs:267
 msgid "Image flashed"
 msgstr ""
 
-#: src/window.rs:385
+#: src/window.rs:395
 msgid "Disk Images"
 msgstr ""
 
 #. Translators: Replace "translator-credits" with your names, one name per line
-#: src/window.rs:475
+#: src/window.rs:488
 msgid "translator-credits"
 msgstr ""
 
-#: src/window.rs:481
-msgid "Code and Design Borrowed from"
+#: src/window.rs:494
+msgid "Code borrowed from"
 msgstr ""

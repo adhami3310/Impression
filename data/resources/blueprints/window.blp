@@ -2,10 +2,8 @@ using Gtk 4.0;
 using Adw 1;
 
 template $AppWindow : Adw.ApplicationWindow {
-  default-width: 400;
+  default-width: 500;
   default-height: 600;
-  width-request: 300;
-  height-request: 300;
   title: _("Impression");
 
   Box {
@@ -29,18 +27,24 @@ template $AppWindow : Adw.ApplicationWindow {
         tooltip-text: _("Main Menu");
         primary: true;
       }
+
+      styles [
+        "flat",
+      ]
     }
 
     Stack stack {
       transition-type: crossfade;
+      width-request: 400;
+      height-request: 400;
 
       StackPage {
         name: "welcome";
         child: 
-        Adw.StatusPage {
+        Adw.StatusPage welcome_page {
           icon-name: "io.gitlab.adhami3310.Impression-symbolic";
-          title: _("Flash Images");
-          description: _("Open a disk image to flash to a USB drive");
+          title: "Impression";
+          description: _("Choose an image to flash");
           hexpand: true;
           vexpand: true;
           child: 
@@ -79,12 +83,8 @@ template $AppWindow : Adw.ApplicationWindow {
               spacing: 12;
 
               Image {
-                icon-name: "application-x-generic";
+                icon-name: "media-optical-cd-symbolic";
                 pixel-size: 64;
-
-                styles [
-                  "icon-dropshadow",
-                ]
               }
 
               Label name_value_label {
@@ -123,10 +123,10 @@ template $AppWindow : Adw.ApplicationWindow {
           Adw.PreferencesGroup {
             valign: end;
             halign: center;
-            description: _("Warning: This will erase all data on the selected drive");
+            description: _("All data on the selected drive will be erased");
 
             Button flash_button {
-              label: _("Flash!");
+              label: _("Flash");
               halign: center;
 
               styles [
@@ -143,27 +143,12 @@ template $AppWindow : Adw.ApplicationWindow {
       StackPage {
         name: "loading";
         child: 
-        Adw.StatusPage {
-          Box {
-            orientation: vertical;
-            spacing: 12;
-
             Spinner loading_spinner {
               valign: center;
               halign: center;
               height-request: 28;
               width-request: 28;
             }
-
-            Label {
-              label: _("Updating device list…");
-
-              styles [
-                "title-3",
-              ]
-            }
-          }
-        }
 
         ;
       }
@@ -174,7 +159,7 @@ template $AppWindow : Adw.ApplicationWindow {
         Adw.StatusPage {
           icon-name: "usb-stick-symbolic";
           title: _("No Drives");
-          description: _("Insert a USB drive to flash the image onto");
+          description: _("Insert a drive to flash the image onto");
         }
 
         ;
@@ -185,8 +170,8 @@ template $AppWindow : Adw.ApplicationWindow {
         child: 
         Adw.StatusPage {
           icon-name: "check-round-outline-symbolic";
-          title: _("Image Flashed");
-          description: _("Have a nice day!");
+          title: _("Flashing Completed");
+          description: _("The drive can be safely removed");
           child: 
           Box {
             orientation: vertical;
@@ -195,7 +180,7 @@ template $AppWindow : Adw.ApplicationWindow {
             Button done_button {
               valign: center;
               halign: center;
-              label: _("Done");
+              label: _("Finish");
               use-underline: true;
 
               styles [
@@ -216,7 +201,7 @@ template $AppWindow : Adw.ApplicationWindow {
         child: 
         Adw.StatusPage {
           icon-name: "error-symbolic";
-          title: _("Flashing Image Unsuccessful");
+          title: _("Flashing Unsuccessful");
           child: 
           Box {
             orientation: vertical;
@@ -225,7 +210,7 @@ template $AppWindow : Adw.ApplicationWindow {
             Button try_again_button {
               valign: center;
               halign: center;
-              label: _("Flash Again");
+              label: _("Retry");
               use-underline: true;
 
               styles [
@@ -246,6 +231,7 @@ template $AppWindow : Adw.ApplicationWindow {
         child:
         $AdwStatusPage flashing_page {
           title: _("Flashing…");
+          icon_name: "flash-symbolic";
 
           Box {
             orientation: vertical;
@@ -264,7 +250,6 @@ template $AppWindow : Adw.ApplicationWindow {
               use-underline: true;
 
               styles [
-                "destructive-action",
                 "pill",
               ]
             }

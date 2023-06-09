@@ -30,7 +30,7 @@ action_icons = [
     join_paths(action_dir, 'check-round-outline-symbolic.svg'),
     join_paths(action_dir, 'view-refresh-symbolic.svg'),
     join_paths(action_dir, 'error-symbolic.svg'),
-    join_paths(action_dir, 'application-x-generic.svg'),
+    join_paths(action_dir, 'flash-symbolic.svg'),
 ]
 
 install_data(
