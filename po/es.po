@@ -1,15 +1,14 @@
 # Spanish translations for impression package.
 # Copyright (C) 2023 THE impression'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the impression package.
-# Automatically generated, 2023.
 # Óscar Fernández Díaz <oscfdezdz@tuta.io>, 2023.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: impression\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-09 16:38-0400\n"
-"PO-Revision-Date: 2023-06-06 09:36+0200\n"
+"POT-Creation-Date: 2023-06-10 10:17+0200\n"
+"PO-Revision-Date: 2023-06-10 10:23+0200\n"
 "Last-Translator: Óscar Fernández Díaz <oscfdezdz@tuta.io>\n"
 "Language-Team: Spanish; Castilian < >\n"
 "Language: es\n"
@@ -22,7 +21,7 @@ msgstr ""
 #: data/io.gitlab.adhami3310.Impression.desktop.in.in:3
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:5
 #: data/resources/blueprints/window.blp:7 src/main.rs:56 src/window.rs:284
-#: src/window.rs:488
+#: src/window.rs:490
 msgid "Impression"
 msgstr "Impresión"
 
@@ -33,7 +32,7 @@ msgstr "Escritor de medios"
 #: data/io.gitlab.adhami3310.Impression.desktop.in.in:5
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:7
 msgid "Create bootable drives"
-msgstr ""
+msgstr "Crear unidades de arranque"
 
 #: data/io.gitlab.adhami3310.Impression.desktop.in.in:11
 msgid "flash;usb;drive;bootable"
@@ -61,6 +60,9 @@ msgid ""
 "drive, and you're good to go! Impression is a useful tool for both avid "
 "distro-hoppers and casual computer users."
 msgstr ""
+"Graba imágenes de disco flash en sus unidades con facilidad. Selecciona una "
+"imagen, inserta la unidad y ¡listo! Impresión es una herramienta útil tanto "
+"para los ávidos distro-hoppers y los usuarios ocasionales de computadoras."
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:28
 msgid "usb"
@@ -80,17 +82,15 @@ msgstr "unidad"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:32
 msgid "iso"
-msgstr ""
+msgstr "iso"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:33
-#, fuzzy
 msgid "image"
-msgstr "Imágenes de disco"
+msgstr "imagen"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:49
-#, fuzzy
 msgid "Main screen with a chosen ISO and available USB memories"
-msgstr "Pantalla principal con una ISO elegida y dos memorias USB"
+msgstr "Pantalla principal con la ISO elegida y las memorias USB disponibles"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:53
 msgid "Flashing the ISO in progress"
@@ -102,7 +102,7 @@ msgstr "Pantalla de éxito con una gran marca de verificación"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:77
 msgid "Added Spanish, French, German, Russia, and Italian translations."
-msgstr ""
+msgstr "Añadidas traducciones al español, francés, alemán, ruso e italiano."
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:82
 msgid "Initial version."
@@ -135,11 +135,11 @@ msgstr "Salir"
 
 #: data/resources/blueprints/window.blp:18
 msgid "Main Menu"
-msgstr ""
+msgstr "Menú principal"
 
 #: data/resources/blueprints/window.blp:38
 msgid "Choose an image to flash"
-msgstr ""
+msgstr "Elija una imagen para grabar"
 
 #: data/resources/blueprints/window.blp:49
 #: data/resources/blueprints/window.blp:261
@@ -148,42 +148,39 @@ msgstr "Abrir archivo…"
 
 #: data/resources/blueprints/window.blp:117
 msgid "All data on the selected drive will be erased"
-msgstr ""
+msgstr "Se eliminarán todos los datos de la unidad seleccionada."
 
 #: data/resources/blueprints/window.blp:120
-#, fuzzy
 msgid "Flash"
-msgstr "¡Grabar!"
+msgstr "Grabar"
 
 #: data/resources/blueprints/window.blp:153
 msgid "No Drives"
 msgstr "Sin unidades"
 
 #: data/resources/blueprints/window.blp:154
-#, fuzzy
 msgid "Insert a drive to flash the image onto"
-msgstr "Inserte una unidad USB en la que grabar la imagen."
+msgstr "Inserte una unidad para grabar la imagen"
 
 #: data/resources/blueprints/window.blp:165
 msgid "Flashing Completed"
-msgstr ""
+msgstr "Grabación completada"
 
 #: data/resources/blueprints/window.blp:166
 msgid "The drive can be safely removed"
-msgstr ""
+msgstr "La unidad puede extraerse de forma segura"
 
 #: data/resources/blueprints/window.blp:175
 msgid "Finish"
-msgstr ""
+msgstr "Finalizar"
 
 #: data/resources/blueprints/window.blp:196
-#, fuzzy
 msgid "Flashing Unsuccessful"
-msgstr "Grabación de imagen fallida"
+msgstr "Grabación fallida"
 
 #: data/resources/blueprints/window.blp:205
 msgid "Retry"
-msgstr ""
+msgstr "Reintentar"
 
 #: data/resources/blueprints/window.blp:225
 msgid "Flashing…"
@@ -191,7 +188,7 @@ msgstr "Grabando…"
 
 #: data/resources/blueprints/window.blp:227
 msgid "Do not remove the drive"
-msgstr ""
+msgstr "No extraiga la unidad"
 
 #: data/resources/blueprints/window.blp:242 src/window.rs:200
 msgid "_Cancel"
@@ -210,14 +207,12 @@ msgid "About Impression"
 msgstr "Acerca de Impresión"
 
 #: src/window.rs:196
-#, fuzzy
 msgid "Stop Flashing?"
-msgstr "¿Detener la grabación?"
+msgstr "¿Detener grabación?"
 
 #: src/window.rs:197
-#, fuzzy
 msgid "This might leave the drive in a faulty state."
-msgstr "Esto podría dejar su unidad en un estado defectuoso."
+msgstr "Esto podría dejar la unidad en un estado defectuoso."
 
 #: src/window.rs:200
 msgid "_Stop"
@@ -236,60 +231,10 @@ msgid "Disk Images"
 msgstr "Imágenes de disco"
 
 #. Translators: Replace "translator-credits" with your names, one name per line
-#: src/window.rs:500
+#: src/window.rs:502
 msgid "translator-credits"
-msgstr ""
+msgstr "Óscar Fernández Díaz <oscfdezdz@tuta.io>"
 
-#: src/window.rs:506
-#, fuzzy
+#: src/window.rs:508
 msgid "Code borrowed from"
-msgstr "Código y diseño tomados prestados de"
-
-#~ msgid "Refresh Devices"
-#~ msgstr "Refrescar dispositivos"
-
-#~ msgid "Copying files…"
-#~ msgstr "Copiando archivos…"
-
-#, fuzzy
-#~ msgid "Validating…"
-#~ msgstr "Validando"
-
-#~ msgid "Image Flashed"
-#~ msgstr "Imagen grabada"
-
-#~ msgid "Flash Images"
-#~ msgstr "Grabar imágenes"
-
-#, fuzzy
-#~ msgid "Open a disk image to flash to a USB drive"
-#~ msgstr "Abra una imagen de disco para grabarla en una unidad USB."
-
-#, fuzzy
-#~ msgid "Warning: This will erase all data on the selected drive"
-#~ msgstr ""
-#~ "Advertencia: Esto eliminará todos los datos de la unidad seleccionada."
-
-#~ msgid "Updating device list…"
-#~ msgstr "Actualizando la lista de dispositivos…"
-
-#~ msgid "Have a nice day!"
-#~ msgstr "¡Que tenga un buen día!"
-
-#~ msgid "Done"
-#~ msgstr "Hecho"
-
-#~ msgid "Flash Again"
-#~ msgstr "Grabar de nuevo"
-
-#~ msgid "Open File"
-#~ msgstr "Abrir archivo"
-
-#~ msgid "Primary Menu"
-#~ msgstr "Menú principal"
-
-#~ msgid "Flash ISO images"
-#~ msgstr "Grabar imágenes ISO"
-
-#~ msgid "Flash ISO images into USB drives"
-#~ msgstr "Grabar imágenes ISO en unidades USB"
+msgstr "Código tomado de"
