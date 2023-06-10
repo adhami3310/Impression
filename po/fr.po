@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: impression\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-06-09 16:38-0400\n"
-"PO-Revision-Date: 2023-06-07 18:36+0200\n"
+"PO-Revision-Date: 2023-06-10 08:14+0200\n"
 "Last-Translator: Irénée Thirion <irenee.thirion@e.email>\n"
 "Language-Team: \n"
 "Language: fr\n"
@@ -59,6 +59,10 @@ msgid ""
 "drive, and you're good to go! Impression is a useful tool for both avid "
 "distro-hoppers and casual computer users."
 msgstr ""
+"Flashez des images disque sur vos périphériques USB en toute facilité. "
+"Sélectionnez une image, insérez votre périphérique et c‘est parti ! "
+"Impression est un outil utile aussi bien pour ceux qui aiment changer "
+"régulièrement de distribution que pour les utilisateurs occasionnels."
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:28
 msgid "usb"
@@ -78,18 +82,17 @@ msgstr "clé"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:32
 msgid "iso"
-msgstr ""
+msgstr "iso"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:33
-#, fuzzy
 msgid "image"
-msgstr "Images disque"
+msgstr "Image"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:49
-#, fuzzy
 msgid "Main screen with a chosen ISO and available USB memories"
 msgstr ""
-"Écran principal avec une image ISO sélectionnée et deux périphériques USB"
+"Écran principal avec une image ISO sélectionnée et des périphériques USB "
+"disponibles"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:53
 msgid "Flashing the ISO in progress"
@@ -134,13 +137,12 @@ msgid "Quit"
 msgstr "Quitter"
 
 #: data/resources/blueprints/window.blp:18
-#, fuzzy
 msgid "Main Menu"
 msgstr "Menu principal"
 
 #: data/resources/blueprints/window.blp:38
 msgid "Choose an image to flash"
-msgstr ""
+msgstr "Choisissez une image à flasher"
 
 #: data/resources/blueprints/window.blp:49
 #: data/resources/blueprints/window.blp:261
@@ -149,42 +151,39 @@ msgstr "Ouvrir un fichier…"
 
 #: data/resources/blueprints/window.blp:117
 msgid "All data on the selected drive will be erased"
-msgstr ""
+msgstr "Toutes les données sur le périphérique sélectionné seront effacées"
 
 #: data/resources/blueprints/window.blp:120
-#, fuzzy
 msgid "Flash"
-msgstr "Flasher !"
+msgstr "Flasher"
 
 #: data/resources/blueprints/window.blp:153
 msgid "No Drives"
 msgstr "Aucun périphérique"
 
 #: data/resources/blueprints/window.blp:154
-#, fuzzy
 msgid "Insert a drive to flash the image onto"
-msgstr "Insérez une clé USB sur laquelle flasher l’image."
+msgstr "Insérez une clé USB sur laquelle flasher l’image"
 
 #: data/resources/blueprints/window.blp:165
 msgid "Flashing Completed"
-msgstr ""
+msgstr "Flashage terminé"
 
 #: data/resources/blueprints/window.blp:166
 msgid "The drive can be safely removed"
-msgstr ""
+msgstr "Le périphérique peut être retiré en toute sécurité"
 
 #: data/resources/blueprints/window.blp:175
 msgid "Finish"
-msgstr ""
+msgstr "Terminer"
 
 #: data/resources/blueprints/window.blp:196
-#, fuzzy
 msgid "Flashing Unsuccessful"
-msgstr "Échec du flashage de l’image"
+msgstr "Échec du flashage"
 
 #: data/resources/blueprints/window.blp:205
 msgid "Retry"
-msgstr ""
+msgstr "Réessayer"
 
 #: data/resources/blueprints/window.blp:225
 msgid "Flashing…"
@@ -192,7 +191,7 @@ msgstr "Flashage…"
 
 #: data/resources/blueprints/window.blp:227
 msgid "Do not remove the drive"
-msgstr ""
+msgstr "Ne pas retirer le périphérique"
 
 #: data/resources/blueprints/window.blp:242 src/window.rs:200
 msgid "_Cancel"
@@ -211,14 +210,12 @@ msgid "About Impression"
 msgstr "À propos d’Impression"
 
 #: src/window.rs:196
-#, fuzzy
 msgid "Stop Flashing?"
 msgstr "Arrêter le flashage ?"
 
 #: src/window.rs:197
-#, fuzzy
 msgid "This might leave the drive in a faulty state."
-msgstr "Cela pourrait laisser votre clé dans un état défectueux."
+msgstr "Cela pourrait laisser le périphérique dans un état défectueux."
 
 #: src/window.rs:200
 msgid "_Stop"
@@ -239,12 +236,11 @@ msgstr "Images disque"
 #. Translators: Replace "translator-credits" with your names, one name per line
 #: src/window.rs:500
 msgid "translator-credits"
-msgstr ""
+msgstr "Irénée Thirion <irenee.thirion@e.email>"
 
 #: src/window.rs:506
-#, fuzzy
 msgid "Code borrowed from"
-msgstr "Code et Design empruntés à"
+msgstr "Code emprunté à"
 
 #~ msgid "Refresh Devices"
 #~ msgstr "Actualiser les appareils"
