@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: impression\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-06-09 16:38-0400\n"
-"PO-Revision-Date: 2023-06-06 22:31+0300\n"
+"PO-Revision-Date: 2023-06-10 00:29+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ru_RU\n"
@@ -56,9 +56,12 @@ msgstr "Khaleel Al-Adhami"
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:13
 msgid ""
 "Flash disk images onto your drives with ease. Select an image, insert your "
-"drive, and you're good to go! Impression is a useful tool for both avid "
-"distro-hoppers and casual computer users."
+"drive, and you're good to go! Impression is a useful tool for both avid distro-"
+"hoppers and casual computer users."
 msgstr ""
+"С легкостью записывайте образы на свои диски. Выберите образ, вставьте диск, и "
+"все готово! Impression — полезный инструмент как для заядлых любителей "
+"дистрибутивов, так и для обычных пользователей компьютеров."
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:28
 msgid "usb"
@@ -78,17 +81,15 @@ msgstr "диск"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:32
 msgid "iso"
-msgstr ""
+msgstr "iso"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:33
-#, fuzzy
 msgid "image"
-msgstr "Образы дисков"
+msgstr "образ"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:49
-#, fuzzy
 msgid "Main screen with a chosen ISO and available USB memories"
-msgstr "Главный экран с выбранным ISO и двумя USB-накопителями"
+msgstr "Главный экран с выбранным ISO и доступными USB-накопителями"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:53
 msgid "Flashing the ISO in progress"
@@ -101,6 +102,7 @@ msgstr "Экран успешного выполнения с большой г�
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:77
 msgid "Added Spanish, French, German, Russia, and Italian translations."
 msgstr ""
+"Добавлены испанский, французский, немецкий, русский и итальянский переводы."
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:82
 msgid "Initial version."
@@ -133,11 +135,11 @@ msgstr "Выйти"
 
 #: data/resources/blueprints/window.blp:18
 msgid "Main Menu"
-msgstr ""
+msgstr "Главное меню"
 
 #: data/resources/blueprints/window.blp:38
 msgid "Choose an image to flash"
-msgstr ""
+msgstr "Выберите образ для записи"
 
 #: data/resources/blueprints/window.blp:49
 #: data/resources/blueprints/window.blp:261
@@ -146,42 +148,39 @@ msgstr "Открыть файл…"
 
 #: data/resources/blueprints/window.blp:117
 msgid "All data on the selected drive will be erased"
-msgstr ""
+msgstr "Все данные на выбранном диске будут удалены"
 
 #: data/resources/blueprints/window.blp:120
-#, fuzzy
 msgid "Flash"
-msgstr "Записать!"
+msgstr "Записать"
 
 #: data/resources/blueprints/window.blp:153
 msgid "No Drives"
 msgstr "Нет дисков"
 
 #: data/resources/blueprints/window.blp:154
-#, fuzzy
 msgid "Insert a drive to flash the image onto"
-msgstr "Вставьте USB-накопитель, на который нужно записать образ."
+msgstr "Вставьте диск, на который будет записан образ"
 
 #: data/resources/blueprints/window.blp:165
 msgid "Flashing Completed"
-msgstr ""
+msgstr "Запись завершена"
 
 #: data/resources/blueprints/window.blp:166
 msgid "The drive can be safely removed"
-msgstr ""
+msgstr "Диск можно безопасно извлечь"
 
 #: data/resources/blueprints/window.blp:175
 msgid "Finish"
-msgstr ""
+msgstr "Готово"
 
 #: data/resources/blueprints/window.blp:196
-#, fuzzy
 msgid "Flashing Unsuccessful"
-msgstr "Запись образа не удалась"
+msgstr "Не удалось записать образ"
 
 #: data/resources/blueprints/window.blp:205
 msgid "Retry"
-msgstr ""
+msgstr "Повторить попытку"
 
 #: data/resources/blueprints/window.blp:225
 msgid "Flashing…"
@@ -189,7 +188,7 @@ msgstr "Запись…"
 
 #: data/resources/blueprints/window.blp:227
 msgid "Do not remove the drive"
-msgstr ""
+msgstr "Не извлекайте диск"
 
 #: data/resources/blueprints/window.blp:242 src/window.rs:200
 msgid "_Cancel"
@@ -208,15 +207,13 @@ msgid "About Impression"
 msgstr "О программе"
 
 #: src/window.rs:196
-#, fuzzy
 msgid "Stop Flashing?"
 msgstr "Остановить запись?"
 
 #: src/window.rs:197
-#, fuzzy
 msgid "This might leave the drive in a faulty state."
 msgstr ""
-"Это может привести к тому, что ваш диск окажется в неисправном состоянии."
+"Это может привести к тому, что диск окажется в неисправном состоянии."
 
 #: src/window.rs:200
 msgid "_Stop"
@@ -237,12 +234,11 @@ msgstr "Образы дисков"
 #. Translators: Replace "translator-credits" with your names, one name per line
 #: src/window.rs:500
 msgid "translator-credits"
-msgstr ""
+msgstr "Сергей Ворон"
 
 #: src/window.rs:506
-#, fuzzy
 msgid "Code borrowed from"
-msgstr "Код и дизайн заимствованы из"
+msgstr "Код заимствован из"
 
 #~ msgid "Refresh Devices"
 #~ msgstr "Обновить устройства"
@@ -258,8 +254,7 @@ msgstr "Код и дизайн заимствованы из"
 #~ msgstr "Образ записан"
 
 #~ msgid "Flash disk images (ISOs/IMGs) to create bootable devices"
-#~ msgstr ""
-#~ "Запись образов дисков (ISOs/IMGs) для создания загрузочных устройств"
+#~ msgstr "Запись образов дисков (ISOs/IMGs) для создания загрузочных устройств"
 
 #~ msgid "Flash Images"
 #~ msgstr "Запись образов"

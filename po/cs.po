@@ -1,17 +1,17 @@
-# SOME DESCRIPTIVE TITLE.
+# Czech translation for Impression.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the impression package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# FIRST AUTHOR Amerey.eu <info@amerey.eu>, 2023.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: impression\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-06-09 16:38-0400\n"
-"PO-Revision-Date: 2023-06-10 08:14+0200\n"
-"Last-Translator: Irénée Thirion <irenee.thirion@e.email>\n"
+"PO-Revision-Date: 2023-06-10 13:00+0200\n"
+"Last-Translator: Amerey.eu <info@amerey.eu>\n"
 "Language-Team: \n"
-"Language: fr\n"
+"Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -26,28 +26,28 @@ msgstr "Impression"
 
 #: data/io.gitlab.adhami3310.Impression.desktop.in.in:4
 msgid "Media Writer"
-msgstr "Graveur de médias"
+msgstr "Program pro zápis médií"
 
 #: data/io.gitlab.adhami3310.Impression.desktop.in.in:5
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:7
 msgid "Create bootable drives"
-msgstr "Créez des périphériques bootables"
+msgstr "Vytvořte bootovatelné disky"
 
 #: data/io.gitlab.adhami3310.Impression.desktop.in.in:11
 msgid "flash;usb;drive;bootable"
-msgstr "flash;usb;drive;bootable;lecteur;clé;disque;périphérique;démarrage;"
+msgstr "flash;usb;drive;bootable;disk;spustitelný"
 
 #: data/io.gitlab.adhami3310.Impression.gschema.xml.in:6
 msgid "Window width"
-msgstr "Largeur de la fenêtre"
+msgstr "Šířka okna"
 
 #: data/io.gitlab.adhami3310.Impression.gschema.xml.in:10
 msgid "Window height"
-msgstr "Hauteur de la fenêtre"
+msgstr "Výška okna"
 
 #: data/io.gitlab.adhami3310.Impression.gschema.xml.in:14
 msgid "Window maximized state"
-msgstr "État maximisé de la fenêtre"
+msgstr "Maximalizovaný stav okna"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:6
 msgid "Khaleel Al-Adhami"
@@ -59,10 +59,9 @@ msgid ""
 "drive, and you're good to go! Impression is a useful tool for both avid "
 "distro-hoppers and casual computer users."
 msgstr ""
-"Flashez des images disque sur vos périphériques USB en toute facilité. "
-"Sélectionnez une image, insérez votre périphérique et c‘est parti ! "
-"Impression est un outil utile aussi bien pour ceux qui aiment changer "
-"régulièrement de distribution que pour les utilisateurs occasionnels."
+"Přeneste obrazy disků snadno na vaše disky. Vyberte obraz disku, vložte "
+"USB disk a můžete začít! Impression je užitečný nástroj jak pro zapálené "
+"distro-hoppery, tak pro běžné uživatelé počítačů."
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:28
 msgid "usb"
@@ -74,11 +73,11 @@ msgstr "flash"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:30
 msgid "bootable"
-msgstr "bootable"
+msgstr "spustitelný"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:31
 msgid "drive"
-msgstr "clé"
+msgstr "disk"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:32
 msgid "iso"
@@ -86,212 +85,155 @@ msgstr "iso"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:33
 msgid "image"
-msgstr "Image"
+msgstr "obraz disku"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:49
 msgid "Main screen with a chosen ISO and available USB memories"
-msgstr ""
-"Écran principal avec une image ISO sélectionnée et des périphériques USB "
-"disponibles"
+msgstr "Hlavní obrazovka s vybraným ISO a dostupnými USB disky"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:53
 msgid "Flashing the ISO in progress"
-msgstr "Flashage de l’image ISO en cours"
+msgstr "Probíhá nahrávání ISO"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:57
 msgid "Success screen with a big check mark"
-msgstr "Écran de tâche accomplie avec un symbole coché"
+msgstr "Obrazovka úspěchu s velkým zaškrtnutím"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:77
 msgid "Added Spanish, French, German, Russia, and Italian translations."
-msgstr ""
-"Ajout de traductions espagnole, française, allemande, russe et italienne."
+msgstr "Přidány španělské, francouzské, německé, ruské a italské překlady."
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:82
 msgid "Initial version."
-msgstr "Version initiale."
+msgstr "První verze."
 
 #: data/resources/blueprints/help-overlay.blp:11
 msgctxt "shortcut window"
 msgid "General"
-msgstr "Général"
+msgstr "Obecné"
 
 #: data/resources/blueprints/help-overlay.blp:14
 msgctxt "shortcut window"
 msgid "Open File"
-msgstr "Ouvrir un fichier"
+msgstr "Otevřít soubor"
 
 #: data/resources/blueprints/help-overlay.blp:19
 msgctxt "shortcut window"
 msgid "New Window"
-msgstr "Nouvelle fenêtre"
+msgstr "Nové okno"
 
 #: data/resources/blueprints/help-overlay.blp:24
 msgctxt "shortcut window"
 msgid "Show Shortcuts"
-msgstr "Afficher les raccourcis"
+msgstr "Zobrazit zkratky"
 
 #: data/resources/blueprints/help-overlay.blp:29
 msgctxt "shortcut window"
 msgid "Quit"
-msgstr "Quitter"
+msgstr "Ukončit"
 
 #: data/resources/blueprints/window.blp:18
 msgid "Main Menu"
-msgstr "Menu principal"
+msgstr "Hlavní menu"
 
 #: data/resources/blueprints/window.blp:38
 msgid "Choose an image to flash"
-msgstr "Choisissez une image à flasher"
+msgstr "Vyberte obraz disku pro nahrání"
 
 #: data/resources/blueprints/window.blp:49
 #: data/resources/blueprints/window.blp:261
 msgid "Open File…"
-msgstr "Ouvrir un fichier…"
+msgstr "Otevřít soubor…"
 
 #: data/resources/blueprints/window.blp:117
 msgid "All data on the selected drive will be erased"
-msgstr "Toutes les données sur le périphérique sélectionné seront effacées"
+msgstr "Všechna data na vybraném disku budou vymazána"
 
 #: data/resources/blueprints/window.blp:120
 msgid "Flash"
-msgstr "Flasher"
+msgstr "Nahrát"
 
 #: data/resources/blueprints/window.blp:153
 msgid "No Drives"
-msgstr "Aucun périphérique"
+msgstr "Žádné disky"
 
 #: data/resources/blueprints/window.blp:154
 msgid "Insert a drive to flash the image onto"
-msgstr "Insérez une clé USB sur laquelle flasher l’image"
+msgstr "Vložte disk, na který chcete nahrát obraz disku"
 
 #: data/resources/blueprints/window.blp:165
 msgid "Flashing Completed"
-msgstr "Flashage terminé"
+msgstr "Nahrávání ukončeno"
 
 #: data/resources/blueprints/window.blp:166
 msgid "The drive can be safely removed"
-msgstr "Le périphérique peut être retiré en toute sécurité"
+msgstr "Disk lze bezpečně vyjmout"
 
 #: data/resources/blueprints/window.blp:175
 msgid "Finish"
-msgstr "Terminer"
+msgstr "Dokončit"
 
 #: data/resources/blueprints/window.blp:196
 msgid "Flashing Unsuccessful"
-msgstr "Échec du flashage"
+msgstr "Nahrávání bylo neúspěšné"
 
 #: data/resources/blueprints/window.blp:205
 msgid "Retry"
-msgstr "Réessayer"
+msgstr "Opakovat"
 
 #: data/resources/blueprints/window.blp:225
 msgid "Flashing…"
-msgstr "Flashage…"
+msgstr "Nahrávání…"
 
 #: data/resources/blueprints/window.blp:227
 msgid "Do not remove the drive"
-msgstr "Ne pas retirer le périphérique"
+msgstr "Nevyjímejte disk"
 
 #: data/resources/blueprints/window.blp:242 src/window.rs:200
 msgid "_Cancel"
-msgstr "A_nnuler"
+msgstr "_Zrušit"
 
 #: data/resources/blueprints/window.blp:266
 msgid "New Window"
-msgstr "Nouvelle fenêtre"
+msgstr "Nové okno"
 
 #: data/resources/blueprints/window.blp:273
 msgid "Keyboard Shortcuts"
-msgstr "Raccourcis clavier"
+msgstr "Klávesové zkratky"
 
 #: data/resources/blueprints/window.blp:278
 msgid "About Impression"
-msgstr "À propos d’Impression"
+msgstr "O aplikaci Impression"
 
 #: src/window.rs:196
 msgid "Stop Flashing?"
-msgstr "Arrêter le flashage ?"
+msgstr "Zastavit nahrávání?"
 
 #: src/window.rs:197
 msgid "This might leave the drive in a faulty state."
-msgstr "Cela pourrait laisser le périphérique dans un état défectueux."
+msgstr "Mohlo by to vést k tomu, že disk bude nečitelný."
 
 #: src/window.rs:200
 msgid "_Stop"
-msgstr "_Arrêter"
+msgstr "_Zastavit"
 
 #: src/window.rs:257
 msgid "Failed to flash image"
-msgstr "Échec du flashage de l’image"
+msgstr "Nepodařilo se nahrát obraz disku"
 
 #: src/window.rs:264
 msgid "Image flashed"
-msgstr "Image flashée"
+msgstr "Obraz disku nahrán"
 
 #: src/window.rs:393
 msgid "Disk Images"
-msgstr "Images disque"
+msgstr "Obrazy disků"
 
 #. Translators: Replace "translator-credits" with your names, one name per line
 #: src/window.rs:500
 msgid "translator-credits"
-msgstr "Irénée Thirion <irenee.thirion@e.email>"
+msgstr "Amerey.eu"
 
 #: src/window.rs:506
 msgid "Code borrowed from"
-msgstr "Code emprunté à"
-
-#~ msgid "Refresh Devices"
-#~ msgstr "Actualiser les appareils"
-
-#~ msgid "Copying files…"
-#~ msgstr "Copie des fichiers…"
-
-#, fuzzy
-#~ msgid "Validating…"
-#~ msgstr "Validation"
-
-#~ msgid "Image Flashed"
-#~ msgstr "Image flashée"
-
-#~ msgid "Flash disk images (ISOs/IMGs) to create bootable devices"
-#~ msgstr ""
-#~ "Flashez des images disque (type ISO/IMG) pour créer des périphériques de "
-#~ "démarrage"
-
-#~ msgid "Flash Images"
-#~ msgstr "Flashage d’images"
-
-#, fuzzy
-#~ msgid "Open a disk image to flash to a USB drive"
-#~ msgstr "Ouvrez une image disque à flasher sur une clé USB."
-
-#, fuzzy
-#~ msgid "Warning: This will erase all data on the selected drive"
-#~ msgstr ""
-#~ "Attention : cela effacera toutes les données sur le support sélectionné."
-
-#~ msgid "Updating device list…"
-#~ msgstr "Mise à jour de la liste des appareils…"
-
-#~ msgid "Have a nice day!"
-#~ msgstr "Passez une bonne journée !"
-
-#~ msgid "Done"
-#~ msgstr "Terminé"
-
-#~ msgid "Flash Again"
-#~ msgstr "Recommencer"
-
-#~ msgid "Open File"
-#~ msgstr "Ouvrir un fichier"
-
-#~ msgid "Primary Menu"
-#~ msgstr "Menu principal"
-
-#~ msgid "Flash ISO images"
-#~ msgstr "Flashage d’images ISO"
-
-#~ msgid "Flash ISO images into USB drives"
-#~ msgstr "Flashez des images ISO sur des clés USB"
+msgstr "Kód vypůjčený od"
