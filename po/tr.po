@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: io.gitlab.adhami3310.Impression\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-09 16:38-0400\n"
+"POT-Creation-Date: 2023-06-13 15:57+0200\n"
 "PO-Revision-Date: 2023-06-10 00:52+0300\n"
 "Last-Translator: Sabri Ünal <libreajans@gmail.com>\n"
 "Language-Team: Türkçe <takim@gnome.org.tr>\n"
@@ -22,7 +22,7 @@ msgstr ""
 #: data/io.gitlab.adhami3310.Impression.desktop.in.in:3
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:5
 #: data/resources/blueprints/window.blp:7 src/main.rs:56 src/window.rs:284
-#: src/window.rs:488
+#: src/window.rs:490
 msgid "Impression"
 msgstr "Impression"
 
@@ -65,30 +65,6 @@ msgstr ""
 "seçin, sürücünüzü takın ve işlem tamam! Impression, hem dağıtım denemeyi "
 "seven, hem de günlük bilgisayar kullanıcıları için kullanışlı bir araçtır."
 
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:28
-msgid "usb"
-msgstr "usb"
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:29
-msgid "flash"
-msgstr "flash"
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:30
-msgid "bootable"
-msgstr "önyüklenebilir"
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:31
-msgid "drive"
-msgstr "sürücü"
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:32
-msgid "iso"
-msgstr "iso"
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:33
-msgid "image"
-msgstr "görüntü"
-
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:49
 msgid "Main screen with a chosen ISO and available USB memories"
 msgstr "Seçili ISO ve kullanılabilir USB belleklere sahip ana ekran"
@@ -100,14 +76,6 @@ msgstr "ISO yazdırması devam ediyor"
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:57
 msgid "Success screen with a big check mark"
 msgstr "Büyük bir onay işareti ile başarı ekranı"
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:77
-msgid "Added Spanish, French, German, Russia, and Italian translations."
-msgstr "İspanyolca, Fransızca, Almanca, Rusça ve İtalyanca çeviriler eklendi."
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:82
-msgid "Initial version."
-msgstr "İlk sürüm."
 
 #: data/resources/blueprints/help-overlay.blp:11
 msgctxt "shortcut window"
@@ -232,10 +200,35 @@ msgid "Disk Images"
 msgstr "Disk Görüntüleri"
 
 #. Translators: Replace "translator-credits" with your names, one name per line
-#: src/window.rs:500
+#: src/window.rs:513
 msgid "translator-credits"
 msgstr "Sabri Ünal <libreajans@gmail.com>"
 
-#: src/window.rs:506
+#: src/window.rs:519
 msgid "Code borrowed from"
 msgstr "Kodun ödünç alındığı kaynak"
+
+#~ msgid "usb"
+#~ msgstr "usb"
+
+#~ msgid "flash"
+#~ msgstr "flash"
+
+#~ msgid "bootable"
+#~ msgstr "önyüklenebilir"
+
+#~ msgid "drive"
+#~ msgstr "sürücü"
+
+#~ msgid "iso"
+#~ msgstr "iso"
+
+#~ msgid "image"
+#~ msgstr "görüntü"
+
+#~ msgid "Added Spanish, French, German, Russia, and Italian translations."
+#~ msgstr ""
+#~ "İspanyolca, Fransızca, Almanca, Rusça ve İtalyanca çeviriler eklendi."
+
+#~ msgid "Initial version."
+#~ msgstr "İlk sürüm."

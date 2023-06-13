@@ -72,6 +72,21 @@
     <content_rating type="oars-1.1" />
 
     <releases>
+        <release version="2.0" date="2023-06-XX">
+          <description>
+            <p>This major release of Impression brings a bunch of exciting improvements:</p>
+            <ul>
+              <li>Visual enhancements to make the app more beautiful, focused, and engaging</li>
+              <li>Automatic updates of the available drives list</li>
+              <li>Explicit drive selection before flashing, to avoid accidential data loss</li>
+              <li>Turkish and Czech translations, making Impression available in a total of 8 languages</li>
+            </ul>
+            <p>The versioning scheme has been simplified to only include major and minor versions. The previous version of Impression was 1.0.1,
+              this is version 2.0. Going forward, new features and noticeable changes will be included in
+              new major releases, while fixes and translations will result in new minor releases.</p>
+            <p>Impression is made possible by volunteer developers, designers, and translators. Thank you for your contributions!</p>
+          </description>
+        </release>
         <release version="1.0.1" date="2023-06-07">
             <description>
                 <p>Added Spanish, French, German, Russia, and Italian translations.</p>
