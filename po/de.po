@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: impression\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-09 16:38-0400\n"
+"POT-Creation-Date: 2023-06-13 15:57+0200\n"
 "PO-Revision-Date: 2023-06-09 22:56+0200\n"
 "Last-Translator: FineFindus <FineFindus@proton.me>\n"
 "Language-Team: \n"
@@ -20,7 +20,7 @@ msgstr ""
 #: data/io.gitlab.adhami3310.Impression.desktop.in.in:3
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:5
 #: data/resources/blueprints/window.blp:7 src/main.rs:56 src/window.rs:284
-#: src/window.rs:488
+#: src/window.rs:490
 msgid "Impression"
 msgstr "Impression"
 
@@ -64,30 +64,6 @@ msgstr ""
 "Impression ist ein nützliches Tool sowohl für begeisterte Distro-Hopper als "
 "auch für gelegentliche Computerbenutzer."
 
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:28
-msgid "usb"
-msgstr "USB"
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:29
-msgid "flash"
-msgstr "Brennen"
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:30
-msgid "bootable"
-msgstr "Bootfähig"
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:31
-msgid "drive"
-msgstr "Laufwerk"
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:32
-msgid "iso"
-msgstr "iso"
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:33
-msgid "image"
-msgstr "Datenträgerabbilder"
-
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:49
 msgid "Main screen with a chosen ISO and available USB memories"
 msgstr "Hauptbildschirm mit ausgewählter ISO und zwei USB-Speichern"
@@ -99,16 +75,6 @@ msgstr "Brennen der ISO in Bearbeitung"
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:57
 msgid "Success screen with a big check mark"
 msgstr "Erfolgsanzeige mit einem großen Häkchen"
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:77
-msgid "Added Spanish, French, German, Russia, and Italian translations."
-msgstr ""
-"Übersetzungen für Spanisch, Französisch, Deutsch, Russisch und Italienisch "
-"hinzugefügt."
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:82
-msgid "Initial version."
-msgstr "Anfängliche Version."
 
 #: data/resources/blueprints/help-overlay.blp:11
 msgctxt "shortcut window"
@@ -237,13 +203,39 @@ msgid "Disk Images"
 msgstr "Datenträgerabbilder"
 
 #. Translators: Replace "translator-credits" with your names, one name per line
-#: src/window.rs:500
+#: src/window.rs:513
 msgid "translator-credits"
 msgstr "FineFindus https://github.com/FineFindus"
 
-#: src/window.rs:506
+#: src/window.rs:519
 msgid "Code borrowed from"
 msgstr "Code und Design Angelehnt an"
+
+#~ msgid "usb"
+#~ msgstr "USB"
+
+#~ msgid "flash"
+#~ msgstr "Brennen"
+
+#~ msgid "bootable"
+#~ msgstr "Bootfähig"
+
+#~ msgid "drive"
+#~ msgstr "Laufwerk"
+
+#~ msgid "iso"
+#~ msgstr "iso"
+
+#~ msgid "image"
+#~ msgstr "Datenträgerabbilder"
+
+#~ msgid "Added Spanish, French, German, Russia, and Italian translations."
+#~ msgstr ""
+#~ "Übersetzungen für Spanisch, Französisch, Deutsch, Russisch und "
+#~ "Italienisch hinzugefügt."
+
+#~ msgid "Initial version."
+#~ msgstr "Anfängliche Version."
 
 #~ msgid "Refresh Devices"
 #~ msgstr "Geräte aktualisieren"

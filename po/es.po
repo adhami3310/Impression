@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: impression\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-10 10:17+0200\n"
+"POT-Creation-Date: 2023-06-13 15:57+0200\n"
 "PO-Revision-Date: 2023-06-10 10:23+0200\n"
 "Last-Translator: Óscar Fernández Díaz <oscfdezdz@tuta.io>\n"
 "Language-Team: Spanish; Castilian < >\n"
@@ -64,30 +64,6 @@ msgstr ""
 "imagen, inserta la unidad y ¡listo! Impresión es una herramienta útil tanto "
 "para los ávidos distro-hoppers y los usuarios ocasionales de computadoras."
 
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:28
-msgid "usb"
-msgstr "usb"
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:29
-msgid "flash"
-msgstr "grabar"
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:30
-msgid "bootable"
-msgstr "arrancable"
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:31
-msgid "drive"
-msgstr "unidad"
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:32
-msgid "iso"
-msgstr "iso"
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:33
-msgid "image"
-msgstr "imagen"
-
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:49
 msgid "Main screen with a chosen ISO and available USB memories"
 msgstr "Pantalla principal con la ISO elegida y las memorias USB disponibles"
@@ -99,14 +75,6 @@ msgstr "Grabación de la ISO en curso"
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:57
 msgid "Success screen with a big check mark"
 msgstr "Pantalla de éxito con una gran marca de verificación"
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:77
-msgid "Added Spanish, French, German, Russia, and Italian translations."
-msgstr "Añadidas traducciones al español, francés, alemán, ruso e italiano."
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:82
-msgid "Initial version."
-msgstr "Versión inicial."
 
 #: data/resources/blueprints/help-overlay.blp:11
 msgctxt "shortcut window"
@@ -231,10 +199,34 @@ msgid "Disk Images"
 msgstr "Imágenes de disco"
 
 #. Translators: Replace "translator-credits" with your names, one name per line
-#: src/window.rs:502
+#: src/window.rs:513
 msgid "translator-credits"
 msgstr "Óscar Fernández Díaz <oscfdezdz@tuta.io>"
 
-#: src/window.rs:508
+#: src/window.rs:519
 msgid "Code borrowed from"
 msgstr "Código tomado de"
+
+#~ msgid "usb"
+#~ msgstr "usb"
+
+#~ msgid "flash"
+#~ msgstr "grabar"
+
+#~ msgid "bootable"
+#~ msgstr "arrancable"
+
+#~ msgid "drive"
+#~ msgstr "unidad"
+
+#~ msgid "iso"
+#~ msgstr "iso"
+
+#~ msgid "image"
+#~ msgstr "imagen"
+
+#~ msgid "Added Spanish, French, German, Russia, and Italian translations."
+#~ msgstr "Añadidas traducciones al español, francés, alemán, ruso e italiano."
+
+#~ msgid "Initial version."
+#~ msgstr "Versión inicial."

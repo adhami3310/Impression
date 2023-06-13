@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: impression\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-09 16:38-0400\n"
+"POT-Creation-Date: 2023-06-13 15:57+0200\n"
 "PO-Revision-Date: 2023-06-10 00:29+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -20,7 +20,7 @@ msgstr ""
 #: data/io.gitlab.adhami3310.Impression.desktop.in.in:3
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:5
 #: data/resources/blueprints/window.blp:7 src/main.rs:56 src/window.rs:284
-#: src/window.rs:488
+#: src/window.rs:490
 msgid "Impression"
 msgstr "Impression"
 
@@ -56,36 +56,12 @@ msgstr "Khaleel Al-Adhami"
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:13
 msgid ""
 "Flash disk images onto your drives with ease. Select an image, insert your "
-"drive, and you're good to go! Impression is a useful tool for both avid distro-"
-"hoppers and casual computer users."
+"drive, and you're good to go! Impression is a useful tool for both avid "
+"distro-hoppers and casual computer users."
 msgstr ""
-"С легкостью записывайте образы на свои диски. Выберите образ, вставьте диск, и "
-"все готово! Impression — полезный инструмент как для заядлых любителей "
+"С легкостью записывайте образы на свои диски. Выберите образ, вставьте диск, "
+"и все готово! Impression — полезный инструмент как для заядлых любителей "
 "дистрибутивов, так и для обычных пользователей компьютеров."
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:28
-msgid "usb"
-msgstr "usb"
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:29
-msgid "flash"
-msgstr "запись"
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:30
-msgid "bootable"
-msgstr "загрузочный"
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:31
-msgid "drive"
-msgstr "диск"
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:32
-msgid "iso"
-msgstr "iso"
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:33
-msgid "image"
-msgstr "образ"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:49
 msgid "Main screen with a chosen ISO and available USB memories"
@@ -98,15 +74,6 @@ msgstr "Выполняется запись ISO"
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:57
 msgid "Success screen with a big check mark"
 msgstr "Экран успешного выполнения с большой галочкой"
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:77
-msgid "Added Spanish, French, German, Russia, and Italian translations."
-msgstr ""
-"Добавлены испанский, французский, немецкий, русский и итальянский переводы."
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:82
-msgid "Initial version."
-msgstr "Первоначальная версия."
 
 #: data/resources/blueprints/help-overlay.blp:11
 msgctxt "shortcut window"
@@ -212,8 +179,7 @@ msgstr "Остановить запись?"
 
 #: src/window.rs:197
 msgid "This might leave the drive in a faulty state."
-msgstr ""
-"Это может привести к тому, что диск окажется в неисправном состоянии."
+msgstr "Это может привести к тому, что диск окажется в неисправном состоянии."
 
 #: src/window.rs:200
 msgid "_Stop"
@@ -232,13 +198,39 @@ msgid "Disk Images"
 msgstr "Образы дисков"
 
 #. Translators: Replace "translator-credits" with your names, one name per line
-#: src/window.rs:500
+#: src/window.rs:513
 msgid "translator-credits"
 msgstr "Сергей Ворон"
 
-#: src/window.rs:506
+#: src/window.rs:519
 msgid "Code borrowed from"
 msgstr "Код заимствован из"
+
+#~ msgid "usb"
+#~ msgstr "usb"
+
+#~ msgid "flash"
+#~ msgstr "запись"
+
+#~ msgid "bootable"
+#~ msgstr "загрузочный"
+
+#~ msgid "drive"
+#~ msgstr "диск"
+
+#~ msgid "iso"
+#~ msgstr "iso"
+
+#~ msgid "image"
+#~ msgstr "образ"
+
+#~ msgid "Added Spanish, French, German, Russia, and Italian translations."
+#~ msgstr ""
+#~ "Добавлены испанский, французский, немецкий, русский и итальянский "
+#~ "переводы."
+
+#~ msgid "Initial version."
+#~ msgstr "Первоначальная версия."
 
 #~ msgid "Refresh Devices"
 #~ msgstr "Обновить устройства"
@@ -254,7 +246,8 @@ msgstr "Код заимствован из"
 #~ msgstr "Образ записан"
 
 #~ msgid "Flash disk images (ISOs/IMGs) to create bootable devices"
-#~ msgstr "Запись образов дисков (ISOs/IMGs) для создания загрузочных устройств"
+#~ msgstr ""
+#~ "Запись образов дисков (ISOs/IMGs) для создания загрузочных устройств"
 
 #~ msgid "Flash Images"
 #~ msgstr "Запись образов"
