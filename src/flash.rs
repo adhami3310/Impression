@@ -90,7 +90,13 @@ impl FlashRequest {
             return;
         }
 
-        let file = udisks_open(&device.parent.path).unwrap();
+        let Ok(file) = udisks_open(&device.parent.path) else {
+            self.sender
+                .send(FlashStatus::Done(Some("Failed to open".to_string())))
+                .expect("Concurrency Issues");
+
+            return;
+        };
 
         if !self.is_running.load(std::sync::atomic::Ordering::SeqCst) {
             return;
@@ -98,15 +104,24 @@ impl FlashRequest {
 
         let mut bucket = [0u8; 64 * 1024];
 
-        let mut task = Task::new(
-            std::fs::File::open(source).unwrap().into(),
-            &self.sender,
-            self.is_running.clone(),
-            false,
-        );
+        let Ok(image) = std::fs::File::open(source) else {
+            self.sender
+            .send(FlashStatus::Done(Some("Failed to open image".to_string())))
+                .expect("Concurrency Issues");
+
+            return;
+        };
+
+        let mut task = Task::new(image.into(), &self.sender, self.is_running.clone(), false);
         task.subscribe(file.into());
 
-        futures::executor::block_on(task.process(&mut bucket)).ok();
+        let Ok (_) = futures::executor::block_on(task.process(&mut bucket)) else {
+            self.sender
+                .send(FlashStatus::Done(Some("Failed to open image".to_string())))
+                .expect("Concurrency Issues");
+
+            return;
+        };
     }
 }
 

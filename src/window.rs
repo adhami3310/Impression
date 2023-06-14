@@ -458,7 +458,8 @@ impl AppWindow {
                 .iter()
                 .map(|d| d.parent.preferred_device.as_path().to_str().unwrap())
                 .collect_vec()
-            && !devices.is_empty() && quiet
+            && !devices.is_empty()
+            && quiet
         {
             return;
         }
