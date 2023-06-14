@@ -80,6 +80,7 @@
             <ul>
               <li>After removing and re-inserting a drive, the flash button is no longer enabled</li>
               <li>When choosing a new disk image from the app menu, the window no longer becomes blank</li>
+              <li>The app no longer begins flashing images to disconnected drives</li>
               <li>The Italian translations have been updated</li>
             </ul>
           </description>
