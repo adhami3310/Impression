@@ -374,7 +374,7 @@ impl AppWindow {
                         receiver.attach(
                             None,
                             clone!(@weak this as that => @default-return Continue(false), move |new_devices| {
-                                that.load_devices(new_devices);
+                                that.load_devices(new_devices, true);
                                 Continue(false)
                             }),
                         );
@@ -437,7 +437,7 @@ impl AppWindow {
             None,
             clone!(@weak self as this => @default-return Continue(false), move |e| {
                 this.imp().loading_spinner.stop();
-                this.load_devices(e);
+                this.load_devices(e, false);
                 Continue(false)
             }),
         );
@@ -445,7 +445,7 @@ impl AppWindow {
         Ok(())
     }
 
-    fn load_devices(&self, devices: Vec<DiskDevice>) {
+    fn load_devices(&self, devices: Vec<DiskDevice>, quiet: bool) {
         let imp = self.imp();
 
         let current_devices = imp.available_devices.borrow().clone();
@@ -458,7 +458,7 @@ impl AppWindow {
                 .iter()
                 .map(|d| d.parent.preferred_device.as_path().to_str().unwrap())
                 .collect_vec()
-            && !devices.is_empty()
+            && !devices.is_empty() && quiet
         {
             return;
         }
