@@ -30,6 +30,7 @@
         <keyword>bootable</keyword>
         <keyword>drive</keyword>
         <keyword>iso</keyword>
+        <keyword>disk</keyword>
         <keyword>image</keyword>
     </keywords>
 
@@ -72,6 +73,15 @@
     <content_rating type="oars-1.1" />
 
     <releases>
+        <release version="2.1" date="2023-06-XX">
+          <description>
+            <p>This minor release of Impression makes it more stable and polished:</p>
+            <ul>
+              <li>The flash button is no longer enabled without a drive being selected after removing and re-inserting the drive</li>
+              <li>The Italian translations have been updated</li>
+            </ul>
+          </description>
+        </release>
         <release version="2.0" date="2023-06-13">
           <description>
             <p>This major release of Impression brings a bunch of exciting improvements:</p>
