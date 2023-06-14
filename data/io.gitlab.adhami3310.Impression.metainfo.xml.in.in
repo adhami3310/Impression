@@ -75,9 +75,10 @@
     <releases>
         <release version="2.1" date="2023-06-XX">
           <description>
-            <p>This minor release of Impression makes it more stable:</p>
+            <p>This minor release of Impression makes it more stable and polished:</p>
             <ul>
               <li>The flash button is no longer enabled without a drive being selected after removing and re-inserting the drive</li>
+              <li>The Italian translations have been updated</li>
             </ul>
           </description>
         </release>
