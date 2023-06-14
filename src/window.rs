@@ -299,11 +299,9 @@ impl AppWindow {
         self.imp().selected_device_index.get()
     }
 
-    pub fn set_selected_device_index(&self, new: Option<usize>) {
-        if new.is_some() {
-            self.imp().flash_button.set_sensitive(true);
-        }
-        self.imp().selected_device_index.replace(new);
+    pub fn set_selected_device_index(&self, new_index: Option<usize>) {
+        self.imp().flash_button.set_sensitive(new_index.is_some());
+        self.imp().selected_device_index.replace(new_index);
     }
 
     fn selected_device(&self) -> Option<DiskDevice> {
@@ -328,6 +326,12 @@ impl AppWindow {
                     this.open_dialog().await.ok();
                 });
             }));
+        imp.stack
+            .connect_visible_child_notify(clone!(@weak self as win => move |stack| {
+                if stack.visible_child_name().unwrap() == "device_list" {
+                    win.set_selected_device_index(None);
+                }
+            }));
         imp.flash_button
             .connect_clicked(clone!(@weak self as this => move |_| {
                 this.flash();
@@ -339,16 +343,12 @@ impl AppWindow {
         imp.done_button
             .connect_clicked(clone!(@weak self as this => move |_| {
                 this.imp().available_devices.replace(vec![]);
-                this.imp().flash_button.set_sensitive(false);
-                this.set_selected_device_index(None);
                 this.imp().stack.set_visible_child_name("welcome");
                 this.imp().open_image_button.grab_focus();
             }));
         imp.try_again_button
             .connect_clicked(clone!(@weak self as this => move |_| {
                 this.imp().available_devices.replace(vec![]);
-                this.imp().flash_button.set_sensitive(false);
-                this.set_selected_device_index(None);
                 this.imp().stack.set_visible_child_name("welcome");
                 this.imp().open_image_button.grab_focus();
             }));

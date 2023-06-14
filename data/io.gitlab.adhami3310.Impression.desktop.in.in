@@ -7,7 +7,7 @@ Icon=@icon@
 Terminal=false
 Type=Application
 Categories=GTK;GNOME;Utility;
-Keywords=flash;usb;drive;bootable
+Keywords=usb;flash;bootable;drive;iso;disk;image
 StartupNotify=true
 X-GNOME-UsesNotifications=true
 # Translators: Do NOT translate or transliterate this text (these are enum types)!
