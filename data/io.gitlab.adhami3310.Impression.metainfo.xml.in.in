@@ -36,6 +36,7 @@
 
     <requires>
         <internet>offline-only</internet>
+        <display_length compare="ge">360</display_length>
     </requires>
 
     <recommends>
@@ -77,7 +78,10 @@
           <description>
             <p>This minor release of Impression makes it more stable and polished:</p>
             <ul>
-              <li>The flash button is no longer enabled without a drive being selected after removing and re-inserting the drive</li>
+              <li>After removing and re-inserting a drive, the flash button is no longer enabled</li>
+              <li>When choosing a new disk image from the app menu, the window no longer becomes blank</li>
+              <li>The app no longer begins flashing images to disconnected drives</li>
+              <li>The window can now be scaled down to mobile sizes, making Impression fully adaptive</li>
               <li>The Italian translations have been updated</li>
             </ul>
           </description>
