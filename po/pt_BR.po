@@ -1,0 +1,207 @@
+# English translations for impression package.
+# Copyright (C) 2023 THE impression'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the impression package.
+# Pedro Sader Azevedo <pedro.saderazevedo@protonmail.com>, 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: impression\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-06-13 15:57+0200\n"
+"PO-Revision-Date: 2023-06-14 21:30-0300\n"
+"Last-Translator: Pedro Sader Azevedo <pedro.saderazevedo@protonmail.com>\n"
+"Language-Team: English\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: data/io.gitlab.adhami3310.Impression.desktop.in.in:3
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:5
+#: data/resources/blueprints/window.blp:7 src/main.rs:56 src/window.rs:284
+#: src/window.rs:490
+msgid "Impression"
+msgstr "Impressão"
+
+#: data/io.gitlab.adhami3310.Impression.desktop.in.in:4
+msgid "Media Writer"
+msgstr "Gravador de Mídia"
+
+#: data/io.gitlab.adhami3310.Impression.desktop.in.in:5
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:7
+msgid "Create bootable drives"
+msgstr "Crie pendrives inicializáveis"
+
+#: data/io.gitlab.adhami3310.Impression.desktop.in.in:11
+msgid "flash;usb;drive;bootable"
+msgstr "flash;usb;pendrive;mídia;bootável;inicializável"
+
+#: data/io.gitlab.adhami3310.Impression.gschema.xml.in:6
+msgid "Window width"
+msgstr "Largura da janela"
+
+#: data/io.gitlab.adhami3310.Impression.gschema.xml.in:10
+msgid "Window height"
+msgstr "Altura da janela"
+
+#: data/io.gitlab.adhami3310.Impression.gschema.xml.in:14
+msgid "Window maximized state"
+msgstr "Estado de maximização da janela"
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:6
+msgid "Khaleel Al-Adhami"
+msgstr "Khaleel Al-Adhami"
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:13
+msgid ""
+"Flash disk images onto your drives with ease. Select an image, insert your "
+"drive, and you're good to go! Impression is a useful tool for both avid "
+"distro-hoppers and casual computer users."
+msgstr ""
+"Grave imagens de disco em pendrives com facilidade. Seleciona uma imagem,"
+"insira seu pendrive, e pronto! Impressão é uma ferramenta útil tanto para"
+"ávidos \"distro-hoppers\" quanto para usuários casuais."
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:49
+msgid "Main screen with a chosen ISO and available USB memories"
+msgstr "Tela principal com ISO escolhida e unidades USB disponíveis"
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:53
+msgid "Flashing the ISO in progress"
+msgstr "Escrita da ISO em progresso"
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:57
+msgid "Success screen with a big check mark"
+msgstr "Tela de sucesso com uma grande marca de verificação"
+
+#: data/resources/blueprints/help-overlay.blp:11
+msgctxt "shortcut window"
+msgid "General"
+msgstr "Geral"
+
+#: data/resources/blueprints/help-overlay.blp:14
+msgctxt "shortcut window"
+msgid "Open File"
+msgstr "Abrir Arquivo"
+
+#: data/resources/blueprints/help-overlay.blp:19
+msgctxt "shortcut window"
+msgid "New Window"
+msgstr "Nova Janela"
+
+#: data/resources/blueprints/help-overlay.blp:24
+msgctxt "shortcut window"
+msgid "Show Shortcuts"
+msgstr "Mostrar Atalhos"
+
+#: data/resources/blueprints/help-overlay.blp:29
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "Sair"
+
+#: data/resources/blueprints/window.blp:18
+msgid "Main Menu"
+msgstr "Menu Principal"
+
+#: data/resources/blueprints/window.blp:38
+msgid "Choose an image to flash"
+msgstr "Escolha uma imagem para gravar"
+
+#: data/resources/blueprints/window.blp:49
+#: data/resources/blueprints/window.blp:261
+msgid "Open File…"
+msgstr "Abrir Arquivo…"
+
+#: data/resources/blueprints/window.blp:117
+msgid "All data on the selected drive will be erased"
+msgstr "Todos os dados armazenados no pendrive selecionado serão apagados"
+
+#: data/resources/blueprints/window.blp:120
+msgid "Flash"
+msgstr "Gravar"
+
+#: data/resources/blueprints/window.blp:153
+msgid "No Drives"
+msgstr "Sem Pendrives"
+
+#: data/resources/blueprints/window.blp:154
+msgid "Insert a drive to flash the image onto"
+msgstr "Insira um pendrive para gravar a imagem"
+
+#: data/resources/blueprints/window.blp:165
+msgid "Flashing Completed"
+msgstr "Gravação Completa"
+
+#: data/resources/blueprints/window.blp:166
+msgid "The drive can be safely removed"
+msgstr "O pendrive pode ser removido com segurança"
+
+#: data/resources/blueprints/window.blp:175
+msgid "Finish"
+msgstr "Finalizar"
+
+#: data/resources/blueprints/window.blp:196
+msgid "Flashing Unsuccessful"
+msgstr "Gravação Mal-Sucedida"
+
+#: data/resources/blueprints/window.blp:205
+msgid "Retry"
+msgstr "Tentar Novamente"
+
+#: data/resources/blueprints/window.blp:225
+msgid "Flashing…"
+msgstr "Gravando…"
+
+#: data/resources/blueprints/window.blp:227
+msgid "Do not remove the drive"
+msgstr "Não remova o pendrive"
+
+#: data/resources/blueprints/window.blp:242 src/window.rs:200
+msgid "_Cancel"
+msgstr "_Cancelar"
+
+#: data/resources/blueprints/window.blp:266
+msgid "New Window"
+msgstr "Nova Janela"
+
+#: data/resources/blueprints/window.blp:273
+msgid "Keyboard Shortcuts"
+msgstr "Atalhos de Teclado"
+
+#: data/resources/blueprints/window.blp:278
+msgid "About Impression"
+msgstr "Sobre o Impressão"
+
+#: src/window.rs:196
+msgid "Stop Flashing?"
+msgstr "Parar Gravação?"
+
+#: src/window.rs:197
+msgid "This might leave the drive in a faulty state."
+msgstr "Isso pode deixar o pendrive em um estado defeituoso"
+
+#: src/window.rs:200
+msgid "_Stop"
+msgstr "_Parar"
+
+#: src/window.rs:257
+msgid "Failed to flash image"
+msgstr "A gravação da imagem falhou"
+
+#: src/window.rs:264
+msgid "Image flashed"
+msgstr "Imagem gravada"
+
+#: src/window.rs:393
+msgid "Disk Images"
+msgstr "Imagens de Disco"
+
+#. Translators: Replace "translator-credits" with your names, one name per line
+#: src/window.rs:513
+msgid "translator-credits"
+msgstr "Pedro Sader Azevedo"
+
+#: src/window.rs:519
+msgid "Code borrowed from"
+msgstr "Código emprestado de"
