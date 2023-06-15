@@ -274,20 +274,22 @@ impl AppWindow {
     }
 
     fn send_notification(&self, message: String) {
-        spawn!(async move {
-            let proxy = ashpd::desktop::notification::NotificationProxy::new()
-                .await
-                .unwrap();
-            proxy
-                .add_notification(
-                    APP_ID,
-                    ashpd::desktop::notification::Notification::new(&gettext("Impression"))
-                        .body(Some(message.as_ref()))
-                        .priority(Some(ashpd::desktop::notification::Priority::Normal)),
-                )
-                .await
-                .unwrap();
-        });
+        if !self.is_focus() {
+            spawn!(async move {
+                let proxy = ashpd::desktop::notification::NotificationProxy::new()
+                    .await
+                    .unwrap();
+                proxy
+                    .add_notification(
+                        APP_ID,
+                        ashpd::desktop::notification::Notification::new(&gettext("Impression"))
+                            .body(Some(message.as_ref()))
+                            .priority(Some(ashpd::desktop::notification::Priority::Normal)),
+                    )
+                    .await
+                    .unwrap();
+            });
+        }
     }
 
     fn image_path(&self) -> PathBuf {
