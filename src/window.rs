@@ -502,7 +502,7 @@ impl AppWindow {
 <ul>
   <li>Visual enhancements to make the app more beautiful, focused, and engaging</li>
   <li>Automatic updates of the available drives list</li>
-  <li>Explicit drive selection before flashing, to avoid accidential data loss</li>
+  <li>Explicit drive selection before flashing, to avoid accidental data loss</li>
   <li>Turkish and Czech translations, making Impression available in a total of 8 languages</li>
 </ul>
 <p>The versioning scheme has been simplified to only include major and minor versions. The previous version of Impression was 1.0.1,
