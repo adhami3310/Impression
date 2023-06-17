@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: impression\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-06-13 15:57+0200\n"
-"PO-Revision-Date: 2023-06-07 11:13+0100\n"
+"PO-Revision-Date: 2023-06-14 12:13+0100\n"
 "Last-Translator: Albano Battistella <albano_battistella@hotmail.com>\n"
 "Language-Team: Italian <LL@li.org>\n"
 "Language: it\n"
@@ -58,11 +58,13 @@ msgid ""
 "drive, and you're good to go! Impression is a useful tool for both avid "
 "distro-hoppers and casual computer users."
 msgstr ""
+"Flesha immagini disco sulle tue unità con facilità. Seleziona un'immagine, inserisci il tuo "
+"drive e sei a posto! Impression è uno strumento utile sia per gli avidi "
+"distro-hopper e utenti occasionali di computer".
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:49
-#, fuzzy
 msgid "Main screen with a chosen ISO and available USB memories"
-msgstr "Schermata principale con un ISO scelto e due memorie USB"
+msgstr "Schermata principale con ISO scelta e memorie USB disponibili"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:53
 msgid "Flashing the ISO in progress"
@@ -99,55 +101,52 @@ msgstr "Esci"
 
 #: data/resources/blueprints/window.blp:18
 msgid "Main Menu"
-msgstr ""
+msgstr "Menu principale"
 
 #: data/resources/blueprints/window.blp:38
 msgid "Choose an image to flash"
-msgstr ""
+msgstr "Scegli un'immagine da fleshare"
 
 #: data/resources/blueprints/window.blp:49
 #: data/resources/blueprints/window.blp:261
 msgid "Open File…"
-msgstr "Opri file…"
+msgstr "Apri file…"
 
 #: data/resources/blueprints/window.blp:117
 msgid "All data on the selected drive will be erased"
-msgstr ""
+msgstr "Tutti i dati sull'unità selezionata verranno cancellati"
 
 #: data/resources/blueprints/window.blp:120
-#, fuzzy
 msgid "Flash"
-msgstr "Flash!"
+msgstr "Flash"
 
 #: data/resources/blueprints/window.blp:153
 msgid "No Drives"
 msgstr "Nessun drive"
 
 #: data/resources/blueprints/window.blp:154
-#, fuzzy
 msgid "Insert a drive to flash the image onto"
-msgstr "Inserire un'unità USB su cui eseguire il flashing dell'immagine."
+msgstr "Inserisci un'unità su cui eseguire il flashing dell'immagine"
 
 #: data/resources/blueprints/window.blp:165
 msgid "Flashing Completed"
-msgstr ""
+msgstr "Flashing completato"
 
 #: data/resources/blueprints/window.blp:166
 msgid "The drive can be safely removed"
-msgstr ""
+msgstr "L'unità può essere rimossa in modo sicuro"
 
 #: data/resources/blueprints/window.blp:175
 msgid "Finish"
-msgstr ""
+msgstr "Finito"
 
 #: data/resources/blueprints/window.blp:196
-#, fuzzy
 msgid "Flashing Unsuccessful"
-msgstr "Flashing dell'immagine non riuscito"
+msgstr "Flashing non riuscito"
 
 #: data/resources/blueprints/window.blp:205
 msgid "Retry"
-msgstr ""
+msgstr "Riprova"
 
 #: data/resources/blueprints/window.blp:225
 msgid "Flashing…"
@@ -155,7 +154,7 @@ msgstr "Flasching in corso…"
 
 #: data/resources/blueprints/window.blp:227
 msgid "Do not remove the drive"
-msgstr ""
+msgstr "Non rimuovere il drive"
 
 #: data/resources/blueprints/window.blp:242 src/window.rs:200
 msgid "_Cancel"
@@ -174,14 +173,12 @@ msgid "About Impression"
 msgstr "Informazioni su Impression"
 
 #: src/window.rs:196
-#, fuzzy
 msgid "Stop Flashing?"
 msgstr "Fermare il flashing?"
 
 #: src/window.rs:197
-#, fuzzy
 msgid "This might leave the drive in a faulty state."
-msgstr "Questo potrebbe lasciare il tuo drive in uno stato difettoso."
+msgstr "Questo potrebbe lasciare il tuo drive in uno stato di errore."
 
 #: src/window.rs:200
 msgid "_Stop"
@@ -202,12 +199,11 @@ msgstr "Immagini disco"
 #. Translators: Replace "translator-credits" with your names, one name per line
 #: src/window.rs:513
 msgid "translator-credits"
-msgstr ""
+msgstr "Albano Battistella"
 
 #: src/window.rs:519
-#, fuzzy
 msgid "Code borrowed from"
-msgstr "Codice e design presi in prestito da"
+msgstr "Codice preso in prestito da"
 
 #~ msgid "usb"
 #~ msgstr "usb"
@@ -221,9 +217,8 @@ msgstr "Codice e design presi in prestito da"
 #~ msgid "drive"
 #~ msgstr "drive"
 
-#, fuzzy
 #~ msgid "image"
-#~ msgstr "Immagini disco"
+#~ msgstr "immagine"
 
 #~ msgid "Initial version."
 #~ msgstr "Versione iniziale."
@@ -234,9 +229,8 @@ msgstr "Codice e design presi in prestito da"
 #~ msgid "Copying files…"
 #~ msgstr "Copia dei file…"
 
-#, fuzzy
 #~ msgid "Validating…"
-#~ msgstr "Validazione"
+#~ msgstr "Validazione…"
 
 #~ msgid "Image Flashed"
 #~ msgstr "Immagine fleshata"
@@ -247,13 +241,11 @@ msgstr "Codice e design presi in prestito da"
 #~ msgid "Flash Images"
 #~ msgstr "Flach immagine"
 
-#, fuzzy
 #~ msgid "Open a disk image to flash to a USB drive"
-#~ msgstr "Apri un'immagine disco da flashare su un'unità USB."
+#~ msgstr "Apri un'immagine disco da flashare su un'unità USB"
 
-#, fuzzy
 #~ msgid "Warning: This will erase all data on the selected drive"
-#~ msgstr "Avviso: questo cancellerà tutti i dati sull'unità selezionata."
+#~ msgstr "Avviso: questo cancellerà tutti i dati sull'unità selezionata"
 
 #~ msgid "Updating device list…"
 #~ msgstr "Aggiornamento elenco dispositivi…"
