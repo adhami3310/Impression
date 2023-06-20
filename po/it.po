@@ -60,7 +60,7 @@ msgid ""
 msgstr ""
 "Flesha immagini disco sulle tue unità con facilità. Seleziona un'immagine, inserisci il tuo "
 "drive e sei a posto! Impression è uno strumento utile sia per gli avidi "
-"distro-hopper e utenti occasionali di computer".
+"distro-hopper e utenti occasionali di computer."
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:49
 msgid "Main screen with a chosen ISO and available USB memories"
