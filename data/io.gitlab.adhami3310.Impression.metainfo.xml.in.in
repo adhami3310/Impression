@@ -74,16 +74,15 @@
     <content_rating type="oars-1.1" />
 
     <releases>
-        <release version="2.1" date="2023-06-XX">
+        <release version="2.1" date="2023-06-20">
           <description>
-            <p>This minor release of Impression makes it more stable and polished:</p>
+            <p>This minor release of Impression delivers:</p>
             <ul>
-              <li>After removing and re-inserting a drive, the flash button is no longer enabled</li>
-              <li>When choosing a new disk image from the app menu, the window no longer becomes blank</li>
-              <li>The app no longer begins flashing images to disconnected drives</li>
-              <li>The window can now be scaled down to mobile sizes, making Impression fully adaptive</li>
-              <li>The Italian translations have been updated</li>
+              <li>Support for mobile screen sizes</li>
+              <li>Various bug fixes, improving reliability and stability</li>
+              <li>Brazillian Portugese translations, making Impression available in a total of 9 languages</li>
             </ul>
+            <p>Impression is made possible by volunteer developers, designers, and translators. Thank you for your contributions!</p>
           </description>
         </release>
         <release version="2.0" date="2023-06-13">

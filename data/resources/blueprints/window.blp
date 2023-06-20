@@ -4,6 +4,8 @@ using Adw 1;
 template $AppWindow : Adw.ApplicationWindow {
   default-width: 500;
   default-height: 600;
+  width-request: 360;
+  height-request: 294;
   title: _("Impression");
 
   Box {
@@ -26,8 +28,6 @@ template $AppWindow : Adw.ApplicationWindow {
 
     Stack stack {
       transition-type: crossfade;
-      width-request: 360;
-      height-request: 400;
 
       StackPage {
         name: "welcome";

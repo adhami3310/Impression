@@ -497,19 +497,14 @@ impl AppWindow {
             .developers(vec!["Khaleel Al-Adhami"])
             .designers(vec!["Brage Fuglseth", "Saptarshi Mondal"])
             .artists(vec!["Brage Fuglseth"])
-            // Only update for major versions
-            .release_notes_version("2.0")
+            .release_notes_version("2.1")
             .release_notes(
-"<p>This major release of Impression brings a bunch of exciting improvements:</p>
+"<p>This minor release of Impression delivers:</p>
 <ul>
-  <li>Visual enhancements to make the app more beautiful, focused, and engaging</li>
-  <li>Automatic updates of the available drives list</li>
-  <li>Explicit drive selection before flashing, to avoid accidental data loss</li>
-  <li>Turkish and Czech translations, making Impression available in a total of 8 languages</li>
+  <li>Support for mobile screen sizes</li>
+  <li>Various bug fixes, improving reliability and stability</li>
+  <li>Brazillian Portugese translations, making Impression available in a total of 9 languages</li>
 </ul>
-<p>The versioning scheme has been simplified to only include major and minor versions. The previous version of Impression was 1.0.1,
-  this is version 2.0. Going forward, new features and noticeable changes will be included in
-  new major releases, while fixes and translations will result in new minor releases.</p>
 <p>Impression is made possible by volunteer developers, designers, and translators. Thank you for your contributions!</p>"
 )
             // Translators: Replace "translator-credits" with your names, one name per line
