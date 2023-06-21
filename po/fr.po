@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: impression\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-06-20 22:45-0400\n"
-"PO-Revision-Date: 2023-06-10 08:14+0200\n"
+"PO-Revision-Date: 2023-06-21 19:19+0200\n"
 "Last-Translator: Irénée Thirion <irenee.thirion@e.email>\n"
 "Language-Team: \n"
 "Language: fr\n"
@@ -35,7 +35,7 @@ msgstr "Créez des périphériques bootables"
 
 #: data/io.gitlab.adhami3310.Impression.desktop.in.in:11
 msgid "usb;flash;bootable;drive;iso;disk;image"
-msgstr ""
+msgstr "usb;flasher;bootable;drive;iso;disk;image;disque;périphérique;lecteur;"
 
 #: data/io.gitlab.adhami3310.Impression.gschema.xml.in:6
 msgid "Window width"
@@ -86,7 +86,7 @@ msgstr "iso"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:33
 msgid "disk"
-msgstr ""
+msgstr "disque"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:34
 msgid "image"
@@ -108,21 +108,24 @@ msgstr "Écran de tâche accomplie avec un symbole coché"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:79
 msgid "This minor release of Impression delivers:"
-msgstr ""
+msgstr "Cette mise à jour mineure de Impression apporte :"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:81
 msgid "Support for mobile screen sizes"
-msgstr ""
+msgstr "La prise en charge des écrans d’appareils mobiles"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:82
 msgid "Various bug fixes, improving reliability and stability"
 msgstr ""
+"Diverses corrections de bogues, améliorant la fiabilité et la stabilité"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:83
 msgid ""
 "Brazillian Portugese translations, making Impression available in a total of "
 "9 languages"
 msgstr ""
+"Une traduction en portugais brésilien, ce qui rend Impression disponible "
+"dans 9 langages au total"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:85
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:100
@@ -130,30 +133,39 @@ msgid ""
 "Impression is made possible by volunteer developers, designers, and "
 "translators. Thank you for your contributions!"
 msgstr ""
+"Impression est un projet rendu possible par des développeurs, des designers "
+"et traducteurs bénévoles. Merci pour vos contributions !"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:90
 msgid ""
 "This major release of Impression brings a bunch of exciting improvements:"
 msgstr ""
+"Cette mise à jour majeure apporte un paquet de chouettes améliorations :"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:92
 msgid ""
 "Visual enhancements to make the app more beautiful, focused, and engaging"
 msgstr ""
+"Améliorations visuelles pour rendre l’application plus esthétique, focalisée "
+"et attrayante."
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:93
 msgid "Automatic updates of the available drives list"
-msgstr ""
+msgstr "Mise à jour automatique de la liste des périphériques disponibles"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:94
 msgid "Explicit drive selection before flashing, to avoid accidental data loss"
 msgstr ""
+"Sélection explicite du périphérique avant le flashage, pour éviter toute "
+"perte de données accidentelle"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:95
 msgid ""
 "Turkish and Czech translations, making Impression available in a total of 8 "
 "languages"
 msgstr ""
+"Traductions tchèque et turque, ce qui rend Impression disponible dans un "
+"total de 8 langages"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:97
 msgid ""
@@ -163,9 +175,14 @@ msgid ""
 "major releases, while fixes and translations will result in new minor "
 "releases."
 msgstr ""
+"Le schéma de numérotation des versions a été simplifié pour uniquement "
+"inclure les versions majeures et mineures. La version précédente de "
+"Impression était la 1.0.1, cette version est la 2.0. Par la suite, les "
+"nouvelles fonctionnalités et les changements notables seront inclus dans les "
+"mises à jour majeures, tandis que les corrections de bogues et les "
+"traductions seront intégrées par des mises à jour mineures."
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:105
-#, fuzzy
 msgid "Added Spanish, French, German, Russian, and Italian translations."
 msgstr ""
 "Ajout de traductions espagnole, française, allemande, russe et italienne."
