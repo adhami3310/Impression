@@ -1,7 +1,6 @@
 use std::path::PathBuf;
 
 use adw::prelude::*;
-use ashpd::desktop::file_chooser::{FileFilter, SelectedFiles};
 use dbus_udisks2::DiskDevice;
 use gettextrs::gettext;
 use glib::{clone, timeout_add_seconds_local};
@@ -182,7 +181,7 @@ impl AppWindow {
                 .activate(clone!(@weak self as window => move |_, _, _| {
                     if !window.imp().is_running.load(std::sync::atomic::Ordering::SeqCst) {
                         spawn!(async move {
-                            window.open_dialog().await.ok();
+                            window.open_dialog().await;
                         });
                     }
                 }))
@@ -217,6 +216,7 @@ impl AppWindow {
 
     fn flash(&self) {
         self.imp().stack.set_visible_child_name("flashing");
+        self.imp().progress_bar.set_fraction(0.);
         glib::MainContext::default().iteration(true);
         self.imp()
             .is_running
@@ -274,7 +274,7 @@ impl AppWindow {
     }
 
     fn send_notification(&self, message: String) {
-        if !self.is_focus() {
+        if !self.is_active() {
             spawn!(async move {
                 let proxy = ashpd::desktop::notification::NotificationProxy::new()
                     .await
@@ -325,7 +325,7 @@ impl AppWindow {
         imp.open_image_button
             .connect_clicked(clone!(@weak self as this => move |_| {
                 spawn!(async move {
-                    this.open_dialog().await.ok();
+                    this.open_dialog().await;
                 });
             }));
         imp.stack
@@ -359,51 +359,38 @@ impl AppWindow {
             clone!(@weak self as this => @default-return Continue(false), move || {
                 let current_stack = this.imp().stack.visible_child_name().unwrap();
                 if current_stack == "no_devices" || current_stack == "device_list" {
-                    spawn!(async move {
-                        let (sender, receiver) = glib::MainContext::channel(glib::PRIORITY_DEFAULT);
-
-                        std::thread::spawn(move || {
-                            let rt = tokio::runtime::Builder::new_multi_thread()
-                                .enable_all()
-                                .build()
-                                .unwrap();
-
-                            sender
-                                .send(rt.block_on(async { refresh_devices().await.unwrap() }))
-                                .expect("Concurrency Issues");
-                        });
-
-                        receiver.attach(
-                            None,
-                            clone!(@weak this as that => @default-return Continue(false), move |new_devices| {
-                                that.load_devices(new_devices, true);
-                                Continue(false)
-                            }),
-                        );
-                    });
+                    if let Ok(devices) = refresh_devices() {
+                        this.load_devices(devices, true);
+                    }
                 }
                 Continue(true)
             }),
         );
     }
 
-    async fn open_dialog(&self) -> ashpd::Result<()> {
-        let files = SelectedFiles::open_file()
+    async fn open_dialog(&self) {
+        let filter = gtk::FileFilter::new();
+        filter.add_mime_type("application/x-iso9660-image");
+        filter.set_name(Some(&gettext("Disk Images")));
+
+        let model = gio::ListStore::new(gtk::FileFilter::static_type());
+        model.append(&filter);
+
+        if let Ok(file) = gtk::FileDialog::builder()
             .modal(true)
-            .multiple(Some(false))
-            .filter(
-                FileFilter::new(&gettext("Disk Images")).mimetype("application/x-iso9660-image"),
-            )
-            .send()
-            .await?
-            .response()?;
+            .filters(&model)
+            .build()
+            .open_future(Some(self))
+            .await
+        {
+            let path = file.path().unwrap();
+            println!("Selected disk Image: {:?}", path);
 
-        let path = files.uris().first().unwrap().to_file_path().unwrap();
-
-        self.open_file(path).await
+            self.open_file(path).await;
+        }
     }
 
-    pub async fn open_file(&self, path: PathBuf) -> ashpd::Result<()> {
+    pub async fn open_file(&self, path: PathBuf) {
         let filename = path.file_name().unwrap().to_str().unwrap().to_owned();
 
         self.imp().name_value_label.set_text(&filename);
@@ -414,37 +401,13 @@ impl AppWindow {
             std::fs::File::open(path).unwrap().metadata().unwrap().len(),
         ));
 
-        self.refresh_devices().await
+        self.refresh_devices();
     }
 
-    async fn refresh_devices(&self) -> ashpd::Result<()> {
-        let (sender, receiver) = glib::MainContext::channel(glib::PRIORITY_DEFAULT);
-
-        self.imp().loading_spinner.start();
-        self.imp().stack.set_visible_child_name("loading");
-        glib::MainContext::default().iteration(true);
-
-        std::thread::spawn(move || {
-            let rt = tokio::runtime::Builder::new_multi_thread()
-                .enable_all()
-                .build()
-                .unwrap();
-
-            sender
-                .send(rt.block_on(async { refresh_devices().await.unwrap() }))
-                .expect("Concurrency Issues");
-        });
-
-        receiver.attach(
-            None,
-            clone!(@weak self as this => @default-return Continue(false), move |e| {
-                this.imp().loading_spinner.stop();
-                this.load_devices(e, false);
-                Continue(false)
-            }),
-        );
-
-        Ok(())
+    fn refresh_devices(&self) {
+        if let Ok(devices) = refresh_devices() {
+            self.load_devices(devices, false);
+        }
     }
 
     fn load_devices(&self, devices: Vec<DiskDevice>, quiet: bool) {

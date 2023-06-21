@@ -68,8 +68,7 @@ mod imp {
                             .downcast_ref::<AppWindow>()
                             .unwrap()
                             .open_file(file_path)
-                            .await
-                            .ok();
+                            .await;
                     });
                 }
             }

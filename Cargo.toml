@@ -1,6 +1,6 @@
 [package]
 name = "impression"
-version = "2.0.0"
+version = "2.1.0"
 edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
@@ -9,22 +9,16 @@ edition = "2021"
 gettext-rs = { version = "0.7.0", features = ["gettext-system"] }
 glib = "0.17.0"
 gtk = { version = "0.6.0", package = "gtk4", features = ["blueprint", "v4_10"] }
-gtk-macros = { version = "0.6.0", package = "gtk4-macros", features = [
-    "blueprint",
-] }
+gtk-macros = { version = "0.6.0", package = "gtk4-macros" }
 adw = { version = "0.4.0", package = "libadwaita", features = ["v1_3"] }
 log = "0.4.17"
 once_cell = "1.17.1"
 pretty_env_logger = "0.5.0"
 itertools = "0.10.5"
-tokio = { version = "1.27.0", features = ["process", "rt", "rt-multi-thread"] }
 futures = "0.3.28"
 ashpd = "0.4.0"
-dbus-udisks2 = { version = "0.3", features = ["futures"] }
-anyhow = "1.0.71"
+dbus-udisks2 = { version = "0.3" }
 dbus = "0.9.7"
 libc = "0.2.144"
 async-std = "1.12.0"
-derive-new = "0.5.9"
 srmw = "0.1.1"
-dbus-tokio = "0.7.6"

@@ -1,6 +1,6 @@
 use dbus::arg::{OwnedFd, RefArg, Variant};
 use dbus::blocking::{Connection, Proxy};
-use dbus_udisks2::{DiskDevice, Disks};
+use dbus_udisks2::{DiskDevice, Disks, UDisks2};
 use itertools::Itertools;
 use std::collections::HashMap;
 use std::fs::File;
@@ -15,20 +15,14 @@ use crate::task::Task;
 
 type UDisksOptions = HashMap<&'static str, Variant<Box<dyn RefArg>>>;
 
-pub async fn refresh_devices() -> anyhow::Result<Vec<DiskDevice>> {
-    let (resource, conn) = dbus_tokio::connection::new_system_sync().unwrap();
-
-    tokio::spawn(async {
-        let err = resource.await;
-        panic!("Lost connection to D-Bus: {}", err);
-    });
-
-    let udisks = dbus_udisks2::AsyncUDisks2::new(conn).await?;
-    let devices = Disks::new_async(&udisks).devices;
+pub fn refresh_devices() -> Result<Vec<DiskDevice>, ()> {
+    let udisks = UDisks2::new().map_err(|_| ())?;
+    let devices = Disks::new(&udisks).devices;
     let devices = devices
         .into_iter()
         .filter(|d| d.drive.connection_bus == "usb" || d.drive.connection_bus == "sdio")
         .filter(|d| d.parent.size != 0)
+        .sorted_by_key(|d| d.drive.id.clone())
         .collect_vec();
     Ok(devices)
 }
@@ -125,10 +119,10 @@ impl FlashRequest {
     }
 }
 
-fn udisks_unmount(dbus_path: &str) -> anyhow::Result<()> {
-    let connection = Connection::new_system()?;
+fn udisks_unmount(dbus_path: &str) -> Result<(), ()> {
+    let connection = Connection::new_system().map_err(|_| ())?;
 
-    let dbus_path = ::dbus::strings::Path::new(dbus_path).map_err(anyhow::Error::msg)?;
+    let dbus_path = ::dbus::strings::Path::new(dbus_path).map_err(|_| ())?;
 
     let proxy = Proxy::new(
         "org.freedesktop.UDisks2",
@@ -144,17 +138,17 @@ fn udisks_unmount(dbus_path: &str) -> anyhow::Result<()> {
 
     if let Err(err) = res {
         if err.name() != Some("org.freedesktop.UDisks2.Error.NotMounted") {
-            return Err(anyhow::Error::new(err));
+            return Err(());
         }
     }
 
     Ok(())
 }
 
-fn udisks_open(dbus_path: &str) -> anyhow::Result<File> {
-    let connection = Connection::new_system()?;
+fn udisks_open(dbus_path: &str) -> Result<File, ()> {
+    let connection = Connection::new_system().map_err(|_| ())?;
 
-    let dbus_path = ::dbus::strings::Path::new(dbus_path).map_err(anyhow::Error::msg)?;
+    let dbus_path = ::dbus::strings::Path::new(dbus_path).map_err(|_| ())?;
 
     let proxy = Proxy::new(
         "org.freedesktop.UDisks2",
@@ -165,11 +159,13 @@ fn udisks_open(dbus_path: &str) -> anyhow::Result<File> {
 
     let mut options = UDisksOptions::new();
     options.insert("flags", Variant(Box::new(libc::O_SYNC)));
-    let res: (OwnedFd,) = proxy.method_call(
-        "org.freedesktop.UDisks2.Block",
-        "OpenDevice",
-        ("rw", options),
-    )?;
+    let res: (OwnedFd,) = proxy
+        .method_call(
+            "org.freedesktop.UDisks2.Block",
+            "OpenDevice",
+            ("rw", options),
+        )
+        .map_err(|_| ())?;
 
     Ok(unsafe { File::from_raw_fd(res.0.into_fd()) })
 }

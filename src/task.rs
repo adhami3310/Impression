@@ -8,16 +8,10 @@ use std::{
 
 use crate::flash::{FlashPhase, FlashStatus};
 
-#[derive(derive_new::new)]
 pub struct Task<'a> {
     image: File,
-
-    #[new(default)]
     pub writer: MultiWriter<File>,
-
     pub sender: &'a glib::Sender<FlashStatus>,
-
-    #[new(value = "125")]
     pub millis_between: u64,
 
     pub is_running: Arc<AtomicBool>,
@@ -26,6 +20,17 @@ pub struct Task<'a> {
 }
 
 impl<'a> Task<'a> {
+    pub fn new(image: File, sender: &'a glib::Sender<FlashStatus>, is_running: Arc<AtomicBool>, check: bool) -> Self {
+        Self {
+            image,
+            writer: Default::default(),
+            sender,
+            millis_between: 125,
+            is_running,
+            check
+        }
+    }
+
     /// Performs the asynchronous USB device flashing.
     pub async fn process(mut self, buf: &mut [u8]) -> Result<(), ()> {
         self.copy(buf).await?;
