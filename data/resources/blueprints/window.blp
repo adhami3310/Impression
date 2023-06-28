@@ -26,230 +26,234 @@ template $AppWindow : Adw.ApplicationWindow {
       ]
     }
 
-    Stack stack {
-      transition-type: crossfade;
+    WindowHandle {
+      vexpand: true;
 
-      StackPage {
-        name: "welcome";
-        child: 
-        Adw.StatusPage welcome_page {
-          icon-name: "io.gitlab.adhami3310.Impression-symbolic";
-          title: "Impression";
-          description: _("Choose an image to flash");
-          hexpand: true;
-          vexpand: true;
+      Stack stack {
+        transition-type: crossfade;
+
+        StackPage {
+          name: "welcome";
           child: 
-          Box {
-            orientation: vertical;
-            spacing: 12;
-
-            Button open_image_button {
-              valign: center;
-              halign: center;
-              label: _("Open File…");
-              use-underline: true;
-
-              styles [
-                "suggested-action",
-                "pill",
-              ]
-            }
-          }
-
-          ;
-        }
-
-        ;
-      }
-
-      StackPage {
-        name: "device_list";
-        child: 
-        Adw.PreferencesPage {
-          valign: center;
-
-          Adw.PreferencesGroup {
+          Adw.StatusPage welcome_page {
+            icon-name: "io.gitlab.adhami3310.Impression-symbolic";
+            title: "Impression";
+            description: _("Choose an image to flash");
+            hexpand: true;
+            vexpand: true;
+            child: 
             Box {
               orientation: vertical;
               spacing: 12;
 
-              Image {
-                icon-name: "media-optical-cd-symbolic";
-                pixel-size: 64;
-              }
-
-              Label name_value_label {
-                label: "arch.iso";
-                wrap: true;
-                wrap-mode: word_char;
-                lines: 3;
-                justify: center;
-                max-width-chars: 24;
+              Button open_image_button {
+                valign: center;
+                halign: center;
+                label: _("Open File…");
+                use-underline: true;
 
                 styles [
-                  "title-3",
-                ]
-              }
-
-              Label size_label {
-                justify: center;
-
-                styles [
-                  "caption",
+                  "suggested-action",
+                  "pill",
                 ]
               }
             }
+
+            ;
           }
 
-          Adw.PreferencesGroup {
-            ListBox available_devices_list {
-              selection-mode: none;
-
-              styles [
-                "boxed-list",
-              ]
-            }
-          }
-
-          Adw.PreferencesGroup {
-            valign: end;
-            halign: center;
-            description: _("All data on the selected drive will be erased");
-
-            Button flash_button {
-              label: _("Flash");
-              sensitive: false;
-              halign: center;
-
-              styles [
-                "destructive-action",
-                "pill",
-              ]
-            }
-          }
+          ;
         }
 
-        ;
-      }
-
-      StackPage {
-        name: "loading";
-        child: 
-            Spinner loading_spinner {
-              valign: center;
-              halign: center;
-              height-request: 28;
-              width-request: 28;
-            }
-
-        ;
-      }
-
-      StackPage {
-        name: "no_devices";
-        child: 
-        Adw.StatusPage {
-          icon-name: "usb-stick-symbolic";
-          title: _("No Drives");
-          description: _("Insert a drive to flash the image onto");
-        }
-
-        ;
-      }
-
-      StackPage {
-        name: "success";
-        child: 
-        Adw.StatusPage {
-          icon-name: "check-round-outline-symbolic";
-          title: _("Flashing Completed");
-          description: _("The drive can be safely removed");
+        StackPage {
+          name: "device_list";
           child: 
-          Box {
-            orientation: vertical;
-            spacing: 12;
+          Adw.PreferencesPage {
+            valign: center;
 
-            Button done_button {
-              valign: center;
+            Adw.PreferencesGroup {
+              Box {
+                orientation: vertical;
+                spacing: 12;
+
+                Image {
+                  icon-name: "media-optical-cd-symbolic";
+                  pixel-size: 64;
+                }
+
+                Label name_value_label {
+                  label: "arch.iso";
+                  wrap: true;
+                  wrap-mode: word_char;
+                  lines: 3;
+                  justify: center;
+                  max-width-chars: 24;
+
+                  styles [
+                    "title-3",
+                  ]
+                }
+
+                Label size_label {
+                  justify: center;
+
+                  styles [
+                    "caption",
+                  ]
+                }
+              }
+            }
+
+            Adw.PreferencesGroup {
+              ListBox available_devices_list {
+                selection-mode: none;
+
+                styles [
+                  "boxed-list",
+                ]
+              }
+            }
+
+            Adw.PreferencesGroup {
+              valign: end;
               halign: center;
-              label: _("Finish");
-              use-underline: true;
+              description: _("All data on the selected drive will be erased");
 
-              styles [
-                "suggested-action",
-                "pill",
-              ]
+              Button flash_button {
+                label: _("Flash");
+                sensitive: false;
+                halign: center;
+
+                styles [
+                  "destructive-action",
+                  "pill",
+                ]
+              }
             }
           }
 
           ;
         }
 
-        ;
-      }
-
-      StackPage {
-        name: "failure";
-        child: 
-        Adw.StatusPage {
-          icon-name: "error-symbolic";
-          title: _("Flashing Unsuccessful");
+        StackPage {
+          name: "loading";
           child: 
-          Box {
-            orientation: vertical;
-            spacing: 12;
+              Spinner loading_spinner {
+                valign: center;
+                halign: center;
+                height-request: 28;
+                width-request: 28;
+              }
 
-            Button try_again_button {
-              valign: center;
-              halign: center;
-              label: _("Retry");
-              use-underline: true;
+          ;
+        }
 
-              styles [
-                "suggested-action",
-                "pill",
-              ]
-            }
+        StackPage {
+          name: "no_devices";
+          child: 
+          Adw.StatusPage {
+            icon-name: "usb-stick-symbolic";
+            title: _("No Drives");
+            description: _("Insert a drive to flash the image onto");
           }
 
           ;
         }
 
-        ;
-      }
+        StackPage {
+          name: "success";
+          child: 
+          Adw.StatusPage {
+            icon-name: "check-round-outline-symbolic";
+            title: _("Flashing Completed");
+            description: _("The drive can be safely removed");
+            child: 
+            Box {
+              orientation: vertical;
+              spacing: 12;
 
-      StackPage {
-        name: "flashing";
-        child:
-        Adw.StatusPage flashing_page {
-          title: _("Flashing…");
-          icon-name: "flash-symbolic";
-          description: _("Do not remove the drive");
+              Button done_button {
+                valign: center;
+                halign: center;
+                label: _("Finish");
+                use-underline: true;
 
-          Box {
-            orientation: vertical;
-            spacing: 36;
-
-            ProgressBar progress_bar {
-              valign: center;
-              halign: center;
-              show-text: true;
+                styles [
+                  "suggested-action",
+                  "pill",
+                ]
+              }
             }
 
-            Button cancel_button {
-              valign: center;
-              halign: center;
-              label: _("_Cancel");
-              use-underline: true;
-
-              styles [
-                "pill",
-              ]
-            }
+            ;
           }
+
+          ;
         }
 
-        ;
+        StackPage {
+          name: "failure";
+          child: 
+          Adw.StatusPage {
+            icon-name: "error-symbolic";
+            title: _("Flashing Unsuccessful");
+            child: 
+            Box {
+              orientation: vertical;
+              spacing: 12;
+
+              Button try_again_button {
+                valign: center;
+                halign: center;
+                label: _("Retry");
+                use-underline: true;
+
+                styles [
+                  "suggested-action",
+                  "pill",
+                ]
+              }
+            }
+
+            ;
+          }
+
+          ;
+        }
+
+        StackPage {
+          name: "flashing";
+          child:
+          Adw.StatusPage flashing_page {
+            title: _("Flashing…");
+            icon-name: "flash-symbolic";
+            description: _("Do not remove the drive");
+
+            Box {
+              orientation: vertical;
+              spacing: 36;
+
+              ProgressBar progress_bar {
+                valign: center;
+                halign: center;
+                show-text: true;
+              }
+
+              Button cancel_button {
+                valign: center;
+                halign: center;
+                label: _("_Cancel");
+                use-underline: true;
+
+                styles [
+                  "pill",
+                ]
+              }
+            }
+          }
+
+          ;
+        }
       }
     }
   }
