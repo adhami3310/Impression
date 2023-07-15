@@ -79,6 +79,7 @@ template $AppWindow : Adw.ApplicationWindow {
                 Image {
                   icon-name: "media-optical-cd-symbolic";
                   pixel-size: 64;
+                  styles ["dim-label"]
                 }
 
                 Label name_value_label {
@@ -105,12 +106,18 @@ template $AppWindow : Adw.ApplicationWindow {
             }
 
             Adw.PreferencesGroup {
-              ListBox available_devices_list {
-                selection-mode: none;
 
-                styles [
-                  "boxed-list",
-                ]
+              Adw.Clamp {
+                maximum-size: 450;
+                tightening-threshold: 200;
+
+                ListBox available_devices_list {
+                  selection-mode: none;
+
+                  styles [
+                    "boxed-list",
+                  ]
+                }
               }
             }
 
