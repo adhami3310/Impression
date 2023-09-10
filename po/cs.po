@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: impression\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-06-20 22:45-0400\n"
-"PO-Revision-Date: 2023-06-10 13:00+0200\n"
+"PO-Revision-Date: 2023-08-13 09:42+0200\n"
 "Last-Translator: Amerey.eu <info@amerey.eu>\n"
 "Language-Team: \n"
 "Language: cs\n"
@@ -35,7 +35,7 @@ msgstr "Vytvořte bootovatelné disky"
 
 #: data/io.gitlab.adhami3310.Impression.desktop.in.in:11
 msgid "usb;flash;bootable;drive;iso;disk;image"
-msgstr ""
+msgstr "usb;flash;bootable;drive;iso;disk;image;jednotka;obraz;bootování"
 
 #: data/io.gitlab.adhami3310.Impression.gschema.xml.in:6
 msgid "Window width"
@@ -85,7 +85,7 @@ msgstr "iso"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:33
 msgid "disk"
-msgstr ""
+msgstr "disk"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:34
 msgid "image"
@@ -105,21 +105,23 @@ msgstr "Obrazovka úspěchu s velkým zaškrtnutím"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:79
 msgid "This minor release of Impression delivers:"
-msgstr ""
+msgstr "Tato verze Impression přináší:"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:81
 msgid "Support for mobile screen sizes"
-msgstr ""
+msgstr "Podpora velikostí obrazovky mobilních zařízení"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:82
 msgid "Various bug fixes, improving reliability and stability"
-msgstr ""
+msgstr "Různé opravy chyb zvyšující spolehlivost a stabilitu"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:83
 msgid ""
 "Brazillian Portugese translations, making Impression available in a total of "
 "9 languages"
 msgstr ""
+"Překlady do brazilské portugalštiny, díky čemuž je Impression k dispozici "
+"celkem v 9 jazycích"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:85
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:100
@@ -127,30 +129,35 @@ msgid ""
 "Impression is made possible by volunteer developers, designers, and "
 "translators. Thank you for your contributions!"
 msgstr ""
+"Impression je tvořen dobrovolnými vývojáři, designéry a překladateli. "
+"Děkujeme za vaše příspěvky!"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:90
 msgid ""
 "This major release of Impression brings a bunch of exciting improvements:"
-msgstr ""
+msgstr "Tato verze Impression přináší spoustu zajímavých vylepšení:"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:92
 msgid ""
 "Visual enhancements to make the app more beautiful, focused, and engaging"
-msgstr ""
+msgstr "Vizuální vylepšení, díky kterým bude aplikace krásnější  a poutavější"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:93
 msgid "Automatic updates of the available drives list"
-msgstr ""
+msgstr "Automatické aktualizace seznamu dostupných disků"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:94
 msgid "Explicit drive selection before flashing, to avoid accidental data loss"
 msgstr ""
+"Explicitní výběr disku před flashováním, aby nedošlo k náhodné ztrátě dat"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:95
 msgid ""
 "Turkish and Czech translations, making Impression available in a total of 8 "
 "languages"
 msgstr ""
+"Turecký a český překlad, díky čemuž je Impression dostupný celkem v 8 "
+"jazycích"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:97
 msgid ""
@@ -160,9 +167,12 @@ msgid ""
 "major releases, while fixes and translations will result in new minor "
 "releases."
 msgstr ""
+"Schéma verzí bylo zjednodušeno tak, aby zahrnovalo pouze hlavní a vedlejší "
+"verze. Předchozí verze Impression byla 1.0.1, toto je verze 2.0. V budoucnu "
+"budou nové funkce a znatelné změny zahrnuty do nových hlavních verzí, "
+"zatímco opravy a překlady povedou k novým podverzím."
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:105
-#, fuzzy
 msgid "Added Spanish, French, German, Russian, and Italian translations."
 msgstr "Přidány španělské, francouzské, německé, ruské a italské překlady."
 
