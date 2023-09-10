@@ -60,7 +60,7 @@ msgid ""
 "distro-hoppers and casual computer users."
 msgstr ""
 "Brenne mit Leichtigkeit Datenträgerabbilder auf Laufwerke. Wähle ein "
-"dAtenträgerabbild aus, lege das Laufwerk ein, und schon kann es losgehen! "
+"Datenträgerabbild aus, lege das Laufwerk ein, und schon kann es losgehen! "
 "Impression ist ein nützliches Tool sowohl für begeisterte Distro-Hopper als "
 "auch für gelegentliche Computerbenutzer."
 
