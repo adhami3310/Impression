@@ -371,6 +371,7 @@ impl AppWindow {
     async fn open_dialog(&self) {
         let filter = gtk::FileFilter::new();
         filter.add_mime_type("application/x-iso9660-image");
+        filter.add_mime_type("application/x-raw-disk-image");
         filter.set_name(Some(&gettext("Disk Images")));
 
         let model = gio::ListStore::new(gtk::FileFilter::static_type());
