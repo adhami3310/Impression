@@ -385,7 +385,7 @@ impl AppWindow {
             .await
         {
             let path = file.path().unwrap();
-            println!("Selected disk Image: {:?}", path);
+            println!("Selected Disk Image: {:?}", path);
 
             self.open_file(path).await;
         }
