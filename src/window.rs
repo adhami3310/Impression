@@ -33,6 +33,8 @@ mod imp {
     #[template(resource = "/io/gitlab/adhami3310/Impression/blueprints/window.ui")]
     pub struct AppWindow {
         #[template_child]
+        pub toast_overlay: TemplateChild<adw::ToastOverlay>,
+        #[template_child]
         pub stack: TemplateChild<gtk::Stack>,
         #[template_child]
         pub welcome_page: TemplateChild<adw::StatusPage>,
@@ -83,6 +85,7 @@ mod imp {
 
         fn new() -> Self {
             Self {
+                toast_overlay: TemplateChild::default(),
                 stack: TemplateChild::default(),
                 welcome_page: TemplateChild::default(),
                 open_image_button: TemplateChild::default(),
@@ -393,6 +396,14 @@ impl AppWindow {
 
     pub async fn open_file(&self, path: PathBuf) {
         let filename = path.file_name().unwrap().to_str().unwrap().to_owned();
+
+        if !["iso", "img"].contains(&path.extension().unwrap().to_str().unwrap()) {
+            self.imp()
+                .toast_overlay
+                .add_toast(adw::Toast::new(&gettext("File is not a Disk Image")));
+            println!("Not a Disk Image: {:?}", path);
+            return;
+        }
 
         self.imp().name_value_label.set_text(&filename);
 
