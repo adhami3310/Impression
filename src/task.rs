@@ -20,14 +20,19 @@ pub struct Task<'a> {
 }
 
 impl<'a> Task<'a> {
-    pub fn new(image: File, sender: &'a glib::Sender<FlashStatus>, is_running: Arc<AtomicBool>, check: bool) -> Self {
+    pub fn new(
+        image: File,
+        sender: &'a glib::Sender<FlashStatus>,
+        is_running: Arc<AtomicBool>,
+        check: bool,
+    ) -> Self {
         Self {
             image,
             writer: Default::default(),
             sender,
             millis_between: 125,
             is_running,
-            check
+            check,
         }
     }
 

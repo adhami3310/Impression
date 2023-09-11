@@ -100,7 +100,7 @@ impl FlashRequest {
 
         let Ok(image) = std::fs::File::open(source) else {
             self.sender
-            .send(FlashStatus::Done(Some("Failed to open image".to_string())))
+                .send(FlashStatus::Done(Some("Failed to open image".to_string())))
                 .expect("Concurrency Issues");
 
             return;
@@ -109,7 +109,7 @@ impl FlashRequest {
         let mut task = Task::new(image.into(), &self.sender, self.is_running.clone(), false);
         task.subscribe(file.into());
 
-        let Ok (_) = futures::executor::block_on(task.process(&mut bucket)) else {
+        let Ok(_) = futures::executor::block_on(task.process(&mut bucket)) else {
             self.sender
                 .send(FlashStatus::Done(Some("Failed to open image".to_string())))
                 .expect("Concurrency Issues");
