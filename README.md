@@ -16,7 +16,7 @@ A straight-forward and modern application to create bootable drives.
 
 
 ### Third Party Packages
-You may also be able to obtain Converter from your distribution's package manager. Note these packages are maintained independently and thus may differ from the official version on Flathub. Please report any issues experienced to the package maintainer.
+You may also be able to obtain Impression from your distribution's package manager. Note these packages are maintained independently and thus may differ from the official version on Flathub. Please report any issues experienced to the package maintainer.
 
 [![Packaging status](https://repology.org/badge/vertical-allrepos/impression.svg)](https://repology.org/project/impression/versions)
 
