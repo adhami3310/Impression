@@ -1,17 +1,19 @@
 use dbus::arg::{OwnedFd, RefArg, Variant};
 use dbus::blocking::{Connection, Proxy};
 use dbus_udisks2::{DiskDevice, Disks, UDisks2};
+use futures::StreamExt;
 use itertools::Itertools;
 use std::collections::HashMap;
 use std::fs::File;
+use std::io::Write;
 use std::os::unix::io::FromRawFd;
-use std::path::PathBuf;
 use std::str;
 use std::sync::atomic::AtomicBool;
 use std::sync::Arc;
 use std::time::Duration;
 
 use crate::task::Task;
+use crate::window::DiskImage;
 
 type UDisksOptions = HashMap<&'static str, Variant<Box<dyn RefArg>>>;
 
@@ -29,6 +31,7 @@ pub fn refresh_devices() -> Result<Vec<DiskDevice>, ()> {
 
 #[derive(Clone, Debug, PartialEq)]
 pub enum FlashPhase {
+    Download,
     Copy,
     Read,
     Validate,
@@ -41,7 +44,7 @@ pub enum FlashStatus {
 }
 
 pub struct FlashRequest {
-    source: PathBuf,
+    source: DiskImage,
     destination: DiskDevice,
     sender: glib::Sender<FlashStatus>,
     is_running: Arc<AtomicBool>,
@@ -49,7 +52,7 @@ pub struct FlashRequest {
 
 impl FlashRequest {
     pub fn new(
-        source: PathBuf,
+        source: DiskImage,
         destination: DiskDevice,
         sender: glib::Sender<FlashStatus>,
         is_running: Arc<AtomicBool>,
@@ -63,10 +66,6 @@ impl FlashRequest {
     }
 
     pub fn perform(self) {
-        self.sender
-            .send(FlashStatus::Active(FlashPhase::Copy, 0.0))
-            .expect("Concurrency Issues");
-
         let source = self.source;
         let device = self.destination;
 
@@ -96,21 +95,108 @@ impl FlashRequest {
             return;
         }
 
-        let mut bucket = [0u8; 64 * 1024];
+        let image = match source {
+            DiskImage::Local {
+                path,
+                filename: _,
+                size: _,
+            } => {
+                let Ok(image) = std::fs::File::open(path) else {
+                    self.sender
+                        .send(FlashStatus::Done(Some("Failed to open image".to_string())))
+                        .expect("Concurrency Issues");
 
-        let Ok(image) = std::fs::File::open(source) else {
-            self.sender
-                .send(FlashStatus::Done(Some("Failed to open image".to_string())))
-                .expect("Concurrency Issues");
+                    return;
+                };
 
-            return;
+                image
+            }
+            DiskImage::Online { url, name } => {
+                let result_path =
+                    std::env::var("XDG_CACHE_HOME").unwrap() + "/tmp/" + &name + ".iso";
+
+                let downloading_path = result_path.clone();
+
+                #[derive(thiserror::Error, Debug)]
+                #[error("Error while getting total size")]
+                struct TotalSize {}
+
+                let downloading_sender = self.sender.clone();
+
+                match futures::executor::block_on(async move {
+                    let handle = std::thread::spawn(move || {
+                        let rt = tokio::runtime::Builder::new_multi_thread()
+                            .enable_all()
+                            .build()
+                            .expect("Cannot Build a runtime");
+
+                        let handle = rt.spawn(async move {
+                            let mut file = File::create(downloading_path)?;
+
+                            let res = reqwest::get(url).await?;
+
+                            let total_size = res.content_length().ok_or(TotalSize {})?;
+                            let mut downloaded: u64 = 0;
+                            let mut stream = res.bytes_stream();
+
+                            while let Some(Ok(chunk)) = stream.next().await {
+                                file.write_all(&chunk)?;
+                                downloaded =
+                                    std::cmp::min(downloaded + (chunk.len() as u64), total_size);
+                                downloading_sender
+                                    .send(FlashStatus::Active(
+                                        FlashPhase::Download,
+                                        downloaded as f64 / total_size as f64,
+                                    ))
+                                    .expect("Concurrency Issues");
+                            }
+
+                            Ok::<(), anyhow::Error>(())
+                        });
+
+                        rt.block_on(handle).expect("Concurrency Issue")
+                    });
+
+                    handle.join().expect("Concurrency Issue")
+                }) {
+                    anyhow::Result::Err(_) => {
+                        self.sender
+                            .send(FlashStatus::Done(Some("Failed to open image".to_string())))
+                            .expect("Concurrency Issues");
+
+                        return;
+                    }
+                    anyhow::Result::Ok(()) => {
+                        let Ok(image) = std::fs::File::open(result_path) else {
+                            self.sender
+                                .send(FlashStatus::Done(Some("Failed to open image".to_string())))
+                                .expect("Concurrency Issues");
+
+                            return;
+                        };
+
+                        image
+                    }
+                }
+            }
         };
 
-        let mut task = Task::new(image.into(), &self.sender, self.is_running.clone(), false);
-        task.subscribe(file.into());
+        FlashRequest::load_file(image, file, &self.sender, self.is_running.clone());
+    }
+
+    fn load_file(
+        image: File,
+        target_file: File,
+        sender: &glib::Sender<FlashStatus>,
+        is_running: Arc<AtomicBool>,
+    ) {
+        let mut task = Task::new(image.into(), &sender, is_running, false);
+        task.subscribe(target_file.into());
+
+        let mut bucket = [0u8; 64 * 1024];
 
         let Ok(_) = futures::executor::block_on(task.process(&mut bucket)) else {
-            self.sender
+            sender
                 .send(FlashStatus::Done(Some("Failed to open image".to_string())))
                 .expect("Concurrency Issues");
 

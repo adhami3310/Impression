@@ -37,31 +37,97 @@ template $AppWindow : Adw.ApplicationWindow {
           StackPage {
             name: "welcome";
             child:
-            Adw.StatusPage welcome_page {
-              icon-name: "io.gitlab.adhami3310.Impression-symbolic";
-              title: "Impression";
-              description: _("Choose an image to flash");
+            Box {
               hexpand: true;
               vexpand: true;
-              child:
-              Box {
-                orientation: vertical;
-                spacing: 12;
+              orientation: vertical;
+              spacing: 12;
+              Adw.PreferencesPage {
+                Adw.PreferencesGroup {
+                  Image app_icon {
+                    icon-name: "io.gitlab.adhami3310.Impression";
+                    
+                    styles ["app_icon"]
+                  }
+                  Label {
+                    label: _("Choose Image");
 
-                Button open_image_button {
-                  valign: center;
-                  halign: center;
-                  label: _("Open File…");
-                  use-underline: true;
+                    styles ["title", "title-1"]
+                  }
 
-                  styles [
-                    "suggested-action",
-                    "pill",
-                  ]
+                  margin-bottom: 12;
+                }
+
+                Adw.PreferencesGroup {
+                  Adw.ActionRow open_image_button {
+                    title: _("Open File…");
+                    activatable-widget: next_icon;
+
+                    Image next_icon {
+                      icon-name: 'go-next-symbolic';
+                    }
+                  }
+                }
+
+                Adw.PreferencesGroup {
+                  title: _("Direct Download");
+
+                  [header-suffix]
+                  DropDown architecture {
+                    model: StringList {
+                      strings ["x86_64", "aarch64"]
+                    };
+
+                    sensitive: false;
+                    
+                    styles ["architecture"]
+                  }
+
+                  Box {
+                    orientation: vertical;
+
+                    Box download_spinner {
+                      orientation: vertical;
+
+                      Spinner {
+                        valign: center;
+                        vexpand: true;
+                        height-request: 32;
+                        width-request: 32;
+                        spinning: true;
+                      }
+                      styles ["card", "loading-frame"]
+                    }
+
+                    Box offline_screen {
+                      orientation: vertical;
+                      visible: false;
+
+                      Adw.StatusPage {
+                        icon-name: 'offline-globe-symbolic';
+                        title: _("No Connection");
+                        description: _("Connect to the internet to view available images");
+                      }
+                      styles ["card"]
+                    }
+                    Box distros {
+                      visible: false;
+                      orientation: vertical;
+                      ListBox amd_distros {
+                        selection-mode: none;
+                        styles ["boxed-list"]
+                      }
+
+                      ListBox arm_distros {
+                        visible: false;
+                        selection-mode: none;
+                        styles ["boxed-list"]
+                      }
+                    }
+
+                  }
                 }
               }
-
-              ;
             }
 
             ;

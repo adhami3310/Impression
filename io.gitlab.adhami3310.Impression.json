@@ -1,7 +1,7 @@
 {
     "id": "io.gitlab.adhami3310.Impression",
     "runtime": "org.gnome.Platform",
-    "runtime-version": "44",
+    "runtime-version": "45",
     "sdk": "org.gnome.Sdk",
     "sdk-extensions": [
         "org.freedesktop.Sdk.Extension.rust-stable"
@@ -12,7 +12,8 @@
         "--socket=fallback-x11",
         "--device=dri",
         "--socket=wayland",
-        "--system-talk-name=org.freedesktop.UDisks2"
+        "--system-talk-name=org.freedesktop.UDisks2",
+        "--share=network"
     ],
     "build-options": {
         "append-path": "/usr/lib/sdk/rust-stable/bin",

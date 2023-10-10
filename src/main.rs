@@ -2,6 +2,7 @@ mod application;
 #[rustfmt::skip]
 mod config;
 mod flash;
+mod online;
 mod task;
 mod widgets;
 mod window;
@@ -57,6 +58,8 @@ fn main() -> ExitCode {
 
     let res = gio::Resource::load(RESOURCES_FILE).expect("Could not load gresource file");
     gio::resources_register(&res);
+
+    // let _ = collect_online_distros();
 
     let app = App::new();
     app.run()

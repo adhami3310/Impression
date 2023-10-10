@@ -9,11 +9,26 @@ use itertools::Itertools;
 
 use crate::{
     config::{APP_ID, VERSION},
-    flash::{refresh_devices, FlashRequest, FlashStatus},
-    get_size_string, spawn,
+    flash::{refresh_devices, FlashPhase, FlashRequest, FlashStatus},
+    get_size_string,
+    online::collect_online_distros,
+    spawn,
     widgets::device_list,
     RemoveAll,
 };
+
+#[derive(Debug, Clone)]
+pub enum DiskImage {
+    Local {
+        path: PathBuf,
+        filename: String,
+        size: u64,
+    },
+    Online {
+        url: String,
+        name: String,
+    },
+}
 
 mod imp {
 
@@ -27,9 +42,11 @@ mod imp {
     use super::*;
 
     use adw::subclass::prelude::AdwApplicationWindowImpl;
+    use derivative::Derivative;
     use gtk::CompositeTemplate;
 
-    #[derive(Debug, CompositeTemplate)]
+    #[derive(Debug, CompositeTemplate, Derivative)]
+    #[derivative(Default(new = "true"))]
     #[template(resource = "/io/gitlab/adhami3310/Impression/blueprints/window.ui")]
     pub struct AppWindow {
         #[template_child]
@@ -37,9 +54,9 @@ mod imp {
         #[template_child]
         pub stack: TemplateChild<gtk::Stack>,
         #[template_child]
-        pub welcome_page: TemplateChild<adw::StatusPage>,
+        pub app_icon: TemplateChild<gtk::Image>,
         #[template_child]
-        pub open_image_button: TemplateChild<gtk::Button>,
+        pub open_image_button: TemplateChild<adw::ActionRow>,
         #[template_child]
         pub available_devices_list: TemplateChild<gtk::ListBox>,
         #[template_child]
@@ -60,12 +77,25 @@ mod imp {
         pub cancel_button: TemplateChild<gtk::Button>,
         #[template_child]
         pub flashing_page: TemplateChild<adw::StatusPage>,
+        #[template_child]
+        pub download_spinner: TemplateChild<gtk::Box>,
+        #[template_child]
+        pub offline_screen: TemplateChild<gtk::Box>,
+        #[template_child]
+        pub distros: TemplateChild<gtk::Box>,
+        #[template_child]
+        pub amd_distros: TemplateChild<gtk::ListBox>,
+        #[template_child]
+        pub arm_distros: TemplateChild<gtk::ListBox>,
+        #[template_child]
+        pub architecture: TemplateChild<gtk::DropDown>,
 
         pub selected_device_index: Cell<Option<usize>>,
         pub is_running: std::sync::Arc<AtomicBool>,
-        pub selected_image_path: RefCell<Option<PathBuf>>,
+        pub selected_image: RefCell<Option<DiskImage>>,
         pub available_devices: RefCell<Vec<DiskDevice>>,
         pub provider: gtk::CssProvider,
+        #[derivative(Default(value = "gio::Settings::new(APP_ID)"))]
         pub settings: gio::Settings,
     }
 
@@ -82,32 +112,6 @@ mod imp {
         fn instance_init(obj: &glib::subclass::InitializingObject<Self>) {
             obj.init_template();
         }
-
-        fn new() -> Self {
-            Self {
-                toast_overlay: TemplateChild::default(),
-                stack: TemplateChild::default(),
-                welcome_page: TemplateChild::default(),
-                open_image_button: TemplateChild::default(),
-                available_devices_list: TemplateChild::default(),
-                name_value_label: TemplateChild::default(),
-                size_label: TemplateChild::default(),
-                flash_button: TemplateChild::default(),
-                done_button: TemplateChild::default(),
-                try_again_button: TemplateChild::default(),
-                loading_spinner: TemplateChild::default(),
-                progress_bar: TemplateChild::default(),
-                cancel_button: TemplateChild::default(),
-                flashing_page: TemplateChild::default(),
-
-                is_running: std::sync::Arc::new(AtomicBool::new(false)),
-                selected_device_index: Cell::new(None),
-                available_devices: RefCell::new(Vec::new()),
-                selected_image_path: RefCell::new(None),
-                provider: gtk::CssProvider::new(),
-                settings: gio::Settings::new(APP_ID),
-            }
-        }
     }
 
     impl ObjectImpl for AppWindow {
@@ -118,7 +122,7 @@ mod imp {
                 self.obj().add_css_class("devel");
             }
 
-            self.welcome_page.set_icon_name(Some(APP_ID));
+            self.app_icon.set_icon_name(Some(APP_ID));
 
             let obj = self.obj();
             obj.load_window_size();
@@ -226,11 +230,24 @@ impl AppWindow {
             .store(true, std::sync::atomic::Ordering::SeqCst);
         let (tx, rx) = glib::MainContext::channel(glib::PRIORITY_DEFAULT);
         let f = FlashRequest::new(
-            self.image_path(),
+            self.selected_image(),
             self.selected_device().unwrap(),
             tx,
             self.imp().is_running.clone(),
         );
+        if matches!(self.selected_image(), DiskImage::Online { url: _, name: _ }) {
+            let flashing_page = &self.imp().flashing_page;
+            flashing_page.set_description(Some(&gettext(
+                "Flashing will begin once the download is completed",
+            )));
+            flashing_page.set_title(&gettext("Downloading Image…"));
+            flashing_page.set_icon_name(Some("folder-download-symbolic"));
+        } else {
+            let flashing_page = &self.imp().flashing_page;
+            flashing_page.set_description(Some(&gettext("Do not remove the drive")));
+            flashing_page.set_title(&gettext("Flashing…"));
+            flashing_page.set_icon_name(Some("flash-symbolic"));
+        }
         rx.attach(
             None,
             clone!(@weak self as this => @default-return Continue(false), move |x| {
@@ -239,17 +256,38 @@ impl AppWindow {
                     return Continue(false);
                 }
                 match x {
-                    FlashStatus::Active(_, x) => {
-                        // match p {
-                        //     FlashPhase::Copy => this
-                        //     .imp()
-                        //     .flashing_page
-                        //     .set_description(Some(&gettext("Copying files…"))),
-                        //     _ => this
-                        //     .imp()
-                        //     .flashing_page
-                        //     .set_description(Some(&gettext("Validating…"))),
-                        // }
+                    FlashStatus::Active(p, x) => {
+                        let flashing_page = &this.imp().flashing_page;
+                        flashing_page
+                            .set_description(Some(&match p {
+                                FlashPhase::Download => {
+                                    gettext("Flashing will begin once the download is completed")
+                                }
+                                FlashPhase::Copy => {
+                                    gettext("Copying files…")
+                                }
+                                _ => {
+                                    gettext("Validating…")
+                                }
+                            }));
+                        flashing_page
+                            .set_title(&match p {
+                                FlashPhase::Download => {
+                                    gettext("Downloading Image…")
+                                }
+                                _ => {
+                                    gettext("Flashing…")
+                                }
+                            });
+                        flashing_page
+                            .set_icon_name(Some(match p {
+                                FlashPhase::Download => {
+                                    "folder-download-symbolic"
+                                }
+                                _ => {
+                                    "flash-symbolic"
+                                }
+                            }));
                         this.imp().progress_bar.set_fraction(x);
                         glib::MainContext::default().iteration(true);
                         Continue(true)
@@ -295,8 +333,8 @@ impl AppWindow {
         }
     }
 
-    fn image_path(&self) -> PathBuf {
-        let x = self.imp().selected_image_path.borrow().to_owned();
+    fn selected_image(&self) -> DiskImage {
+        let x = self.imp().selected_image.borrow().to_owned();
         x.unwrap()
     }
 
@@ -326,7 +364,7 @@ impl AppWindow {
         let imp = self.imp();
 
         imp.open_image_button
-            .connect_clicked(clone!(@weak self as this => move |_| {
+            .connect_activated(clone!(@weak self as this => move |_| {
                 spawn!(async move {
                     this.open_dialog().await;
                 });
@@ -369,6 +407,90 @@ impl AppWindow {
                 Continue(true)
             }),
         );
+
+        imp.architecture
+            .connect_selected_notify(clone!(@weak self as this => move |a| {
+                match a.selected() {
+                    0 => {
+                        this.imp().amd_distros.set_visible(true);
+                        this.imp().arm_distros.set_visible(false);
+                    }
+                    1 => {
+                        this.imp().amd_distros.set_visible(false);
+                        this.imp().arm_distros.set_visible(true);
+                    }
+                    _ => {}
+                }
+            }));
+
+        timeout_add_seconds_local(
+            10,
+            clone!(@weak self as this => @default-return Continue(false), move || {
+                // For some reason this never works (dns error)
+                let current_stack = this.imp().stack.visible_child_name().unwrap();
+                if current_stack == "welcome" && this.imp().offline_screen.is_visible() {
+                    this.get_distros();
+                }
+                Continue(true)
+            }),
+        );
+
+        self.get_distros();
+    }
+
+    fn get_distros(&self) {
+        let (tx, rx) = glib::MainContext::channel(glib::PRIORITY_DEFAULT);
+
+        std::thread::spawn(move || {
+            let distros = collect_online_distros();
+            tx.send(distros).expect("Concurrency Issues");
+        });
+
+        rx.attach(
+            None,
+            clone!(@weak self as this => @default-return Continue(false), move |online_distros| {
+                if let Ok((amd_distros, arm_distros)) = online_distros {
+                    this.load_distros(&this.imp().amd_distros, amd_distros);
+                    this.load_distros(&this.imp().arm_distros, arm_distros);
+                    this.imp().download_spinner.set_visible(false);
+                    this.imp().offline_screen.set_visible(false);
+                    this.imp().distros.set_visible(true);
+                    this.imp().architecture.set_sensitive(true);
+                } else {
+                    this.imp().download_spinner.set_visible(false);
+                    this.imp().offline_screen.set_visible(true);
+                }
+                Continue(false)
+            }),
+        );
+    }
+
+    fn load_distros(
+        &self,
+        target: &TemplateChild<gtk::ListBox>,
+        distros: Vec<(String, Option<String>, String)>,
+    ) {
+        target.remove_all();
+        for (name, version, url) in distros {
+            let action_row = adw::ActionRow::new();
+            action_row.set_title(&name);
+            if let Some(subtitle) = version {
+                action_row.set_subtitle(&subtitle);
+            }
+            let next_image = gtk::Image::new();
+            next_image.set_icon_name(Some("go-next-symbolic"));
+            action_row.add_suffix(&next_image);
+            action_row.set_activatable_widget(Some(&next_image));
+            action_row.connect_activated(clone!(@weak self as this => move |_| {
+                let name = name.clone();
+                let url = url.clone();
+                spawn!(async move {
+                    this.imp().selected_image.replace(Some(DiskImage::Online { url, name }));
+                    this.load_stored();
+                });
+            }));
+            target.append(&action_row);
+        }
     }
 
     async fn open_dialog(&self) {
@@ -405,13 +527,36 @@ impl AppWindow {
             return;
         }
 
-        self.imp().name_value_label.set_text(&filename);
+        let size = std::fs::File::open(path.clone())
+            .unwrap()
+            .metadata()
+            .unwrap()
+            .len();
 
-        self.imp().selected_image_path.replace(Some(path.clone()));
+        self.imp().selected_image.replace(Some(DiskImage::Local {
+            path,
+            filename,
+            size,
+        }));
 
-        self.imp().size_label.set_text(&get_size_string(
-            std::fs::File::open(path).unwrap().metadata().unwrap().len(),
-        ));
+        self.load_stored();
+    }
+
+    fn load_stored(&self) {
+        match self.selected_image() {
+            DiskImage::Local {
+                path: _,
+                filename,
+                size,
+            } => {
+                self.imp().name_value_label.set_text(&filename);
+                self.imp().size_label.set_text(&get_size_string(size));
+            }
+            DiskImage::Online { url: _, name } => {
+                self.imp().name_value_label.set_text(&name);
+                self.imp().size_label.set_text("");
+            }
+        }
 
         self.refresh_devices();
     }
