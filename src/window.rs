@@ -391,9 +391,7 @@ impl AppWindow {
             }));
         imp.try_again_button
             .connect_clicked(clone!(@weak self as this => move |_| {
-                this.imp().available_devices.replace(vec![]);
-                this.imp().stack.set_visible_child_name("welcome");
-                this.imp().open_image_button.grab_focus();
+                this.imp().stack.set_visible_child_name("device_list");
             }));
         timeout_add_seconds_local(
             2,
