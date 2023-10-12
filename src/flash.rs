@@ -182,6 +182,8 @@ impl FlashRequest {
         };
 
         FlashRequest::load_file(image, file, &self.sender, self.is_running.clone());
+
+        let _ = udisks_eject(&device.drive.path);
     }
 
     fn load_file(
@@ -203,6 +205,29 @@ impl FlashRequest {
             return;
         };
     }
+}
+
+fn udisks_eject(dbus_path: &str) -> Result<(), ()> {
+    let connection = Connection::new_system().map_err(|_| ())?;
+
+    let dbus_path = ::dbus::strings::Path::new(dbus_path).map_err(|_| ())?;
+
+    let proxy = Proxy::new(
+        "org.freedesktop.UDisks2",
+        dbus_path,
+        Duration::new(25, 0),
+        &connection,
+    );
+
+    let options = UDisksOptions::new();
+    let res: Result<(), _> =
+        proxy.method_call("org.freedesktop.UDisks2.Drive", "Eject", (options,));
+
+    if res.is_err() {
+        return Err(());
+    }
+
+    Ok(())
 }
 
 fn udisks_unmount(dbus_path: &str) -> Result<(), ()> {
