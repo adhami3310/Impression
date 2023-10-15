@@ -3,7 +3,7 @@
     <id>@app-id@</id>
 
     <name>Impression</name>
-    <developer_name>Khaleel Al-Adhami</developer_name>
+    <developer_name translatable="no">Khaleel Al-Adhami</developer_name>
     <summary>Create bootable drives</summary>
 
     <metadata_license>CC-BY-SA-4.0</metadata_license>
@@ -63,7 +63,7 @@
 
     <launchable type="desktop-id">@app-id@.desktop</launchable>
 
-    <url type="homepage">https://gitlab.com/adhami3310/Impression</url>
+    <url type="homepage">https://apps.gnome.org/Impression/</url>
     <url type="bugtracker">https://gitlab.com/adhami3310/Impression/-/issues</url>
     <url type="help">https://gitlab.com/adhami3310/Impression/-/issues</url>
     <url type="vcs-browser">https://gitlab.com/adhami3310/Impression</url>
