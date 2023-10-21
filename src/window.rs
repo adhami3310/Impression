@@ -221,6 +221,32 @@ impl AppWindow {
         dialog.present();
     }
 
+    fn flash_dialog(&self) {
+        let flash_dialog = adw::MessageDialog::new(
+            Some(self),
+            Some(&gettext("Erase drive?")),
+            Some(&gettext!(
+                "You will lose all data stored on {}",
+                device_list::device_label(&self.selected_device().unwrap())
+            )),
+        );
+
+        flash_dialog.add_response("cancel", &gettext("_Cancel"));
+        flash_dialog.add_response("erase", &gettext("_Erase"));
+        flash_dialog.set_response_appearance("erase", adw::ResponseAppearance::Destructive);
+
+        flash_dialog.connect_response(
+            None,
+            clone!(@weak self as this => move |_, response_id| {
+                if response_id == "erase" {
+                    this.flash();
+                }
+            }),
+        );
+
+        flash_dialog.present();
+    }
+
     fn flash(&self) {
         self.imp().stack.set_visible_child_name("flashing");
         self.imp().progress_bar.set_fraction(0.);
@@ -377,7 +403,7 @@ impl AppWindow {
             }));
         imp.flash_button
             .connect_clicked(clone!(@weak self as this => move |_| {
-                this.flash();
+                this.flash_dialog();
             }));
         imp.cancel_button
             .connect_clicked(clone!(@weak self as this => move |_| {

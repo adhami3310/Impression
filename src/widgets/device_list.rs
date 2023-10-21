@@ -54,7 +54,7 @@ pub fn new(
     res
 }
 
-fn device_label(device: &DiskDevice) -> String {
+pub fn device_label(device: &DiskDevice) -> String {
     let parent_id_label = device.parent.id_label.clone();
     let partition_id_label = device
         .partitions
