@@ -110,17 +110,11 @@ impl App {
                     app.quit();
                 }))
                 .build(),
-            gio::ActionEntry::builder("new-window")
-                .activate(clone!(@weak self as app => move |_, _, _| {
-                    app.present_main_window();
-                }))
-                .build(),
         ]);
     }
 
     // Sets up keyboard shortcuts
     fn setup_accels(&self) {
-        self.set_accels_for_action("app.new-window", &["<Control>n"]);
         self.set_accels_for_action("app.quit", &["<Control>q"]);
         self.set_accels_for_action("win.close", &["<Control>w"]);
         self.set_accels_for_action("win.open", &["<Control>o"]);
