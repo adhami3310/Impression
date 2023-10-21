@@ -12,6 +12,12 @@ template $AppWindow : Adw.ApplicationWindow {
     orientation: vertical;
 
     Adw.HeaderBar headerbar {
+      Button homescreen_button {
+        icon-name: 'go-previous-symbolic';
+        tooltip-text: _('Back');
+        visible: false;
+        styles ['flat']
+      }
 
       [end]
       MenuButton {
@@ -338,13 +344,6 @@ template $AppWindow : Adw.ApplicationWindow {
 }
 
 menu primary_menu {
-  section {
-    item {
-      label: _("Open File…");
-      action: "win.open";
-    }
-  }
-
   section {
     item {
       label: _("Keyboard Shortcuts");

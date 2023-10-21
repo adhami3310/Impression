@@ -66,6 +66,8 @@ mod imp {
         #[template_child]
         pub flash_button: TemplateChild<gtk::Button>,
         #[template_child]
+        pub homescreen_button: TemplateChild<gtk::Button>,
+        #[template_child]
         pub try_again_button: TemplateChild<gtk::Button>,
         #[template_child]
         pub done_button: TemplateChild<gtk::Button>,
@@ -409,10 +411,17 @@ impl AppWindow {
                 });
             }));
         imp.stack
-            .connect_visible_child_notify(clone!(@weak self as win => move |stack| {
+            .connect_visible_child_notify(clone!(@weak self as this => move |stack| {
                 if stack.visible_child_name().unwrap() == "device_list" {
-                    win.set_selected_device_index(None);
+                    this.set_selected_device_index(None);
+                    this.imp().homescreen_button.set_visible(true);
+                } else {
+                    this.imp().homescreen_button.set_visible(false);
                 }
+            }));
+        imp.homescreen_button
+            .connect_clicked(clone!(@weak self as this => move |_| {
+                this.imp().stack.set_visible_child_name("welcome");
             }));
         imp.flash_button
             .connect_clicked(clone!(@weak self as this => move |_| {
