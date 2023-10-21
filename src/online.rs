@@ -35,7 +35,6 @@ pub fn collect_online_distros() -> anyhow::Result<(
     let result_file = format!("{}db.tar.xz", temp_dir);
     let result_directory = format!("{}{}/os/", temp_dir, latest_file_stem);
     let good_distros = [
-        ("alpinelinux.org", "Alpine Linux"),
         ("archlinux.org", "Arch Linux"),
         ("endlessos.com", "Endless OS"),
         ("fedoraproject.org", "Fedora"),
