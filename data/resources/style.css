@@ -2,7 +2,7 @@
     min-height: 200px;
 }
 
-.architecture button {
+.architecture button:not(:hover) {
     background: transparent;
 }
 

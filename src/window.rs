@@ -92,6 +92,7 @@ mod imp {
 
         pub selected_device_index: Cell<Option<usize>>,
         pub is_running: std::sync::Arc<AtomicBool>,
+        pub is_flashing: std::sync::Arc<AtomicBool>,
         pub selected_image: RefCell<Option<DiskImage>>,
         pub available_devices: RefCell<Vec<DiskDevice>>,
         pub provider: gtk::CssProvider,
@@ -139,7 +140,7 @@ mod imp {
                 dbg!("Failed to save window state, {}", &err);
             }
 
-            if self.is_running.load(std::sync::atomic::Ordering::SeqCst) {
+            if self.is_flashing.load(std::sync::atomic::Ordering::SeqCst) {
                 obj.cancel_request();
                 glib::signal::Inhibit(true)
             } else {
@@ -213,7 +214,10 @@ impl AppWindow {
                     this.imp()
                         .is_running
                         .store(false, std::sync::atomic::Ordering::SeqCst);
-                    this.imp().stack.set_visible_child_name("failure");
+                    this.imp()
+                        .is_flashing
+                        .store(false, std::sync::atomic::Ordering::SeqCst);
+                    this.refresh_devices();
                 }
             }),
         );
@@ -255,7 +259,7 @@ impl AppWindow {
             .is_running
             .store(true, std::sync::atomic::Ordering::SeqCst);
         let (tx, rx) = glib::MainContext::channel(glib::PRIORITY_DEFAULT);
-        let f = FlashRequest::new(
+        let flash_job = FlashRequest::new(
             self.selected_image(),
             self.selected_device().unwrap(),
             tx,
@@ -273,16 +277,23 @@ impl AppWindow {
             flashing_page.set_description(Some(&gettext("Do not remove the drive")));
             flashing_page.set_title(&gettext("Flashing…"));
             flashing_page.set_icon_name(Some("flash-symbolic"));
+            self.imp()
+                .is_flashing
+                .store(true, std::sync::atomic::Ordering::SeqCst);
         }
         rx.attach(
             None,
             clone!(@weak self as this => @default-return Continue(false), move |x| {
                 if !this.imp().is_running.load(std::sync::atomic::Ordering::SeqCst) {
-                    this.imp().stack.set_visible_child_name("failure");
                     return Continue(false);
                 }
                 match x {
                     FlashStatus::Active(p, x) => {
+                        if !matches!(p, FlashPhase::Download) {
+                            this.imp()
+                                .is_flashing
+                                .store(true, std::sync::atomic::Ordering::SeqCst);
+                        }
                         let flashing_page = &this.imp().flashing_page;
                         flashing_page
                             .set_description(Some(&match p {
@@ -321,6 +332,7 @@ impl AppWindow {
                     FlashStatus::Done(Some(_)) => {
                         this.imp().stack.set_visible_child_name("failure");
                         this.imp().is_running.store(false, std::sync::atomic::Ordering::SeqCst);
+                        this.imp().is_flashing.store(false, std::sync::atomic::Ordering::SeqCst);
                         this.send_notification(gettext("Failed to flash image"));
                         glib::MainContext::default().iteration(true);
                         Continue(false)
@@ -328,6 +340,7 @@ impl AppWindow {
                     FlashStatus::Done(None) => {
                         this.imp().stack.set_visible_child_name("success");
                         this.imp().is_running.store(false, std::sync::atomic::Ordering::SeqCst);
+                        this.imp().is_flashing.store(false, std::sync::atomic::Ordering::SeqCst);
                         this.send_notification(gettext("Image flashed"));
                         glib::MainContext::default().iteration(true);
                         Continue(false)
@@ -336,7 +349,7 @@ impl AppWindow {
             }),
         );
         std::thread::spawn(move || {
-            f.perform();
+            flash_job.perform();
         });
     }
 
@@ -407,7 +420,14 @@ impl AppWindow {
             }));
         imp.cancel_button
             .connect_clicked(clone!(@weak self as this => move |_| {
-                this.cancel_request();
+                if this.imp().is_flashing.load(std::sync::atomic::Ordering::SeqCst) {
+                    this.cancel_request();
+                } else {
+                    this.imp()
+                        .is_running
+                        .store(false, std::sync::atomic::Ordering::SeqCst);
+                    this.refresh_devices();
+                }
             }));
         imp.done_button
             .connect_clicked(clone!(@weak self as this => move |_| {
@@ -417,16 +437,14 @@ impl AppWindow {
             }));
         imp.try_again_button
             .connect_clicked(clone!(@weak self as this => move |_| {
-                this.imp().stack.set_visible_child_name("device_list");
+                this.refresh_devices();
             }));
         timeout_add_seconds_local(
             2,
             clone!(@weak self as this => @default-return Continue(false), move || {
                 let current_stack = this.imp().stack.visible_child_name().unwrap();
                 if current_stack == "no_devices" || current_stack == "device_list" {
-                    if let Ok(devices) = refresh_devices() {
-                        this.load_devices(devices, true);
-                    }
+                    this.refresh_devices();
                 }
                 Continue(true)
             }),
