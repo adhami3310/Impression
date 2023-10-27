@@ -192,7 +192,7 @@ impl FlashRequest {
         sender: &glib::Sender<FlashStatus>,
         is_running: Arc<AtomicBool>,
     ) {
-        let mut task = Task::new(image.into(), &sender, is_running, false);
+        let mut task = Task::new(image.into(), sender, is_running, false);
         task.subscribe(target_file.into());
 
         let mut bucket = [0u8; 64 * 1024];

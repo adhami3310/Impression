@@ -6,19 +6,22 @@ use itertools::Itertools;
 #[error("Error while extracting compressed file")]
 struct TarError {}
 
-pub fn collect_online_distros() -> anyhow::Result<(
-    Vec<(String, Option<String>, String)>,
-    Vec<(String, Option<String>, String)>,
-)> {
+pub struct Distro {
+    pub name: String,
+    pub version: Option<String>,
+    pub url: String,
+}
+
+pub fn collect_online_distros() -> anyhow::Result<(Vec<Distro>, Vec<Distro>)> {
     let libosinfo_files =
         reqwest::blocking::get("https://releases.pagure.org/libosinfo/")?.text()?;
 
     let hrefs_re = regex::Regex::new(r#"href="([^"]*)""#).unwrap();
-    let osinfodb_re = regex::Regex::new(r#"^osinfo-db-\d+\.tar\.xz$"#).unwrap();
+    let osinfodb_re = regex::Regex::new(r"^osinfo-db-\d+\.tar\.xz$").unwrap();
 
     let latest_file = hrefs_re
         .captures_iter(&libosinfo_files)
-        .map(|c| (&c[1]).to_string())
+        .map(|c| c[1].to_string())
         .filter(|s| osinfodb_re.is_match(s))
         .sorted_by_key(|s| {
             s[("osinfo-db-".len())..(s.len() - ".tar.xz".len())]
@@ -113,8 +116,7 @@ pub fn collect_online_distros() -> anyhow::Result<(
             let version = os_element
                 .children()
                 .find(|d| d.has_tag_name("version"))
-                .map(|x| x.text().map(|x| x.to_owned()))
-                .flatten();
+                .and_then(|x| x.text().map(|x| x.to_owned()));
 
             let variants = os_element
                 .children()
@@ -188,10 +190,18 @@ pub fn collect_online_distros() -> anyhow::Result<(
             }
         }
         if let Some(result_amd) = result_amd {
-            amd.push((distro_name.to_owned(), result_amd.0.clone(), result_amd.1));
+            amd.push(Distro {
+                name: distro_name.to_owned(),
+                version: result_amd.0.clone(),
+                url: result_amd.1,
+            });
             if let Some(result_arm) = result_arm {
                 if result_arm.0 == result_amd.0 {
-                    arm.push((distro_name.to_owned(), result_arm.0, result_arm.1));
+                    arm.push(Distro {
+                        name: distro_name.to_owned(),
+                        version: result_arm.0.clone(),
+                        url: result_arm.1,
+                    });
                 }
             }
         }

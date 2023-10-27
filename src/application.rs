@@ -104,13 +104,11 @@ impl App {
     fn setup_settings(&self) {}
 
     fn setup_gactions(&self) {
-        self.add_action_entries([
-            gio::ActionEntry::builder("quit")
-                .activate(clone!(@weak self as app => move |_,_, _| {
-                    app.quit();
-                }))
-                .build(),
-        ]);
+        self.add_action_entries([gio::ActionEntry::builder("quit")
+            .activate(clone!(@weak self as app => move |_,_, _| {
+                app.quit();
+            }))
+            .build()]);
     }
 
     // Sets up keyboard shortcuts

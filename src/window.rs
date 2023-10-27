@@ -11,7 +11,7 @@ use crate::{
     config::{APP_ID, VERSION},
     flash::{refresh_devices, FlashPhase, FlashRequest, FlashStatus},
     get_size_string,
-    online::collect_online_distros,
+    online::{collect_online_distros, Distro},
     spawn,
     widgets::device_list,
     RemoveAll,
@@ -54,6 +54,10 @@ mod imp {
         #[template_child]
         pub stack: TemplateChild<gtk::Stack>,
         #[template_child]
+        pub main_stack: TemplateChild<gtk::Stack>,
+        #[template_child]
+        pub navigation: TemplateChild<adw::NavigationView>,
+        #[template_child]
         pub app_icon: TemplateChild<gtk::Image>,
         #[template_child]
         pub open_image_button: TemplateChild<adw::ActionRow>,
@@ -65,8 +69,6 @@ mod imp {
         pub size_label: TemplateChild<gtk::Label>,
         #[template_child]
         pub flash_button: TemplateChild<gtk::Button>,
-        #[template_child]
-        pub homescreen_button: TemplateChild<gtk::Button>,
         #[template_child]
         pub try_again_button: TemplateChild<gtk::Button>,
         #[template_child]
@@ -135,7 +137,7 @@ mod imp {
 
     impl WidgetImpl for AppWindow {}
     impl WindowImpl for AppWindow {
-        fn close_request(&self) -> gtk::Inhibit {
+        fn close_request(&self) -> glib::Propagation {
             let obj = self.obj();
 
             if let Err(err) = obj.save_window_size() {
@@ -144,7 +146,7 @@ mod imp {
 
             if self.is_flashing.load(std::sync::atomic::Ordering::SeqCst) {
                 obj.cancel_request();
-                glib::signal::Inhibit(true)
+                glib::Propagation::Proceed
             } else {
                 // Pass close request on to the parent
                 self.parent_close_request()
@@ -219,7 +221,7 @@ impl AppWindow {
                     this.imp()
                         .is_flashing
                         .store(false, std::sync::atomic::Ordering::SeqCst);
-                    this.refresh_devices();
+                    this.refresh_devices(true);
                 }
             }),
         );
@@ -254,13 +256,14 @@ impl AppWindow {
     }
 
     fn flash(&self) {
+        self.imp().main_stack.set_visible_child_name("status");
         self.imp().stack.set_visible_child_name("flashing");
         self.imp().progress_bar.set_fraction(0.);
         glib::MainContext::default().iteration(true);
         self.imp()
             .is_running
             .store(true, std::sync::atomic::Ordering::SeqCst);
-        let (tx, rx) = glib::MainContext::channel(glib::PRIORITY_DEFAULT);
+        let (tx, rx) = glib::MainContext::channel(glib::Priority::DEFAULT);
         let flash_job = FlashRequest::new(
             self.selected_image(),
             self.selected_device().unwrap(),
@@ -285,9 +288,9 @@ impl AppWindow {
         }
         rx.attach(
             None,
-            clone!(@weak self as this => @default-return Continue(false), move |x| {
+            clone!(@weak self as this => @default-return glib::ControlFlow::Break, move |x| {
                 if !this.imp().is_running.load(std::sync::atomic::Ordering::SeqCst) {
-                    return Continue(false);
+                    return glib::ControlFlow::Break;
                 }
                 match x {
                     FlashStatus::Active(p, x) => {
@@ -329,7 +332,7 @@ impl AppWindow {
                             }));
                         this.imp().progress_bar.set_fraction(x);
                         glib::MainContext::default().iteration(true);
-                        Continue(true)
+                        glib::ControlFlow::Continue
                     }
                     FlashStatus::Done(Some(_)) => {
                         this.imp().stack.set_visible_child_name("failure");
@@ -337,7 +340,7 @@ impl AppWindow {
                         this.imp().is_flashing.store(false, std::sync::atomic::Ordering::SeqCst);
                         this.send_notification(gettext("Failed to flash image"));
                         glib::MainContext::default().iteration(true);
-                        Continue(false)
+                        glib::ControlFlow::Break
                     }
                     FlashStatus::Done(None) => {
                         this.imp().stack.set_visible_child_name("success");
@@ -345,7 +348,7 @@ impl AppWindow {
                         this.imp().is_flashing.store(false, std::sync::atomic::Ordering::SeqCst);
                         this.send_notification(gettext("Image flashed"));
                         glib::MainContext::default().iteration(true);
-                        Continue(false)
+                        glib::ControlFlow::Break
                     }
                 }
             }),
@@ -410,19 +413,6 @@ impl AppWindow {
                     this.open_dialog().await;
                 });
             }));
-        imp.stack
-            .connect_visible_child_notify(clone!(@weak self as this => move |stack| {
-                if stack.visible_child_name().unwrap() == "device_list" {
-                    this.set_selected_device_index(None);
-                    this.imp().homescreen_button.set_visible(true);
-                } else {
-                    this.imp().homescreen_button.set_visible(false);
-                }
-            }));
-        imp.homescreen_button
-            .connect_clicked(clone!(@weak self as this => move |_| {
-                this.imp().stack.set_visible_child_name("welcome");
-            }));
         imp.flash_button
             .connect_clicked(clone!(@weak self as this => move |_| {
                 this.flash_dialog();
@@ -435,27 +425,30 @@ impl AppWindow {
                     this.imp()
                         .is_running
                         .store(false, std::sync::atomic::Ordering::SeqCst);
-                    this.refresh_devices();
+                    this.refresh_devices(true);
                 }
             }));
         imp.done_button
             .connect_clicked(clone!(@weak self as this => move |_| {
                 this.imp().available_devices.replace(vec![]);
+                this.imp().main_stack.set_visible_child_name("choose");
                 this.imp().stack.set_visible_child_name("welcome");
                 this.imp().open_image_button.grab_focus();
             }));
         imp.try_again_button
             .connect_clicked(clone!(@weak self as this => move |_| {
-                this.refresh_devices();
+                this.refresh_devices(true);
             }));
         timeout_add_seconds_local(
             2,
-            clone!(@weak self as this => @default-return Continue(false), move || {
+            clone!(@weak self as this => @default-return glib::ControlFlow::Break, move || {
+                let main_stack = this.imp().main_stack.visible_child_name().unwrap();
                 let current_stack = this.imp().stack.visible_child_name().unwrap();
-                if current_stack == "no_devices" || current_stack == "device_list" {
-                    this.refresh_devices();
+                let current_page = this.imp().navigation.visible_page().and_then(|x| x.tag()).map(|x| x.as_str().to_owned());
+                if main_stack == "status" && current_stack == "no_devices" || main_stack == "choose" && matches!(current_page, Some(x) if x == "device_list") {
+                    this.refresh_devices(true);
                 }
-                Continue(true)
+                glib::ControlFlow::Continue
             }),
         );
 
@@ -476,13 +469,14 @@ impl AppWindow {
 
         timeout_add_seconds_local(
             10,
-            clone!(@weak self as this => @default-return Continue(false), move || {
+            clone!(@weak self as this => @default-return glib::ControlFlow::Break, move || {
                 // For some reason this never works (dns error)
-                let current_stack = this.imp().stack.visible_child_name().unwrap();
-                if current_stack == "welcome" && this.imp().offline_screen.is_visible() {
+                let main_stack = this.imp().stack.visible_child_name().unwrap();
+                let current_page = this.imp().navigation.visible_page().and_then(|x| x.tag()).map(|x| x.as_str().to_owned());
+                if main_stack == "choose" && matches!(current_page, Some(x) if x == "welcome") && this.imp().offline_screen.is_visible() {
                     this.get_distros();
                 }
-                Continue(true)
+                glib::ControlFlow::Continue
             }),
         );
 
@@ -490,7 +484,7 @@ impl AppWindow {
     }
 
     fn get_distros(&self) {
-        let (tx, rx) = glib::MainContext::channel(glib::PRIORITY_DEFAULT);
+        let (tx, rx) = glib::MainContext::channel(glib::Priority::DEFAULT);
 
         std::thread::spawn(move || {
             let distros = collect_online_distros();
@@ -499,7 +493,7 @@ impl AppWindow {
 
         rx.attach(
             None,
-            clone!(@weak self as this => @default-return Continue(false), move |online_distros| {
+            clone!(@weak self as this => @default-return glib::ControlFlow::Break, move |online_distros| {
                 if let Ok((amd_distros, arm_distros)) = online_distros {
                     this.load_distros(&this.imp().amd_distros, amd_distros);
                     this.load_distros(&this.imp().arm_distros, arm_distros);
@@ -511,18 +505,14 @@ impl AppWindow {
                     this.imp().download_spinner.set_visible(false);
                     this.imp().offline_screen.set_visible(true);
                 }
-                Continue(false)
+                glib::ControlFlow::Break
             }),
         );
     }
 
-    fn load_distros(
-        &self,
-        target: &TemplateChild<gtk::ListBox>,
-        distros: Vec<(String, Option<String>, String)>,
-    ) {
+    fn load_distros(&self, target: &TemplateChild<gtk::ListBox>, distros: Vec<Distro>) {
         target.remove_all();
-        for (name, version, url) in distros {
+        for Distro { name, version, url } in distros {
             let action_row = adw::ActionRow::new();
             action_row.set_title(&name);
             if let Some(subtitle) = version {
@@ -550,7 +540,7 @@ impl AppWindow {
         filter.add_mime_type("application/x-raw-disk-image");
         filter.set_name(Some(&gettext("Disk Images")));
 
-        let model = gio::ListStore::new(gtk::FileFilter::static_type());
+        let model = gio::ListStore::new::<gtk::FileFilter>();
         model.append(&filter);
 
         if let Ok(file) = gtk::FileDialog::builder()
@@ -609,12 +599,12 @@ impl AppWindow {
             }
         }
 
-        self.refresh_devices();
+        self.refresh_devices(false);
     }
 
-    fn refresh_devices(&self) {
+    fn refresh_devices(&self, quiet: bool) {
         if let Ok(devices) = refresh_devices() {
-            self.load_devices(devices, false);
+            self.load_devices(devices, quiet);
         }
     }
 
@@ -647,13 +637,18 @@ impl AppWindow {
         imp.available_devices.replace(devices.clone());
 
         if devices.is_empty() {
+            self.imp().main_stack.set_visible_child_name("status");
             self.imp().stack.set_visible_child_name("no_devices");
         } else {
             for device in device_list::new(self, devices, selected_device) {
                 imp.available_devices_list.append(&device);
             }
 
-            self.imp().stack.set_visible_child_name("device_list");
+            if matches!(self.imp().navigation.visible_page().and_then(|x| x.tag()).map(|x| x.to_owned()), Some(x) if x == "welcome")
+            {
+                self.imp().navigation.push_by_tag("device_list");
+            }
+            self.imp().main_stack.set_visible_child_name("choose");
         }
     }
 
