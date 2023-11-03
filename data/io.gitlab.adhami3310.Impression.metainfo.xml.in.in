@@ -11,7 +11,7 @@
 
     <description>
         <p>
-            Flash disk images onto your drives with ease. Select an image, insert your drive, and you're good to go! Impression is a useful tool for both avid distro-hoppers and casual computer users.
+            Write disk images to your drives with ease. Select an image, insert your drive, and you're good to go! Impression is a useful tool for both avid distro-hoppers and casual computer users.
         </p>
     </description>
 
@@ -26,6 +26,7 @@
 
     <keywords>
         <keyword>usb</keyword>
+        <keyword>writer</keyword>
         <keyword>flash</keyword>
         <keyword>bootable</keyword>
         <keyword>drive</keyword>
@@ -47,7 +48,7 @@
     </recommends>
 
     <screenshots>
-        <screenshot>
+        <screenshot type="default">
             <image>https://gitlab.com/adhami3310/Impression/-/raw/main/data/resources/screenshots/0.png</image>
             <caption>Main screen with a chosen ISO and available USB memories</caption>
         </screenshot>

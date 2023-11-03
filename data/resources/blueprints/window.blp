@@ -210,7 +210,7 @@ template $AppWindow : Adw.ApplicationWindow {
                 description: _("All data on the selected drive will be erased");
 
                 Button flash_button {
-                  label: _("Flash");
+                  label: _("Write");
                   sensitive: false;
                   halign: center;
 
@@ -273,7 +273,7 @@ template $AppWindow : Adw.ApplicationWindow {
               Adw.StatusPage {
                 icon-name: "usb-stick-symbolic";
                 title: _("No Drives");
-                description: _("Insert a drive to flash the image onto");
+                description: _("Insert a drive to write the image onto");
               }
 
               ;
@@ -284,7 +284,7 @@ template $AppWindow : Adw.ApplicationWindow {
               child: 
               Adw.StatusPage {
                 icon-name: "check-round-outline-symbolic";
-                title: _("Flashing Completed");
+                title: _("Writing Completed");
                 description: _("The drive can be safely removed");
                 child:
                 Box {
@@ -315,7 +315,7 @@ template $AppWindow : Adw.ApplicationWindow {
               child: 
               Adw.StatusPage {
                 icon-name: "error-symbolic";
-                title: _("Flashing Unsuccessful");
+                title: _("Writing Unsuccessful");
                 child:
                 Box {
                   orientation: vertical;
@@ -344,7 +344,7 @@ template $AppWindow : Adw.ApplicationWindow {
               name: "flashing";
               child:
               Adw.StatusPage flashing_page {
-                title: _("Flashing…");
+                title: _("Writing…");
                 icon-name: "flash-symbolic";
                 description: _("Do not remove the drive");
 
