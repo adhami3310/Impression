@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: impression\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-15 00:55+0300\n"
+"POT-Creation-Date: 2023-11-03 21:57+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,8 +19,10 @@ msgstr ""
 
 #: data/io.gitlab.adhami3310.Impression.desktop.in.in:3
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:5
-#: data/resources/blueprints/window.blp:9 src/main.rs:57 src/window.rs:326
-#: src/window.rs:611
+#: data/resources/blueprints/window.blp:9
+#: data/resources/blueprints/window.blp:21
+#: data/resources/blueprints/window.blp:138 src/main.rs:57 src/window.rs:370
+#: src/window.rs:659
 msgid "Impression"
 msgstr ""
 
@@ -34,7 +36,7 @@ msgid "Create bootable drives"
 msgstr ""
 
 #: data/io.gitlab.adhami3310.Impression.desktop.in.in:11
-msgid "usb;flash;bootable;drive;iso;img;disk;image"
+msgid "usb;flash;writer;bootable;drive;iso;img;disk;image"
 msgstr ""
 
 #: data/io.gitlab.adhami3310.Impression.gschema.xml.in:6
@@ -51,7 +53,7 @@ msgstr ""
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:13
 msgid ""
-"Flash disk images onto your drives with ease. Select an image, insert your "
+"Write disk images to your drives with ease. Select an image, insert your "
 "drive, and you're good to go! Impression is a useful tool for both avid "
 "distro-hoppers and casual computer users."
 msgstr ""
@@ -61,42 +63,46 @@ msgid "usb"
 msgstr ""
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:29
-msgid "flash"
+msgid "writer"
 msgstr ""
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:30
-msgid "bootable"
+msgid "flash"
 msgstr ""
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:31
-msgid "drive"
+msgid "bootable"
 msgstr ""
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:32
-msgid "iso"
+msgid "drive"
 msgstr ""
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:33
-msgid "img"
+msgid "iso"
 msgstr ""
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:34
-msgid "disk"
+msgid "img"
 msgstr ""
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:35
+msgid "disk"
+msgstr ""
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:36
 msgid "image"
 msgstr ""
 
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:52
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:53
 msgid "Main screen with a chosen ISO and available USB memories"
 msgstr ""
 
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:56
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:57
 msgid "Flashing the ISO in progress"
 msgstr ""
 
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:60
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:61
 msgid "Success screen with a big check mark"
 msgstr ""
 
@@ -125,140 +131,145 @@ msgctxt "shortcut window"
 msgid "Quit"
 msgstr ""
 
-#: data/resources/blueprints/window.blp:20
+#: data/resources/blueprints/window.blp:31
+#: data/resources/blueprints/window.blp:148
+#: data/resources/blueprints/window.blp:246
 msgid "Main Menu"
 msgstr ""
 
-#: data/resources/blueprints/window.blp:53
+#: data/resources/blueprints/window.blp:50
 msgid "Choose Image"
 msgstr ""
 
-#: data/resources/blueprints/window.blp:63
-#: data/resources/blueprints/window.blp:343
+#: data/resources/blueprints/window.blp:60
 msgid "Open File…"
 msgstr ""
 
-#: data/resources/blueprints/window.blp:73
+#: data/resources/blueprints/window.blp:70
 msgid "Direct Download"
 msgstr ""
 
-#: data/resources/blueprints/window.blp:108
+#: data/resources/blueprints/window.blp:105
 msgid "No Connection"
 msgstr ""
 
-#: data/resources/blueprints/window.blp:109
+#: data/resources/blueprints/window.blp:106
 msgid "Connect to the internet to view available images"
 msgstr ""
 
-#: data/resources/blueprints/window.blp:195
+#: data/resources/blueprints/window.blp:210
 msgid "All data on the selected drive will be erased"
 msgstr ""
 
-#: data/resources/blueprints/window.blp:198
-msgid "Flash"
+#: data/resources/blueprints/window.blp:213
+msgid "Write"
 msgstr ""
 
-#: data/resources/blueprints/window.blp:231
+#: data/resources/blueprints/window.blp:275
 msgid "No Drives"
 msgstr ""
 
-#: data/resources/blueprints/window.blp:232
-msgid "Insert a drive to flash the image onto"
+#: data/resources/blueprints/window.blp:276
+msgid "Insert a drive to write the image onto"
 msgstr ""
 
-#: data/resources/blueprints/window.blp:243
-msgid "Flashing Completed"
+#: data/resources/blueprints/window.blp:287
+msgid "Writing Completed"
 msgstr ""
 
-#: data/resources/blueprints/window.blp:244
+#: data/resources/blueprints/window.blp:288
 msgid "The drive can be safely removed"
 msgstr ""
 
-#: data/resources/blueprints/window.blp:253
+#: data/resources/blueprints/window.blp:297
 msgid "Finish"
 msgstr ""
 
-#: data/resources/blueprints/window.blp:274
-msgid "Flashing Unsuccessful"
+#: data/resources/blueprints/window.blp:318
+msgid "Writing Unsuccessful"
 msgstr ""
 
-#: data/resources/blueprints/window.blp:283
+#: data/resources/blueprints/window.blp:327
 msgid "Retry"
 msgstr ""
 
-#: data/resources/blueprints/window.blp:303 src/window.rs:248 src/window.rs:279
-msgid "Flashing…"
+#: data/resources/blueprints/window.blp:347 src/window.rs:283 src/window.rs:321
+msgid "Writing…"
 msgstr ""
 
-#: data/resources/blueprints/window.blp:305 src/window.rs:247
+#: data/resources/blueprints/window.blp:349 src/window.rs:282
 msgid "Do not remove the drive"
 msgstr ""
 
-#: data/resources/blueprints/window.blp:320 src/window.rs:206
+#: data/resources/blueprints/window.blp:364 src/window.rs:211 src/window.rs:242
 msgid "_Cancel"
 msgstr ""
 
-#: data/resources/blueprints/window.blp:348
-msgid "New Window"
-msgstr ""
-
-#: data/resources/blueprints/window.blp:355
+#: data/resources/blueprints/window.blp:392
 msgid "Keyboard Shortcuts"
 msgstr ""
 
-#: data/resources/blueprints/window.blp:360
+#: data/resources/blueprints/window.blp:397
 msgid "About Impression"
 msgstr ""
 
-#: src/window.rs:202
-msgid "Stop Flashing?"
+#: src/window.rs:207
+msgid "Stop Writing?"
 msgstr ""
 
-#: src/window.rs:203
+#: src/window.rs:208
 msgid "This might leave the drive in a faulty state."
 msgstr ""
 
-#: src/window.rs:206
+#: src/window.rs:211
 msgid "_Stop"
 msgstr ""
 
-#: src/window.rs:241 src/window.rs:264
-msgid "Flashing will begin once the download is completed"
+#: src/window.rs:235
+msgid "Erase Drive?"
 msgstr ""
 
-#: src/window.rs:243 src/window.rs:276
+#: src/window.rs:243
+msgid "_Erase"
+msgstr ""
+
+#: src/window.rs:276 src/window.rs:306
+msgid "Writing will begin once the download is completed"
+msgstr ""
+
+#: src/window.rs:278 src/window.rs:318
 msgid "Downloading Image…"
 msgstr ""
 
-#: src/window.rs:267
+#: src/window.rs:309
 msgid "Copying files…"
 msgstr ""
 
-#: src/window.rs:270
+#: src/window.rs:312
 msgid "Validating…"
 msgstr ""
 
-#: src/window.rs:298
-msgid "Failed to flash image"
+#: src/window.rs:341
+msgid "Failed to write image"
 msgstr ""
 
-#: src/window.rs:305
-msgid "Image flashed"
+#: src/window.rs:349
+msgid "Image Written"
 msgstr ""
 
-#: src/window.rs:498
+#: src/window.rs:541
 msgid "Disk Images"
 msgstr ""
 
-#: src/window.rs:523
+#: src/window.rs:566
 msgid "File is not a Disk Image"
 msgstr ""
 
 #. Translators: Replace "translator-credits" with your names, one name per line
-#: src/window.rs:629
+#: src/window.rs:677
 msgid "translator-credits"
 msgstr ""
 
-#: src/window.rs:635
+#: src/window.rs:683
 msgid "Code borrowed from"
 msgstr ""

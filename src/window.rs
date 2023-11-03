@@ -204,7 +204,7 @@ impl AppWindow {
     fn cancel_request(&self) {
         let dialog = adw::MessageDialog::new(
             Some(self),
-            Some(&gettext("Stop Flashing?")),
+            Some(&gettext("Stop Writing?")),
             Some(&gettext("This might leave the drive in a faulty state.")),
         );
 
@@ -232,7 +232,7 @@ impl AppWindow {
     fn flash_dialog(&self) {
         let flash_dialog = adw::MessageDialog::new(
             Some(self),
-            Some(&gettext("Erase drive?")),
+            Some(&gettext("Erase Drive?")),
             Some(&gettext!(
                 "You will lose all data stored on {}",
                 device_list::device_label(&self.selected_device().unwrap())
@@ -273,14 +273,14 @@ impl AppWindow {
         if matches!(self.selected_image(), DiskImage::Online { url: _, name: _ }) {
             let flashing_page = &self.imp().flashing_page;
             flashing_page.set_description(Some(&gettext(
-                "Flashing will begin once the download is completed",
+                "Writing will begin once the download is completed",
             )));
             flashing_page.set_title(&gettext("Downloading Image…"));
             flashing_page.set_icon_name(Some("folder-download-symbolic"));
         } else {
             let flashing_page = &self.imp().flashing_page;
             flashing_page.set_description(Some(&gettext("Do not remove the drive")));
-            flashing_page.set_title(&gettext("Flashing…"));
+            flashing_page.set_title(&gettext("Writing…"));
             flashing_page.set_icon_name(Some("flash-symbolic"));
             self.imp()
                 .is_flashing
@@ -303,7 +303,7 @@ impl AppWindow {
                         flashing_page
                             .set_description(Some(&match p {
                                 FlashPhase::Download => {
-                                    gettext("Flashing will begin once the download is completed")
+                                    gettext("Writing will begin once the download is completed")
                                 }
                                 FlashPhase::Copy => {
                                     gettext("Copying files…")
@@ -318,7 +318,7 @@ impl AppWindow {
                                     gettext("Downloading Image…")
                                 }
                                 _ => {
-                                    gettext("Flashing…")
+                                    gettext("Writing…")
                                 }
                             });
                         flashing_page
@@ -338,7 +338,7 @@ impl AppWindow {
                         this.imp().stack.set_visible_child_name("failure");
                         this.imp().is_running.store(false, std::sync::atomic::Ordering::SeqCst);
                         this.imp().is_flashing.store(false, std::sync::atomic::Ordering::SeqCst);
-                        this.send_notification(gettext("Failed to flash image"));
+                        this.send_notification(gettext("Failed to write image"));
                         glib::MainContext::default().iteration(true);
                         glib::ControlFlow::Break
                     }
@@ -346,7 +346,7 @@ impl AppWindow {
                         this.imp().stack.set_visible_child_name("success");
                         this.imp().is_running.store(false, std::sync::atomic::Ordering::SeqCst);
                         this.imp().is_flashing.store(false, std::sync::atomic::Ordering::SeqCst);
-                        this.send_notification(gettext("Image flashed"));
+                        this.send_notification(gettext("Image Written"));
                         glib::MainContext::default().iteration(true);
                         glib::ControlFlow::Break
                     }

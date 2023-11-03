@@ -22,7 +22,7 @@ You may also be able to obtain Impression from your distribution's package manag
 
 ## About
 
-Flash disk images onto your drives with ease. Select an image, insert your drive, and you're good to go! Impression is a useful tool for both avid distro-hoppers and casual computer users. See [Press](PRESS.md) for content mentioning Impression from various writers, content creators, etc.
+Write disk images onto your drives with ease. Select an image, insert your drive, and you're good to go! Impression is a useful tool for both avid distro-hoppers and casual computer users. See [Press](PRESS.md) for content mentioning Impression from various writers, content creators, etc.
 
 <img src="data/resources/screenshots/0.png" alt="Main screen with a chosen ISO and one USB memory">
 
