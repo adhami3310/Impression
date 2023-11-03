@@ -37,9 +37,16 @@ pub fn new(
         check_buttons.push(cb);
     }
 
-    for (device, cb) in devices.into_iter().zip(check_buttons.into_iter()) {
-        if Some(device.parent.preferred_device.to_str().unwrap().to_owned()) == selected_device {
+    for (i, (device, cb)) in devices
+        .into_iter()
+        .zip(check_buttons.into_iter())
+        .enumerate()
+    {
+        if Some(device.parent.preferred_device.to_str().unwrap().to_owned()) == selected_device
+            || selected_device.is_none() && i == 0
+        {
             cb.set_active(true);
+            app.set_selected_device_index(Some(i));
         }
 
         let row = adw::ActionRow::builder()

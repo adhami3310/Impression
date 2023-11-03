@@ -432,6 +432,7 @@ impl AppWindow {
                     this.imp()
                         .is_running
                         .store(false, std::sync::atomic::Ordering::SeqCst);
+                    this.imp().main_stack.set_visible_child_name("choose");
                     this.refresh_devices();
                 }
             }));
@@ -445,6 +446,7 @@ impl AppWindow {
         imp.try_again_button
             .connect_clicked(clone!(@weak self as this => move |_| {
                 this.refresh_devices();
+                this.imp().main_stack.set_visible_child_name("choose");
             }));
         timeout_add_seconds_local(
             2,
@@ -645,6 +647,7 @@ impl AppWindow {
         imp.available_devices.replace(devices.clone());
 
         if devices.is_empty() {
+            self.set_selected_device_index(None);
             self.imp().stack.set_visible_child_name("no_devices");
             self.imp().main_stack.set_visible_child_name("status");
         } else {
