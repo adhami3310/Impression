@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: impression\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-11-03 17:12-0400\n"
+"POT-Creation-Date: 2023-11-03 17:42-0400\n"
 "PO-Revision-Date: 2023-06-09 22:56+0200\n"
 "Last-Translator: FineFindus <FineFindus@proton.me>\n"
 "Language-Team: \n"
@@ -22,7 +22,7 @@ msgstr ""
 #: data/resources/blueprints/window.blp:9
 #: data/resources/blueprints/window.blp:21
 #: data/resources/blueprints/window.blp:138 src/main.rs:57 src/window.rs:377
-#: src/window.rs:662
+#: src/window.rs:665
 msgid "Impression"
 msgstr "Impression"
 
@@ -275,21 +275,21 @@ msgstr "Brennen des Datenträgerabbilds fehlgeschlagen"
 msgid "Image Written"
 msgstr ""
 
-#: src/window.rs:550
+#: src/window.rs:552
 msgid "Disk Images"
 msgstr "Datenträgerabbilder"
 
-#: src/window.rs:575
+#: src/window.rs:577
 #, fuzzy
 msgid "File is not a Disk Image"
 msgstr "Brennen des Datenträgerabbilds fehlgeschlagen"
 
 #. Translators: Replace "translator-credits" with your names, one name per line
-#: src/window.rs:680
+#: src/window.rs:683
 msgid "translator-credits"
 msgstr "FineFindus https://github.com/FineFindus"
 
-#: src/window.rs:686
+#: src/window.rs:689
 msgid "Code borrowed from"
 msgstr "Code und Design Angelehnt an"
 
