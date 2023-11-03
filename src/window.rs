@@ -221,7 +221,7 @@ impl AppWindow {
                     this.imp()
                         .is_flashing
                         .store(false, std::sync::atomic::Ordering::SeqCst);
-                    this.refresh_devices(true);
+                    this.refresh_devices();
                 }
             }),
         );
@@ -264,13 +264,17 @@ impl AppWindow {
             .is_running
             .store(true, std::sync::atomic::Ordering::SeqCst);
         let (tx, rx) = glib::MainContext::channel(glib::Priority::DEFAULT);
+
+        let selected_image = self.selected_image().unwrap();
+
         let flash_job = FlashRequest::new(
-            self.selected_image(),
+            selected_image.clone(),
             self.selected_device().unwrap(),
             tx,
             self.imp().is_running.clone(),
         );
-        if matches!(self.selected_image(), DiskImage::Online { url: _, name: _ }) {
+
+        if matches!(selected_image, DiskImage::Online { url: _, name: _ }) {
             let flashing_page = &self.imp().flashing_page;
             flashing_page.set_description(Some(&gettext(
                 "Flashing will begin once the download is completed",
@@ -377,9 +381,9 @@ impl AppWindow {
         }
     }
 
-    fn selected_image(&self) -> DiskImage {
+    fn selected_image(&self) -> Option<DiskImage> {
         let x = self.imp().selected_image.borrow().to_owned();
-        x.unwrap()
+        x
     }
 
     fn selected_device_index(&self) -> Option<usize> {
@@ -425,7 +429,7 @@ impl AppWindow {
                     this.imp()
                         .is_running
                         .store(false, std::sync::atomic::Ordering::SeqCst);
-                    this.refresh_devices(true);
+                    this.refresh_devices();
                 }
             }));
         imp.done_button
@@ -437,7 +441,7 @@ impl AppWindow {
             }));
         imp.try_again_button
             .connect_clicked(clone!(@weak self as this => move |_| {
-                this.refresh_devices(true);
+                this.refresh_devices();
             }));
         timeout_add_seconds_local(
             2,
@@ -445,12 +449,14 @@ impl AppWindow {
                 let main_stack = this.imp().main_stack.visible_child_name().unwrap();
                 let current_stack = this.imp().stack.visible_child_name().unwrap();
                 let current_page = this.imp().navigation.visible_page().and_then(|x| x.tag()).map(|x| x.as_str().to_owned());
-                if main_stack == "status" && current_stack == "no_devices" || main_stack == "choose" && matches!(current_page, Some(x) if x == "device_list") {
-                    this.refresh_devices(true);
+                if main_stack == "status" && current_stack == "no_devices" || main_stack == "choose" && matches!(current_page, Some(x) if x == "device_list" || x == "welcome") {
+                    this.refresh_devices();
                 }
                 glib::ControlFlow::Continue
             }),
         );
+
+        self.refresh_devices();
 
         imp.architecture
             .connect_selected_notify(clone!(@weak self as this => move |a| {
@@ -584,7 +590,7 @@ impl AppWindow {
     }
 
     fn load_stored(&self) {
-        match self.selected_image() {
+        match self.selected_image().unwrap() {
             DiskImage::Local {
                 path: _,
                 filename,
@@ -599,16 +605,16 @@ impl AppWindow {
             }
         }
 
-        self.refresh_devices(false);
+        self.imp().navigation.push_by_tag("device_list");
     }
 
-    fn refresh_devices(&self, quiet: bool) {
+    fn refresh_devices(&self) {
         if let Ok(devices) = refresh_devices() {
-            self.load_devices(devices, quiet);
+            self.load_devices(devices);
         }
     }
 
-    fn load_devices(&self, devices: Vec<DiskDevice>, quiet: bool) {
+    fn load_devices(&self, devices: Vec<DiskDevice>) {
         let imp = self.imp();
 
         let current_devices = imp.available_devices.borrow().clone();
@@ -622,7 +628,6 @@ impl AppWindow {
                 .map(|d| d.parent.preferred_device.as_path().to_str().unwrap())
                 .collect_vec()
             && !devices.is_empty()
-            && quiet
         {
             return;
         }
@@ -637,16 +642,11 @@ impl AppWindow {
         imp.available_devices.replace(devices.clone());
 
         if devices.is_empty() {
-            self.imp().main_stack.set_visible_child_name("status");
             self.imp().stack.set_visible_child_name("no_devices");
+            self.imp().main_stack.set_visible_child_name("status");
         } else {
             for device in device_list::new(self, devices, selected_device) {
                 imp.available_devices_list.append(&device);
-            }
-
-            if matches!(self.imp().navigation.visible_page().and_then(|x| x.tag()).map(|x| x.to_owned()), Some(x) if x == "welcome")
-            {
-                self.imp().navigation.push_by_tag("device_list");
             }
             self.imp().main_stack.set_visible_child_name("choose");
         }
