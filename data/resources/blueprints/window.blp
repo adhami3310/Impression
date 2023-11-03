@@ -270,8 +270,8 @@ template $AppWindow : Adw.ApplicationWindow {
             StackPage {
               name: "no_devices";
               child:
-              Adw.StatusPage {
-                icon-name: "usb-stick-symbolic";
+              Adw.StatusPage no_devices_status {
+                icon-name: "io.gitlab.adhami3310.Impression";
                 title: _("No Drives");
                 description: _("Insert a drive to write the image onto");
               }

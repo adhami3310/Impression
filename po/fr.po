@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: impression\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-11-03 17:08-0400\n"
+"POT-Creation-Date: 2023-11-03 17:12-0400\n"
 "PO-Revision-Date: 2023-06-21 19:19+0200\n"
 "Last-Translator: Irénée Thirion <irenee.thirion@e.email>\n"
 "Language-Team: \n"
@@ -21,8 +21,8 @@ msgstr ""
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:5
 #: data/resources/blueprints/window.blp:9
 #: data/resources/blueprints/window.blp:21
-#: data/resources/blueprints/window.blp:138 src/main.rs:57 src/window.rs:374
-#: src/window.rs:659
+#: data/resources/blueprints/window.blp:138 src/main.rs:57 src/window.rs:377
+#: src/window.rs:662
 msgid "Impression"
 msgstr "Impression"
 
@@ -206,16 +206,16 @@ msgstr "Échec du flashage"
 msgid "Retry"
 msgstr "Réessayer"
 
-#: data/resources/blueprints/window.blp:347 src/window.rs:287 src/window.rs:325
+#: data/resources/blueprints/window.blp:347 src/window.rs:290 src/window.rs:328
 #, fuzzy
 msgid "Writing…"
 msgstr "Validation"
 
-#: data/resources/blueprints/window.blp:349 src/window.rs:286
+#: data/resources/blueprints/window.blp:349 src/window.rs:289
 msgid "Do not remove the drive"
 msgstr "Ne pas retirer le périphérique"
 
-#: data/resources/blueprints/window.blp:364 src/window.rs:211 src/window.rs:242
+#: data/resources/blueprints/window.blp:364 src/window.rs:214 src/window.rs:245
 msgid "_Cancel"
 msgstr "A_nnuler"
 
@@ -227,68 +227,68 @@ msgstr "Raccourcis clavier"
 msgid "About Impression"
 msgstr "À propos d’Impression"
 
-#: src/window.rs:207
+#: src/window.rs:210
 #, fuzzy
 msgid "Stop Writing?"
 msgstr "Arrêter le flashage ?"
 
-#: src/window.rs:208
+#: src/window.rs:211
 msgid "This might leave the drive in a faulty state."
 msgstr "Cela pourrait laisser le périphérique dans un état défectueux."
 
-#: src/window.rs:211
+#: src/window.rs:214
 msgid "_Stop"
 msgstr "_Arrêter"
 
-#: src/window.rs:235
+#: src/window.rs:238
 msgid "Erase Drive?"
 msgstr ""
 
-#: src/window.rs:243
+#: src/window.rs:246
 msgid "_Erase"
 msgstr ""
 
-#: src/window.rs:280 src/window.rs:310
+#: src/window.rs:283 src/window.rs:313
 msgid "Writing will begin once the download is completed"
 msgstr ""
 
-#: src/window.rs:282 src/window.rs:322
+#: src/window.rs:285 src/window.rs:325
 msgid "Downloading Image…"
 msgstr ""
 
-#: src/window.rs:313
+#: src/window.rs:316
 msgid "Copying files…"
 msgstr "Copie des fichiers…"
 
-#: src/window.rs:316
+#: src/window.rs:319
 #, fuzzy
 msgid "Validating…"
 msgstr "Validation"
 
-#: src/window.rs:345
+#: src/window.rs:348
 #, fuzzy
 msgid "Failed to write image"
 msgstr "Échec du flashage de l’image"
 
-#: src/window.rs:353
+#: src/window.rs:356
 msgid "Image Written"
 msgstr ""
 
-#: src/window.rs:547
+#: src/window.rs:550
 msgid "Disk Images"
 msgstr "Images disque"
 
-#: src/window.rs:572
+#: src/window.rs:575
 #, fuzzy
 msgid "File is not a Disk Image"
 msgstr "Échec du flashage de l’image"
 
 #. Translators: Replace "translator-credits" with your names, one name per line
-#: src/window.rs:677
+#: src/window.rs:680
 msgid "translator-credits"
 msgstr "Irénée Thirion <irenee.thirion@e.email>"
 
-#: src/window.rs:683
+#: src/window.rs:686
 msgid "Code borrowed from"
 msgstr "Code emprunté à"
 

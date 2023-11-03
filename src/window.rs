@@ -88,6 +88,8 @@ mod imp {
         #[template_child]
         pub distros: TemplateChild<gtk::Box>,
         #[template_child]
+        pub no_devices_status: TemplateChild<adw::StatusPage>,
+        #[template_child]
         pub amd_distros: TemplateChild<gtk::ListBox>,
         #[template_child]
         pub arm_distros: TemplateChild<gtk::ListBox>,
@@ -128,6 +130,7 @@ mod imp {
             }
 
             self.app_icon.set_icon_name(Some(APP_ID));
+            self.no_devices_status.set_icon_name(Some(APP_ID));
 
             let obj = self.obj();
             obj.load_window_size();
