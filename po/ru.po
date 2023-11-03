@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: impression\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-11-03 21:57+0100\n"
+"POT-Creation-Date: 2023-11-03 17:08-0400\n"
 "PO-Revision-Date: 2023-09-11 13:50+0300\n"
 "Last-Translator: Aleksandr Melman <Alexmelman88@gmail.com>\n"
 "Language-Team: \n"
@@ -23,7 +23,7 @@ msgstr ""
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:5
 #: data/resources/blueprints/window.blp:9
 #: data/resources/blueprints/window.blp:21
-#: data/resources/blueprints/window.blp:138 src/main.rs:57 src/window.rs:370
+#: data/resources/blueprints/window.blp:138 src/main.rs:57 src/window.rs:374
 #: src/window.rs:659
 msgid "Impression"
 msgstr "Impression"
@@ -207,12 +207,12 @@ msgstr "Не удалось записать образ"
 msgid "Retry"
 msgstr "Повторить попытку"
 
-#: data/resources/blueprints/window.blp:347 src/window.rs:283 src/window.rs:321
+#: data/resources/blueprints/window.blp:347 src/window.rs:287 src/window.rs:325
 #, fuzzy
 msgid "Writing…"
 msgstr "Проверка…"
 
-#: data/resources/blueprints/window.blp:349 src/window.rs:282
+#: data/resources/blueprints/window.blp:349 src/window.rs:286
 msgid "Do not remove the drive"
 msgstr "Не извлекайте диск"
 
@@ -249,36 +249,36 @@ msgstr ""
 msgid "_Erase"
 msgstr ""
 
-#: src/window.rs:276 src/window.rs:306
+#: src/window.rs:280 src/window.rs:310
 msgid "Writing will begin once the download is completed"
 msgstr ""
 
-#: src/window.rs:278 src/window.rs:318
+#: src/window.rs:282 src/window.rs:322
 msgid "Downloading Image…"
 msgstr ""
 
-#: src/window.rs:309
+#: src/window.rs:313
 msgid "Copying files…"
 msgstr "Копирование файлов…"
 
-#: src/window.rs:312
+#: src/window.rs:316
 msgid "Validating…"
 msgstr "Проверка…"
 
-#: src/window.rs:341
+#: src/window.rs:345
 #, fuzzy
 msgid "Failed to write image"
 msgstr "Не удалось записать образ"
 
-#: src/window.rs:349
+#: src/window.rs:353
 msgid "Image Written"
 msgstr ""
 
-#: src/window.rs:541
+#: src/window.rs:547
 msgid "Disk Images"
 msgstr "Образы дисков"
 
-#: src/window.rs:566
+#: src/window.rs:572
 #, fuzzy
 msgid "File is not a Disk Image"
 msgstr "Не удалось записать образ"

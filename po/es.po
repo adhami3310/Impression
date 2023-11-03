@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: impression\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-11-03 21:57+0100\n"
+"POT-Creation-Date: 2023-11-03 17:08-0400\n"
 "PO-Revision-Date: 2023-06-10 10:23+0200\n"
 "Last-Translator: Óscar Fernández Díaz <oscfdezdz@tuta.io>\n"
 "Language-Team: Spanish; Castilian < >\n"
@@ -22,7 +22,7 @@ msgstr ""
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:5
 #: data/resources/blueprints/window.blp:9
 #: data/resources/blueprints/window.blp:21
-#: data/resources/blueprints/window.blp:138 src/main.rs:57 src/window.rs:370
+#: data/resources/blueprints/window.blp:138 src/main.rs:57 src/window.rs:374
 #: src/window.rs:659
 msgid "Impression"
 msgstr "Impresión"
@@ -203,11 +203,11 @@ msgstr "Grabación fallida"
 msgid "Retry"
 msgstr "Reintentar"
 
-#: data/resources/blueprints/window.blp:347 src/window.rs:283 src/window.rs:321
+#: data/resources/blueprints/window.blp:347 src/window.rs:287 src/window.rs:325
 msgid "Writing…"
 msgstr ""
 
-#: data/resources/blueprints/window.blp:349 src/window.rs:282
+#: data/resources/blueprints/window.blp:349 src/window.rs:286
 msgid "Do not remove the drive"
 msgstr "No extraiga la unidad"
 
@@ -244,37 +244,37 @@ msgstr ""
 msgid "_Erase"
 msgstr ""
 
-#: src/window.rs:276 src/window.rs:306
+#: src/window.rs:280 src/window.rs:310
 msgid "Writing will begin once the download is completed"
 msgstr ""
 
-#: src/window.rs:278 src/window.rs:318
+#: src/window.rs:282 src/window.rs:322
 msgid "Downloading Image…"
 msgstr ""
 
-#: src/window.rs:309
+#: src/window.rs:313
 msgid "Copying files…"
 msgstr ""
 
-#: src/window.rs:312
+#: src/window.rs:316
 #, fuzzy
 msgid "Validating…"
 msgstr "Grabando…"
 
-#: src/window.rs:341
+#: src/window.rs:345
 #, fuzzy
 msgid "Failed to write image"
 msgstr "Fallo al grabar la imagen"
 
-#: src/window.rs:349
+#: src/window.rs:353
 msgid "Image Written"
 msgstr ""
 
-#: src/window.rs:541
+#: src/window.rs:547
 msgid "Disk Images"
 msgstr "Imágenes de disco"
 
-#: src/window.rs:566
+#: src/window.rs:572
 #, fuzzy
 msgid "File is not a Disk Image"
 msgstr "Fallo al grabar la imagen"
