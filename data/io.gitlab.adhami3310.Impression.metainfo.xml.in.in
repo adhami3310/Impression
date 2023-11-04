@@ -7,7 +7,7 @@
     <summary>Create bootable drives</summary>
 
     <metadata_license>CC-BY-SA-4.0</metadata_license>
-    <project_license>GPL-3.0-only</project_license>
+    <project_license>GPL-3.0</project_license>
 
     <description>
         <p>
@@ -76,6 +76,17 @@
     <content_rating type="oars-1.1" />
 
     <releases>
+        <release version="3.0" date="XXXX-XX-XX">
+          <description translatable="no">
+            <p>This release of Impression brings even more convenience and power to your fingertips:</p>
+            <ul>
+              <li>Direct download of a selection of images directly from the app</li>
+              <li>Updated and more understandable terminology</li>
+              <li>Security fixes</li>
+            </ul>
+            <p>Impression is made possible by volunteer developers, designers, and translators. Thank you for your contributions!</p>
+          </description>
+        </release>
         <release version="2.1" date="2023-06-20">
           <description translatable="no">
             <p>This minor release of Impression delivers:</p>

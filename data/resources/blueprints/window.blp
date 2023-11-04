@@ -101,9 +101,10 @@ template $AppWindow : Adw.ApplicationWindow {
                       visible: false;
 
                       Adw.StatusPage {
-                        icon-name: 'offline-globe-symbolic';
                         title: _("No Connection");
                         description: _("Connect to the internet to view available images");
+
+                        styles  ["dim-label"]
                       }
                       styles ["card"]
                     }
@@ -273,7 +274,7 @@ template $AppWindow : Adw.ApplicationWindow {
               Adw.StatusPage no_devices_status {
                 icon-name: "io.gitlab.adhami3310.Impression";
                 title: _("No Drives");
-                description: _("Insert a drive to write the image onto");
+                description: _("Insert a drive to write to");
               }
 
               ;

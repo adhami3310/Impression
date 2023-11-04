@@ -8,7 +8,7 @@ use gtk::{gio, glib, subclass::prelude::*};
 use itertools::Itertools;
 
 use crate::{
-    config::{APP_ID, VERSION},
+    config::APP_ID,
     flash::{refresh_devices, FlashPhase, FlashRequest, FlashStatus},
     get_size_string,
     online::{collect_online_distros, Distro},
@@ -659,32 +659,16 @@ impl AppWindow {
     }
 
     fn show_about(&self) {
-        let about = adw::AboutWindow::builder()
-            .transient_for(self)
-            .application_icon(APP_ID)
-            .application_name(gettext("Impression"))
-            .developer_name("Khaleel Al-Adhami")
-            .website("https://gitlab.com/adhami3310/Impression")
-            .issue_url("https://gitlab.com/adhami3310/Impression/-/issues")
-            .developers(vec!["Khaleel Al-Adhami"])
-            .designers(vec!["Brage Fuglseth", "Saptarshi Mondal"])
-            .artists(vec!["Brage Fuglseth"])
-            .release_notes_version("2.1")
-            .release_notes(
-"<p>This minor release of Impression delivers:</p>
-<ul>
-  <li>Support for mobile screen sizes</li>
-  <li>Various bug fixes, improving reliability and stability</li>
-  <li>Brazillian Portugese translations, making Impression available in a total of 9 languages</li>
-</ul>
-<p>Impression is made possible by volunteer developers, designers, and translators. Thank you for your contributions!</p>"
-)
-            // Translators: Replace "translator-credits" with your names, one name per line
-            .translator_credits(gettext("translator-credits"))
-            .license_type(gtk::License::Gpl30)
-            .version(VERSION)
-            .build();
+        let developers = ["Khaleel Al-Adhami"];
+        let designers = ["Brage Fuglseth https://bragefuglseth.dev"];
+        let artists = ["Brage Fuglseth https://bragefuglseth.dev"];
 
+        let about = adw::AboutWindow::from_appdata("/io/gitlab/adhami3310/Impression/io.gitlab.adhami3310.Impression.metainfo.xml", Some("3.0"));
+        about.set_transient_for(Some(self));
+        about.set_developers(&developers);
+        about.set_designers(&designers);
+        about.set_artists(&artists);
+        about.set_translator_credits(&gettext("translator-credits"));
         about.add_acknowledgement_section(
             Some(&gettext("Code borrowed from")),
             &["Popsicle https://github.com/pop-os/popsicle"],
