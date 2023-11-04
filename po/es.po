@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: impression\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-11-04 00:14+0100\n"
+"POT-Creation-Date: 2023-11-03 20:29-0400\n"
 "PO-Revision-Date: 2023-06-10 10:23+0200\n"
 "Last-Translator: Óscar Fernández Díaz <oscfdezdz@tuta.io>\n"
 "Language-Team: Spanish; Castilian < >\n"
@@ -22,7 +22,7 @@ msgstr ""
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:5
 #: data/resources/blueprints/window.blp:9
 #: data/resources/blueprints/window.blp:21
-#: data/resources/blueprints/window.blp:139 src/main.rs:57 src/window.rs:377
+#: data/resources/blueprints/window.blp:139 src/main.rs:57 src/window.rs:382
 msgid "Impression"
 msgstr "Impresión"
 
@@ -202,15 +202,15 @@ msgstr "Grabación fallida"
 msgid "Retry"
 msgstr "Reintentar"
 
-#: data/resources/blueprints/window.blp:348 src/window.rs:290 src/window.rs:328
+#: data/resources/blueprints/window.blp:348 src/window.rs:295 src/window.rs:333
 msgid "Writing…"
 msgstr ""
 
-#: data/resources/blueprints/window.blp:350 src/window.rs:289
+#: data/resources/blueprints/window.blp:350 src/window.rs:294
 msgid "Do not remove the drive"
 msgstr "No extraiga la unidad"
 
-#: data/resources/blueprints/window.blp:365 src/window.rs:214 src/window.rs:245
+#: data/resources/blueprints/window.blp:365 src/window.rs:214 src/window.rs:250
 msgid "_Cancel"
 msgstr "_Cancelar"
 
@@ -235,54 +235,54 @@ msgstr "Esto podría dejar la unidad en un estado defectuoso."
 msgid "_Stop"
 msgstr "_Detener"
 
-#: src/window.rs:238
+#: src/window.rs:243
 msgid "Erase Drive?"
 msgstr ""
 
-#: src/window.rs:246
+#: src/window.rs:251
 msgid "_Erase"
 msgstr ""
 
-#: src/window.rs:283 src/window.rs:313
+#: src/window.rs:288 src/window.rs:318
 msgid "Writing will begin once the download is completed"
 msgstr ""
 
-#: src/window.rs:285 src/window.rs:325
+#: src/window.rs:290 src/window.rs:330
 msgid "Downloading Image…"
 msgstr ""
 
-#: src/window.rs:316
+#: src/window.rs:321
 msgid "Copying files…"
 msgstr ""
 
-#: src/window.rs:319
+#: src/window.rs:324
 #, fuzzy
 msgid "Validating…"
 msgstr "Grabando…"
 
-#: src/window.rs:348
+#: src/window.rs:353
 #, fuzzy
 msgid "Failed to write image"
 msgstr "Fallo al grabar la imagen"
 
-#: src/window.rs:356
+#: src/window.rs:361
 msgid "Image Written"
 msgstr ""
 
-#: src/window.rs:552
+#: src/window.rs:557
 msgid "Disk Images"
 msgstr "Imágenes de disco"
 
-#: src/window.rs:577
+#: src/window.rs:582
 #, fuzzy
 msgid "File is not a Disk Image"
 msgstr "Fallo al grabar la imagen"
 
-#: src/window.rs:671
+#: src/window.rs:679
 msgid "translator-credits"
 msgstr "Óscar Fernández Díaz <oscfdezdz@tuta.io>"
 
-#: src/window.rs:673
+#: src/window.rs:681
 msgid "Code borrowed from"
 msgstr "Código tomado de"
 

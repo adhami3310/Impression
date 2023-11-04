@@ -148,8 +148,8 @@ mod imp {
             }
 
             if self.is_flashing.load(std::sync::atomic::Ordering::SeqCst) {
-                obj.cancel_request();
-                glib::Propagation::Proceed
+                obj.cancel_request(true);
+                glib::Propagation::Stop
             } else {
                 // Pass close request on to the parent
                 self.parent_close_request()
@@ -204,7 +204,7 @@ impl AppWindow {
         ]);
     }
 
-    fn cancel_request(&self) {
+    fn cancel_request(&self, close_after: bool) {
         let dialog = adw::MessageDialog::new(
             Some(self),
             Some(&gettext("Stop Writing?")),
@@ -224,7 +224,12 @@ impl AppWindow {
                     this.imp()
                         .is_flashing
                         .store(false, std::sync::atomic::Ordering::SeqCst);
-                    this.refresh_devices();
+                    if close_after {
+                        this.close();
+                    } else {
+                        this.refresh_devices();
+                        this.imp().main_stack.set_visible_child_name("choose");
+                    }
                 }
             }),
         );
@@ -427,7 +432,7 @@ impl AppWindow {
         imp.cancel_button
             .connect_clicked(clone!(@weak self as this => move |_| {
                 if this.imp().is_flashing.load(std::sync::atomic::Ordering::SeqCst) {
-                    this.cancel_request();
+                    this.cancel_request(false);
                 } else {
                     this.imp()
                         .is_running
@@ -663,7 +668,10 @@ impl AppWindow {
         let designers = ["Brage Fuglseth https://bragefuglseth.dev"];
         let artists = ["Brage Fuglseth https://bragefuglseth.dev"];
 
-        let about = adw::AboutWindow::from_appdata("/io/gitlab/adhami3310/Impression/io.gitlab.adhami3310.Impression.metainfo.xml", Some("3.0"));
+        let about = adw::AboutWindow::from_appdata(
+            "/io/gitlab/adhami3310/Impression/io.gitlab.adhami3310.Impression.metainfo.xml",
+            Some("3.0"),
+        );
         about.set_transient_for(Some(self));
         about.set_developers(&developers);
         about.set_designers(&designers);
