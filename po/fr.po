@@ -2,20 +2,22 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the impression package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Irénée THIRION <irenee.thirion@e.email>, 2023.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: impression\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-11-03 20:29-0400\n"
-"PO-Revision-Date: 2023-06-21 19:19+0200\n"
-"Last-Translator: Irénée Thirion <irenee.thirion@e.email>\n"
-"Language-Team: \n"
+"PO-Revision-Date: 2023-11-04 13:41+0100\n"
+"Last-Translator: Irénée THIRION <irenee.thirion@e.email>\n"
+"Language-Team: French <gnomefr@traduc.org>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.3.1\n"
+"X-Generator: Gtranslator 45.3\n"
+"Plural-Forms: nplurals=2; plural=(n > 1)\n"
 
 #: data/io.gitlab.adhami3310.Impression.desktop.in.in:3
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:5
@@ -35,9 +37,10 @@ msgid "Create bootable drives"
 msgstr "Créez des périphériques bootables"
 
 #: data/io.gitlab.adhami3310.Impression.desktop.in.in:11
-#, fuzzy
 msgid "usb;flash;writer;bootable;drive;iso;img;disk;image"
-msgstr "usb;flasher;bootable;drive;iso;disk;image;disque;périphérique;lecteur;"
+msgstr ""
+"usb;flasher;bootable;drive;iso;disk;image;img;disque;périphérique;lecteur;"
+"graveur;writer;"
 
 #: data/io.gitlab.adhami3310.Impression.gschema.xml.in:6
 msgid "Window width"
@@ -52,14 +55,13 @@ msgid "Window maximized state"
 msgstr "État maximisé de la fenêtre"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:13
-#, fuzzy
 msgid ""
 "Write disk images to your drives with ease. Select an image, insert your "
 "drive, and you're good to go! Impression is a useful tool for both avid "
 "distro-hoppers and casual computer users."
 msgstr ""
-"Flashez des images disque sur vos périphériques USB en toute facilité. "
-"Sélectionnez une image, insérez votre périphérique et c‘est parti ! "
+"Gravez des images disque sur vos périphériques USB en toute facilité. "
+"Sélectionnez une image, insérez votre périphérique et c’est parti ! "
 "Impression est un outil utile aussi bien pour ceux qui aiment changer "
 "régulièrement de distribution que pour les utilisateurs occasionnels."
 
@@ -69,7 +71,7 @@ msgstr "usb"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:29
 msgid "writer"
-msgstr ""
+msgstr "graveur"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:30
 msgid "flash"
@@ -88,9 +90,8 @@ msgid "iso"
 msgstr "iso"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:34
-#, fuzzy
 msgid "img"
-msgstr "Image"
+msgstr "img"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:35
 msgid "disk"
@@ -146,9 +147,8 @@ msgid "Main Menu"
 msgstr "Menu principal"
 
 #: data/resources/blueprints/window.blp:50
-#, fuzzy
 msgid "Choose Image"
-msgstr "Choisissez une image à flasher"
+msgstr "Choisissez une image"
 
 #: data/resources/blueprints/window.blp:60
 msgid "Open File…"
@@ -156,15 +156,15 @@ msgstr "Ouvrir un fichier…"
 
 #: data/resources/blueprints/window.blp:70
 msgid "Direct Download"
-msgstr ""
+msgstr "Téléchargement direct"
 
 #: data/resources/blueprints/window.blp:104
 msgid "No Connection"
-msgstr ""
+msgstr "Aucune connexion"
 
 #: data/resources/blueprints/window.blp:105
 msgid "Connect to the internet to view available images"
-msgstr ""
+msgstr "Connectez-vous à Internet pour voir les images disponibles"
 
 #: data/resources/blueprints/window.blp:211
 msgid "All data on the selected drive will be erased"
@@ -172,21 +172,19 @@ msgstr "Toutes les données sur le périphérique sélectionné seront effacées
 
 #: data/resources/blueprints/window.blp:214
 msgid "Write"
-msgstr ""
+msgstr "Graver"
 
 #: data/resources/blueprints/window.blp:276
 msgid "No Drives"
 msgstr "Aucun périphérique"
 
 #: data/resources/blueprints/window.blp:277
-#, fuzzy
 msgid "Insert a drive to write to"
-msgstr "Insérez une clé USB sur laquelle flasher l’image"
+msgstr "Insérez un périphérique sur lequel graver l’image"
 
 #: data/resources/blueprints/window.blp:288
-#, fuzzy
 msgid "Writing Completed"
-msgstr "Flashage terminé"
+msgstr "Gravure terminée"
 
 #: data/resources/blueprints/window.blp:289
 msgid "The drive can be safely removed"
@@ -197,18 +195,16 @@ msgid "Finish"
 msgstr "Terminer"
 
 #: data/resources/blueprints/window.blp:319
-#, fuzzy
 msgid "Writing Unsuccessful"
-msgstr "Échec du flashage"
+msgstr "Échec de la gravure"
 
 #: data/resources/blueprints/window.blp:328
 msgid "Retry"
 msgstr "Réessayer"
 
 #: data/resources/blueprints/window.blp:348 src/window.rs:295 src/window.rs:333
-#, fuzzy
 msgid "Writing…"
-msgstr "Validation"
+msgstr "Gravure…"
 
 #: data/resources/blueprints/window.blp:350 src/window.rs:294
 msgid "Do not remove the drive"
@@ -227,9 +223,8 @@ msgid "About Impression"
 msgstr "À propos d’Impression"
 
 #: src/window.rs:210
-#, fuzzy
 msgid "Stop Writing?"
-msgstr "Arrêter le flashage ?"
+msgstr "Arrêter la gravure ?"
 
 #: src/window.rs:211
 msgid "This might leave the drive in a faulty state."
@@ -241,46 +236,43 @@ msgstr "_Arrêter"
 
 #: src/window.rs:243
 msgid "Erase Drive?"
-msgstr ""
+msgstr "Effacer le périphérique ?"
 
 #: src/window.rs:251
 msgid "_Erase"
-msgstr ""
+msgstr "_Effacer"
 
 #: src/window.rs:288 src/window.rs:318
 msgid "Writing will begin once the download is completed"
-msgstr ""
+msgstr "La gravure commencera dès la fin du téléchargement"
 
 #: src/window.rs:290 src/window.rs:330
 msgid "Downloading Image…"
-msgstr ""
+msgstr "Téléchargement de l’image…"
 
 #: src/window.rs:321
 msgid "Copying files…"
 msgstr "Copie des fichiers…"
 
 #: src/window.rs:324
-#, fuzzy
 msgid "Validating…"
-msgstr "Validation"
+msgstr "Validation…"
 
 #: src/window.rs:353
-#, fuzzy
 msgid "Failed to write image"
-msgstr "Échec du flashage de l’image"
+msgstr "Échec de la gravure de l’image"
 
 #: src/window.rs:361
 msgid "Image Written"
-msgstr ""
+msgstr "Image gravée"
 
 #: src/window.rs:557
 msgid "Disk Images"
 msgstr "Images disque"
 
 #: src/window.rs:582
-#, fuzzy
 msgid "File is not a Disk Image"
-msgstr "Échec du flashage de l’image"
+msgstr "Le fichier n’est pas une image disque"
 
 #: src/window.rs:679
 msgid "translator-credits"
