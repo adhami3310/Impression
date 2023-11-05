@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: io.gitlab.adhami3310.Impression\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-11-03 20:29-0400\n"
-"PO-Revision-Date: 2023-10-15 01:06+0300\n"
+"PO-Revision-Date: 2023-11-04 04:50+0300\n"
 "Last-Translator: Sabri Ünal <libreajans@gmail.com>\n"
 "Language-Team: Türkçe <takim@gnome.org.tr>\n"
 "Language: tr\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 3.4\n"
+"X-Generator: Poedit 3.4.1\n"
 
 #: data/io.gitlab.adhami3310.Impression.desktop.in.in:3
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:5
@@ -37,10 +37,9 @@ msgid "Create bootable drives"
 msgstr "Önyüklenebilir USB sürücü oluştur"
 
 #: data/io.gitlab.adhami3310.Impression.desktop.in.in:11
-#, fuzzy
 msgid "usb;flash;writer;bootable;drive;iso;img;disk;image"
 msgstr ""
-"usb;flash;bootable;drive;iso;img;disk;image;flaş;başlatılabilir;"
+"usb;flash;writer;bootable;drive;iso;img;disk;image;flaş;başlatılabilir;"
 "önyüklenebilir;USB;sürücü;disk;görüntü;"
 
 #: data/io.gitlab.adhami3310.Impression.gschema.xml.in:6
@@ -56,14 +55,13 @@ msgid "Window maximized state"
 msgstr "Pencerenin ekranı kaplama durumu"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:13
-#, fuzzy
 msgid ""
 "Write disk images to your drives with ease. Select an image, insert your "
 "drive, and you're good to go! Impression is a useful tool for both avid "
 "distro-hoppers and casual computer users."
 msgstr ""
-"Disk görüntülerini kolaylıkla USB sürücüye yazdırın. Bir görüntü seçin, USB "
-"sürücüyü takın ve işlem tamam! Impression, hem dağıtım denemeyi seven, hem "
+"Disk görüntülerini sürücülerinize kolaylıkla yazın. Bir görüntü seçin, "
+"sürücünüzü takın ve işlem tamam! Impression, hem dağıtım denemeyi seven, hem "
 "de günlük bilgisayar kullanıcıları için kullanışlı bir araçtır."
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:28
@@ -72,7 +70,7 @@ msgstr "usb"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:29
 msgid "writer"
-msgstr ""
+msgstr "yazıcı"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:30
 msgid "flash"
@@ -171,19 +169,17 @@ msgstr "Seçilen USB sürücüdeki tüm veriler silecek"
 
 #: data/resources/blueprints/window.blp:214
 msgid "Write"
-msgstr ""
+msgstr "Yazdır"
 
 #: data/resources/blueprints/window.blp:276
 msgid "No Drives"
 msgstr "USB Sürücü Yok"
 
 #: data/resources/blueprints/window.blp:277
-#, fuzzy
 msgid "Insert a drive to write to"
-msgstr "Görüntüyü yazdırmak için USB sürücü takın"
+msgstr "Yazdırmak için sürücü takın"
 
 #: data/resources/blueprints/window.blp:288
-#, fuzzy
 msgid "Writing Completed"
 msgstr "Yazdırma Tamamlandı"
 
@@ -196,7 +192,6 @@ msgid "Finish"
 msgstr "Bitir"
 
 #: data/resources/blueprints/window.blp:319
-#, fuzzy
 msgid "Writing Unsuccessful"
 msgstr "Yazdırma Başarısız"
 
@@ -205,9 +200,8 @@ msgid "Retry"
 msgstr "Yeniden Dene"
 
 #: data/resources/blueprints/window.blp:348 src/window.rs:295 src/window.rs:333
-#, fuzzy
 msgid "Writing…"
-msgstr "Doğrulanıyor…"
+msgstr "Yazdırılıyor…"
 
 #: data/resources/blueprints/window.blp:350 src/window.rs:294
 msgid "Do not remove the drive"
@@ -226,7 +220,6 @@ msgid "About Impression"
 msgstr "Impression Hakkında"
 
 #: src/window.rs:210
-#, fuzzy
 msgid "Stop Writing?"
 msgstr "Yazdırma Durdurulsun Mu?"
 
@@ -240,14 +233,13 @@ msgstr "_Durdur"
 
 #: src/window.rs:243
 msgid "Erase Drive?"
-msgstr ""
+msgstr "Sürüsü Silinsin Mi?"
 
 #: src/window.rs:251
 msgid "_Erase"
-msgstr ""
+msgstr "_Sil"
 
 #: src/window.rs:288 src/window.rs:318
-#, fuzzy
 msgid "Writing will begin once the download is completed"
 msgstr "İndirme tamamlandığında yazdırma başlayacak"
 
@@ -264,13 +256,12 @@ msgid "Validating…"
 msgstr "Doğrulanıyor…"
 
 #: src/window.rs:353
-#, fuzzy
 msgid "Failed to write image"
 msgstr "Görüntü yazdırılamadı"
 
 #: src/window.rs:361
 msgid "Image Written"
-msgstr ""
+msgstr "Görüntü Yazıldı"
 
 #: src/window.rs:557
 msgid "Disk Images"
@@ -287,29 +278,3 @@ msgstr "Sabri Ünal <libreajans@gmail.com>"
 #: src/window.rs:681
 msgid "Code borrowed from"
 msgstr "Kodun ödünç alındığı kaynak"
-
-#~ msgid "Flash"
-#~ msgstr "Yazdır"
-
-#~ msgid "Flashing…"
-#~ msgstr "Yazdırılıyor…"
-
-#~ msgid "New Window"
-#~ msgstr "Yeni Pencere"
-
-#~ msgid "Image flashed"
-#~ msgstr "Görüntü yazdırıldı"
-
-#~ msgid "Khaleel Al-Adhami"
-#~ msgstr "Khaleel Al-Adhami"
-
-#, fuzzy
-#~ msgid "Added Spanish, French, German, Russian, and Italian translations."
-#~ msgstr ""
-#~ "İspanyolca, Fransızca, Almanca, Rusça ve İtalyanca çeviriler eklendi."
-
-#~ msgid "Initial version."
-#~ msgstr "İlk sürüm."
-
-#~ msgid "flash;usb;drive;bootable"
-#~ msgstr "flash;usb;sürücü;önyüklenebilir;bootable;"
