@@ -37,7 +37,7 @@ mod imp {
         sync::atomic::AtomicBool,
     };
 
-    use crate::config::APP_ID;
+    use crate::config::{APP_ID, PROFILE};
 
     use super::*;
 
@@ -57,8 +57,6 @@ mod imp {
         pub main_stack: TemplateChild<gtk::Stack>,
         #[template_child]
         pub navigation: TemplateChild<adw::NavigationView>,
-        #[template_child]
-        pub app_icon: TemplateChild<gtk::Image>,
         #[template_child]
         pub open_image_button: TemplateChild<adw::ActionRow>,
         #[template_child]
@@ -87,8 +85,6 @@ mod imp {
         pub offline_screen: TemplateChild<gtk::Box>,
         #[template_child]
         pub distros: TemplateChild<gtk::Box>,
-        #[template_child]
-        pub no_devices_status: TemplateChild<adw::StatusPage>,
         #[template_child]
         pub amd_distros: TemplateChild<gtk::ListBox>,
         #[template_child]
@@ -125,12 +121,9 @@ mod imp {
         fn constructed(&self) {
             self.parent_constructed();
 
-            if APP_ID.ends_with("Devel") {
+            if PROFILE == "Devel" {
                 self.obj().add_css_class("devel");
             }
-
-            self.app_icon.set_icon_name(Some(APP_ID));
-            self.no_devices_status.set_icon_name(Some(APP_ID));
 
             let obj = self.obj();
             obj.load_window_size();

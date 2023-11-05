@@ -12,6 +12,10 @@ install_data(
   join_paths(scalable_dir, ('@0@.svg').format(application_id)),
   install_dir: join_paths(get_option('datadir'), scalable_dir)
 )
+install_data(
+  join_paths(scalable_dir, ('@0@.svg').format(base_id)),
+  install_dir: join_paths(get_option('datadir'), scalable_dir)
+)
 
 message(join_paths(pkgdatadir, 'icons', scalable_dir))
 

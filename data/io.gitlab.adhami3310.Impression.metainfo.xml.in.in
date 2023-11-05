@@ -49,8 +49,12 @@
 
     <screenshots>
         <screenshot type="default">
+            <image>https://gitlab.com/adhami3310/Impression/-/raw/main/data/resources/screenshots/3.png</image>
+            <caption>Screen with a choice of a local image or internet download</caption>
+        </screenshot>
+        <screenshot>
             <image>https://gitlab.com/adhami3310/Impression/-/raw/main/data/resources/screenshots/0.png</image>
-            <caption>Main screen with a chosen ISO and available USB memories</caption>
+            <caption>Screen with a chosen ISO and available USB memories</caption>
         </screenshot>
         <screenshot>
             <image>https://gitlab.com/adhami3310/Impression/-/raw/main/data/resources/screenshots/1.png</image>
@@ -76,7 +80,7 @@
     <content_rating type="oars-1.1" />
 
     <releases>
-        <release version="3.0" date="XXXX-XX-XX">
+        <release version="3.0" date="2023-11-05">
           <description translatable="no">
             <p>This release of Impression brings even more convenience and power to your fingertips:</p>
             <ul>

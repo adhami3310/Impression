@@ -41,7 +41,7 @@ template $AppWindow : Adw.ApplicationWindow {
               spacing: 12;
               Adw.PreferencesPage {
                 Adw.PreferencesGroup {
-                  Image app_icon {
+                  Image {
                     icon-name: "io.gitlab.adhami3310.Impression";
                     
                     styles ["app_icon"]
@@ -271,7 +271,7 @@ template $AppWindow : Adw.ApplicationWindow {
             StackPage {
               name: "no_devices";
               child:
-              Adw.StatusPage no_devices_status {
+              Adw.StatusPage {
                 icon-name: "io.gitlab.adhami3310.Impression";
                 title: _("No Drives");
                 description: _("Insert a drive to write to");
