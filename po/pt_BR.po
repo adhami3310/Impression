@@ -1,4 +1,4 @@
-# English translations for impression package.
+# Brazilian Portuguese translations for impression package.
 # Copyright (C) 2023 THE impression'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the impression package.
 # Pedro Sader Azevedo <pedro.saderazevedo@protonmail.com>, 2023.
@@ -10,8 +10,8 @@ msgstr ""
 "POT-Creation-Date: 2023-11-03 20:29-0400\n"
 "PO-Revision-Date: 2023-06-14 21:30-0300\n"
 "Last-Translator: Pedro Sader Azevedo <pedro.saderazevedo@protonmail.com>\n"
-"Language-Team: English\n"
-"Language: en_US\n"
+"Language-Team: Brazilian Portuguese\n"
+"Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -34,9 +34,11 @@ msgstr "Gravador de Mídia"
 msgid "Create bootable drives"
 msgstr "Crie pendrives inicializáveis"
 
+# I left both translated and untranslated versions of some tags (e.g. "flash"
+# and "gravar"), because these words are more often spoken in English.
 #: data/io.gitlab.adhami3310.Impression.desktop.in.in:11
 msgid "usb;flash;writer;bootable;drive;iso;img;disk;image"
-msgstr ""
+msgstr "usb;gravar;flash;gravador;bootável;inicializável;pendrive;iso;img;disco;imagem"
 
 #: data/io.gitlab.adhami3310.Impression.gschema.xml.in:6
 msgid "Window width"
@@ -51,54 +53,50 @@ msgid "Window maximized state"
 msgstr "Estado de maximização da janela"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:13
-#, fuzzy
 msgid ""
 "Write disk images to your drives with ease. Select an image, insert your "
 "drive, and you're good to go! Impression is a useful tool for both avid "
 "distro-hoppers and casual computer users."
 msgstr ""
-"Grave imagens de disco em pendrives com facilidade. Seleciona uma imagem,"
-"insira seu pendrive, e pronto! Impressão é uma ferramenta útil tanto "
-"paraávidos \"distro-hoppers\" quanto para usuários casuais."
+"Grave imagens de disco em pendrives com facilidade. Selecione uma imagem,"
+"insira seu pendrive, e pronto! Impressão é uma ferramenta útil, tanto "
+"para ávidos \"distro-hoppers\", quanto para usuários casuais."
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:28
 msgid "usb"
-msgstr ""
+msgstr "usb"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:29
 msgid "writer"
-msgstr ""
+msgstr "gravador"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:30
-#, fuzzy
 msgid "flash"
-msgstr "Gravar"
+msgstr "gravar"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:31
 msgid "bootable"
-msgstr ""
+msgstr "inicializável"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:32
 msgid "drive"
-msgstr ""
+msgstr "pendrive"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:33
 msgid "iso"
-msgstr ""
+msgstr "iso"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:34
-#, fuzzy
 msgid "img"
-msgstr "Imagens de Disco"
+msgstr "img"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:35
 msgid "disk"
-msgstr ""
+msgstr "disco"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:36
-#, fuzzy
 msgid "image"
-msgstr "Imagens de Disco"
+msgstr "imagem"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:53
 msgid "Main screen with a chosen ISO and available USB memories"
@@ -144,9 +142,8 @@ msgid "Main Menu"
 msgstr "Menu Principal"
 
 #: data/resources/blueprints/window.blp:50
-#, fuzzy
 msgid "Choose Image"
-msgstr "Escolha uma imagem para gravar"
+msgstr "Escolher uma imagem"
 
 #: data/resources/blueprints/window.blp:60
 msgid "Open File…"
@@ -154,15 +151,15 @@ msgstr "Abrir Arquivo…"
 
 #: data/resources/blueprints/window.blp:70
 msgid "Direct Download"
-msgstr ""
+msgstr "Download Direto"
 
 #: data/resources/blueprints/window.blp:104
 msgid "No Connection"
-msgstr ""
+msgstr "Sem Conexão"
 
 #: data/resources/blueprints/window.blp:105
 msgid "Connect to the internet to view available images"
-msgstr ""
+msgstr "Conecte-se a internet para ver as imagens disponíveis"
 
 #: data/resources/blueprints/window.blp:211
 msgid "All data on the selected drive will be erased"
@@ -170,19 +167,17 @@ msgstr "Todos os dados armazenados no pendrive selecionado serão apagados"
 
 #: data/resources/blueprints/window.blp:214
 msgid "Write"
-msgstr ""
+msgstr "Gravar"
 
 #: data/resources/blueprints/window.blp:276
 msgid "No Drives"
 msgstr "Sem Pendrives"
 
 #: data/resources/blueprints/window.blp:277
-#, fuzzy
 msgid "Insert a drive to write to"
-msgstr "Insira um pendrive para gravar a imagem"
+msgstr "Insira um pendrive para gravar"
 
 #: data/resources/blueprints/window.blp:288
-#, fuzzy
 msgid "Writing Completed"
 msgstr "Gravação Completa"
 
@@ -195,7 +190,6 @@ msgid "Finish"
 msgstr "Finalizar"
 
 #: data/resources/blueprints/window.blp:319
-#, fuzzy
 msgid "Writing Unsuccessful"
 msgstr "Gravação Mal-Sucedida"
 
@@ -205,7 +199,7 @@ msgstr "Tentar Novamente"
 
 #: data/resources/blueprints/window.blp:348 src/window.rs:295 src/window.rs:333
 msgid "Writing…"
-msgstr ""
+msgstr "Gravando…"
 
 #: data/resources/blueprints/window.blp:350 src/window.rs:294
 msgid "Do not remove the drive"
@@ -224,7 +218,6 @@ msgid "About Impression"
 msgstr "Sobre o Impressão"
 
 #: src/window.rs:210
-#, fuzzy
 msgid "Stop Writing?"
 msgstr "Parar Gravação?"
 
@@ -238,46 +231,43 @@ msgstr "_Parar"
 
 #: src/window.rs:243
 msgid "Erase Drive?"
-msgstr ""
+msgstr "Apagar Pendrive?"
 
 #: src/window.rs:251
 msgid "_Erase"
-msgstr ""
+msgstr "_Apagar"
 
 #: src/window.rs:288 src/window.rs:318
 msgid "Writing will begin once the download is completed"
-msgstr ""
+msgstr "A gravação vai iniciar assim que o download estiver completo"
 
 #: src/window.rs:290 src/window.rs:330
 msgid "Downloading Image…"
-msgstr ""
+msgstr "Baixando a Imagem…"
 
 #: src/window.rs:321
 msgid "Copying files…"
-msgstr ""
+msgstr "Copiando arquivos…"
 
 #: src/window.rs:324
-#, fuzzy
 msgid "Validating…"
-msgstr "Gravando…"
+msgstr "Validando…"
 
 #: src/window.rs:353
-#, fuzzy
 msgid "Failed to write image"
-msgstr "A gravação da imagem falhou"
+msgstr "Falha ao gravar a imagem"
 
 #: src/window.rs:361
 msgid "Image Written"
-msgstr ""
+msgstr "Imagem escrita"
 
 #: src/window.rs:557
 msgid "Disk Images"
 msgstr "Imagens de Disco"
 
 #: src/window.rs:582
-#, fuzzy
 msgid "File is not a Disk Image"
-msgstr "A gravação da imagem falhou"
+msgstr "O arquivo escolhido não é uma imagem de disco"
 
 #: src/window.rs:679
 msgid "translator-credits"
