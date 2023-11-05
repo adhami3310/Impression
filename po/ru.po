@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: impression\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-11-03 20:29-0400\n"
-"PO-Revision-Date: 2023-09-11 13:50+0300\n"
-"Last-Translator: Aleksandr Melman <Alexmelman88@gmail.com>\n"
+"PO-Revision-Date: 2023-11-05 22:27+0300\n"
+"Last-Translator: Сергей Ворон <voron@duck.com>\n"
 "Language-Team: \n"
 "Language: ru_RU\n"
 "MIME-Version: 1.0\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
-"X-Generator: Poedit 3.3.2\n"
+"X-Generator: Poedit 3.4\n"
 
 #: data/io.gitlab.adhami3310.Impression.desktop.in.in:3
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:5
@@ -37,7 +37,6 @@ msgid "Create bootable drives"
 msgstr "Создание загрузочных дисков"
 
 #: data/io.gitlab.adhami3310.Impression.desktop.in.in:11
-#, fuzzy
 msgid "usb;flash;writer;bootable;drive;iso;img;disk;image"
 msgstr ""
 "usb;flash;bootable;drive;iso;disk;image;запись;загрузочный;накопитель;диск;"
@@ -56,7 +55,6 @@ msgid "Window maximized state"
 msgstr "Окно развернуто"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:13
-#, fuzzy
 msgid ""
 "Write disk images to your drives with ease. Select an image, insert your "
 "drive, and you're good to go! Impression is a useful tool for both avid "
@@ -72,7 +70,7 @@ msgstr "usb"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:29
 msgid "writer"
-msgstr ""
+msgstr "писатель"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:30
 msgid "flash"
@@ -91,7 +89,6 @@ msgid "iso"
 msgstr "iso"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:34
-#, fuzzy
 msgid "img"
 msgstr "образ"
 
@@ -147,9 +144,8 @@ msgid "Main Menu"
 msgstr "Главное меню"
 
 #: data/resources/blueprints/window.blp:50
-#, fuzzy
 msgid "Choose Image"
-msgstr "Выберите образ для записи"
+msgstr "Выберите образ"
 
 #: data/resources/blueprints/window.blp:60
 msgid "Open File…"
@@ -157,15 +153,15 @@ msgstr "Открыть файл…"
 
 #: data/resources/blueprints/window.blp:70
 msgid "Direct Download"
-msgstr ""
+msgstr "Прямая загрузка"
 
 #: data/resources/blueprints/window.blp:104
 msgid "No Connection"
-msgstr ""
+msgstr "Нет соединения"
 
 #: data/resources/blueprints/window.blp:105
 msgid "Connect to the internet to view available images"
-msgstr ""
+msgstr "Подключитесь к Интернету для просмотра доступных образов"
 
 #: data/resources/blueprints/window.blp:211
 msgid "All data on the selected drive will be erased"
@@ -173,19 +169,17 @@ msgstr "Все данные на выбранном диске будут уда
 
 #: data/resources/blueprints/window.blp:214
 msgid "Write"
-msgstr ""
+msgstr "Записать"
 
 #: data/resources/blueprints/window.blp:276
 msgid "No Drives"
 msgstr "Нет дисков"
 
 #: data/resources/blueprints/window.blp:277
-#, fuzzy
 msgid "Insert a drive to write to"
-msgstr "Вставьте диск, на который будет записан образ"
+msgstr "Вставьте диск для записи"
 
 #: data/resources/blueprints/window.blp:288
-#, fuzzy
 msgid "Writing Completed"
 msgstr "Запись завершена"
 
@@ -198,18 +192,16 @@ msgid "Finish"
 msgstr "Готово"
 
 #: data/resources/blueprints/window.blp:319
-#, fuzzy
 msgid "Writing Unsuccessful"
-msgstr "Не удалось записать образ"
+msgstr "Запись не удалась"
 
 #: data/resources/blueprints/window.blp:328
 msgid "Retry"
 msgstr "Повторить попытку"
 
 #: data/resources/blueprints/window.blp:348 src/window.rs:295 src/window.rs:333
-#, fuzzy
 msgid "Writing…"
-msgstr "Проверка…"
+msgstr "Запись..."
 
 #: data/resources/blueprints/window.blp:350 src/window.rs:294
 msgid "Do not remove the drive"
@@ -228,7 +220,6 @@ msgid "About Impression"
 msgstr "О приложении"
 
 #: src/window.rs:210
-#, fuzzy
 msgid "Stop Writing?"
 msgstr "Остановить запись?"
 
@@ -242,19 +233,19 @@ msgstr "_Остановить"
 
 #: src/window.rs:243
 msgid "Erase Drive?"
-msgstr ""
+msgstr "Стереть диск?"
 
 #: src/window.rs:251
 msgid "_Erase"
-msgstr ""
+msgstr "_Стереть"
 
 #: src/window.rs:288 src/window.rs:318
 msgid "Writing will begin once the download is completed"
-msgstr ""
+msgstr "Запись начнется сразу после завершения загрузки"
 
 #: src/window.rs:290 src/window.rs:330
 msgid "Downloading Image…"
-msgstr ""
+msgstr "Загрузка образа…"
 
 #: src/window.rs:321
 msgid "Copying files…"
@@ -265,22 +256,20 @@ msgid "Validating…"
 msgstr "Проверка…"
 
 #: src/window.rs:353
-#, fuzzy
 msgid "Failed to write image"
 msgstr "Не удалось записать образ"
 
 #: src/window.rs:361
 msgid "Image Written"
-msgstr ""
+msgstr "Образ записан"
 
 #: src/window.rs:557
 msgid "Disk Images"
 msgstr "Образы дисков"
 
 #: src/window.rs:582
-#, fuzzy
 msgid "File is not a Disk Image"
-msgstr "Не удалось записать образ"
+msgstr "Файл не является образом диска"
 
 #: src/window.rs:679
 msgid "translator-credits"
