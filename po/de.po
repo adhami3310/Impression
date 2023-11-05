@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: impression\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-11-03 20:29-0400\n"
-"PO-Revision-Date: 2023-06-09 22:56+0200\n"
+"PO-Revision-Date: 2023-11-04 22:46+0100\n"
 "Last-Translator: FineFindus <FineFindus@proton.me>\n"
 "Language-Team: \n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.3.1\n"
+"X-Generator: Poedit 3.3.2\n"
 
 #: data/io.gitlab.adhami3310.Impression.desktop.in.in:3
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:5
@@ -37,6 +37,7 @@ msgstr "Bootfähige Laufwerke erstellen"
 #: data/io.gitlab.adhami3310.Impression.desktop.in.in:11
 msgid "usb;flash;writer;bootable;drive;iso;img;disk;image"
 msgstr ""
+"usb;flash;Schreiber; Brenner;bootfähiges;Laufwerk;iso;img;Diskette;Image"
 
 #: data/io.gitlab.adhami3310.Impression.gschema.xml.in:6
 msgid "Window width"
@@ -51,14 +52,13 @@ msgid "Window maximized state"
 msgstr "Maximierter Zustand des Fensters"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:13
-#, fuzzy
 msgid ""
 "Write disk images to your drives with ease. Select an image, insert your "
 "drive, and you're good to go! Impression is a useful tool for both avid "
 "distro-hoppers and casual computer users."
 msgstr ""
-"Brenne mit Leichtigkeit Datenträgerabbilder auf Laufwerke. Wähle ein "
-"Datenträgerabbild aus, lege das Laufwerk ein, und schon kann es losgehen! "
+"Schreibe ganz einfach Datenträgerabbilder auf deine Laufwerke. Wähle ein "
+"Datenträgerabbild aus, lege dein Laufwerk ein, und schon kann es losgehen! "
 "Impression ist ein nützliches Tool sowohl für begeisterte Distro-Hopper als "
 "auch für gelegentliche Computerbenutzer."
 
@@ -68,7 +68,7 @@ msgstr "USB"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:29
 msgid "writer"
-msgstr ""
+msgstr "Schreiber"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:30
 msgid "flash"
@@ -87,13 +87,12 @@ msgid "iso"
 msgstr "iso"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:34
-#, fuzzy
 msgid "img"
-msgstr "Datenträgerabbilder"
+msgstr "img"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:35
 msgid "disk"
-msgstr ""
+msgstr "Festplatte"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:36
 msgid "image"
@@ -143,9 +142,8 @@ msgid "Main Menu"
 msgstr "Hauptmenü"
 
 #: data/resources/blueprints/window.blp:50
-#, fuzzy
 msgid "Choose Image"
-msgstr "Wähle ein Datenträgerabbild zum Brennen aus"
+msgstr "Datenträgerabbild auswählen"
 
 #: data/resources/blueprints/window.blp:60
 msgid "Open File…"
@@ -153,15 +151,17 @@ msgstr "Datei Öffnen…"
 
 #: data/resources/blueprints/window.blp:70
 msgid "Direct Download"
-msgstr ""
+msgstr "Direkter Download"
 
 #: data/resources/blueprints/window.blp:104
 msgid "No Connection"
-msgstr ""
+msgstr "Keine Verbindung"
 
 #: data/resources/blueprints/window.blp:105
 msgid "Connect to the internet to view available images"
 msgstr ""
+"Stelle eine Verbindung mit dem Internet her, um verfügbare "
+"Datenträgerabbilder anzuzeigen"
 
 #: data/resources/blueprints/window.blp:211
 msgid "All data on the selected drive will be erased"
@@ -169,23 +169,21 @@ msgstr "Alle Daten auf dem ausgewählten Laufwerk werden gelöscht"
 
 #: data/resources/blueprints/window.blp:214
 msgid "Write"
-msgstr ""
+msgstr "Schreiben"
 
 #: data/resources/blueprints/window.blp:276
 msgid "No Drives"
 msgstr "Keine Laufwerke"
 
 #: data/resources/blueprints/window.blp:277
-#, fuzzy
 msgid "Insert a drive to write to"
 msgstr ""
-"Legen Sie ein Laufwerk ein, auf das Sie das Datenträgerabbild übertragen "
-"möchten"
+"Legen Sie ein Laufwerk ein, auf das das Datenträgerabbild übertragen werden "
+"soll."
 
 #: data/resources/blueprints/window.blp:288
-#, fuzzy
 msgid "Writing Completed"
-msgstr "Brennen abgeschlossen"
+msgstr "Schreiben abgeschlossen"
 
 #: data/resources/blueprints/window.blp:289
 msgid "The drive can be safely removed"
@@ -196,18 +194,16 @@ msgid "Finish"
 msgstr "Ende"
 
 #: data/resources/blueprints/window.blp:319
-#, fuzzy
 msgid "Writing Unsuccessful"
-msgstr "Brennen des Datenträgerabbilds fehlgeschlagen"
+msgstr "Schreiben des Datenträgerabbilds fehlgeschlagen"
 
 #: data/resources/blueprints/window.blp:328
 msgid "Retry"
 msgstr "Erneut versuchen"
 
 #: data/resources/blueprints/window.blp:348 src/window.rs:295 src/window.rs:333
-#, fuzzy
 msgid "Writing…"
-msgstr "Überprüfe"
+msgstr "Schreiben…"
 
 #: data/resources/blueprints/window.blp:350 src/window.rs:294
 msgid "Do not remove the drive"
@@ -226,9 +222,8 @@ msgid "About Impression"
 msgstr "Info zu Impression"
 
 #: src/window.rs:210
-#, fuzzy
 msgid "Stop Writing?"
-msgstr "Aufhören zu Brennen?"
+msgstr "Aufhören zu Schreiben?"
 
 #: src/window.rs:211
 msgid "This might leave the drive in a faulty state."
@@ -242,46 +237,43 @@ msgstr "_Stop"
 
 #: src/window.rs:243
 msgid "Erase Drive?"
-msgstr ""
+msgstr "Laufwerk löschen?"
 
 #: src/window.rs:251
 msgid "_Erase"
-msgstr ""
+msgstr "_Löschen"
 
 #: src/window.rs:288 src/window.rs:318
 msgid "Writing will begin once the download is completed"
-msgstr ""
+msgstr "Das Schreiben beginnt, sobald der Download abgeschlossen ist"
 
 #: src/window.rs:290 src/window.rs:330
 msgid "Downloading Image…"
-msgstr ""
+msgstr "Datenträgerabbild wird heruntergeladen"
 
 #: src/window.rs:321
 msgid "Copying files…"
 msgstr "Kopiere Dateien…"
 
 #: src/window.rs:324
-#, fuzzy
 msgid "Validating…"
-msgstr "Überprüfe"
+msgstr "Überprüfe…"
 
 #: src/window.rs:353
-#, fuzzy
 msgid "Failed to write image"
-msgstr "Brennen des Datenträgerabbilds fehlgeschlagen"
+msgstr "Schreiben des Datenträgerabbilds fehlgeschlagen"
 
 #: src/window.rs:361
 msgid "Image Written"
-msgstr ""
+msgstr "Datenträgerabbild "
 
 #: src/window.rs:557
 msgid "Disk Images"
 msgstr "Datenträgerabbilder"
 
 #: src/window.rs:582
-#, fuzzy
 msgid "File is not a Disk Image"
-msgstr "Brennen des Datenträgerabbilds fehlgeschlagen"
+msgstr "Datei ist kein Datenträgerabbild"
 
 #: src/window.rs:679
 msgid "translator-credits"
@@ -289,7 +281,7 @@ msgstr "FineFindus https://github.com/FineFindus"
 
 #: src/window.rs:681
 msgid "Code borrowed from"
-msgstr "Code und Design Angelehnt an"
+msgstr "Code angelehnt an"
 
 #~ msgid "Khaleel Al-Adhami"
 #~ msgstr "Khaleel Al-Adhami"
