@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: impression\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-11-03 20:29-0400\n"
+"POT-Creation-Date: 2023-11-05 19:00-0500\n"
 "PO-Revision-Date: 2023-11-04 22:46+0100\n"
 "Last-Translator: FineFindus <FineFindus@proton.me>\n"
 "Language-Team: \n"
@@ -21,7 +21,7 @@ msgstr ""
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:5
 #: data/resources/blueprints/window.blp:9
 #: data/resources/blueprints/window.blp:21
-#: data/resources/blueprints/window.blp:139 src/main.rs:57 src/window.rs:382
+#: data/resources/blueprints/window.blp:139 src/main.rs:57 src/window.rs:375
 msgid "Impression"
 msgstr "Impression"
 
@@ -99,14 +99,20 @@ msgid "image"
 msgstr "Datenträgerabbilder"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:53
-msgid "Main screen with a chosen ISO and available USB memories"
-msgstr "Hauptbildschirm mit ausgewählter ISO und zwei USB-Speichern"
+msgid "Screen with a choice of a local image or internet download"
+msgstr ""
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:57
-msgid "Flashing the ISO in progress"
-msgstr "Brennen der ISO in Bearbeitung"
+#, fuzzy
+msgid "Screen with a chosen ISO and available USB memories"
+msgstr "Hauptbildschirm mit ausgewählter ISO und zwei USB-Speichern"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:61
+#, fuzzy
+msgid "Writing the ISO in progress"
+msgstr "Brennen der ISO in Bearbeitung"
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:65
 msgid "Success screen with a big check mark"
 msgstr "Erfolgsanzeige mit einem großen Häkchen"
 
@@ -201,15 +207,15 @@ msgstr "Schreiben des Datenträgerabbilds fehlgeschlagen"
 msgid "Retry"
 msgstr "Erneut versuchen"
 
-#: data/resources/blueprints/window.blp:348 src/window.rs:295 src/window.rs:333
+#: data/resources/blueprints/window.blp:348 src/window.rs:288 src/window.rs:326
 msgid "Writing…"
 msgstr "Schreiben…"
 
-#: data/resources/blueprints/window.blp:350 src/window.rs:294
+#: data/resources/blueprints/window.blp:350 src/window.rs:287
 msgid "Do not remove the drive"
 msgstr "Das Laufwerk nicht entfernen"
 
-#: data/resources/blueprints/window.blp:365 src/window.rs:214 src/window.rs:250
+#: data/resources/blueprints/window.blp:365 src/window.rs:207 src/window.rs:243
 msgid "_Cancel"
 msgstr "_Abbrechen"
 
@@ -221,65 +227,65 @@ msgstr "Tastenkürzel"
 msgid "About Impression"
 msgstr "Info zu Impression"
 
-#: src/window.rs:210
+#: src/window.rs:203
 msgid "Stop Writing?"
 msgstr "Aufhören zu Schreiben?"
 
-#: src/window.rs:211
+#: src/window.rs:204
 msgid "This might leave the drive in a faulty state."
 msgstr ""
 "Dies kann dazu führen, dass sich das Laufwerk in einem fehlerhaften Zustand "
 "befindet."
 
-#: src/window.rs:214
+#: src/window.rs:207
 msgid "_Stop"
 msgstr "_Stop"
 
-#: src/window.rs:243
+#: src/window.rs:236
 msgid "Erase Drive?"
 msgstr "Laufwerk löschen?"
 
-#: src/window.rs:251
+#: src/window.rs:244
 msgid "_Erase"
 msgstr "_Löschen"
 
-#: src/window.rs:288 src/window.rs:318
+#: src/window.rs:281 src/window.rs:311
 msgid "Writing will begin once the download is completed"
 msgstr "Das Schreiben beginnt, sobald der Download abgeschlossen ist"
 
-#: src/window.rs:290 src/window.rs:330
+#: src/window.rs:283 src/window.rs:323
 msgid "Downloading Image…"
 msgstr "Datenträgerabbild wird heruntergeladen"
 
-#: src/window.rs:321
+#: src/window.rs:314
 msgid "Copying files…"
 msgstr "Kopiere Dateien…"
 
-#: src/window.rs:324
+#: src/window.rs:317
 msgid "Validating…"
 msgstr "Überprüfe…"
 
-#: src/window.rs:353
+#: src/window.rs:346
 msgid "Failed to write image"
 msgstr "Schreiben des Datenträgerabbilds fehlgeschlagen"
 
-#: src/window.rs:361
+#: src/window.rs:354
 msgid "Image Written"
 msgstr "Datenträgerabbild "
 
-#: src/window.rs:557
+#: src/window.rs:550
 msgid "Disk Images"
 msgstr "Datenträgerabbilder"
 
-#: src/window.rs:582
+#: src/window.rs:575
 msgid "File is not a Disk Image"
 msgstr "Datei ist kein Datenträgerabbild"
 
-#: src/window.rs:679
+#: src/window.rs:672
 msgid "translator-credits"
 msgstr "FineFindus https://github.com/FineFindus"
 
-#: src/window.rs:681
+#: src/window.rs:674
 msgid "Code borrowed from"
 msgstr "Code angelehnt an"
 

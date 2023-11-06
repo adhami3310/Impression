@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: impression\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-11-03 20:29-0400\n"
+"POT-Creation-Date: 2023-11-05 19:00-0500\n"
 "PO-Revision-Date: 2023-06-14 21:30-0300\n"
 "Last-Translator: Pedro Sader Azevedo <pedro.saderazevedo@protonmail.com>\n"
 "Language-Team: Brazilian Portuguese\n"
@@ -21,7 +21,7 @@ msgstr ""
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:5
 #: data/resources/blueprints/window.blp:9
 #: data/resources/blueprints/window.blp:21
-#: data/resources/blueprints/window.blp:139 src/main.rs:57 src/window.rs:382
+#: data/resources/blueprints/window.blp:139 src/main.rs:57 src/window.rs:375
 msgid "Impression"
 msgstr "Impressão"
 
@@ -38,7 +38,9 @@ msgstr "Crie pendrives inicializáveis"
 # and "gravar"), because these words are more often spoken in English.
 #: data/io.gitlab.adhami3310.Impression.desktop.in.in:11
 msgid "usb;flash;writer;bootable;drive;iso;img;disk;image"
-msgstr "usb;gravar;flash;gravador;bootável;inicializável;pendrive;iso;img;disco;imagem"
+msgstr ""
+"usb;gravar;flash;gravador;bootável;inicializável;pendrive;iso;img;disco;"
+"imagem"
 
 #: data/io.gitlab.adhami3310.Impression.gschema.xml.in:6
 msgid "Window width"
@@ -59,8 +61,8 @@ msgid ""
 "distro-hoppers and casual computer users."
 msgstr ""
 "Grave imagens de disco em pendrives com facilidade. Selecione uma imagem,"
-"insira seu pendrive, e pronto! Impressão é uma ferramenta útil, tanto "
-"para ávidos \"distro-hoppers\", quanto para usuários casuais."
+"insira seu pendrive, e pronto! Impressão é uma ferramenta útil, tanto para "
+"ávidos \"distro-hoppers\", quanto para usuários casuais."
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:28
 msgid "usb"
@@ -99,14 +101,20 @@ msgid "image"
 msgstr "imagem"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:53
-msgid "Main screen with a chosen ISO and available USB memories"
-msgstr "Tela principal com ISO escolhida e unidades USB disponíveis"
+msgid "Screen with a choice of a local image or internet download"
+msgstr ""
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:57
-msgid "Flashing the ISO in progress"
-msgstr "Escrita da ISO em progresso"
+#, fuzzy
+msgid "Screen with a chosen ISO and available USB memories"
+msgstr "Tela principal com ISO escolhida e unidades USB disponíveis"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:61
+#, fuzzy
+msgid "Writing the ISO in progress"
+msgstr "Escrita da ISO em progresso"
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:65
 msgid "Success screen with a big check mark"
 msgstr "Tela de sucesso com uma grande marca de verificação"
 
@@ -197,15 +205,15 @@ msgstr "Gravação Mal-Sucedida"
 msgid "Retry"
 msgstr "Tentar Novamente"
 
-#: data/resources/blueprints/window.blp:348 src/window.rs:295 src/window.rs:333
+#: data/resources/blueprints/window.blp:348 src/window.rs:288 src/window.rs:326
 msgid "Writing…"
 msgstr "Gravando…"
 
-#: data/resources/blueprints/window.blp:350 src/window.rs:294
+#: data/resources/blueprints/window.blp:350 src/window.rs:287
 msgid "Do not remove the drive"
 msgstr "Não remova o pendrive"
 
-#: data/resources/blueprints/window.blp:365 src/window.rs:214 src/window.rs:250
+#: data/resources/blueprints/window.blp:365 src/window.rs:207 src/window.rs:243
 msgid "_Cancel"
 msgstr "_Cancelar"
 
@@ -217,63 +225,63 @@ msgstr "Atalhos de Teclado"
 msgid "About Impression"
 msgstr "Sobre o Impressão"
 
-#: src/window.rs:210
+#: src/window.rs:203
 msgid "Stop Writing?"
 msgstr "Parar Gravação?"
 
-#: src/window.rs:211
+#: src/window.rs:204
 msgid "This might leave the drive in a faulty state."
 msgstr "Isso pode deixar o pendrive em um estado defeituoso"
 
-#: src/window.rs:214
+#: src/window.rs:207
 msgid "_Stop"
 msgstr "_Parar"
 
-#: src/window.rs:243
+#: src/window.rs:236
 msgid "Erase Drive?"
 msgstr "Apagar Pendrive?"
 
-#: src/window.rs:251
+#: src/window.rs:244
 msgid "_Erase"
 msgstr "_Apagar"
 
-#: src/window.rs:288 src/window.rs:318
+#: src/window.rs:281 src/window.rs:311
 msgid "Writing will begin once the download is completed"
 msgstr "A gravação vai iniciar assim que o download estiver completo"
 
-#: src/window.rs:290 src/window.rs:330
+#: src/window.rs:283 src/window.rs:323
 msgid "Downloading Image…"
 msgstr "Baixando a Imagem…"
 
-#: src/window.rs:321
+#: src/window.rs:314
 msgid "Copying files…"
 msgstr "Copiando arquivos…"
 
-#: src/window.rs:324
+#: src/window.rs:317
 msgid "Validating…"
 msgstr "Validando…"
 
-#: src/window.rs:353
+#: src/window.rs:346
 msgid "Failed to write image"
 msgstr "Falha ao gravar a imagem"
 
-#: src/window.rs:361
+#: src/window.rs:354
 msgid "Image Written"
 msgstr "Imagem escrita"
 
-#: src/window.rs:557
+#: src/window.rs:550
 msgid "Disk Images"
 msgstr "Imagens de Disco"
 
-#: src/window.rs:582
+#: src/window.rs:575
 msgid "File is not a Disk Image"
 msgstr "O arquivo escolhido não é uma imagem de disco"
 
-#: src/window.rs:679
+#: src/window.rs:672
 msgid "translator-credits"
 msgstr "Pedro Sader Azevedo"
 
-#: src/window.rs:681
+#: src/window.rs:674
 msgid "Code borrowed from"
 msgstr "Código emprestado de"
 

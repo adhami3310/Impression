@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: impression\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-11-03 20:29-0400\n"
+"POT-Creation-Date: 2023-11-05 19:00-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,7 +21,7 @@ msgstr ""
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:5
 #: data/resources/blueprints/window.blp:9
 #: data/resources/blueprints/window.blp:21
-#: data/resources/blueprints/window.blp:139 src/main.rs:57 src/window.rs:382
+#: data/resources/blueprints/window.blp:139 src/main.rs:57 src/window.rs:375
 msgid "Impression"
 msgstr ""
 
@@ -94,14 +94,18 @@ msgid "image"
 msgstr ""
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:53
-msgid "Main screen with a chosen ISO and available USB memories"
+msgid "Screen with a choice of a local image or internet download"
 msgstr ""
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:57
-msgid "Flashing the ISO in progress"
+msgid "Screen with a chosen ISO and available USB memories"
 msgstr ""
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:61
+msgid "Writing the ISO in progress"
+msgstr ""
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:65
 msgid "Success screen with a big check mark"
 msgstr ""
 
@@ -192,15 +196,15 @@ msgstr ""
 msgid "Retry"
 msgstr ""
 
-#: data/resources/blueprints/window.blp:348 src/window.rs:295 src/window.rs:333
+#: data/resources/blueprints/window.blp:348 src/window.rs:288 src/window.rs:326
 msgid "Writing…"
 msgstr ""
 
-#: data/resources/blueprints/window.blp:350 src/window.rs:294
+#: data/resources/blueprints/window.blp:350 src/window.rs:287
 msgid "Do not remove the drive"
 msgstr ""
 
-#: data/resources/blueprints/window.blp:365 src/window.rs:214 src/window.rs:250
+#: data/resources/blueprints/window.blp:365 src/window.rs:207 src/window.rs:243
 msgid "_Cancel"
 msgstr ""
 
@@ -212,62 +216,62 @@ msgstr ""
 msgid "About Impression"
 msgstr ""
 
-#: src/window.rs:210
+#: src/window.rs:203
 msgid "Stop Writing?"
 msgstr ""
 
-#: src/window.rs:211
+#: src/window.rs:204
 msgid "This might leave the drive in a faulty state."
 msgstr ""
 
-#: src/window.rs:214
+#: src/window.rs:207
 msgid "_Stop"
 msgstr ""
 
-#: src/window.rs:243
+#: src/window.rs:236
 msgid "Erase Drive?"
 msgstr ""
 
-#: src/window.rs:251
+#: src/window.rs:244
 msgid "_Erase"
 msgstr ""
 
-#: src/window.rs:288 src/window.rs:318
+#: src/window.rs:281 src/window.rs:311
 msgid "Writing will begin once the download is completed"
 msgstr ""
 
-#: src/window.rs:290 src/window.rs:330
+#: src/window.rs:283 src/window.rs:323
 msgid "Downloading Image…"
 msgstr ""
 
-#: src/window.rs:321
+#: src/window.rs:314
 msgid "Copying files…"
 msgstr ""
 
-#: src/window.rs:324
+#: src/window.rs:317
 msgid "Validating…"
 msgstr ""
 
-#: src/window.rs:353
+#: src/window.rs:346
 msgid "Failed to write image"
 msgstr ""
 
-#: src/window.rs:361
+#: src/window.rs:354
 msgid "Image Written"
 msgstr ""
 
-#: src/window.rs:557
+#: src/window.rs:550
 msgid "Disk Images"
 msgstr ""
 
-#: src/window.rs:582
+#: src/window.rs:575
 msgid "File is not a Disk Image"
 msgstr ""
 
-#: src/window.rs:679
+#: src/window.rs:672
 msgid "translator-credits"
 msgstr ""
 
-#: src/window.rs:681
+#: src/window.rs:674
 msgid "Code borrowed from"
 msgstr ""
