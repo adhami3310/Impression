@@ -14,6 +14,6 @@ src/config.rs
 *.ui.in~
 *.ui~
 .flatpak/
-vendor
+# vendor
 .flatpak-builder
-.cargo
+# .cargo
