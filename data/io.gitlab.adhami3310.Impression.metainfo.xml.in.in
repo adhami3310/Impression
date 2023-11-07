@@ -80,6 +80,11 @@
     <content_rating type="oars-1.1" />
 
     <releases>
+        <release version="3.0.1" date="2023-11-07">
+          <description translatable="no">
+            <p>This minor release fixes a bug where some .ISO files wouldn't be detected.</p>
+          </description>
+        </release>
         <release version="3.0" date="2023-11-05">
           <description translatable="no">
             <p>This release of Impression brings even more convenience and power to your fingertips:</p>
