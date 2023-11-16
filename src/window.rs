@@ -11,7 +11,7 @@ use crate::{
     config::APP_ID,
     flash::{refresh_devices, FlashPhase, FlashRequest, FlashStatus},
     get_size_string,
-    online::{collect_online_distros, Distro},
+    online::{collect_online_distros, get_osinfodb_url, Distro},
     spawn,
     widgets::device_list,
     RemoveAll,
@@ -496,14 +496,15 @@ impl AppWindow {
         let (tx, rx) = glib::MainContext::channel(glib::Priority::DEFAULT);
 
         std::thread::spawn(move || {
-            let distros = collect_online_distros();
+            let distros = get_osinfodb_url().and_then(|u| collect_online_distros(&u));
             tx.send(distros).expect("Concurrency Issues");
+            Some(())
         });
 
         rx.attach(
             None,
             clone!(@weak self as this => @default-return glib::ControlFlow::Break, move |online_distros| {
-                if let Ok((amd_distros, arm_distros)) = online_distros {
+                if let Some((amd_distros, arm_distros)) = online_distros {
                     this.load_distros(&this.imp().amd_distros, amd_distros);
                     this.load_distros(&this.imp().arm_distros, arm_distros);
                     this.imp().download_spinner.set_visible(false);
