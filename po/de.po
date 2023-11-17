@@ -1,21 +1,21 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the impression package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Philipp Kiemle <philipp.kiemle@gmail.com>, 2023.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: impression\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-11-05 19:00-0500\n"
-"PO-Revision-Date: 2023-11-04 22:46+0100\n"
-"Last-Translator: FineFindus <FineFindus@proton.me>\n"
+"PO-Revision-Date: 2023-11-18 00:29+0100\n"
+"Last-Translator: Philipp Kiemle <philipp.kiemle@gmail.com>\n"
 "Language-Team: \n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.3.2\n"
+"X-Generator: Poedit 3.4.1\n"
 
 #: data/io.gitlab.adhami3310.Impression.desktop.in.in:3
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:5
@@ -37,7 +37,8 @@ msgstr "Bootfähige Laufwerke erstellen"
 #: data/io.gitlab.adhami3310.Impression.desktop.in.in:11
 msgid "usb;flash;writer;bootable;drive;iso;img;disk;image"
 msgstr ""
-"usb;flash;Schreiber; Brenner;bootfähiges;Laufwerk;iso;img;Diskette;Image"
+"usb;flash;writer;Schreiber;Brenner;bootable;bootfähig;drive;Laufwerk;iso;img;"
+"disk;Festplatte;Image;Abbild"
 
 #: data/io.gitlab.adhami3310.Impression.gschema.xml.in:6
 msgid "Window width"
@@ -57,10 +58,10 @@ msgid ""
 "drive, and you're good to go! Impression is a useful tool for both avid "
 "distro-hoppers and casual computer users."
 msgstr ""
-"Schreibe ganz einfach Datenträgerabbilder auf deine Laufwerke. Wähle ein "
-"Datenträgerabbild aus, lege dein Laufwerk ein, und schon kann es losgehen! "
-"Impression ist ein nützliches Tool sowohl für begeisterte Distro-Hopper als "
-"auch für gelegentliche Computerbenutzer."
+"Schreiben Sie Datenträgerabbilder mit Leichtigkeit. Wählen Sie ein Abbild "
+"aus, verbinden Sie den Datenträger und Sie sind startklar! Impression ist "
+"ein nützliches Werkzeug - sowohl für Distro-Hopper als auch für "
+"gelegentliche Computerbenutzer."
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:28
 msgid "usb"
@@ -72,11 +73,11 @@ msgstr "Schreiber"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:30
 msgid "flash"
-msgstr "Brennen"
+msgstr "brennen"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:31
 msgid "bootable"
-msgstr "Bootfähig"
+msgstr "bootfähig"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:32
 msgid "drive"
@@ -96,25 +97,26 @@ msgstr "Festplatte"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:36
 msgid "image"
-msgstr "Datenträgerabbilder"
+msgstr "Datenträgerabbild"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:53
 msgid "Screen with a choice of a local image or internet download"
 msgstr ""
+"Bildschirm mit einer Auswahlmöglichkeit für eine lokale Abbilddatei oder "
+"einen Download aus dem Internet"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:57
-#, fuzzy
 msgid "Screen with a chosen ISO and available USB memories"
-msgstr "Hauptbildschirm mit ausgewählter ISO und zwei USB-Speichern"
+msgstr ""
+"Bildschirm mit einer ausgewählten ISO-Datei und verfügbaren USB-Speichern"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:61
-#, fuzzy
 msgid "Writing the ISO in progress"
-msgstr "Brennen der ISO in Bearbeitung"
+msgstr "ISO-Datei wird geschrieben"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:65
 msgid "Success screen with a big check mark"
-msgstr "Erfolgsanzeige mit einem großen Häkchen"
+msgstr "Erfolgsbildschirm mit einem großen Haken"
 
 #: data/resources/blueprints/help-overlay.blp:11
 msgctxt "shortcut window"
@@ -124,7 +126,7 @@ msgstr "Allgemein"
 #: data/resources/blueprints/help-overlay.blp:14
 msgctxt "shortcut window"
 msgid "Open File"
-msgstr "Datei Öffnen"
+msgstr "Datei öffnen"
 
 #: data/resources/blueprints/help-overlay.blp:19
 msgctxt "shortcut window"
@@ -139,7 +141,7 @@ msgstr "Tastenkürzel anzeigen"
 #: data/resources/blueprints/help-overlay.blp:29
 msgctxt "shortcut window"
 msgid "Quit"
-msgstr "Schließen"
+msgstr "Beenden"
 
 #: data/resources/blueprints/window.blp:31
 #: data/resources/blueprints/window.blp:149
@@ -149,11 +151,11 @@ msgstr "Hauptmenü"
 
 #: data/resources/blueprints/window.blp:50
 msgid "Choose Image"
-msgstr "Datenträgerabbild auswählen"
+msgstr "Abbild auswählen"
 
 #: data/resources/blueprints/window.blp:60
 msgid "Open File…"
-msgstr "Datei Öffnen…"
+msgstr "Datei öffnen …"
 
 #: data/resources/blueprints/window.blp:70
 msgid "Direct Download"
@@ -166,8 +168,8 @@ msgstr "Keine Verbindung"
 #: data/resources/blueprints/window.blp:105
 msgid "Connect to the internet to view available images"
 msgstr ""
-"Stelle eine Verbindung mit dem Internet her, um verfügbare "
-"Datenträgerabbilder anzuzeigen"
+"Stellen Sie eine Internetverbindung her, um die verfügbaren Abbilddateien zu "
+"sehen"
 
 #: data/resources/blueprints/window.blp:211
 msgid "All data on the selected drive will be erased"
@@ -183,9 +185,7 @@ msgstr "Keine Laufwerke"
 
 #: data/resources/blueprints/window.blp:277
 msgid "Insert a drive to write to"
-msgstr ""
-"Legen Sie ein Laufwerk ein, auf das das Datenträgerabbild übertragen werden "
-"soll."
+msgstr "Legen Sie ein Laufwerk ein, auf das geschrieben werden soll"
 
 #: data/resources/blueprints/window.blp:288
 msgid "Writing Completed"
@@ -193,7 +193,7 @@ msgstr "Schreiben abgeschlossen"
 
 #: data/resources/blueprints/window.blp:289
 msgid "The drive can be safely removed"
-msgstr "Das Laufwerk kann nun sicher entfernt werden"
+msgstr "Das Laufwerk kann sicher entfernt werden"
 
 #: data/resources/blueprints/window.blp:298
 msgid "Finish"
@@ -201,7 +201,7 @@ msgstr "Ende"
 
 #: data/resources/blueprints/window.blp:319
 msgid "Writing Unsuccessful"
-msgstr "Schreiben des Datenträgerabbilds fehlgeschlagen"
+msgstr "Schreiben fehlgeschlagen"
 
 #: data/resources/blueprints/window.blp:328
 msgid "Retry"
@@ -209,11 +209,11 @@ msgstr "Erneut versuchen"
 
 #: data/resources/blueprints/window.blp:348 src/window.rs:288 src/window.rs:326
 msgid "Writing…"
-msgstr "Schreiben…"
+msgstr "Schreiben …"
 
 #: data/resources/blueprints/window.blp:350 src/window.rs:287
 msgid "Do not remove the drive"
-msgstr "Das Laufwerk nicht entfernen"
+msgstr "Das Laufwerk darf nicht entfernt werden"
 
 #: data/resources/blueprints/window.blp:365 src/window.rs:207 src/window.rs:243
 msgid "_Cancel"
@@ -229,7 +229,7 @@ msgstr "Info zu Impression"
 
 #: src/window.rs:203
 msgid "Stop Writing?"
-msgstr "Aufhören zu Schreiben?"
+msgstr "Schreiben beenden?"
 
 #: src/window.rs:204
 msgid "This might leave the drive in a faulty state."
@@ -239,7 +239,7 @@ msgstr ""
 
 #: src/window.rs:207
 msgid "_Stop"
-msgstr "_Stop"
+msgstr "_Stopp"
 
 #: src/window.rs:236
 msgid "Erase Drive?"
@@ -255,15 +255,15 @@ msgstr "Das Schreiben beginnt, sobald der Download abgeschlossen ist"
 
 #: src/window.rs:283 src/window.rs:323
 msgid "Downloading Image…"
-msgstr "Datenträgerabbild wird heruntergeladen"
+msgstr "Abbild wird heruntergeladen …"
 
 #: src/window.rs:314
 msgid "Copying files…"
-msgstr "Kopiere Dateien…"
+msgstr "Dateien werden kopiert …"
 
 #: src/window.rs:317
 msgid "Validating…"
-msgstr "Überprüfe…"
+msgstr "Überprüfen …"
 
 #: src/window.rs:346
 msgid "Failed to write image"
@@ -271,7 +271,7 @@ msgstr "Schreiben des Datenträgerabbilds fehlgeschlagen"
 
 #: src/window.rs:354
 msgid "Image Written"
-msgstr "Datenträgerabbild "
+msgstr "Datenträgerabbild wurde geschrieben"
 
 #: src/window.rs:550
 msgid "Disk Images"
@@ -283,7 +283,9 @@ msgstr "Datei ist kein Datenträgerabbild"
 
 #: src/window.rs:672
 msgid "translator-credits"
-msgstr "FineFindus https://github.com/FineFindus"
+msgstr ""
+"FineFindus <https://github.com/FineFindus>\n"
+"Philipp Kiemle <philipp.kiemle@gmail.com>"
 
 #: src/window.rs:674
 msgid "Code borrowed from"
