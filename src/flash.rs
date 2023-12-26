@@ -112,8 +112,14 @@ impl FlashRequest {
                 image
             }
             DiskImage::Online { url, name } => {
-                let result_path =
-                    std::env::var("XDG_CACHE_HOME").unwrap() + "/tmp/" + &name + ".iso";
+                let temp_dir = match std::env::var("XDG_CACHE_HOME") {
+                    Ok(cache_home) => format!("{cache_home}/tmp/"),
+                    Err(_) => format!("{}/.cache/switcheroo/", std::env::var("HOME").unwrap()),
+                };
+
+                std::fs::create_dir_all(&temp_dir).expect("cannot create temporary directory");
+
+                let result_path = temp_dir + &name + ".iso";
 
                 let downloading_path = result_path.clone();
 

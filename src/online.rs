@@ -21,17 +21,24 @@ pub fn get_osinfodb_url() -> Option<String> {
     Some(info["release"]["archive"].as_str()?.to_owned())
 }
 
+const GOOD_DISTROS: [(&str, &str); 6] = [
+    ("archlinux.org", "Arch Linux"),
+    ("endlessos.com", "Endless OS"),
+    ("fedoraproject.org", "Fedora"),
+    ("manjaro.org", "Manjaro"),
+    ("opensuse.org", "OpenSUSE"),
+    ("ubuntu.com", "Ubuntu"),
+];
+
 pub fn collect_online_distros(latest_url: &str) -> Option<(Vec<Distro>, Vec<Distro>)> {
-    let temp_dir = format!("{}/tmp/", std::env::var("XDG_CACHE_HOME").unwrap());
+    let temp_dir = match std::env::var("XDG_CACHE_HOME") {
+        Ok(cache_home) => format!("{cache_home}/tmp/"),
+        Err(_) => format!("{}/.cache/switcheroo/", std::env::var("HOME").unwrap()),
+    };
+
+    std::fs::create_dir_all(&temp_dir).expect("cannot create temp dir");
+
     let result_file = format!("{}db.tar.xz", temp_dir);
-    let good_distros = [
-        ("archlinux.org", "Arch Linux"),
-        ("endlessos.com", "Endless OS"),
-        ("fedoraproject.org", "Fedora"),
-        ("manjaro.org", "Manjaro"),
-        ("opensuse.org", "OpenSUSE"),
-        ("ubuntu.com", "Ubuntu"),
-    ];
 
     let osinfodb_resp = reqwest::blocking::get(latest_url).ok()?;
     let body = osinfodb_resp.bytes().ok()?;
@@ -48,7 +55,7 @@ pub fn collect_online_distros(latest_url: &str) -> Option<(Vec<Distro>, Vec<Dist
         .arg("--strip-components=2")
         .arg("--wildcards")
         .args(
-            good_distros
+            GOOD_DISTROS
                 .into_iter()
                 .map(|(name, _)| format!("*/os/{name}")),
         )
@@ -59,7 +66,12 @@ pub fn collect_online_distros(latest_url: &str) -> Option<(Vec<Distro>, Vec<Dist
         return None;
     }
 
-    let (amd, arm): (Vec<Option<Distro>>, Vec<Option<Distro>>) = good_distros
+    let start_time = std::time::Instant::now();
+
+    use rayon::prelude::*;
+
+    let (amd, arm): (Vec<Option<Distro>>, Vec<Option<Distro>>) = GOOD_DISTROS
+        .into_par_iter()
         .map(|(distro, distro_name)| {
             let files = std::fs::read_dir(format!("{}{}", temp_dir, distro)).unwrap();
 
@@ -185,11 +197,14 @@ pub fn collect_online_distros(latest_url: &str) -> Option<(Vec<Distro>, Vec<Dist
 
             (y.0, y.1.flatten())
         })
-        .into_iter()
         .unzip();
 
-    Some((
+    let res = Some((
         amd.into_iter().flatten().collect(),
         arm.into_iter().flatten().collect(),
-    ))
+    ));
+
+    dbg!(std::time::Instant::now().duration_since(start_time));
+
+    res
 }
