@@ -66,8 +66,6 @@ pub fn collect_online_distros(latest_url: &str) -> Option<(Vec<Distro>, Vec<Dist
         return None;
     }
 
-    let start_time = std::time::Instant::now();
-
     use rayon::prelude::*;
 
     let (amd, arm): (Vec<Option<Distro>>, Vec<Option<Distro>>) = GOOD_DISTROS
@@ -203,8 +201,6 @@ pub fn collect_online_distros(latest_url: &str) -> Option<(Vec<Distro>, Vec<Dist
         amd.into_iter().flatten().collect(),
         arm.into_iter().flatten().collect(),
     ));
-
-    dbg!(std::time::Instant::now().duration_since(start_time));
 
     res
 }
