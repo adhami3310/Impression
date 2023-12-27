@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: impression\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-11-05 19:00-0500\n"
+"POT-Creation-Date: 2023-12-27 07:57-0500\n"
 "PO-Revision-Date: 2023-11-18 00:29+0100\n"
 "Last-Translator: Philipp Kiemle <philipp.kiemle@gmail.com>\n"
 "Language-Team: \n"
@@ -17,279 +17,278 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 3.4.1\n"
 
-#: data/io.gitlab.adhami3310.Impression.desktop.in.in:3
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:5
-#: data/resources/blueprints/window.blp:9
-#: data/resources/blueprints/window.blp:21
-#: data/resources/blueprints/window.blp:139 src/main.rs:57 src/window.rs:375
-msgid "Impression"
-msgstr "Impression"
-
-#: data/io.gitlab.adhami3310.Impression.desktop.in.in:4
-msgid "Media Writer"
-msgstr "Medien-Schreibprogramm"
-
-#: data/io.gitlab.adhami3310.Impression.desktop.in.in:5
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:7
-msgid "Create bootable drives"
-msgstr "Bootfähige Laufwerke erstellen"
-
-#: data/io.gitlab.adhami3310.Impression.desktop.in.in:11
-msgid "usb;flash;writer;bootable;drive;iso;img;disk;image"
-msgstr ""
-"usb;flash;writer;Schreiber;Brenner;bootable;bootfähig;drive;Laufwerk;iso;img;"
-"disk;Festplatte;Image;Abbild"
-
-#: data/io.gitlab.adhami3310.Impression.gschema.xml.in:6
-msgid "Window width"
-msgstr "Fensterberite"
-
-#: data/io.gitlab.adhami3310.Impression.gschema.xml.in:10
-msgid "Window height"
-msgstr "Fensterhöhe"
-
-#: data/io.gitlab.adhami3310.Impression.gschema.xml.in:14
-msgid "Window maximized state"
-msgstr "Maximierter Zustand des Fensters"
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:13
-msgid ""
-"Write disk images to your drives with ease. Select an image, insert your "
-"drive, and you're good to go! Impression is a useful tool for both avid "
-"distro-hoppers and casual computer users."
-msgstr ""
-"Schreiben Sie Datenträgerabbilder mit Leichtigkeit. Wählen Sie ein Abbild "
-"aus, verbinden Sie den Datenträger und Sie sind startklar! Impression ist "
-"ein nützliches Werkzeug - sowohl für Distro-Hopper als auch für "
-"gelegentliche Computerbenutzer."
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:28
-msgid "usb"
-msgstr "USB"
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:29
-msgid "writer"
-msgstr "Schreiber"
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:30
-msgid "flash"
-msgstr "brennen"
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:31
-msgid "bootable"
-msgstr "bootfähig"
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:32
-msgid "drive"
-msgstr "Laufwerk"
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:33
-msgid "iso"
-msgstr "iso"
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:34
-msgid "img"
-msgstr "img"
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:35
-msgid "disk"
-msgstr "Festplatte"
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:36
-msgid "image"
-msgstr "Datenträgerabbild"
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:53
-msgid "Screen with a choice of a local image or internet download"
-msgstr ""
-"Bildschirm mit einer Auswahlmöglichkeit für eine lokale Abbilddatei oder "
-"einen Download aus dem Internet"
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:57
-msgid "Screen with a chosen ISO and available USB memories"
-msgstr ""
-"Bildschirm mit einer ausgewählten ISO-Datei und verfügbaren USB-Speichern"
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:61
-msgid "Writing the ISO in progress"
-msgstr "ISO-Datei wird geschrieben"
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:65
-msgid "Success screen with a big check mark"
-msgstr "Erfolgsbildschirm mit einem großen Haken"
-
-#: data/resources/blueprints/help-overlay.blp:11
+#: ../data/resources/blueprints/help-overlay.blp:11
 msgctxt "shortcut window"
 msgid "General"
 msgstr "Allgemein"
 
-#: data/resources/blueprints/help-overlay.blp:14
+#: ../data/resources/blueprints/help-overlay.blp:14
 msgctxt "shortcut window"
 msgid "Open File"
 msgstr "Datei öffnen"
 
-#: data/resources/blueprints/help-overlay.blp:19
+#: ../data/resources/blueprints/help-overlay.blp:19
 msgctxt "shortcut window"
 msgid "New Window"
 msgstr "Neues Fenster"
 
-#: data/resources/blueprints/help-overlay.blp:24
+#: ../data/resources/blueprints/help-overlay.blp:24
 msgctxt "shortcut window"
 msgid "Show Shortcuts"
 msgstr "Tastenkürzel anzeigen"
 
-#: data/resources/blueprints/help-overlay.blp:29
+#: ../data/resources/blueprints/help-overlay.blp:29
 msgctxt "shortcut window"
 msgid "Quit"
 msgstr "Beenden"
 
-#: data/resources/blueprints/window.blp:31
-#: data/resources/blueprints/window.blp:149
-#: data/resources/blueprints/window.blp:247
+#: ../data/resources/blueprints/window.blp:9
+#: ../data/resources/blueprints/window.blp:21
+#: ../data/resources/blueprints/window.blp:139 ../src/main.rs:56
+#: ../src/window.rs:387
+msgid "Impression"
+msgstr "Impression"
+
+#: ../data/resources/blueprints/window.blp:31
+#: ../data/resources/blueprints/window.blp:149
+#: ../data/resources/blueprints/window.blp:247
 msgid "Main Menu"
 msgstr "Hauptmenü"
 
-#: data/resources/blueprints/window.blp:50
+#: ../data/resources/blueprints/window.blp:50
 msgid "Choose Image"
 msgstr "Abbild auswählen"
 
-#: data/resources/blueprints/window.blp:60
+#: ../data/resources/blueprints/window.blp:60
 msgid "Open File…"
 msgstr "Datei öffnen …"
 
-#: data/resources/blueprints/window.blp:70
+#: ../data/resources/blueprints/window.blp:70
 msgid "Direct Download"
 msgstr "Direkter Download"
 
-#: data/resources/blueprints/window.blp:104
+#: ../data/resources/blueprints/window.blp:104
 msgid "No Connection"
 msgstr "Keine Verbindung"
 
-#: data/resources/blueprints/window.blp:105
+#: ../data/resources/blueprints/window.blp:105
 msgid "Connect to the internet to view available images"
 msgstr ""
 "Stellen Sie eine Internetverbindung her, um die verfügbaren Abbilddateien zu "
 "sehen"
 
-#: data/resources/blueprints/window.blp:211
+#: ../data/resources/blueprints/window.blp:211
 msgid "All data on the selected drive will be erased"
 msgstr "Alle Daten auf dem ausgewählten Laufwerk werden gelöscht"
 
-#: data/resources/blueprints/window.blp:214
+#: ../data/resources/blueprints/window.blp:214
 msgid "Write"
 msgstr "Schreiben"
 
-#: data/resources/blueprints/window.blp:276
+#: ../data/resources/blueprints/window.blp:276
 msgid "No Drives"
 msgstr "Keine Laufwerke"
 
-#: data/resources/blueprints/window.blp:277
+#: ../data/resources/blueprints/window.blp:277
 msgid "Insert a drive to write to"
 msgstr "Legen Sie ein Laufwerk ein, auf das geschrieben werden soll"
 
-#: data/resources/blueprints/window.blp:288
+#: ../data/resources/blueprints/window.blp:288
 msgid "Writing Completed"
 msgstr "Schreiben abgeschlossen"
 
-#: data/resources/blueprints/window.blp:289
+#: ../data/resources/blueprints/window.blp:289
 msgid "The drive can be safely removed"
 msgstr "Das Laufwerk kann sicher entfernt werden"
 
-#: data/resources/blueprints/window.blp:298
+#: ../data/resources/blueprints/window.blp:298
 msgid "Finish"
 msgstr "Ende"
 
-#: data/resources/blueprints/window.blp:319
+#: ../data/resources/blueprints/window.blp:319
 msgid "Writing Unsuccessful"
 msgstr "Schreiben fehlgeschlagen"
 
-#: data/resources/blueprints/window.blp:328
+#: ../data/resources/blueprints/window.blp:328
 msgid "Retry"
 msgstr "Erneut versuchen"
 
-#: data/resources/blueprints/window.blp:348 src/window.rs:288 src/window.rs:326
+#: ../data/resources/blueprints/window.blp:348 ../src/window.rs:294
+#: ../src/window.rs:328
 msgid "Writing…"
 msgstr "Schreiben …"
 
-#: data/resources/blueprints/window.blp:350 src/window.rs:287
+#: ../data/resources/blueprints/window.blp:350 ../src/window.rs:293
 msgid "Do not remove the drive"
 msgstr "Das Laufwerk darf nicht entfernt werden"
 
-#: data/resources/blueprints/window.blp:365 src/window.rs:207 src/window.rs:243
+#: ../data/resources/blueprints/window.blp:365 ../src/window.rs:213
+#: ../src/window.rs:249
 msgid "_Cancel"
 msgstr "_Abbrechen"
 
-#: data/resources/blueprints/window.blp:393
+#: ../data/resources/blueprints/window.blp:393
 msgid "Keyboard Shortcuts"
 msgstr "Tastenkürzel"
 
-#: data/resources/blueprints/window.blp:398
+#: ../data/resources/blueprints/window.blp:398
 msgid "About Impression"
 msgstr "Info zu Impression"
 
-#: src/window.rs:203
+#: ../src/window.rs:209
 msgid "Stop Writing?"
 msgstr "Schreiben beenden?"
 
-#: src/window.rs:204
+#: ../src/window.rs:210
 msgid "This might leave the drive in a faulty state."
 msgstr ""
 "Dies kann dazu führen, dass sich das Laufwerk in einem fehlerhaften Zustand "
 "befindet."
 
-#: src/window.rs:207
+#: ../src/window.rs:213
 msgid "_Stop"
 msgstr "_Stopp"
 
-#: src/window.rs:236
+#: ../src/window.rs:242
 msgid "Erase Drive?"
 msgstr "Laufwerk löschen?"
 
-#: src/window.rs:244
+#: ../src/window.rs:250
 msgid "_Erase"
 msgstr "_Löschen"
 
-#: src/window.rs:281 src/window.rs:311
+#: ../src/window.rs:287 ../src/window.rs:316
 msgid "Writing will begin once the download is completed"
 msgstr "Das Schreiben beginnt, sobald der Download abgeschlossen ist"
 
-#: src/window.rs:283 src/window.rs:323
+#: ../src/window.rs:289 ../src/window.rs:325
 msgid "Downloading Image…"
 msgstr "Abbild wird heruntergeladen …"
 
-#: src/window.rs:314
+#: ../src/window.rs:319
 msgid "Copying files…"
 msgstr "Dateien werden kopiert …"
 
-#: src/window.rs:317
-msgid "Validating…"
-msgstr "Überprüfen …"
-
-#: src/window.rs:346
+#: ../src/window.rs:354
 msgid "Failed to write image"
 msgstr "Schreiben des Datenträgerabbilds fehlgeschlagen"
 
-#: src/window.rs:354
+#: ../src/window.rs:362
 msgid "Image Written"
 msgstr "Datenträgerabbild wurde geschrieben"
 
-#: src/window.rs:550
+#: ../src/window.rs:565
 msgid "Disk Images"
 msgstr "Datenträgerabbilder"
 
-#: src/window.rs:575
+#: ../src/window.rs:590
 msgid "File is not a Disk Image"
 msgstr "Datei ist kein Datenträgerabbild"
 
-#: src/window.rs:672
+#: ../src/window.rs:695
 msgid "translator-credits"
 msgstr ""
 "FineFindus <https://github.com/FineFindus>\n"
 "Philipp Kiemle <philipp.kiemle@gmail.com>"
 
-#: src/window.rs:674
+#: ../src/window.rs:697
 msgid "Code borrowed from"
 msgstr "Code angelehnt an"
+
+#: ../src/flash.rs:95
+#, fuzzy
+msgid "Failed to open disk"
+msgstr "Schreiben des Datenträgerabbilds fehlgeschlagen"
+
+#: ../src/flash.rs:145
+#, fuzzy
+msgid "Failed to extract drive"
+msgstr "Schreiben des Datenträgerabbilds fehlgeschlagen"
+
+#: ../src/flash.rs:203
+#, fuzzy
+msgid "Failed to download image"
+msgstr "Schreiben des Datenträgerabbilds fehlgeschlagen"
+
+#: ../src/flash.rs:256
+#, fuzzy
+msgid "Writing to disk failed"
+msgstr "Schreiben abgeschlossen"
+
+#~ msgid "Media Writer"
+#~ msgstr "Medien-Schreibprogramm"
+
+#~ msgid "Create bootable drives"
+#~ msgstr "Bootfähige Laufwerke erstellen"
+
+#~ msgid "usb;flash;writer;bootable;drive;iso;img;disk;image"
+#~ msgstr ""
+#~ "usb;flash;writer;Schreiber;Brenner;bootable;bootfähig;drive;Laufwerk;iso;"
+#~ "img;disk;Festplatte;Image;Abbild"
+
+#~ msgid "Window width"
+#~ msgstr "Fensterberite"
+
+#~ msgid "Window height"
+#~ msgstr "Fensterhöhe"
+
+#~ msgid "Window maximized state"
+#~ msgstr "Maximierter Zustand des Fensters"
+
+#~ msgid ""
+#~ "Write disk images to your drives with ease. Select an image, insert your "
+#~ "drive, and you're good to go! Impression is a useful tool for both avid "
+#~ "distro-hoppers and casual computer users."
+#~ msgstr ""
+#~ "Schreiben Sie Datenträgerabbilder mit Leichtigkeit. Wählen Sie ein Abbild "
+#~ "aus, verbinden Sie den Datenträger und Sie sind startklar! Impression ist "
+#~ "ein nützliches Werkzeug - sowohl für Distro-Hopper als auch für "
+#~ "gelegentliche Computerbenutzer."
+
+#~ msgid "usb"
+#~ msgstr "USB"
+
+#~ msgid "writer"
+#~ msgstr "Schreiber"
+
+#~ msgid "flash"
+#~ msgstr "brennen"
+
+#~ msgid "bootable"
+#~ msgstr "bootfähig"
+
+#~ msgid "drive"
+#~ msgstr "Laufwerk"
+
+#~ msgid "iso"
+#~ msgstr "iso"
+
+#~ msgid "img"
+#~ msgstr "img"
+
+#~ msgid "disk"
+#~ msgstr "Festplatte"
+
+#~ msgid "image"
+#~ msgstr "Datenträgerabbild"
+
+#~ msgid "Screen with a choice of a local image or internet download"
+#~ msgstr ""
+#~ "Bildschirm mit einer Auswahlmöglichkeit für eine lokale Abbilddatei oder "
+#~ "einen Download aus dem Internet"
+
+#~ msgid "Screen with a chosen ISO and available USB memories"
+#~ msgstr ""
+#~ "Bildschirm mit einer ausgewählten ISO-Datei und verfügbaren USB-Speichern"
+
+#~ msgid "Writing the ISO in progress"
+#~ msgstr "ISO-Datei wird geschrieben"
+
+#~ msgid "Success screen with a big check mark"
+#~ msgstr "Erfolgsbildschirm mit einem großen Haken"
+
+#~ msgid "Validating…"
+#~ msgstr "Überprüfen …"
 
 #~ msgid "Khaleel Al-Adhami"
 #~ msgstr "Khaleel Al-Adhami"

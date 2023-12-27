@@ -10,3 +10,4 @@ data/resources/blueprints/window.blp
 # Rust files
 src/main.rs
 src/window.rs
+src/flash.rs

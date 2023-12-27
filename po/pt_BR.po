@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: impression\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-11-05 19:00-0500\n"
+"POT-Creation-Date: 2023-12-27 07:57-0500\n"
 "PO-Revision-Date: 2023-06-14 21:30-0300\n"
 "Last-Translator: Pedro Sader Azevedo <pedro.saderazevedo@protonmail.com>\n"
 "Language-Team: Brazilian Portuguese\n"
@@ -17,273 +17,269 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: data/io.gitlab.adhami3310.Impression.desktop.in.in:3
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:5
-#: data/resources/blueprints/window.blp:9
-#: data/resources/blueprints/window.blp:21
-#: data/resources/blueprints/window.blp:139 src/main.rs:57 src/window.rs:375
-msgid "Impression"
-msgstr "Impressão"
-
-#: data/io.gitlab.adhami3310.Impression.desktop.in.in:4
-msgid "Media Writer"
-msgstr "Gravador de Mídia"
-
-#: data/io.gitlab.adhami3310.Impression.desktop.in.in:5
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:7
-msgid "Create bootable drives"
-msgstr "Crie pendrives inicializáveis"
-
-# I left both translated and untranslated versions of some tags (e.g. "flash"
-# and "gravar"), because these words are more often spoken in English.
-#: data/io.gitlab.adhami3310.Impression.desktop.in.in:11
-msgid "usb;flash;writer;bootable;drive;iso;img;disk;image"
-msgstr ""
-"usb;gravar;flash;gravador;bootável;inicializável;pendrive;iso;img;disco;"
-"imagem"
-
-#: data/io.gitlab.adhami3310.Impression.gschema.xml.in:6
-msgid "Window width"
-msgstr "Largura da janela"
-
-#: data/io.gitlab.adhami3310.Impression.gschema.xml.in:10
-msgid "Window height"
-msgstr "Altura da janela"
-
-#: data/io.gitlab.adhami3310.Impression.gschema.xml.in:14
-msgid "Window maximized state"
-msgstr "Estado de maximização da janela"
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:13
-msgid ""
-"Write disk images to your drives with ease. Select an image, insert your "
-"drive, and you're good to go! Impression is a useful tool for both avid "
-"distro-hoppers and casual computer users."
-msgstr ""
-"Grave imagens de disco em pendrives com facilidade. Selecione uma imagem,"
-"insira seu pendrive, e pronto! Impressão é uma ferramenta útil, tanto para "
-"ávidos \"distro-hoppers\", quanto para usuários casuais."
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:28
-msgid "usb"
-msgstr "usb"
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:29
-msgid "writer"
-msgstr "gravador"
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:30
-msgid "flash"
-msgstr "gravar"
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:31
-msgid "bootable"
-msgstr "inicializável"
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:32
-msgid "drive"
-msgstr "pendrive"
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:33
-msgid "iso"
-msgstr "iso"
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:34
-msgid "img"
-msgstr "img"
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:35
-msgid "disk"
-msgstr "disco"
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:36
-msgid "image"
-msgstr "imagem"
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:53
-msgid "Screen with a choice of a local image or internet download"
-msgstr ""
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:57
-#, fuzzy
-msgid "Screen with a chosen ISO and available USB memories"
-msgstr "Tela principal com ISO escolhida e unidades USB disponíveis"
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:61
-#, fuzzy
-msgid "Writing the ISO in progress"
-msgstr "Escrita da ISO em progresso"
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:65
-msgid "Success screen with a big check mark"
-msgstr "Tela de sucesso com uma grande marca de verificação"
-
-#: data/resources/blueprints/help-overlay.blp:11
+#: ../data/resources/blueprints/help-overlay.blp:11
 msgctxt "shortcut window"
 msgid "General"
 msgstr "Geral"
 
-#: data/resources/blueprints/help-overlay.blp:14
+#: ../data/resources/blueprints/help-overlay.blp:14
 msgctxt "shortcut window"
 msgid "Open File"
 msgstr "Abrir Arquivo"
 
-#: data/resources/blueprints/help-overlay.blp:19
+#: ../data/resources/blueprints/help-overlay.blp:19
 msgctxt "shortcut window"
 msgid "New Window"
 msgstr "Nova Janela"
 
-#: data/resources/blueprints/help-overlay.blp:24
+#: ../data/resources/blueprints/help-overlay.blp:24
 msgctxt "shortcut window"
 msgid "Show Shortcuts"
 msgstr "Mostrar Atalhos"
 
-#: data/resources/blueprints/help-overlay.blp:29
+#: ../data/resources/blueprints/help-overlay.blp:29
 msgctxt "shortcut window"
 msgid "Quit"
 msgstr "Sair"
 
-#: data/resources/blueprints/window.blp:31
-#: data/resources/blueprints/window.blp:149
-#: data/resources/blueprints/window.blp:247
+#: ../data/resources/blueprints/window.blp:9
+#: ../data/resources/blueprints/window.blp:21
+#: ../data/resources/blueprints/window.blp:139 ../src/main.rs:56
+#: ../src/window.rs:387
+msgid "Impression"
+msgstr "Impressão"
+
+#: ../data/resources/blueprints/window.blp:31
+#: ../data/resources/blueprints/window.blp:149
+#: ../data/resources/blueprints/window.blp:247
 msgid "Main Menu"
 msgstr "Menu Principal"
 
-#: data/resources/blueprints/window.blp:50
+#: ../data/resources/blueprints/window.blp:50
 msgid "Choose Image"
 msgstr "Escolher uma imagem"
 
-#: data/resources/blueprints/window.blp:60
+#: ../data/resources/blueprints/window.blp:60
 msgid "Open File…"
 msgstr "Abrir Arquivo…"
 
-#: data/resources/blueprints/window.blp:70
+#: ../data/resources/blueprints/window.blp:70
 msgid "Direct Download"
 msgstr "Download Direto"
 
-#: data/resources/blueprints/window.blp:104
+#: ../data/resources/blueprints/window.blp:104
 msgid "No Connection"
 msgstr "Sem Conexão"
 
-#: data/resources/blueprints/window.blp:105
+#: ../data/resources/blueprints/window.blp:105
 msgid "Connect to the internet to view available images"
 msgstr "Conecte-se a internet para ver as imagens disponíveis"
 
-#: data/resources/blueprints/window.blp:211
+#: ../data/resources/blueprints/window.blp:211
 msgid "All data on the selected drive will be erased"
 msgstr "Todos os dados armazenados no pendrive selecionado serão apagados"
 
-#: data/resources/blueprints/window.blp:214
+#: ../data/resources/blueprints/window.blp:214
 msgid "Write"
 msgstr "Gravar"
 
-#: data/resources/blueprints/window.blp:276
+#: ../data/resources/blueprints/window.blp:276
 msgid "No Drives"
 msgstr "Sem Pendrives"
 
-#: data/resources/blueprints/window.blp:277
+#: ../data/resources/blueprints/window.blp:277
 msgid "Insert a drive to write to"
 msgstr "Insira um pendrive para gravar"
 
-#: data/resources/blueprints/window.blp:288
+#: ../data/resources/blueprints/window.blp:288
 msgid "Writing Completed"
 msgstr "Gravação Completa"
 
-#: data/resources/blueprints/window.blp:289
+#: ../data/resources/blueprints/window.blp:289
 msgid "The drive can be safely removed"
 msgstr "O pendrive pode ser removido com segurança"
 
-#: data/resources/blueprints/window.blp:298
+#: ../data/resources/blueprints/window.blp:298
 msgid "Finish"
 msgstr "Finalizar"
 
-#: data/resources/blueprints/window.blp:319
+#: ../data/resources/blueprints/window.blp:319
 msgid "Writing Unsuccessful"
 msgstr "Gravação Mal-Sucedida"
 
-#: data/resources/blueprints/window.blp:328
+#: ../data/resources/blueprints/window.blp:328
 msgid "Retry"
 msgstr "Tentar Novamente"
 
-#: data/resources/blueprints/window.blp:348 src/window.rs:288 src/window.rs:326
+#: ../data/resources/blueprints/window.blp:348 ../src/window.rs:294
+#: ../src/window.rs:328
 msgid "Writing…"
 msgstr "Gravando…"
 
-#: data/resources/blueprints/window.blp:350 src/window.rs:287
+#: ../data/resources/blueprints/window.blp:350 ../src/window.rs:293
 msgid "Do not remove the drive"
 msgstr "Não remova o pendrive"
 
-#: data/resources/blueprints/window.blp:365 src/window.rs:207 src/window.rs:243
+#: ../data/resources/blueprints/window.blp:365 ../src/window.rs:213
+#: ../src/window.rs:249
 msgid "_Cancel"
 msgstr "_Cancelar"
 
-#: data/resources/blueprints/window.blp:393
+#: ../data/resources/blueprints/window.blp:393
 msgid "Keyboard Shortcuts"
 msgstr "Atalhos de Teclado"
 
-#: data/resources/blueprints/window.blp:398
+#: ../data/resources/blueprints/window.blp:398
 msgid "About Impression"
 msgstr "Sobre o Impressão"
 
-#: src/window.rs:203
+#: ../src/window.rs:209
 msgid "Stop Writing?"
 msgstr "Parar Gravação?"
 
-#: src/window.rs:204
+#: ../src/window.rs:210
 msgid "This might leave the drive in a faulty state."
 msgstr "Isso pode deixar o pendrive em um estado defeituoso"
 
-#: src/window.rs:207
+#: ../src/window.rs:213
 msgid "_Stop"
 msgstr "_Parar"
 
-#: src/window.rs:236
+#: ../src/window.rs:242
 msgid "Erase Drive?"
 msgstr "Apagar Pendrive?"
 
-#: src/window.rs:244
+#: ../src/window.rs:250
 msgid "_Erase"
 msgstr "_Apagar"
 
-#: src/window.rs:281 src/window.rs:311
+#: ../src/window.rs:287 ../src/window.rs:316
 msgid "Writing will begin once the download is completed"
 msgstr "A gravação vai iniciar assim que o download estiver completo"
 
-#: src/window.rs:283 src/window.rs:323
+#: ../src/window.rs:289 ../src/window.rs:325
 msgid "Downloading Image…"
 msgstr "Baixando a Imagem…"
 
-#: src/window.rs:314
+#: ../src/window.rs:319
 msgid "Copying files…"
 msgstr "Copiando arquivos…"
 
-#: src/window.rs:317
-msgid "Validating…"
-msgstr "Validando…"
-
-#: src/window.rs:346
+#: ../src/window.rs:354
 msgid "Failed to write image"
 msgstr "Falha ao gravar a imagem"
 
-#: src/window.rs:354
+#: ../src/window.rs:362
 msgid "Image Written"
 msgstr "Imagem escrita"
 
-#: src/window.rs:550
+#: ../src/window.rs:565
 msgid "Disk Images"
 msgstr "Imagens de Disco"
 
-#: src/window.rs:575
+#: ../src/window.rs:590
 msgid "File is not a Disk Image"
 msgstr "O arquivo escolhido não é uma imagem de disco"
 
-#: src/window.rs:672
+#: ../src/window.rs:695
 msgid "translator-credits"
 msgstr "Pedro Sader Azevedo"
 
-#: src/window.rs:674
+#: ../src/window.rs:697
 msgid "Code borrowed from"
 msgstr "Código emprestado de"
+
+#: ../src/flash.rs:95
+#, fuzzy
+msgid "Failed to open disk"
+msgstr "Falha ao gravar a imagem"
+
+#: ../src/flash.rs:145
+#, fuzzy
+msgid "Failed to extract drive"
+msgstr "Falha ao gravar a imagem"
+
+#: ../src/flash.rs:203
+#, fuzzy
+msgid "Failed to download image"
+msgstr "Falha ao gravar a imagem"
+
+#: ../src/flash.rs:256
+#, fuzzy
+msgid "Writing to disk failed"
+msgstr "Gravação Completa"
+
+#~ msgid "Media Writer"
+#~ msgstr "Gravador de Mídia"
+
+#~ msgid "Create bootable drives"
+#~ msgstr "Crie pendrives inicializáveis"
+
+# I left both translated and untranslated versions of some tags (e.g. "flash"
+# and "gravar"), because these words are more often spoken in English.
+#~ msgid "usb;flash;writer;bootable;drive;iso;img;disk;image"
+#~ msgstr ""
+#~ "usb;gravar;flash;gravador;bootável;inicializável;pendrive;iso;img;disco;"
+#~ "imagem"
+
+#~ msgid "Window width"
+#~ msgstr "Largura da janela"
+
+#~ msgid "Window height"
+#~ msgstr "Altura da janela"
+
+#~ msgid "Window maximized state"
+#~ msgstr "Estado de maximização da janela"
+
+#~ msgid ""
+#~ "Write disk images to your drives with ease. Select an image, insert your "
+#~ "drive, and you're good to go! Impression is a useful tool for both avid "
+#~ "distro-hoppers and casual computer users."
+#~ msgstr ""
+#~ "Grave imagens de disco em pendrives com facilidade. Selecione uma imagem,"
+#~ "insira seu pendrive, e pronto! Impressão é uma ferramenta útil, tanto "
+#~ "para ávidos \"distro-hoppers\", quanto para usuários casuais."
+
+#~ msgid "usb"
+#~ msgstr "usb"
+
+#~ msgid "writer"
+#~ msgstr "gravador"
+
+#~ msgid "flash"
+#~ msgstr "gravar"
+
+#~ msgid "bootable"
+#~ msgstr "inicializável"
+
+#~ msgid "drive"
+#~ msgstr "pendrive"
+
+#~ msgid "iso"
+#~ msgstr "iso"
+
+#~ msgid "img"
+#~ msgstr "img"
+
+#~ msgid "disk"
+#~ msgstr "disco"
+
+#~ msgid "image"
+#~ msgstr "imagem"
+
+#, fuzzy
+#~ msgid "Screen with a chosen ISO and available USB memories"
+#~ msgstr "Tela principal com ISO escolhida e unidades USB disponíveis"
+
+#, fuzzy
+#~ msgid "Writing the ISO in progress"
+#~ msgstr "Escrita da ISO em progresso"
+
+#~ msgid "Success screen with a big check mark"
+#~ msgstr "Tela de sucesso com uma grande marca de verificação"
+
+#~ msgid "Validating…"
+#~ msgstr "Validando…"
 
 #~ msgid "Khaleel Al-Adhami"
 #~ msgstr "Khaleel Al-Adhami"
