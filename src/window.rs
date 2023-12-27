@@ -686,7 +686,7 @@ impl AppWindow {
 
         let about = adw::AboutWindow::from_appdata(
             "/io/gitlab/adhami3310/Impression/io.gitlab.adhami3310.Impression.metainfo.xml",
-            Some("3.0"),
+            Some("3.1.0"),
         );
         about.set_transient_for(Some(self));
         about.set_developers(&developers);
