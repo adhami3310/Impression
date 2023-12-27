@@ -3,7 +3,6 @@ mod application;
 mod config;
 mod flash;
 mod online;
-mod task;
 mod widgets;
 mod window;
 

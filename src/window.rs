@@ -9,13 +9,18 @@ use itertools::Itertools;
 
 use crate::{
     config::APP_ID,
-    flash::{refresh_devices, FlashPhase, FlashRequest, FlashStatus},
+    flash::{refresh_devices, FlashPhase, FlashRequest, FlashStatus, Progress},
     get_size_string,
     online::{collect_online_distros, get_osinfodb_url, Distro},
     spawn,
     widgets::device_list,
-    RemoveAll,
 };
+
+#[derive(Debug, Clone)]
+pub enum Compression {
+    Raw,
+    Xz,
+}
 
 #[derive(Debug, Clone)]
 pub enum DiskImage {
@@ -23,6 +28,7 @@ pub enum DiskImage {
         path: PathBuf,
         filename: String,
         size: u64,
+        compression: Compression,
     },
     Online {
         url: String,
@@ -264,7 +270,7 @@ impl AppWindow {
         self.imp()
             .is_running
             .store(true, std::sync::atomic::Ordering::SeqCst);
-        let (tx, rx) = glib::MainContext::channel(glib::Priority::DEFAULT);
+        let (tx, rx) = async_channel::bounded(1);
 
         let selected_image = self.selected_image().unwrap();
 
@@ -291,11 +297,10 @@ impl AppWindow {
                 .is_flashing
                 .store(true, std::sync::atomic::Ordering::SeqCst);
         }
-        rx.attach(
-            None,
-            clone!(@weak self as this => @default-return glib::ControlFlow::Break, move |x| {
+        glib::spawn_future_local(clone!(@weak self as this => async move {
+            while let Ok(x) = rx.recv().await {
                 if !this.imp().is_running.load(std::sync::atomic::Ordering::SeqCst) {
-                    return glib::ControlFlow::Break;
+                    break;
                 }
                 match x {
                     FlashStatus::Active(p, x) => {
@@ -312,9 +317,6 @@ impl AppWindow {
                                 }
                                 FlashPhase::Copy => {
                                     gettext("Copying files…")
-                                }
-                                _ => {
-                                    gettext("Validating…")
                                 }
                             }));
                         flashing_page
@@ -335,9 +337,15 @@ impl AppWindow {
                                     "flash-symbolic"
                                 }
                             }));
-                        this.imp().progress_bar.set_fraction(x);
+                        match x {
+                            Progress::Fraction(x) => {
+                                this.imp().progress_bar.set_fraction(x);
+                            }
+                            Progress::Pulse => {
+                                this.imp().progress_bar.pulse();
+                            }
+                        }
                         glib::MainContext::default().iteration(true);
-                        glib::ControlFlow::Continue
                     }
                     FlashStatus::Done(Some(_)) => {
                         this.imp().stack.set_visible_child_name("failure");
@@ -345,7 +353,7 @@ impl AppWindow {
                         this.imp().is_flashing.store(false, std::sync::atomic::Ordering::SeqCst);
                         this.send_notification(gettext("Failed to write image"));
                         glib::MainContext::default().iteration(true);
-                        glib::ControlFlow::Break
+                        break;
                     }
                     FlashStatus::Done(None) => {
                         this.imp().stack.set_visible_child_name("success");
@@ -353,13 +361,17 @@ impl AppWindow {
                         this.imp().is_flashing.store(false, std::sync::atomic::Ordering::SeqCst);
                         this.send_notification(gettext("Image Written"));
                         glib::MainContext::default().iteration(true);
-                        glib::ControlFlow::Break
+                         break;
                     }
                 }
-            }),
-        );
-        std::thread::spawn(move || {
-            flash_job.perform();
+            }
+        }));
+        std::thread::spawn(|| {
+            let rt = tokio::runtime::Builder::new_multi_thread()
+                .enable_all()
+                .build()
+                .expect("Cannot Build a runtime");
+            rt.block_on(flash_job.perform());
         });
     }
 
@@ -437,8 +449,8 @@ impl AppWindow {
         imp.done_button
             .connect_clicked(clone!(@weak self as this => move |_| {
                 this.imp().available_devices.replace(vec![]);
-                this.imp().main_stack.set_visible_child_name("choose");
-                this.imp().stack.set_visible_child_name("welcome");
+                this.imp().main_stack.set_visible_child_name("status");
+                this.imp().stack.set_visible_child_name("no_devices");
                 this.imp().open_image_button.grab_focus();
             }));
         imp.try_again_button
@@ -493,17 +505,16 @@ impl AppWindow {
     }
 
     fn get_distros(&self) {
-        let (tx, rx) = glib::MainContext::channel(glib::Priority::DEFAULT);
+        let (tx, rx) = async_channel::bounded(1);
 
         std::thread::spawn(move || {
             let distros = get_osinfodb_url().and_then(|u| collect_online_distros(&u));
-            tx.send(distros).expect("Concurrency Issues");
+            tx.send_blocking(distros).expect("Concurrency Issues");
             Some(())
         });
 
-        rx.attach(
-            None,
-            clone!(@weak self as this => @default-return glib::ControlFlow::Break, move |online_distros| {
+        glib::spawn_future_local(clone!(@weak self as this => async move {
+            if let Ok(online_distros) = rx.recv().await {
                 if let Some((amd_distros, arm_distros)) = online_distros {
                     this.load_distros(&this.imp().amd_distros, amd_distros);
                     this.load_distros(&this.imp().arm_distros, arm_distros);
@@ -515,9 +526,8 @@ impl AppWindow {
                     this.imp().download_spinner.set_visible(false);
                     this.imp().offline_screen.set_visible(true);
                 }
-                glib::ControlFlow::Break
-            }),
-        );
+            }
+        }));
     }
 
     fn load_distros(&self, target: &TemplateChild<gtk::ListBox>, distros: Vec<Distro>) {
@@ -550,6 +560,8 @@ impl AppWindow {
         filter.add_mime_type("application/x-raw-disk-image");
         filter.add_mime_type("application/x-cd-image");
         filter.add_pattern("*.iso");
+        filter.add_pattern("*.raw.xz");
+        filter.add_pattern("*.iso.xz");
         filter.set_name(Some(&gettext("Disk Images")));
 
         let model = gio::ListStore::new::<gtk::FileFilter>();
@@ -572,7 +584,7 @@ impl AppWindow {
     pub async fn open_file(&self, path: PathBuf) {
         let filename = path.file_name().unwrap().to_str().unwrap().to_owned();
 
-        if !["iso", "img"].contains(&path.extension().unwrap().to_str().unwrap()) {
+        if !["iso", "img", "xz"].contains(&path.extension().unwrap().to_str().unwrap()) {
             self.imp()
                 .toast_overlay
                 .add_toast(adw::Toast::new(&gettext("File is not a Disk Image")));
@@ -587,9 +599,16 @@ impl AppWindow {
             .len();
 
         self.imp().selected_image.replace(Some(DiskImage::Local {
-            path,
+            path: path.clone(),
             filename,
             size,
+            compression: {
+                if matches!(path.extension(), Some(x) if x == "xz") {
+                    Compression::Xz
+                } else {
+                    Compression::Raw
+                }
+            },
         }));
 
         self.load_stored();
@@ -601,6 +620,7 @@ impl AppWindow {
                 path: _,
                 filename,
                 size,
+                compression: _,
             } => {
                 self.imp().name_value_label.set_text(&filename);
                 self.imp().size_label.set_text(&get_size_string(size));

@@ -31,25 +31,22 @@ const GOOD_DISTROS: [(&str, &str); 6] = [
 ];
 
 pub fn collect_online_distros(latest_url: &str) -> Option<(Vec<Distro>, Vec<Distro>)> {
-    let temp_dir = match std::env::var("XDG_CACHE_HOME") {
-        Ok(cache_home) => format!("{cache_home}/tmp/"),
-        Err(_) => format!("{}/.cache/switcheroo/", std::env::var("HOME").unwrap()),
-    };
+    let temp_dir = glib::user_cache_dir();
 
     std::fs::create_dir_all(&temp_dir).expect("cannot create temp dir");
 
-    let result_file = format!("{}db.tar.xz", temp_dir);
+    let result_file_path = temp_dir.join("db.tar.xz");
 
     let osinfodb_resp = reqwest::blocking::get(latest_url).ok()?;
     let body = osinfodb_resp.bytes().ok()?;
 
-    let mut out = std::fs::File::create(&result_file).expect("failed to create file");
+    let mut out = std::fs::File::create(&result_file_path).expect("failed to create file");
 
     std::io::Write::write(&mut out, &body).expect("Failed to download file");
 
     let status = std::process::Command::new("tar")
         .arg("-xf")
-        .arg(&result_file)
+        .arg(&result_file_path)
         .arg("--directory")
         .arg(&temp_dir)
         .arg("--strip-components=2")
@@ -71,7 +68,7 @@ pub fn collect_online_distros(latest_url: &str) -> Option<(Vec<Distro>, Vec<Dist
     let (amd, arm): (Vec<Option<Distro>>, Vec<Option<Distro>>) = GOOD_DISTROS
         .into_par_iter()
         .map(|(distro, distro_name)| {
-            let files = std::fs::read_dir(format!("{}{}", temp_dir, distro)).unwrap();
+            let files = std::fs::read_dir(temp_dir.join(distro)).unwrap();
 
             let y = files
                 .flatten()
@@ -197,10 +194,8 @@ pub fn collect_online_distros(latest_url: &str) -> Option<(Vec<Distro>, Vec<Dist
         })
         .unzip();
 
-    let res = Some((
+    Some((
         amd.into_iter().flatten().collect(),
         arm.into_iter().flatten().collect(),
-    ));
-
-    res
+    ))
 }
