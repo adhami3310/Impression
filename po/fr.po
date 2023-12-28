@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: impression\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-12-27 11:40-0500\n"
-"PO-Revision-Date: 2023-11-04 13:41+0100\n"
+"PO-Revision-Date: 2023-12-28 19:12+0100\n"
 "Last-Translator: Irénée THIRION <irenee.thirion@e.email>\n"
 "Language-Team: French <gnomefr@traduc.org>\n"
 "Language: fr\n"
@@ -192,231 +192,17 @@ msgid "Code borrowed from"
 msgstr "Code emprunté à"
 
 #: ../src/flash.rs:95
-#, fuzzy
 msgid "Failed to open disk"
-msgstr "Échec de la gravure de l’image"
+msgstr "Échec de l’ouverture du disque"
 
 #: ../src/flash.rs:145
-#, fuzzy
 msgid "Failed to extract drive"
-msgstr "Échec de la gravure de l’image"
+msgstr "Échec de l’extraction du disque"
 
 #: ../src/flash.rs:203
-#, fuzzy
 msgid "Failed to download image"
-msgstr "Échec de la gravure de l’image"
+msgstr "Échec du téléchargement de l’image"
 
 #: ../src/flash.rs:256
-#, fuzzy
 msgid "Writing to disk failed"
-msgstr "Gravure terminée"
-
-#~ msgid "Media Writer"
-#~ msgstr "Graveur de médias"
-
-#~ msgid "Create bootable drives"
-#~ msgstr "Créez des périphériques bootables"
-
-#~ msgid "usb;flash;writer;bootable;drive;iso;img;disk;image"
-#~ msgstr ""
-#~ "usb;flasher;bootable;drive;iso;disk;image;img;disque;périphérique;lecteur;"
-#~ "graveur;writer;"
-
-#~ msgid "Window width"
-#~ msgstr "Largeur de la fenêtre"
-
-#~ msgid "Window height"
-#~ msgstr "Hauteur de la fenêtre"
-
-#~ msgid "Window maximized state"
-#~ msgstr "État maximisé de la fenêtre"
-
-#~ msgid ""
-#~ "Write disk images to your drives with ease. Select an image, insert your "
-#~ "drive, and you're good to go! Impression is a useful tool for both avid "
-#~ "distro-hoppers and casual computer users."
-#~ msgstr ""
-#~ "Gravez des images disque sur vos périphériques USB en toute facilité. "
-#~ "Sélectionnez une image, insérez votre périphérique et c’est parti ! "
-#~ "Impression est un outil utile aussi bien pour ceux qui aiment changer "
-#~ "régulièrement de distribution que pour les utilisateurs occasionnels."
-
-#~ msgid "usb"
-#~ msgstr "usb"
-
-#~ msgid "writer"
-#~ msgstr "graveur"
-
-#~ msgid "flash"
-#~ msgstr "flash"
-
-#~ msgid "bootable"
-#~ msgstr "bootable"
-
-#~ msgid "drive"
-#~ msgstr "clé"
-
-#~ msgid "iso"
-#~ msgstr "iso"
-
-#~ msgid "img"
-#~ msgstr "img"
-
-#~ msgid "disk"
-#~ msgstr "disque"
-
-#~ msgid "image"
-#~ msgstr "Image"
-
-#, fuzzy
-#~ msgid "Screen with a chosen ISO and available USB memories"
-#~ msgstr ""
-#~ "Écran principal avec une image ISO sélectionnée et des périphériques USB "
-#~ "disponibles"
-
-#, fuzzy
-#~ msgid "Writing the ISO in progress"
-#~ msgstr "Flashage de l’image ISO en cours"
-
-#~ msgid "Success screen with a big check mark"
-#~ msgstr "Écran de tâche accomplie avec un symbole coché"
-
-#~ msgid "Validating…"
-#~ msgstr "Validation…"
-
-#~ msgid "Khaleel Al-Adhami"
-#~ msgstr "Khaleel Al-Adhami"
-
-#~ msgid "This minor release of Impression delivers:"
-#~ msgstr "Cette mise à jour mineure de Impression apporte :"
-
-#~ msgid "Support for mobile screen sizes"
-#~ msgstr "La prise en charge des écrans d’appareils mobiles"
-
-#~ msgid "Various bug fixes, improving reliability and stability"
-#~ msgstr ""
-#~ "Diverses corrections de bogues, améliorant la fiabilité et la stabilité"
-
-#~ msgid ""
-#~ "Brazillian Portugese translations, making Impression available in a total "
-#~ "of 9 languages"
-#~ msgstr ""
-#~ "Une traduction en portugais brésilien, ce qui rend Impression disponible "
-#~ "dans 9 langages au total"
-
-#~ msgid ""
-#~ "Impression is made possible by volunteer developers, designers, and "
-#~ "translators. Thank you for your contributions!"
-#~ msgstr ""
-#~ "Impression est un projet rendu possible par des développeurs, des "
-#~ "designers et traducteurs bénévoles. Merci pour vos contributions !"
-
-#~ msgid ""
-#~ "This major release of Impression brings a bunch of exciting improvements:"
-#~ msgstr ""
-#~ "Cette mise à jour majeure apporte un paquet de chouettes améliorations :"
-
-#~ msgid ""
-#~ "Visual enhancements to make the app more beautiful, focused, and engaging"
-#~ msgstr ""
-#~ "Améliorations visuelles pour rendre l’application plus esthétique, "
-#~ "focalisée et attrayante."
-
-#~ msgid "Automatic updates of the available drives list"
-#~ msgstr "Mise à jour automatique de la liste des périphériques disponibles"
-
-#~ msgid ""
-#~ "Explicit drive selection before flashing, to avoid accidental data loss"
-#~ msgstr ""
-#~ "Sélection explicite du périphérique avant le flashage, pour éviter toute "
-#~ "perte de données accidentelle"
-
-#~ msgid ""
-#~ "Turkish and Czech translations, making Impression available in a total of "
-#~ "8 languages"
-#~ msgstr ""
-#~ "Traductions tchèque et turque, ce qui rend Impression disponible dans un "
-#~ "total de 8 langages"
-
-#~ msgid ""
-#~ "The versioning scheme has been simplified to only include major and minor "
-#~ "versions. The previous version of Impression was 1.0.1, this is version "
-#~ "2.0. Going forward, new features and noticeable changes will be included "
-#~ "in new major releases, while fixes and translations will result in new "
-#~ "minor releases."
-#~ msgstr ""
-#~ "Le schéma de numérotation des versions a été simplifié pour uniquement "
-#~ "inclure les versions majeures et mineures. La version précédente de "
-#~ "Impression était la 1.0.1, cette version est la 2.0. Par la suite, les "
-#~ "nouvelles fonctionnalités et les changements notables seront inclus dans "
-#~ "les mises à jour majeures, tandis que les corrections de bogues et les "
-#~ "traductions seront intégrées par des mises à jour mineures."
-
-#~ msgid "Added Spanish, French, German, Russian, and Italian translations."
-#~ msgstr ""
-#~ "Ajout de traductions espagnole, française, allemande, russe et italienne."
-
-#~ msgid "Initial version."
-#~ msgstr "Version initiale."
-
-#~ msgid "Flash"
-#~ msgstr "Flasher"
-
-#~ msgid "Flashing…"
-#~ msgstr "Flashage…"
-
-#~ msgid "New Window"
-#~ msgstr "Nouvelle fenêtre"
-
-#~ msgid "Image flashed"
-#~ msgstr "Image flashée"
-
-#~ msgid "flash;usb;drive;bootable"
-#~ msgstr "flash;usb;drive;bootable;lecteur;clé;disque;périphérique;démarrage;"
-
-#~ msgid "Refresh Devices"
-#~ msgstr "Actualiser les appareils"
-
-#~ msgid "Image Flashed"
-#~ msgstr "Image flashée"
-
-#~ msgid "Flash disk images (ISOs/IMGs) to create bootable devices"
-#~ msgstr ""
-#~ "Flashez des images disque (type ISO/IMG) pour créer des périphériques de "
-#~ "démarrage"
-
-#~ msgid "Flash Images"
-#~ msgstr "Flashage d’images"
-
-#, fuzzy
-#~ msgid "Open a disk image to flash to a USB drive"
-#~ msgstr "Ouvrez une image disque à flasher sur une clé USB."
-
-#, fuzzy
-#~ msgid "Warning: This will erase all data on the selected drive"
-#~ msgstr ""
-#~ "Attention : cela effacera toutes les données sur le support sélectionné."
-
-#~ msgid "Updating device list…"
-#~ msgstr "Mise à jour de la liste des appareils…"
-
-#~ msgid "Have a nice day!"
-#~ msgstr "Passez une bonne journée !"
-
-#~ msgid "Done"
-#~ msgstr "Terminé"
-
-#~ msgid "Flash Again"
-#~ msgstr "Recommencer"
-
-#~ msgid "Open File"
-#~ msgstr "Ouvrir un fichier"
-
-#~ msgid "Primary Menu"
-#~ msgstr "Menu principal"
-
-#~ msgid "Flash ISO images"
-#~ msgstr "Flashage d’images ISO"
-
-#~ msgid "Flash ISO images into USB drives"
-#~ msgstr "Flashez des images ISO sur des clés USB"
+msgstr "Échec de l’écriture sur le disque"
