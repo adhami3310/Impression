@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: impression\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-12-27 11:40-0500\n"
-"PO-Revision-Date: 2023-11-05 22:27+0300\n"
+"PO-Revision-Date: 2023-12-27 20:27+0300\n"
 "Last-Translator: Сергей Ворон <voron@duck.com>\n"
 "Language-Team: \n"
 "Language: ru_RU\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
-"X-Generator: Poedit 3.4\n"
+"X-Generator: Poedit 3.4.1\n"
 
 #: ../data/resources/blueprints/help-overlay.blp:11
 msgctxt "shortcut window"
@@ -194,24 +194,20 @@ msgid "Code borrowed from"
 msgstr "Код заимствован из"
 
 #: ../src/flash.rs:95
-#, fuzzy
 msgid "Failed to open disk"
-msgstr "Не удалось записать образ"
+msgstr "Не удалось открыть диск"
 
 #: ../src/flash.rs:145
-#, fuzzy
 msgid "Failed to extract drive"
-msgstr "Не удалось записать образ"
+msgstr "Не удалось извлечь диск"
 
 #: ../src/flash.rs:203
-#, fuzzy
 msgid "Failed to download image"
-msgstr "Не удалось записать образ"
+msgstr "Не удалось загрузить образ"
 
 #: ../src/flash.rs:256
-#, fuzzy
 msgid "Writing to disk failed"
-msgstr "Запись завершена"
+msgstr "Запись на диск не удалась"
 
 #~ msgid "Media Writer"
 #~ msgstr "Запись носителей"
