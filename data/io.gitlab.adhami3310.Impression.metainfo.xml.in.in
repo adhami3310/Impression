@@ -17,25 +17,6 @@
 
     <translation type="gettext">@gettext-package@</translation>
 
-    <categories>
-        <category>System</category>
-        <category>Utility</category>
-        <category>GTK</category>
-        <category>GNOME</category>
-    </categories>
-
-    <keywords>
-        <keyword>usb</keyword>
-        <keyword>writer</keyword>
-        <keyword>flash</keyword>
-        <keyword>bootable</keyword>
-        <keyword>drive</keyword>
-        <keyword>iso</keyword>
-        <keyword>img</keyword>
-        <keyword>disk</keyword>
-        <keyword>image</keyword>
-    </keywords>
-
     <requires>
         <internet>offline-only</internet>
         <display_length compare="ge">360</display_length>
