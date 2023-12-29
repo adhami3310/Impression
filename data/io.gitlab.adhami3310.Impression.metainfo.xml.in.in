@@ -3,7 +3,11 @@
     <id>@app-id@</id>
 
     <name>Impression</name>
+    <!-- developer_name tag deprecated with Appstream 1.0 -->
     <developer_name translatable="no">Khaleel Al-Adhami</developer_name>
+    <developer id="gitlab.com">
+      <name translatable="no">Khaleel Al-Adhami</name>
+    </developer>
     <summary>Create bootable drives</summary>
 
     <metadata_license>CC-BY-SA-4.0</metadata_license>
@@ -61,7 +65,7 @@
     <content_rating type="oars-1.1" />
 
     <releases>
-      <release version="3.1.0" date="2023-12-XX">
+<!--      <release version="3.1.0" date="2023-12-XX">
         <description translatable="no">
           <p>This is a minor release of Impression with a few small improvements.</p>
           <ul>
@@ -70,7 +74,7 @@
           </ul>
           <p>Impression is made possible by volunteer developers, designers, and translators. Thank you for your contributions!</p>
         </description>
-      </release>
+      </release>-->
         <release version="3.0.1" date="2023-11-07">
           <description translatable="no">
             <p>This minor release fixes a bug where some .ISO files wouldn't be detected.</p>
