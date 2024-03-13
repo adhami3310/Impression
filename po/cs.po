@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: impression\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-12-27 11:40-0500\n"
+"POT-Creation-Date: 2024-03-13 14:43-0400\n"
 "PO-Revision-Date: 2023-08-13 09:42+0200\n"
 "Last-Translator: Amerey.eu <info@amerey.eu>\n"
 "Language-Team: \n"
@@ -17,233 +17,263 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 3.3.1\n"
 
-#: ../data/resources/blueprints/help-overlay.blp:11
+#: data/io.gitlab.adhami3310.Impression.desktop.in.in:3
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:5
+#: data/resources/blueprints/window.blp:9
+#: data/resources/blueprints/window.blp:21
+#: data/resources/blueprints/window.blp:139 src/main.rs:56 src/window.rs:388
+msgid "Impression"
+msgstr "Impression"
+
+#: data/io.gitlab.adhami3310.Impression.desktop.in.in:4
+msgid "Media Writer"
+msgstr "Program pro zápis médií"
+
+#: data/io.gitlab.adhami3310.Impression.desktop.in.in:5
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:11
+msgid "Create bootable drives"
+msgstr "Vytvořte bootovatelné disky"
+
+#: data/io.gitlab.adhami3310.Impression.desktop.in.in:11
+#, fuzzy
+msgid "usb;flash;writer;bootable;drive;iso;img;disk;image"
+msgstr "usb;flash;bootable;drive;iso;disk;image;jednotka;obraz;bootování"
+
+#: data/io.gitlab.adhami3310.Impression.gschema.xml.in:6
+msgid "Window width"
+msgstr "Šířka okna"
+
+#: data/io.gitlab.adhami3310.Impression.gschema.xml.in:10
+msgid "Window height"
+msgstr "Výška okna"
+
+#: data/io.gitlab.adhami3310.Impression.gschema.xml.in:14
+msgid "Window maximized state"
+msgstr "Maximalizovaný stav okna"
+
+#. developer_name tag deprecated with Appstream 1.0
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:7
+msgid "Khaleel Al-Adhami"
+msgstr "Khaleel Al-Adhami"
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:17
+#, fuzzy
+msgid ""
+"Write disk images to your drives with ease. Select an image, insert your "
+"drive, and you're good to go! Impression is a useful tool for both avid "
+"distro-hoppers and casual computer users."
+msgstr ""
+"Přeneste obrazy disků snadno na vaše disky. Vyberte obraz disku, vložte USB "
+"disk a můžete začít! Impression je užitečný nástroj jak pro zapálené distro-"
+"hoppery, tak pro běžné uživatelé počítačů."
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:38
+msgid "Screen with a choice of a local image or internet download"
+msgstr ""
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:42
+#, fuzzy
+msgid "Screen with a chosen ISO and available USB memories"
+msgstr "Hlavní obrazovka s vybraným ISO a dostupnými USB disky"
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:46
+#, fuzzy
+msgid "Writing the ISO in progress"
+msgstr "Probíhá nahrávání ISO"
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:50
+msgid "Success screen with a big check mark"
+msgstr "Obrazovka úspěchu s velkým zaškrtnutím"
+
+#: data/resources/blueprints/help-overlay.blp:11
 msgctxt "shortcut window"
 msgid "General"
 msgstr "Obecné"
 
-#: ../data/resources/blueprints/help-overlay.blp:14
+#: data/resources/blueprints/help-overlay.blp:14
 msgctxt "shortcut window"
 msgid "Open File"
 msgstr "Otevřít soubor"
 
-#: ../data/resources/blueprints/help-overlay.blp:19
+#: data/resources/blueprints/help-overlay.blp:19
 msgctxt "shortcut window"
 msgid "New Window"
 msgstr "Nové okno"
 
-#: ../data/resources/blueprints/help-overlay.blp:24
+#: data/resources/blueprints/help-overlay.blp:24
 msgctxt "shortcut window"
 msgid "Show Shortcuts"
 msgstr "Zobrazit zkratky"
 
-#: ../data/resources/blueprints/help-overlay.blp:29
+#: data/resources/blueprints/help-overlay.blp:29
 msgctxt "shortcut window"
 msgid "Quit"
 msgstr "Ukončit"
 
-#: ../data/resources/blueprints/window.blp:9
-#: ../data/resources/blueprints/window.blp:21
-#: ../data/resources/blueprints/window.blp:139 ../src/main.rs:56
-#: ../src/window.rs:387
-msgid "Impression"
-msgstr "Impression"
-
-#: ../data/resources/blueprints/window.blp:31
-#: ../data/resources/blueprints/window.blp:149
-#: ../data/resources/blueprints/window.blp:247
+#: data/resources/blueprints/window.blp:31
+#: data/resources/blueprints/window.blp:149
+#: data/resources/blueprints/window.blp:247
 msgid "Main Menu"
 msgstr "Hlavní menu"
 
-#: ../data/resources/blueprints/window.blp:50
+#: data/resources/blueprints/window.blp:50
 #, fuzzy
 msgid "Choose Image"
 msgstr "Vyberte obraz disku pro nahrání"
 
-#: ../data/resources/blueprints/window.blp:60
+#: data/resources/blueprints/window.blp:60
 msgid "Open File…"
 msgstr "Otevřít soubor…"
 
-#: ../data/resources/blueprints/window.blp:70
+#: data/resources/blueprints/window.blp:70
 msgid "Direct Download"
 msgstr ""
 
-#: ../data/resources/blueprints/window.blp:104
+#: data/resources/blueprints/window.blp:104
 msgid "No Connection"
 msgstr ""
 
-#: ../data/resources/blueprints/window.blp:105
+#: data/resources/blueprints/window.blp:105
 msgid "Connect to the internet to view available images"
 msgstr ""
 
-#: ../data/resources/blueprints/window.blp:211
+#: data/resources/blueprints/window.blp:211
 msgid "All data on the selected drive will be erased"
 msgstr "Všechna data na vybraném disku budou vymazána"
 
-#: ../data/resources/blueprints/window.blp:214
+#: data/resources/blueprints/window.blp:214
 msgid "Write"
 msgstr ""
 
-#: ../data/resources/blueprints/window.blp:276
+#: data/resources/blueprints/window.blp:276
 msgid "No Drives"
 msgstr "Žádné disky"
 
-#: ../data/resources/blueprints/window.blp:277
+#: data/resources/blueprints/window.blp:277
 #, fuzzy
 msgid "Insert a drive to write to"
 msgstr "Vložte disk, na který chcete nahrát obraz disku"
 
-#: ../data/resources/blueprints/window.blp:288
+#: data/resources/blueprints/window.blp:288
 #, fuzzy
 msgid "Writing Completed"
 msgstr "Nahrávání ukončeno"
 
-#: ../data/resources/blueprints/window.blp:289
+#: data/resources/blueprints/window.blp:289
 msgid "The drive can be safely removed"
 msgstr "Disk lze bezpečně vyjmout"
 
-#: ../data/resources/blueprints/window.blp:298
+#: data/resources/blueprints/window.blp:298
 msgid "Finish"
 msgstr "Dokončit"
 
-#: ../data/resources/blueprints/window.blp:319
+#: data/resources/blueprints/window.blp:319
 #, fuzzy
 msgid "Writing Unsuccessful"
 msgstr "Nahrávání bylo neúspěšné"
 
-#: ../data/resources/blueprints/window.blp:328
+#: data/resources/blueprints/window.blp:328
 msgid "Retry"
 msgstr "Opakovat"
 
-#: ../data/resources/blueprints/window.blp:348 ../src/window.rs:294
-#: ../src/window.rs:328
+#: data/resources/blueprints/window.blp:348 src/window.rs:295 src/window.rs:329
 msgid "Writing…"
 msgstr ""
 
-#: ../data/resources/blueprints/window.blp:350 ../src/window.rs:293
+#: data/resources/blueprints/window.blp:350 src/window.rs:294
 msgid "Do not remove the drive"
 msgstr "Nevyjímejte disk"
 
-#: ../data/resources/blueprints/window.blp:365 ../src/window.rs:213
-#: ../src/window.rs:249
+#: data/resources/blueprints/window.blp:365 src/window.rs:214 src/window.rs:250
 msgid "_Cancel"
 msgstr "_Zrušit"
 
-#: ../data/resources/blueprints/window.blp:393
+#: data/resources/blueprints/window.blp:393
 msgid "Keyboard Shortcuts"
 msgstr "Klávesové zkratky"
 
-#: ../data/resources/blueprints/window.blp:398
+#: data/resources/blueprints/window.blp:398
 msgid "About Impression"
 msgstr "O aplikaci Impression"
 
-#: ../src/window.rs:209
+#: src/window.rs:210
 #, fuzzy
 msgid "Stop Writing?"
 msgstr "Zastavit nahrávání?"
 
-#: ../src/window.rs:210
+#: src/window.rs:211
 msgid "This might leave the drive in a faulty state."
 msgstr "Mohlo by to vést k tomu, že disk bude nečitelný."
 
-#: ../src/window.rs:213
+#: src/window.rs:214
 msgid "_Stop"
 msgstr "_Zastavit"
 
-#: ../src/window.rs:242
+#: src/window.rs:243
 msgid "Erase Drive?"
 msgstr ""
 
-#: ../src/window.rs:250
+#: src/window.rs:251
 msgid "_Erase"
 msgstr ""
 
-#: ../src/window.rs:287 ../src/window.rs:316
+#: src/window.rs:288 src/window.rs:317
 msgid "Writing will begin once the download is completed"
 msgstr ""
 
-#: ../src/window.rs:289 ../src/window.rs:325
+#: src/window.rs:290 src/window.rs:326
 msgid "Downloading Image…"
 msgstr ""
 
-#: ../src/window.rs:319
+#: src/window.rs:320
 msgid "Copying files…"
 msgstr ""
 
-#: ../src/window.rs:354
+#: src/window.rs:355
 #, fuzzy
 msgid "Failed to write image"
 msgstr "Nepodařilo se nahrát obraz disku"
 
-#: ../src/window.rs:362
+#: src/window.rs:363
 msgid "Image Written"
 msgstr ""
 
-#: ../src/window.rs:565
+#: src/window.rs:567
 msgid "Disk Images"
 msgstr "Obrazy disků"
 
-#: ../src/window.rs:590
+#: src/window.rs:593
 #, fuzzy
 msgid "File is not a Disk Image"
 msgstr "Nepodařilo se nahrát obraz disku"
 
-#: ../src/window.rs:695
+#: src/window.rs:698
 msgid "translator-credits"
 msgstr "Amerey.eu"
 
-#: ../src/window.rs:697
+#: src/window.rs:700
 msgid "Code borrowed from"
 msgstr "Kód vypůjčený od"
 
-#: ../src/flash.rs:95
+#: src/flash.rs:95
 #, fuzzy
 msgid "Failed to open disk"
 msgstr "Nepodařilo se nahrát obraz disku"
 
-#: ../src/flash.rs:145
+#: src/flash.rs:145
 #, fuzzy
 msgid "Failed to extract drive"
 msgstr "Nepodařilo se nahrát obraz disku"
 
-#: ../src/flash.rs:203
+#: src/flash.rs:203
 #, fuzzy
 msgid "Failed to download image"
 msgstr "Nepodařilo se nahrát obraz disku"
 
-#: ../src/flash.rs:256
+#: src/flash.rs:256
 #, fuzzy
 msgid "Writing to disk failed"
 msgstr "Nahrávání ukončeno"
-
-#~ msgid "Media Writer"
-#~ msgstr "Program pro zápis médií"
-
-#~ msgid "Create bootable drives"
-#~ msgstr "Vytvořte bootovatelné disky"
-
-#, fuzzy
-#~ msgid "usb;flash;writer;bootable;drive;iso;img;disk;image"
-#~ msgstr "usb;flash;bootable;drive;iso;disk;image;jednotka;obraz;bootování"
-
-#~ msgid "Window width"
-#~ msgstr "Šířka okna"
-
-#~ msgid "Window height"
-#~ msgstr "Výška okna"
-
-#~ msgid "Window maximized state"
-#~ msgstr "Maximalizovaný stav okna"
-
-#, fuzzy
-#~ msgid ""
-#~ "Write disk images to your drives with ease. Select an image, insert your "
-#~ "drive, and you're good to go! Impression is a useful tool for both avid "
-#~ "distro-hoppers and casual computer users."
-#~ msgstr ""
-#~ "Přeneste obrazy disků snadno na vaše disky. Vyberte obraz disku, vložte "
-#~ "USB disk a můžete začít! Impression je užitečný nástroj jak pro zapálené "
-#~ "distro-hoppery, tak pro běžné uživatelé počítačů."
 
 #~ msgid "usb"
 #~ msgstr "usb"
@@ -271,22 +301,8 @@ msgstr "Nahrávání ukončeno"
 #~ msgstr "obraz disku"
 
 #, fuzzy
-#~ msgid "Screen with a chosen ISO and available USB memories"
-#~ msgstr "Hlavní obrazovka s vybraným ISO a dostupnými USB disky"
-
-#, fuzzy
-#~ msgid "Writing the ISO in progress"
-#~ msgstr "Probíhá nahrávání ISO"
-
-#~ msgid "Success screen with a big check mark"
-#~ msgstr "Obrazovka úspěchu s velkým zaškrtnutím"
-
-#, fuzzy
 #~ msgid "Validating…"
 #~ msgstr "Nahrávání…"
-
-#~ msgid "Khaleel Al-Adhami"
-#~ msgstr "Khaleel Al-Adhami"
 
 #~ msgid "This minor release of Impression delivers:"
 #~ msgstr "Tato verze Impression přináší:"

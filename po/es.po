@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: impression\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-01-09 09:49+0100\n"
+"POT-Creation-Date: 2024-03-13 14:43-0400\n"
 "PO-Revision-Date: 2024-01-09 09:59+0100\n"
 "Last-Translator: Óscar Fernández Díaz <oscfdezdz@tuta.io>\n"
 "Language-Team: Spanish\n"
@@ -22,7 +22,7 @@ msgstr ""
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:5
 #: data/resources/blueprints/window.blp:9
 #: data/resources/blueprints/window.blp:21
-#: data/resources/blueprints/window.blp:139 src/main.rs:56 src/window.rs:387
+#: data/resources/blueprints/window.blp:139 src/main.rs:56 src/window.rs:388
 msgid "Impression"
 msgstr "Impresión"
 
@@ -55,7 +55,6 @@ msgstr "Estado maximizado de la ventana"
 
 #. developer_name tag deprecated with Appstream 1.0
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:7
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:9
 msgid "Khaleel Al-Adhami"
 msgstr "Khaleel Al-Adhami"
 
@@ -85,115 +84,6 @@ msgstr "Escritura de la ISO en curso"
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:50
 msgid "Success screen with a big check mark"
 msgstr "Ventana de éxito con una gran marca de verificación"
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:80
-msgid ""
-"This minor release fixes a bug where some .ISO files wouldn't be detected."
-msgstr ""
-"Esta versión menor corrige un error por el que algunos archivos .ISO no se "
-"detectaban."
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:85
-msgid ""
-"This release of Impression brings even more convenience and power to your "
-"fingertips:"
-msgstr "Esta versión de Impresión le ofrece aún más comodidad y potencia:"
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:87
-msgid "Direct download of a selection of images directly from the app"
-msgstr ""
-"Descarga directa de una selección de imágenes directamente desde la "
-"aplicación"
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:88
-msgid "Updated and more understandable terminology"
-msgstr "Terminología actualizada y más comprensible"
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:89
-msgid "Security fixes"
-msgstr "Correcciones de seguridad"
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:91
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:102
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:117
-msgid ""
-"Impression is made possible by volunteer developers, designers, and "
-"translators. Thank you for your contributions!"
-msgstr ""
-"Impresión es posible gracias a desarrolladores, diseñadores y traductores "
-"voluntarios. ¡Gracias por sus contribuciones!"
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:96
-msgid "This minor release of Impression delivers:"
-msgstr "Esta versión menor de Impresión ofrece:"
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:98
-msgid "Support for mobile screen sizes"
-msgstr "Compatibilidad con pantallas de móviles"
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:99
-msgid "Various bug fixes, improving reliability and stability"
-msgstr ""
-"Varias correcciones de errores que mejoran la fiabilidad y la estabilidad"
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:100
-msgid ""
-"Brazillian Portugese translations, making Impression available in a total of "
-"9 languages"
-msgstr ""
-"Traducciones al portugués de Brasil, con lo que Impresión está disponible en "
-"un total de 9 idiomas."
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:107
-msgid ""
-"This major release of Impression brings a bunch of exciting improvements:"
-msgstr ""
-"Esta versión principal de Impresión trae un montón de mejoras interesantes:"
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:109
-msgid ""
-"Visual enhancements to make the app more beautiful, focused, and engaging"
-msgstr "Mejoras visuales para que la aplicación sea más atractiva y atractiva."
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:110
-msgid "Automatic updates of the available drives list"
-msgstr "Actualización automática de la lista de unidades disponibles"
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:111
-msgid "Explicit drive selection before flashing, to avoid accidental data loss"
-msgstr ""
-"Selección explícita de la unidad antes del flasheo, para evitar la pérdida "
-"accidental de datos."
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:112
-msgid ""
-"Turkish and Czech translations, making Impression available in a total of 8 "
-"languages"
-msgstr ""
-"Traducciones al turco y al checo, con lo que Impresión está disponible en un "
-"total de 8 idiomas."
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:114
-msgid ""
-"The versioning scheme has been simplified to only include major and minor "
-"versions. The previous version of Impression was 1.0.1, this is version 2.0. "
-"Going forward, new features and noticeable changes will be included in new "
-"major releases, while fixes and translations will result in new minor "
-"releases."
-msgstr ""
-"El esquema de versiones se ha simplificado para incluir únicamente versiones "
-"mayores y menores. La versión anterior de Impresión era la 1.0.1, ésta es la "
-"2.0. En adelante, las nuevas funciones y los cambios notables se incluirán "
-"en nuevas versiones mayores, mientras que las correcciones y traducciones "
-"darán lugar a nuevas versiones menores."
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:122
-msgid "Added Spanish, French, German, Russian, and Italian translations."
-msgstr "Añadidas traducciones al español, francés, alemán, ruso e italiano."
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:127
-msgid "Initial version."
-msgstr "Versión inicial."
 
 #: data/resources/blueprints/help-overlay.blp:11
 msgctxt "shortcut window"
@@ -282,15 +172,15 @@ msgstr "Escritura fallida"
 msgid "Retry"
 msgstr "Reintentar"
 
-#: data/resources/blueprints/window.blp:348 src/window.rs:294 src/window.rs:328
+#: data/resources/blueprints/window.blp:348 src/window.rs:295 src/window.rs:329
 msgid "Writing…"
 msgstr "Escribiendo…"
 
-#: data/resources/blueprints/window.blp:350 src/window.rs:293
+#: data/resources/blueprints/window.blp:350 src/window.rs:294
 msgid "Do not remove the drive"
 msgstr "No extraiga la unidad"
 
-#: data/resources/blueprints/window.blp:365 src/window.rs:213 src/window.rs:249
+#: data/resources/blueprints/window.blp:365 src/window.rs:214 src/window.rs:250
 msgid "_Cancel"
 msgstr "_Cancelar"
 
@@ -302,59 +192,59 @@ msgstr "Atajos del teclado"
 msgid "About Impression"
 msgstr "Acerca de Impresión"
 
-#: src/window.rs:209
+#: src/window.rs:210
 msgid "Stop Writing?"
 msgstr "¿Detener la escritura?"
 
-#: src/window.rs:210
+#: src/window.rs:211
 msgid "This might leave the drive in a faulty state."
 msgstr "Esto podría dejar la unidad en un estado defectuoso."
 
-#: src/window.rs:213
+#: src/window.rs:214
 msgid "_Stop"
 msgstr "_Detener"
 
-#: src/window.rs:242
+#: src/window.rs:243
 msgid "Erase Drive?"
 msgstr "¿Borrar la unidad?"
 
-#: src/window.rs:250
+#: src/window.rs:251
 msgid "_Erase"
 msgstr "_Borrar"
 
-#: src/window.rs:287 src/window.rs:316
+#: src/window.rs:288 src/window.rs:317
 msgid "Writing will begin once the download is completed"
 msgstr "La escritura comenzará una vez finalizada la descarga"
 
-#: src/window.rs:289 src/window.rs:325
+#: src/window.rs:290 src/window.rs:326
 msgid "Downloading Image…"
 msgstr "Descargando la imagen…"
 
-#: src/window.rs:319
+#: src/window.rs:320
 msgid "Copying files…"
 msgstr "Copiando archivos…"
 
-#: src/window.rs:354
+#: src/window.rs:355
 msgid "Failed to write image"
 msgstr "Error al escribir la imagen"
 
-#: src/window.rs:362
+#: src/window.rs:363
 msgid "Image Written"
 msgstr "Imagen escrita"
 
-#: src/window.rs:565
+#: src/window.rs:567
 msgid "Disk Images"
 msgstr "Imágenes de disco"
 
-#: src/window.rs:590
+#: src/window.rs:593
 msgid "File is not a Disk Image"
 msgstr "El archivo no es una imagen de disco"
 
-#: src/window.rs:695
+#: src/window.rs:698
 msgid "translator-credits"
 msgstr "Óscar Fernández Díaz <oscfdezdz@tuta.io>"
 
-#: src/window.rs:697
+#: src/window.rs:700
 msgid "Code borrowed from"
 msgstr "Código tomado de"
 
@@ -373,3 +263,95 @@ msgstr "Error al descargar la imagen"
 #: src/flash.rs:256
 msgid "Writing to disk failed"
 msgstr "Error de escritura en disco"
+
+#~ msgid ""
+#~ "This minor release fixes a bug where some .ISO files wouldn't be detected."
+#~ msgstr ""
+#~ "Esta versión menor corrige un error por el que algunos archivos .ISO no "
+#~ "se detectaban."
+
+#~ msgid ""
+#~ "This release of Impression brings even more convenience and power to your "
+#~ "fingertips:"
+#~ msgstr "Esta versión de Impresión le ofrece aún más comodidad y potencia:"
+
+#~ msgid "Direct download of a selection of images directly from the app"
+#~ msgstr ""
+#~ "Descarga directa de una selección de imágenes directamente desde la "
+#~ "aplicación"
+
+#~ msgid "Updated and more understandable terminology"
+#~ msgstr "Terminología actualizada y más comprensible"
+
+#~ msgid "Security fixes"
+#~ msgstr "Correcciones de seguridad"
+
+#~ msgid ""
+#~ "Impression is made possible by volunteer developers, designers, and "
+#~ "translators. Thank you for your contributions!"
+#~ msgstr ""
+#~ "Impresión es posible gracias a desarrolladores, diseñadores y traductores "
+#~ "voluntarios. ¡Gracias por sus contribuciones!"
+
+#~ msgid "This minor release of Impression delivers:"
+#~ msgstr "Esta versión menor de Impresión ofrece:"
+
+#~ msgid "Support for mobile screen sizes"
+#~ msgstr "Compatibilidad con pantallas de móviles"
+
+#~ msgid "Various bug fixes, improving reliability and stability"
+#~ msgstr ""
+#~ "Varias correcciones de errores que mejoran la fiabilidad y la estabilidad"
+
+#~ msgid ""
+#~ "Brazillian Portugese translations, making Impression available in a total "
+#~ "of 9 languages"
+#~ msgstr ""
+#~ "Traducciones al portugués de Brasil, con lo que Impresión está disponible "
+#~ "en un total de 9 idiomas."
+
+#~ msgid ""
+#~ "This major release of Impression brings a bunch of exciting improvements:"
+#~ msgstr ""
+#~ "Esta versión principal de Impresión trae un montón de mejoras "
+#~ "interesantes:"
+
+#~ msgid ""
+#~ "Visual enhancements to make the app more beautiful, focused, and engaging"
+#~ msgstr ""
+#~ "Mejoras visuales para que la aplicación sea más atractiva y atractiva."
+
+#~ msgid "Automatic updates of the available drives list"
+#~ msgstr "Actualización automática de la lista de unidades disponibles"
+
+#~ msgid ""
+#~ "Explicit drive selection before flashing, to avoid accidental data loss"
+#~ msgstr ""
+#~ "Selección explícita de la unidad antes del flasheo, para evitar la "
+#~ "pérdida accidental de datos."
+
+#~ msgid ""
+#~ "Turkish and Czech translations, making Impression available in a total of "
+#~ "8 languages"
+#~ msgstr ""
+#~ "Traducciones al turco y al checo, con lo que Impresión está disponible en "
+#~ "un total de 8 idiomas."
+
+#~ msgid ""
+#~ "The versioning scheme has been simplified to only include major and minor "
+#~ "versions. The previous version of Impression was 1.0.1, this is version "
+#~ "2.0. Going forward, new features and noticeable changes will be included "
+#~ "in new major releases, while fixes and translations will result in new "
+#~ "minor releases."
+#~ msgstr ""
+#~ "El esquema de versiones se ha simplificado para incluir únicamente "
+#~ "versiones mayores y menores. La versión anterior de Impresión era la "
+#~ "1.0.1, ésta es la 2.0. En adelante, las nuevas funciones y los cambios "
+#~ "notables se incluirán en nuevas versiones mayores, mientras que las "
+#~ "correcciones y traducciones darán lugar a nuevas versiones menores."
+
+#~ msgid "Added Spanish, French, German, Russian, and Italian translations."
+#~ msgstr "Añadidas traducciones al español, francés, alemán, ruso e italiano."
+
+#~ msgid "Initial version."
+#~ msgstr "Versión inicial."
