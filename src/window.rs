@@ -3,8 +3,9 @@ use std::path::PathBuf;
 use adw::prelude::*;
 use dbus_udisks2::DiskDevice;
 use gettextrs::gettext;
+use glib;
 use glib::{clone, timeout_add_seconds_local};
-use gtk::{gio, glib, subclass::prelude::*};
+use gtk::{gio, subclass::prelude::*};
 use itertools::Itertools;
 
 use crate::{
@@ -168,7 +169,7 @@ glib::wrapper! {
 
 #[gtk::template_callbacks]
 impl AppWindow {
-    pub fn new<P: glib::IsA<gtk::Application>>(app: &P) -> Self {
+    pub fn new<P: glib::prelude::IsA<gtk::Application>>(app: &P) -> Self {
         let win = glib::Object::builder::<AppWindow>()
             .property("application", app)
             .build();
@@ -571,6 +572,7 @@ impl AppWindow {
         if let Ok(file) = gtk::FileDialog::builder()
             .modal(true)
             .filters(&model)
+            .default_filter(&filter)
             .build()
             .open_future(Some(self))
             .await

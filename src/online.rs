@@ -170,7 +170,7 @@ pub fn collect_online_distros(latest_url: &str) -> Option<(Vec<Distro>, Vec<Dist
                     !matches!(status, Some(x) if x == "prerelease")
                         && (date.is_some() || matches!(status, Some(x) if x == "rolling"))
                         && (date.is_none()
-                            || date.unwrap() + chrono::Duration::days(365 * 2)
+                            || date.unwrap() + chrono::Duration::try_days(365 * 2).expect("duration is overflow")
                                 >= chrono::offset::Local::now().date_naive())
                 })
                 .max_by_key(|(_, _, date, _, _)| date.to_owned())

@@ -8,7 +8,7 @@ mod window;
 
 use gettextrs::{gettext, LocaleCategory};
 use glib::ExitCode;
-use gtk::traits::WidgetExt;
+use gtk::prelude::WidgetExt;
 use gtk::{gio, glib};
 
 use self::application::App;

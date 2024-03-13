@@ -7,15 +7,15 @@ edition = "2021"
 
 [dependencies]
 gettext-rs = { version = "0.7", features = ["gettext-system"] }
-glib = "0.18"
-gtk = { version = "0.7", package = "gtk4", features = ["blueprint", "gnome_45"] }
-gtk-macros = { version = "0.7", package = "gtk4-macros" }
-adw = { version = "0.5", package = "libadwaita", features = ["v1_4"] }
+glib = "0.19"
+gtk = { version = "0.8", package = "gtk4", features = ["blueprint", "gnome_45"] }
+gtk-macros = { version = "0.8", package = "gtk4-macros" }
+adw = { version = "0.6", package = "libadwaita", features = ["v1_4"] }
 log = "0.4.17"
 once_cell = "1.17.1"
 pretty_env_logger = "0.5.0"
 itertools = "0.12.0"
-ashpd = "0.6.0"
+ashpd = "0.8.0"
 dbus-udisks2 = { version = "0.3" }
 dbus = "0.9.7"
 libc = "0.2.144"
@@ -26,7 +26,7 @@ chrono = "0.4.26"
 anyhow = "1.0.75"
 thiserror = "1.0.49"
 derivative = "2.2.0"
-tokio = { version = "1.33.0", features = ["process"] }
+tokio = { version = "1.33.0", features = ["process", "rt-multi-thread"] }
 serde_json = "1.0.108"
 rayon = "1.8.0"
 futures = "0.3.30"
