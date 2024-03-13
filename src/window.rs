@@ -44,7 +44,7 @@ mod imp {
         sync::atomic::AtomicBool,
     };
 
-    use crate::config::{APP_ID, PROFILE};
+    use crate::config::{APP_ID, PKGDATADIR, PROFILE};
 
     use super::*;
 
@@ -131,6 +131,11 @@ mod imp {
             if PROFILE == "Devel" {
                 self.obj().add_css_class("devel");
             }
+
+            let theme = gtk::IconTheme::for_display(
+                &gtk::gdk::Display::default().expect("cannot find display"),
+            );
+            theme.add_search_path(PKGDATADIR.to_owned() + "/icons");
 
             let obj = self.obj();
             obj.load_window_size();

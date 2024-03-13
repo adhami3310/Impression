@@ -6,15 +6,7 @@
         <file compressed="true" preprocess="xml-stripblanks" alias="gtk/help-overlay.ui">blueprints/help-overlay.ui</file>
         <file compressed="true">style.css</file>
         <file compressed="true">style-hc.css</file>
-
-        <file preprocess="xml-stripblanks">icons/hicolor/scalable/actions/image-missing-symbolic.svg</file>
-        <file preprocess="xml-stripblanks">icons/hicolor/scalable/actions/paper-symbolic.svg</file>
-        <file preprocess="xml-stripblanks">icons/hicolor/scalable/actions/usb-stick-symbolic.svg</file>
-        <file preprocess="xml-stripblanks">icons/hicolor/scalable/actions/check-round-outline-symbolic.svg</file>
-        <file preprocess="xml-stripblanks">icons/hicolor/scalable/actions/view-refresh-symbolic.svg</file>
-        <file preprocess="xml-stripblanks">icons/hicolor/scalable/actions/error-symbolic.svg</file>
-        <file preprocess="xml-stripblanks">icons/hicolor/scalable/actions/flash-symbolic.svg</file>
-
+        
         <file preprocess="xml-stripblanks">icons/hicolor/symbolic/apps/io.gitlab.adhami3310.Impression-symbolic.svg</file>
         <file preprocess="xml-stripblanks">icons/hicolor/scalable/apps/io.gitlab.adhami3310.Impression.svg</file>
         <file preprocess="xml-stripblanks">icons/hicolor/scalable/apps/io.gitlab.adhami3310.Impression.Devel.svg</file>
