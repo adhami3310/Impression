@@ -25,12 +25,6 @@ install_data(
   install_dir: join_paths(get_option('datadir'), symbolic_dir)
 )
 
-install_data(
-  action_icons,
-  install_dir: join_paths(get_option('datadir'), action_dir)
-)
-
-
 # Resources
 resources = gnome.compile_resources(
     'resources',
