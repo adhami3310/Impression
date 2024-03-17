@@ -16,7 +16,7 @@ pub fn new(
     for i in 0..devices.len() {
         let cb = match i {
             0 => gtk::CheckButton::builder(),
-            _ => gtk::CheckButton::builder().group(check_buttons.get(0).unwrap()),
+            _ => gtk::CheckButton::builder().group(check_buttons.first().unwrap()),
         };
         let cb = cb.valign(gtk::Align::Center).build();
 

@@ -21,111 +21,118 @@ template $AppWindow : Adw.ApplicationWindow {
           title: _("Impression");
 
           child:
-          Adw.ToolbarView {
-            [top]
-            Adw.HeaderBar {
-              [end]
-              MenuButton {
-                icon-name: "open-menu-symbolic";
-                menu-model: primary_menu;
-                tooltip-text: _("Main Menu");
-                primary: true;
+          $DragOverlay drag_overlay {
+            title: _("Drop Here to Open");
+        
+            child:
+            Adw.ToolbarView {
+              [top]
+              Adw.HeaderBar {
+                [end]
+                MenuButton {
+                  icon-name: "open-menu-symbolic";
+                  menu-model: primary_menu;
+                  tooltip-text: _("Main Menu");
+                  primary: true;
+                }
               }
-            }
 
-            content:
-            Box {
-              hexpand: true;
-              vexpand: true;
-              orientation: vertical;
-              spacing: 12;
-              Adw.PreferencesPage {
-                Adw.PreferencesGroup {
-                  Image {
-                    icon-name: "io.gitlab.adhami3310.Impression";
-                    
-                    styles ["app_icon"]
-                  }
-                  Label {
-                    label: _("Choose Image");
-
-                    styles ["title", "title-1"]
-                  }
-
-                  margin-bottom: 12;
-                }
-
-                Adw.PreferencesGroup {
-                  Adw.ActionRow open_image_button {
-                    title: _("Open File…");
-                    activatable-widget: next_icon;
-
-                    Image next_icon {
-                      icon-name: 'go-next-symbolic';
+              content:
+              Box {
+                hexpand: true;
+                vexpand: true;
+                orientation: vertical;
+                spacing: 12;
+                Adw.PreferencesPage {
+                  Adw.PreferencesGroup {
+                    Image {
+                      icon-name: "io.gitlab.adhami3310.Impression";
+                      
+                      styles ["app_icon"]
                     }
-                  }
-                }
+                    Label {
+                      label: _("Choose Image");
 
-                Adw.PreferencesGroup {
-                  title: _("Direct Download");
-
-                  [header-suffix]
-                  DropDown architecture {
-                    model: StringList {
-                      strings ["x86_64", "aarch64"]
-                    };
-
-                    sensitive: false;
-                    
-                    styles ["architecture"]
-                  }
-
-                  Box {
-                    orientation: vertical;
-
-                    Box download_spinner {
-                      orientation: vertical;
-
-                      Spinner {
-                        valign: center;
-                        vexpand: true;
-                        height-request: 32;
-                        width-request: 32;
-                        spinning: true;
-                      }
-                      styles ["card", "loading-frame"]
+                      styles ["title", "title-1"]
                     }
 
-                    Box offline_screen {
-                      orientation: vertical;
-                      visible: false;
+                    margin-bottom: 12;
+                  }
 
-                      Adw.StatusPage {
-                        title: _("No Connection");
-                        description: _("Connect to the internet to view available images");
+                  Adw.PreferencesGroup {
+                    Adw.ActionRow open_image_button {
+                      title: _("Open File…");
+                      activatable-widget: next_icon;
 
-                        styles  ["dim-label"]
+                      Image next_icon {
+                        icon-name: 'go-next-symbolic';
                       }
-                      styles ["card"]
                     }
-                    Box distros {
-                      visible: false;
+                  }
+
+                  Adw.PreferencesGroup {
+                    title: _("Direct Download");
+
+                    [header-suffix]
+                    DropDown architecture {
+                      model: StringList {
+                        strings ["x86_64", "aarch64"]
+                      };
+
+                      sensitive: false;
+                      
+                      styles ["architecture"]
+                    }
+
+                    Box {
                       orientation: vertical;
-                      ListBox amd_distros {
-                        selection-mode: none;
-                        styles ["boxed-list"]
+
+                      Box download_spinner {
+                        orientation: vertical;
+
+                        Spinner {
+                          valign: center;
+                          vexpand: true;
+                          height-request: 32;
+                          width-request: 32;
+                          spinning: true;
+                        }
+                        styles ["card", "loading-frame"]
                       }
 
-                      ListBox arm_distros {
+                      Box offline_screen {
+                        orientation: vertical;
                         visible: false;
-                        selection-mode: none;
-                        styles ["boxed-list"]
-                      }
-                    }
 
+                        Adw.StatusPage {
+                          title: _("No Connection");
+                          description: _("Connect to the internet to view available images");
+
+                          styles  ["dim-label"]
+                        }
+                        styles ["card"]
+                      }
+                      Box distros {
+                        visible: false;
+                        orientation: vertical;
+                        ListBox amd_distros {
+                          selection-mode: none;
+                          styles ["boxed-list"]
+                        }
+
+                        ListBox arm_distros {
+                          visible: false;
+                          selection-mode: none;
+                          styles ["boxed-list"]
+                        }
+                      }
+
+                    }
                   }
                 }
               }
+
+              ;
             }
 
             ;

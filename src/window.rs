@@ -3,8 +3,8 @@ use std::path::PathBuf;
 use adw::prelude::*;
 use dbus_udisks2::DiskDevice;
 use gettextrs::gettext;
-use glib;
 use glib::{clone, timeout_add_seconds_local};
+use gtk::gdk;
 use gtk::{gio, subclass::prelude::*};
 use itertools::Itertools;
 
@@ -44,7 +44,10 @@ mod imp {
         sync::atomic::AtomicBool,
     };
 
-    use crate::config::{APP_ID, PKGDATADIR, PROFILE};
+    use crate::{
+        config::{APP_ID, PKGDATADIR, PROFILE},
+        drag_overlay::DragOverlay,
+    };
 
     use super::*;
 
@@ -98,6 +101,8 @@ mod imp {
         pub arm_distros: TemplateChild<gtk::ListBox>,
         #[template_child]
         pub architecture: TemplateChild<gtk::DropDown>,
+        #[template_child]
+        pub drag_overlay: TemplateChild<DragOverlay>,
 
         pub selected_device_index: Cell<Option<usize>>,
         pub is_running: std::sync::Arc<AtomicBool>,
@@ -180,6 +185,7 @@ impl AppWindow {
             .build();
 
         win.setup_callbacks();
+        win.setup_drop_target();
         win.imp().open_image_button.grab_focus();
 
         win
@@ -207,6 +213,31 @@ impl AppWindow {
                 }))
                 .build(),
         ]);
+    }
+
+    fn setup_drop_target(&self) {
+        let drop_target = gtk::DropTarget::builder()
+            .name("file-drop-target")
+            .actions(gdk::DragAction::COPY)
+            .formats(&gdk::ContentFormats::for_type(gdk::FileList::static_type()))
+            .build();
+
+        drop_target.connect_drop(
+            clone!(@weak self as win => @default-return false, move |_, value, _, _| {
+                if let Ok(file_list) = value.get::<gdk::FileList>() {
+                    if let Some(input_file) = file_list.files().into_iter().next() {
+                        spawn!(async move {
+                            win.open_file(input_file.path().expect("Must have file path")).await;
+                        });
+                        return true;
+                    }
+                }
+
+                false
+            }),
+        );
+
+        self.imp().drag_overlay.set_drop_target(&drop_target);
     }
 
     fn cancel_request(&self, close_after: bool) {

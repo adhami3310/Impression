@@ -88,7 +88,7 @@ impl FlashRequest {
             return;
         }
 
-        let target_path = device.parent.path;
+        let target_path = device.parent.path.clone();
 
         let Ok(file) = udisks_open(&target_path) else {
             self.sender
@@ -280,6 +280,57 @@ impl FlashRequest {
             .expect("Concurrency failed");
     }
 }
+
+// fn udisks_delete_partition(dbus_path: &str) -> Result<(), ()> {
+//     let connection = Connection::new_system().map_err(|_| ())?;
+
+//     let dbus_path = ::dbus::strings::Path::new(dbus_path).map_err(|_| ())?;
+
+//     let proxy: Proxy<'_, &Connection> = Proxy::new(
+//         "org.freedesktop.UDisks2",
+//         dbus_path,
+//         Duration::new(25, 0),
+//         &connection,
+//     );
+
+//     let options = UDisksOptions::new();
+//     let res: Result<(), _> =
+//         proxy.method_call("org.freedesktop.UDisks2.Partition", "Delete", (options,));
+
+//     dbg!(&res);
+
+//     if res.is_err() {
+//         return Err(());
+//     }
+
+//     Ok(())
+// }
+
+// fn udisks_format(dbus_path: &str, ntfs: bool) -> Result<(), ()> {
+//     let connection = Connection::new_system().map_err(|_| ())?;
+
+//     let dbus_path = ::dbus::strings::Path::new(dbus_path).map_err(|_| ())?;
+
+//     let proxy: Proxy<'_, &Connection> = Proxy::new(
+//         "org.freedesktop.UDisks2",
+//         dbus_path,
+//         Duration::new(25, 0),
+//         &connection,
+//     );
+
+//     let format_options = UDisksOptions::new();
+//     let res: Result<(), _> = proxy.method_call(
+//         "org.freedesktop.UDisks2.Block",
+//         "Format",
+//         (if ntfs { "ntfs " } else { "vfat" }, format_options),
+//     );
+
+//     if res.is_err() {
+//         return Err(());
+//     }
+
+//     Ok(())
+// }
 
 fn udisks_eject(dbus_path: &str) -> Result<(), ()> {
     let connection = Connection::new_system().map_err(|_| ())?;

@@ -10,3 +10,9 @@
     -gtk-icon-size: 128px;
     margin-bottom: 24px;
 }
+
+.drag-overlay-status-page {
+    background-color: alpha(@accent_bg_color, 0.5);
+    color: @accent_fg_color;
+  }
+  

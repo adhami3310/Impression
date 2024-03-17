@@ -1,6 +1,7 @@
 mod application;
 #[rustfmt::skip]
 mod config;
+mod drag_overlay;
 mod flash;
 mod online;
 mod widgets;
