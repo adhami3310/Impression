@@ -244,7 +244,7 @@ impl AppWindow {
         let dialog = adw::MessageDialog::new(
             Some(self),
             Some(&gettext("Stop Writing?")),
-            Some(&gettext("This might leave the drive in a faulty state.")),
+            Some(&gettext("This might leave the drive in a faulty state")),
         );
 
         dialog.add_responses(&[("cancel", &gettext("_Cancel")), ("stop", &gettext("_Stop"))]);
@@ -323,12 +323,12 @@ impl AppWindow {
             flashing_page.set_description(Some(&gettext(
                 "Writing will begin once the download is completed",
             )));
-            flashing_page.set_title(&gettext("Downloading Image…"));
+            flashing_page.set_title(&gettext("Downloading Image"));
             flashing_page.set_icon_name(Some("folder-download-symbolic"));
         } else {
             let flashing_page = &self.imp().flashing_page;
             flashing_page.set_description(Some(&gettext("Do not remove the drive")));
-            flashing_page.set_title(&gettext("Writing…"));
+            flashing_page.set_title(&gettext("Writing"));
             flashing_page.set_icon_name(Some("flash-symbolic"));
             self.imp()
                 .is_flashing
@@ -353,16 +353,16 @@ impl AppWindow {
                                     gettext("Writing will begin once the download is completed")
                                 }
                                 FlashPhase::Copy => {
-                                    gettext("Copying files…")
+                                    gettext("This could take a while")
                                 }
                             }));
                         flashing_page
                             .set_title(&match p {
                                 FlashPhase::Download => {
-                                    gettext("Downloading Image…")
+                                    gettext("Downloading Image")
                                 }
                                 _ => {
-                                    gettext("Writing…")
+                                    gettext("Writing")
                                 }
                             });
                         flashing_page
