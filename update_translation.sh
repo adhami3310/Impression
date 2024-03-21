@@ -7,6 +7,5 @@ fi
 
 meson translation-build
 meson compile -C translation-build impression-pot
-meson compile -C translation-build impression-update-po
 
 rm -r translation-build
