@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: impression\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-20 21:04-0400\n"
-"PO-Revision-Date: 2023-12-27 20:27+0300\n"
+"POT-Creation-Date: 2024-03-21 07:23-0400\n"
+"PO-Revision-Date: 2024-03-21 15:01+0300\n"
 "Last-Translator: Сергей Ворон <voron@duck.com>\n"
 "Language-Team: \n"
 "Language: ru_RU\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
-"X-Generator: Poedit 3.4.1\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #: data/io.gitlab.adhami3310.Impression.desktop.in.in:3
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:5
@@ -72,15 +72,13 @@ msgstr ""
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:38
 msgid "Screen with a choice of a local image or internet download"
-msgstr ""
+msgstr "Экран с выбором локального образа или загрузки из интернета"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:42
-#, fuzzy
 msgid "Screen with a chosen ISO and available USB memories"
-msgstr "Главный экран с выбранным ISO и доступными USB-накопителями"
+msgstr "Экран с выбранным ISO и доступными USB-накопителями"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:46
-#, fuzzy
 msgid "Writing the ISO in progress"
 msgstr "Выполняется запись ISO"
 
@@ -89,20 +87,16 @@ msgid "Success screen with a big check mark"
 msgstr "Экран успешного выполнения с большой галочкой"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:70
-#, fuzzy
 msgid "This is a minor release of Impression with a few small improvements."
-msgstr ""
-"Этот крупный выпуск Impression содержит целый ряд интересных улучшений:"
+msgstr "Это минорный релиз Impression с несколькими небольшими улучшениями."
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:72
-#, fuzzy
 msgid "Support for .xz files"
-msgstr "Поддержка размеров экрана мобильных устройств"
+msgstr "Поддержка файлов .xz"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:73
-#, fuzzy
 msgid "Faster downloading of images"
-msgstr "Не удалось загрузить образ"
+msgstr "Более быстрая загрузка образов"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:75
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:91
@@ -119,26 +113,27 @@ msgstr ""
 msgid ""
 "This minor release fixes a bug where some .ISO files wouldn't be detected."
 msgstr ""
+"В этом минорном релизе исправлена ошибка, из-за которой некоторые файлы .ISO "
+"не обнаруживались."
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:85
-#, fuzzy
 msgid ""
 "This release of Impression brings even more convenience and power to your "
 "fingertips:"
 msgstr ""
-"Этот крупный выпуск Impression содержит целый ряд интересных улучшений:"
+"Этот релиз Impression предоставляет вам еще больше удобств и возможностей:"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:87
 msgid "Direct download of a selection of images directly from the app"
-msgstr ""
+msgstr "Прямая загрузка выбранного образа прямо из приложения"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:88
 msgid "Updated and more understandable terminology"
-msgstr ""
+msgstr "Обновленная и более понятная терминология"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:89
 msgid "Security fixes"
-msgstr ""
+msgstr "Исправления безопасности"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:96
 msgid "This minor release of Impression delivers:"
@@ -241,7 +236,7 @@ msgstr "Выйти"
 
 #: data/resources/blueprints/window.blp:25
 msgid "Drop Here to Open"
-msgstr ""
+msgstr "Перетащите сюда, чтобы открыть"
 
 #: data/resources/blueprints/window.blp:35
 #: data/resources/blueprints/window.blp:156
@@ -306,8 +301,8 @@ msgid "Retry"
 msgstr "Повторить попытку"
 
 #: data/resources/blueprints/window.blp:355 src/window.rs:331 src/window.rs:365
-msgid "Writing…"
-msgstr "Запись..."
+msgid "Writing"
+msgstr "Запись"
 
 #: data/resources/blueprints/window.blp:357 src/window.rs:330
 msgid "Do not remove the drive"
@@ -330,8 +325,8 @@ msgid "Stop Writing?"
 msgstr "Остановить запись?"
 
 #: src/window.rs:247
-msgid "This might leave the drive in a faulty state."
-msgstr "Это может привести к тому, что диск окажется в неисправном состоянии."
+msgid "This might leave the drive in a faulty state"
+msgstr "Это может привести к выходу накопителя из строя."
 
 #: src/window.rs:250
 msgid "_Stop"
@@ -350,12 +345,12 @@ msgid "Writing will begin once the download is completed"
 msgstr "Запись начнется сразу после завершения загрузки"
 
 #: src/window.rs:326 src/window.rs:362
-msgid "Downloading Image…"
-msgstr "Загрузка образа…"
+msgid "Downloading Image"
+msgstr "Загрузка образа"
 
 #: src/window.rs:356
-msgid "Copying files…"
-msgstr "Копирование файлов…"
+msgid "This could take a while"
+msgstr "Это может занять некоторое время"
 
 #: src/window.rs:391
 msgid "Failed to write image"
@@ -398,6 +393,9 @@ msgstr "Не удалось загрузить образ"
 #: src/flash.rs:256
 msgid "Writing to disk failed"
 msgstr "Запись на диск не удалась"
+
+#~ msgid "Copying files…"
+#~ msgstr "Копирование файлов…"
 
 #~ msgid "usb"
 #~ msgstr "usb"
