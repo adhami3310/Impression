@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: impression\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-20 21:04-0400\n"
-"PO-Revision-Date: 2024-01-09 09:59+0100\n"
+"POT-Creation-Date: 2024-03-21 07:23-0400\n"
+"PO-Revision-Date: 2024-03-22 01:02+0100\n"
 "Last-Translator: Óscar Fernández Díaz <oscfdezdz@tuta.io>\n"
 "Language-Team: Spanish\n"
 "Language: es\n"
@@ -87,20 +87,16 @@ msgid "Success screen with a big check mark"
 msgstr "Ventana de éxito con una gran marca de verificación"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:70
-#, fuzzy
 msgid "This is a minor release of Impression with a few small improvements."
-msgstr ""
-"Esta versión principal de Impresión trae un montón de mejoras interesantes:"
+msgstr "Esta es una versión menor de Impresión con algunas pequeñas mejoras."
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:72
-#, fuzzy
 msgid "Support for .xz files"
-msgstr "Compatibilidad con pantallas de móviles"
+msgstr "Soporte para archivos .xz"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:73
-#, fuzzy
 msgid "Faster downloading of images"
-msgstr "Error al descargar la imagen"
+msgstr "Descarga más rápida de imágenes"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:75
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:91
@@ -239,7 +235,7 @@ msgstr "Salir"
 
 #: data/resources/blueprints/window.blp:25
 msgid "Drop Here to Open"
-msgstr ""
+msgstr "Suelte aquí para abrir"
 
 #: data/resources/blueprints/window.blp:35
 #: data/resources/blueprints/window.blp:156
@@ -304,8 +300,8 @@ msgid "Retry"
 msgstr "Reintentar"
 
 #: data/resources/blueprints/window.blp:355 src/window.rs:331 src/window.rs:365
-msgid "Writing…"
-msgstr "Escribiendo…"
+msgid "Writing"
+msgstr "Escribiendo"
 
 #: data/resources/blueprints/window.blp:357 src/window.rs:330
 msgid "Do not remove the drive"
@@ -328,8 +324,8 @@ msgid "Stop Writing?"
 msgstr "¿Detener la escritura?"
 
 #: src/window.rs:247
-msgid "This might leave the drive in a faulty state."
-msgstr "Esto podría dejar la unidad en un estado defectuoso."
+msgid "This might leave the drive in a faulty state"
+msgstr "Esto podría dejar la unidad en un estado defectuoso"
 
 #: src/window.rs:250
 msgid "_Stop"
@@ -348,12 +344,12 @@ msgid "Writing will begin once the download is completed"
 msgstr "La escritura comenzará una vez finalizada la descarga"
 
 #: src/window.rs:326 src/window.rs:362
-msgid "Downloading Image…"
-msgstr "Descargando la imagen…"
+msgid "Downloading Image"
+msgstr "Descargando la imagen"
 
 #: src/window.rs:356
-msgid "Copying files…"
-msgstr "Copiando archivos…"
+msgid "This could take a while"
+msgstr "Esto podría llevar un tiempo"
 
 #: src/window.rs:391
 msgid "Failed to write image"
