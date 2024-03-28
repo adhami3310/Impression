@@ -66,7 +66,7 @@
 
     <releases>
         <release version="3.1.0" date="2024-03-13">
-          <description translatable="no">
+          <description translate="no">
             <p>This is a minor release of Impression with a few small improvements.</p>
             <ul>
               <li>Support for .xz files</li>
@@ -76,12 +76,12 @@
           </description>
         </release>
         <release version="3.0.1" date="2023-11-07">
-          <description translatable="no">
+          <description translate="no">
             <p>This minor release fixes a bug where some .ISO files wouldn't be detected.</p>
           </description>
         </release>
         <release version="3.0" date="2023-11-05">
-          <description translatable="no">
+          <description translate="no">
             <p>This release of Impression brings even more convenience and power to your fingertips:</p>
             <ul>
               <li>Direct download of a selection of images directly from the app</li>
@@ -92,7 +92,7 @@
           </description>
         </release>
         <release version="2.1" date="2023-06-20">
-          <description translatable="no">
+          <description translate="no">
             <p>This minor release of Impression delivers:</p>
             <ul>
               <li>Support for mobile screen sizes</li>
@@ -103,7 +103,7 @@
           </description>
         </release>
         <release version="2.0" date="2023-06-13">
-          <description translatable="no">
+          <description translate="no">
             <p>This major release of Impression brings a bunch of exciting improvements:</p>
             <ul>
               <li>Visual enhancements to make the app more beautiful, focused, and engaging</li>
@@ -118,12 +118,12 @@
           </description>
         </release>
         <release version="1.0.1" date="2023-06-07">
-            <description translatable="no">
+            <description translate="no">
                 <p>Added Spanish, French, German, Russian, and Italian translations.</p>
             </description>
         </release>
         <release version="1.0.0" date="2023-06-03">
-            <description translatable="no">
+            <description translate="no">
                 <p>Initial version.</p>
             </description>
         </release>
