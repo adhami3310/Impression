@@ -1,0 +1,263 @@
+# Occitan translation file.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the impression package.
+# Quentin PAGÈS, 2024.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: impression\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-03-13 14:43-0400\n"
+"PO-Revision-Date: 2024-03-29 12:56+0100\n"
+"Last-Translator: Quentin PAGÈS\n"
+"Language-Team: \n"
+"Language: oc\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4.2\n"
+
+#: data/io.gitlab.adhami3310.Impression.desktop.in.in:3
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:5
+#: data/resources/blueprints/window.blp:9
+#: data/resources/blueprints/window.blp:21
+#: data/resources/blueprints/window.blp:139 src/main.rs:56 src/window.rs:388
+msgid "Impression"
+msgstr "Impression"
+
+#: data/io.gitlab.adhami3310.Impression.desktop.in.in:4
+msgid "Media Writer"
+msgstr "Enregistrador de mèdia"
+
+#: data/io.gitlab.adhami3310.Impression.desktop.in.in:5
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:11
+msgid "Create bootable drives"
+msgstr "Crear de lector aviables"
+
+#: data/io.gitlab.adhami3310.Impression.desktop.in.in:11
+msgid "usb;flash;writer;bootable;drive;iso;img;disk;image"
+msgstr "usb;flash;escriure;aviable;bootable;lector;iso;disc;imatges"
+
+#: data/io.gitlab.adhami3310.Impression.gschema.xml.in:6
+msgid "Window width"
+msgstr "Largor de la fenèstra"
+
+#: data/io.gitlab.adhami3310.Impression.gschema.xml.in:10
+msgid "Window height"
+msgstr "Nautor de la fenèstra"
+
+#: data/io.gitlab.adhami3310.Impression.gschema.xml.in:14
+msgid "Window maximized state"
+msgstr "Estat maximizat de la fenèstra"
+
+#. developer_name tag deprecated with Appstream 1.0
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:7
+msgid "Khaleel Al-Adhami"
+msgstr "Khaleel Al-Adhami"
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:17
+msgid ""
+"Write disk images to your drives with ease. Select an image, insert your "
+"drive, and you're good to go! Impression is a useful tool for both avid "
+"distro-hoppers and casual computer users."
+msgstr ""
+"Escrivètz vòstres imatges disc als vòstres lectors facialament. Seleccionatz "
+"un imatge, inserissètz lo lector e sètz lèst ! Impression es una aisina "
+"utila tan pels afogats de gravadura d’iso coma pels utilizaires d’ordenador "
+"ordinaris."
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:38
+msgid "Screen with a choice of a local image or internet download"
+msgstr "Ecran amb la causida d’imatges locals e lo telecargament internet"
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:42
+msgid "Screen with a chosen ISO and available USB memories"
+msgstr "Ecran amb l’ISO causit e las memòrias USB disponiblas"
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:46
+msgid "Writing the ISO in progress"
+msgstr "Escritura de l’ISO en cors"
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:50
+msgid "Success screen with a big check mark"
+msgstr "Ecran de succès amb una granda marca de verificacion"
+
+#: data/resources/blueprints/help-overlay.blp:11
+msgctxt "shortcut window"
+msgid "General"
+msgstr "General"
+
+#: data/resources/blueprints/help-overlay.blp:14
+msgctxt "shortcut window"
+msgid "Open File"
+msgstr "Dobrir fichièr"
+
+#: data/resources/blueprints/help-overlay.blp:19
+msgctxt "shortcut window"
+msgid "New Window"
+msgstr "Fenèstra novèla"
+
+#: data/resources/blueprints/help-overlay.blp:24
+msgctxt "shortcut window"
+msgid "Show Shortcuts"
+msgstr "Afichar los acorchis"
+
+#: data/resources/blueprints/help-overlay.blp:29
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "Quitar"
+
+#: data/resources/blueprints/window.blp:31
+#: data/resources/blueprints/window.blp:149
+#: data/resources/blueprints/window.blp:247
+msgid "Main Menu"
+msgstr "Menú principal"
+
+#: data/resources/blueprints/window.blp:50
+msgid "Choose Image"
+msgstr "Causir un imatge"
+
+#: data/resources/blueprints/window.blp:60
+msgid "Open File…"
+msgstr "Dobrir un fichièr…"
+
+#: data/resources/blueprints/window.blp:70
+msgid "Direct Download"
+msgstr "Telecargament dirècte"
+
+#: data/resources/blueprints/window.blp:104
+msgid "No Connection"
+msgstr "Cap de connexion"
+
+#: data/resources/blueprints/window.blp:105
+msgid "Connect to the internet to view available images"
+msgstr "Connectatz-vos a l’Internet per veire los imatges disponibles"
+
+#: data/resources/blueprints/window.blp:211
+msgid "All data on the selected drive will be erased"
+msgstr "Totas las donadas del lector seleccionat seràn escafadas"
+
+#: data/resources/blueprints/window.blp:214
+msgid "Write"
+msgstr "Escriure"
+
+#: data/resources/blueprints/window.blp:276
+msgid "No Drives"
+msgstr "Cap de lector"
+
+#: data/resources/blueprints/window.blp:277
+msgid "Insert a drive to write to"
+msgstr "Inserir un lector ont escriure"
+
+#: data/resources/blueprints/window.blp:288
+msgid "Writing Completed"
+msgstr "Escritura acabada"
+
+#: data/resources/blueprints/window.blp:289
+msgid "The drive can be safely removed"
+msgstr "Se pòt levar lo lector en tota seguretat"
+
+#: data/resources/blueprints/window.blp:298
+msgid "Finish"
+msgstr "Acabar"
+
+#: data/resources/blueprints/window.blp:319
+msgid "Writing Unsuccessful"
+msgstr "Escritura fracassada"
+
+#: data/resources/blueprints/window.blp:328
+msgid "Retry"
+msgstr "Tornar ensajar"
+
+#: data/resources/blueprints/window.blp:348 src/window.rs:295 src/window.rs:329
+msgid "Writing…"
+msgstr "Escritura…"
+
+#: data/resources/blueprints/window.blp:350 src/window.rs:294
+msgid "Do not remove the drive"
+msgstr "Tiretz pas lo lector"
+
+#: data/resources/blueprints/window.blp:365 src/window.rs:214 src/window.rs:250
+msgid "_Cancel"
+msgstr "_Anullar"
+
+#: data/resources/blueprints/window.blp:393
+msgid "Keyboard Shortcuts"
+msgstr "Acorchis de clavièr"
+
+#: data/resources/blueprints/window.blp:398
+msgid "About Impression"
+msgstr "A prepaus d’Impression"
+
+#: src/window.rs:210
+msgid "Stop Writing?"
+msgstr "Arrestar l’escritura ?"
+
+#: src/window.rs:211
+msgid "This might leave the drive in a faulty state."
+msgstr "Aquò pòt daissar lo lector dins un estat defectuós."
+
+#: src/window.rs:214
+msgid "_Stop"
+msgstr "_Arrestar"
+
+#: src/window.rs:243
+msgid "Erase Drive?"
+msgstr "Espotir lo lector ?"
+
+#: src/window.rs:251
+msgid "_Erase"
+msgstr "_Escafar"
+
+#: src/window.rs:288 src/window.rs:317
+msgid "Writing will begin once the download is completed"
+msgstr "L’escritura començarà un còp lo telecargament terminat"
+
+#: src/window.rs:290 src/window.rs:326
+msgid "Downloading Image…"
+msgstr "Telecargament de l’imatge…"
+
+#: src/window.rs:320
+msgid "Copying files…"
+msgstr "Còpia dels fichièrs…"
+
+#: src/window.rs:355
+msgid "Failed to write image"
+msgstr "Escritura impossibla de l’imatge disc"
+
+#: src/window.rs:363
+msgid "Image Written"
+msgstr "Imatge escrich"
+
+#: src/window.rs:567
+msgid "Disk Images"
+msgstr "Imatges disc"
+
+#: src/window.rs:593
+msgid "File is not a Disk Image"
+msgstr "Lo fichièr es pas un imatge disc"
+
+#: src/window.rs:698
+msgid "translator-credits"
+msgstr "Quentin PAGÈS"
+
+#: src/window.rs:700
+msgid "Code borrowed from"
+msgstr "Còdi empruntat de"
+
+#: src/flash.rs:95
+msgid "Failed to open disk"
+msgstr "Dobertura impossibla del disc"
+
+#: src/flash.rs:145
+msgid "Failed to extract drive"
+msgstr "Extraccion impossibla del lector"
+
+#: src/flash.rs:203
+msgid "Failed to download image"
+msgstr "Telecargament impossible de l’imatge"
+
+#: src/flash.rs:256
+msgid "Writing to disk failed"
+msgstr "Fracàs de l’escritura al disc"
