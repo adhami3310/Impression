@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: impression\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-21 07:23-0400\n"
+"POT-Creation-Date: 2024-04-08 17:38-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -77,109 +77,6 @@ msgstr ""
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:50
 msgid "Success screen with a big check mark"
-msgstr ""
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:70
-msgid "This is a minor release of Impression with a few small improvements."
-msgstr ""
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:72
-msgid "Support for .xz files"
-msgstr ""
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:73
-msgid "Faster downloading of images"
-msgstr ""
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:75
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:91
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:102
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:117
-msgid ""
-"Impression is made possible by volunteer developers, designers, and "
-"translators. Thank you for your contributions!"
-msgstr ""
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:80
-msgid ""
-"This minor release fixes a bug where some .ISO files wouldn't be detected."
-msgstr ""
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:85
-msgid ""
-"This release of Impression brings even more convenience and power to your "
-"fingertips:"
-msgstr ""
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:87
-msgid "Direct download of a selection of images directly from the app"
-msgstr ""
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:88
-msgid "Updated and more understandable terminology"
-msgstr ""
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:89
-msgid "Security fixes"
-msgstr ""
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:96
-msgid "This minor release of Impression delivers:"
-msgstr ""
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:98
-msgid "Support for mobile screen sizes"
-msgstr ""
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:99
-msgid "Various bug fixes, improving reliability and stability"
-msgstr ""
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:100
-msgid ""
-"Brazillian Portugese translations, making Impression available in a total of "
-"9 languages"
-msgstr ""
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:107
-msgid ""
-"This major release of Impression brings a bunch of exciting improvements:"
-msgstr ""
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:109
-msgid ""
-"Visual enhancements to make the app more beautiful, focused, and engaging"
-msgstr ""
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:110
-msgid "Automatic updates of the available drives list"
-msgstr ""
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:111
-msgid "Explicit drive selection before flashing, to avoid accidental data loss"
-msgstr ""
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:112
-msgid ""
-"Turkish and Czech translations, making Impression available in a total of 8 "
-"languages"
-msgstr ""
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:114
-msgid ""
-"The versioning scheme has been simplified to only include major and minor "
-"versions. The previous version of Impression was 1.0.1, this is version 2.0. "
-"Going forward, new features and noticeable changes will be included in new "
-"major releases, while fixes and translations will result in new minor "
-"releases."
-msgstr ""
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:122
-msgid "Added Spanish, French, German, Russian, and Italian translations."
-msgstr ""
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:127
-msgid "Initial version."
 msgstr ""
 
 #: data/resources/blueprints/help-overlay.blp:11
