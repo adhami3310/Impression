@@ -597,9 +597,10 @@ impl AppWindow {
         filter.add_mime_type("application/x-raw-disk-image");
         filter.add_mime_type("application/x-cd-image");
         filter.add_pattern("*.iso");
-        filter.add_pattern("*.raw.xz");
-        filter.add_pattern("*.iso.xz");
         filter.add_pattern("*.img");
+        filter.add_pattern("*.iso.xz");
+        filter.add_pattern("*.img.xz");
+        filter.add_pattern("*.raw.xz");
         filter.set_name(Some(&gettext("Disk Images")));
 
         let model = gio::ListStore::new::<gtk::FileFilter>();
