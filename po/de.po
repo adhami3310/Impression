@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: impression\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-20 21:04-0400\n"
-"PO-Revision-Date: 2023-11-18 00:29+0100\n"
-"Last-Translator: Philipp Kiemle <philipp.kiemle@gmail.com>\n"
+"POT-Creation-Date: 2024-04-08 17:38-0400\n"
+"PO-Revision-Date: 2024-04-12 20:49+0200\n"
+"Last-Translator: FineFindus <FineFindus@proton.me>\n"
 "Language-Team: \n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.4.1\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #: data/io.gitlab.adhami3310.Impression.desktop.in.in:3
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:5
@@ -27,18 +27,16 @@ msgstr "Impression"
 
 #: data/io.gitlab.adhami3310.Impression.desktop.in.in:4
 msgid "Media Writer"
-msgstr "Medien-Schreibprogramm"
+msgstr "Medienschreiber"
 
 #: data/io.gitlab.adhami3310.Impression.desktop.in.in:5
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:11
 msgid "Create bootable drives"
-msgstr "Bootfähige Laufwerke erstellen"
+msgstr "Erstelle bootfähige Laufwerke"
 
 #: data/io.gitlab.adhami3310.Impression.desktop.in.in:11
 msgid "usb;flash;writer;bootable;drive;iso;img;disk;image"
-msgstr ""
-"usb;flash;writer;Schreiber;Brenner;bootable;bootfähig;drive;Laufwerk;iso;img;"
-"disk;Festplatte;Image;Abbild"
+msgstr "usb;flash;schreiber;bootfähig;laufwerk;iso;img;disk;Datenträger"
 
 #: data/io.gitlab.adhami3310.Impression.gschema.xml.in:6
 msgid "Window width"
@@ -50,7 +48,7 @@ msgstr "Fensterhöhe"
 
 #: data/io.gitlab.adhami3310.Impression.gschema.xml.in:14
 msgid "Window maximized state"
-msgstr "Maximierter Zustand des Fensters"
+msgstr "Maximierter Zustand der Fenster"
 
 #. developer_name tag deprecated with Appstream 1.0
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:7
@@ -64,136 +62,28 @@ msgid ""
 "drive, and you're good to go! Impression is a useful tool for both avid "
 "distro-hoppers and casual computer users."
 msgstr ""
-"Schreiben Sie Datenträgerabbilder mit Leichtigkeit. Wählen Sie ein Abbild "
-"aus, verbinden Sie den Datenträger und Sie sind startklar! Impression ist "
-"ein nützliches Werkzeug - sowohl für Distro-Hopper als auch für "
-"gelegentliche Computerbenutzer."
+"Schreibe ganz einfach Datenträgerabbilder auf deine Laufwerke. Wähle ein "
+"Datenträgerabbild aus, lege dein Laufwerk ein, und schon kann es losgehen! "
+"Impression ist ein nützliches Tool sowohl für begeisterte Distro-Hopper als "
+"auch für gelegentliche Computerbenutzer."
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:38
 msgid "Screen with a choice of a local image or internet download"
 msgstr ""
-"Bildschirm mit einer Auswahlmöglichkeit für eine lokale Abbilddatei oder "
-"einen Download aus dem Internet"
+"Fenster mit der Möglichkeit ein lokales Datenträgerabbild oder einen "
+"Internet-Download zu wählen"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:42
 msgid "Screen with a chosen ISO and available USB memories"
-msgstr ""
-"Bildschirm mit einer ausgewählten ISO-Datei und verfügbaren USB-Speichern"
+msgstr "Fenster mit ausgewähltem ISO und verfügbaren USB-Speichern"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:46
 msgid "Writing the ISO in progress"
-msgstr "ISO-Datei wird geschrieben"
+msgstr "Schreiben der ISO in Arbeit"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:50
 msgid "Success screen with a big check mark"
-msgstr "Erfolgsbildschirm mit einem großen Haken"
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:70
-msgid "This is a minor release of Impression with a few small improvements."
-msgstr ""
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:72
-msgid "Support for .xz files"
-msgstr ""
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:73
-#, fuzzy
-msgid "Faster downloading of images"
-msgstr "Schreiben des Datenträgerabbilds fehlgeschlagen"
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:75
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:91
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:102
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:117
-msgid ""
-"Impression is made possible by volunteer developers, designers, and "
-"translators. Thank you for your contributions!"
-msgstr ""
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:80
-msgid ""
-"This minor release fixes a bug where some .ISO files wouldn't be detected."
-msgstr ""
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:85
-msgid ""
-"This release of Impression brings even more convenience and power to your "
-"fingertips:"
-msgstr ""
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:87
-msgid "Direct download of a selection of images directly from the app"
-msgstr ""
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:88
-msgid "Updated and more understandable terminology"
-msgstr ""
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:89
-msgid "Security fixes"
-msgstr ""
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:96
-msgid "This minor release of Impression delivers:"
-msgstr ""
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:98
-msgid "Support for mobile screen sizes"
-msgstr ""
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:99
-msgid "Various bug fixes, improving reliability and stability"
-msgstr ""
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:100
-msgid ""
-"Brazillian Portugese translations, making Impression available in a total of "
-"9 languages"
-msgstr ""
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:107
-msgid ""
-"This major release of Impression brings a bunch of exciting improvements:"
-msgstr ""
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:109
-msgid ""
-"Visual enhancements to make the app more beautiful, focused, and engaging"
-msgstr ""
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:110
-msgid "Automatic updates of the available drives list"
-msgstr ""
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:111
-msgid "Explicit drive selection before flashing, to avoid accidental data loss"
-msgstr ""
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:112
-msgid ""
-"Turkish and Czech translations, making Impression available in a total of 8 "
-"languages"
-msgstr ""
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:114
-msgid ""
-"The versioning scheme has been simplified to only include major and minor "
-"versions. The previous version of Impression was 1.0.1, this is version 2.0. "
-"Going forward, new features and noticeable changes will be included in new "
-"major releases, while fixes and translations will result in new minor "
-"releases."
-msgstr ""
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:122
-#, fuzzy
-msgid "Added Spanish, French, German, Russian, and Italian translations."
-msgstr ""
-"Übersetzungen für Spanisch, Französisch, Deutsch, Russisch und Italienisch "
-"hinzugefügt."
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:127
-msgid "Initial version."
-msgstr "Anfängliche Version."
+msgstr "Erfolgsbildschirm mit einem großen Häkchen"
 
 #: data/resources/blueprints/help-overlay.blp:11
 msgctxt "shortcut window"
@@ -203,7 +93,7 @@ msgstr "Allgemein"
 #: data/resources/blueprints/help-overlay.blp:14
 msgctxt "shortcut window"
 msgid "Open File"
-msgstr "Datei öffnen"
+msgstr "Datei Öffnen"
 
 #: data/resources/blueprints/help-overlay.blp:19
 msgctxt "shortcut window"
@@ -213,16 +103,16 @@ msgstr "Neues Fenster"
 #: data/resources/blueprints/help-overlay.blp:24
 msgctxt "shortcut window"
 msgid "Show Shortcuts"
-msgstr "Tastenkürzel anzeigen"
+msgstr "Zeige Tastenkürzel"
 
 #: data/resources/blueprints/help-overlay.blp:29
 msgctxt "shortcut window"
 msgid "Quit"
-msgstr "Beenden"
+msgstr "Schließen"
 
 #: data/resources/blueprints/window.blp:25
 msgid "Drop Here to Open"
-msgstr ""
+msgstr "Hierhin ziehen zum Öffnen"
 
 #: data/resources/blueprints/window.blp:35
 #: data/resources/blueprints/window.blp:156
@@ -232,11 +122,11 @@ msgstr "Hauptmenü"
 
 #: data/resources/blueprints/window.blp:54
 msgid "Choose Image"
-msgstr "Abbild auswählen"
+msgstr "Datenträgerabbild auswählen"
 
 #: data/resources/blueprints/window.blp:64
 msgid "Open File…"
-msgstr "Datei öffnen …"
+msgstr "Datei Öffnen…"
 
 #: data/resources/blueprints/window.blp:74
 msgid "Direct Download"
@@ -249,12 +139,12 @@ msgstr "Keine Verbindung"
 #: data/resources/blueprints/window.blp:109
 msgid "Connect to the internet to view available images"
 msgstr ""
-"Stellen Sie eine Internetverbindung her, um die verfügbaren Abbilddateien zu "
-"sehen"
+"Stelle eine Verbindung mit dem Internet her, um verfügbare "
+"Datenträgerabbilder anzuzeigen"
 
 #: data/resources/blueprints/window.blp:218
 msgid "All data on the selected drive will be erased"
-msgstr "Alle Daten auf dem ausgewählten Laufwerk werden gelöscht"
+msgstr "Alle Daten auf dem ausgewählten Laufwerk werden gelöscht werden"
 
 #: data/resources/blueprints/window.blp:221
 msgid "Write"
@@ -266,11 +156,11 @@ msgstr "Keine Laufwerke"
 
 #: data/resources/blueprints/window.blp:284
 msgid "Insert a drive to write to"
-msgstr "Legen Sie ein Laufwerk ein, auf das geschrieben werden soll"
+msgstr "Lege ein Laufwerk zum Beschreiben ein"
 
 #: data/resources/blueprints/window.blp:295
 msgid "Writing Completed"
-msgstr "Schreiben abgeschlossen"
+msgstr "Schreiben Abgeschlossen"
 
 #: data/resources/blueprints/window.blp:296
 msgid "The drive can be safely removed"
@@ -278,23 +168,23 @@ msgstr "Das Laufwerk kann sicher entfernt werden"
 
 #: data/resources/blueprints/window.blp:305
 msgid "Finish"
-msgstr "Ende"
+msgstr "Fertigstellen"
 
 #: data/resources/blueprints/window.blp:326
 msgid "Writing Unsuccessful"
-msgstr "Schreiben fehlgeschlagen"
+msgstr "Schreiben erfolglos"
 
 #: data/resources/blueprints/window.blp:335
 msgid "Retry"
 msgstr "Erneut versuchen"
 
 #: data/resources/blueprints/window.blp:355 src/window.rs:331 src/window.rs:365
-msgid "Writing…"
-msgstr "Schreiben …"
+msgid "Writing"
+msgstr "Schreiben"
 
 #: data/resources/blueprints/window.blp:357 src/window.rs:330
 msgid "Do not remove the drive"
-msgstr "Das Laufwerk darf nicht entfernt werden"
+msgstr "Das Laufwerk nicht entfernen"
 
 #: data/resources/blueprints/window.blp:372 src/window.rs:250 src/window.rs:286
 msgid "_Cancel"
@@ -302,7 +192,7 @@ msgstr "_Abbrechen"
 
 #: data/resources/blueprints/window.blp:400
 msgid "Keyboard Shortcuts"
-msgstr "Tastenkürzel"
+msgstr "Tastenkombinationen"
 
 #: data/resources/blueprints/window.blp:405
 msgid "About Impression"
@@ -310,13 +200,13 @@ msgstr "Info zu Impression"
 
 #: src/window.rs:246
 msgid "Stop Writing?"
-msgstr "Schreiben beenden?"
+msgstr "Aufhören zu Schreiben?"
 
 #: src/window.rs:247
-msgid "This might leave the drive in a faulty state."
+msgid "This might leave the drive in a faulty state"
 msgstr ""
 "Dies kann dazu führen, dass sich das Laufwerk in einem fehlerhaften Zustand "
-"befindet."
+"befindet"
 
 #: src/window.rs:250
 msgid "_Stop"
@@ -335,12 +225,12 @@ msgid "Writing will begin once the download is completed"
 msgstr "Das Schreiben beginnt, sobald der Download abgeschlossen ist"
 
 #: src/window.rs:326 src/window.rs:362
-msgid "Downloading Image…"
-msgstr "Abbild wird heruntergeladen …"
+msgid "Downloading Image"
+msgstr "Datenträger wird heruntergeladen"
 
 #: src/window.rs:356
-msgid "Copying files…"
-msgstr "Dateien werden kopiert …"
+msgid "This could take a while"
+msgstr "Dies könnte eine Weile dauern"
 
 #: src/window.rs:391
 msgid "Failed to write image"
@@ -348,7 +238,7 @@ msgstr "Schreiben des Datenträgerabbilds fehlgeschlagen"
 
 #: src/window.rs:399
 msgid "Image Written"
-msgstr "Datenträgerabbild wurde geschrieben"
+msgstr "Datenträgerabbild geschreiben"
 
 #: src/window.rs:603
 msgid "Disk Images"
@@ -360,33 +250,42 @@ msgstr "Datei ist kein Datenträgerabbild"
 
 #: src/window.rs:734
 msgid "translator-credits"
-msgstr ""
-"FineFindus <https://github.com/FineFindus>\n"
-"Philipp Kiemle <philipp.kiemle@gmail.com>"
+msgstr "FineFindus https://github.com/FineFindus"
 
 #: src/window.rs:736
 msgid "Code borrowed from"
 msgstr "Code angelehnt an"
 
 #: src/flash.rs:95
-#, fuzzy
 msgid "Failed to open disk"
-msgstr "Schreiben des Datenträgerabbilds fehlgeschlagen"
+msgstr "Öffnen des Laufwerkes fehlgeschlagen"
 
 #: src/flash.rs:145
-#, fuzzy
 msgid "Failed to extract drive"
-msgstr "Schreiben des Datenträgerabbilds fehlgeschlagen"
+msgstr "Laufwerk kann nicht extrahiert werden"
 
 #: src/flash.rs:203
-#, fuzzy
 msgid "Failed to download image"
-msgstr "Schreiben des Datenträgerabbilds fehlgeschlagen"
+msgstr "Herunterladen des Datenträgerabbilds fehlgeschlagen"
 
 #: src/flash.rs:256
-#, fuzzy
 msgid "Writing to disk failed"
-msgstr "Schreiben abgeschlossen"
+msgstr "Schreiben des Laufwerks fehlgeschlagen"
+
+#~ msgid "This is a minor release of Impression with a few small improvements."
+#~ msgstr ""
+#~ "Dies ist eine kleinere Version von Impression mit ein paar kleinen "
+#~ "Verbesserungen."
+
+#~ msgid "Support for .xz files"
+#~ msgstr "Unterstützung von .xz Dateien"
+
+#~ msgid ""
+#~ "Impression is made possible by volunteer developers, designers, and "
+#~ "translators. Thank you for your contributions!"
+#~ msgstr ""
+#~ "Impression wird durch freiwillige Entwickler, Designer und Übersetzer "
+#~ "ermöglicht. Vielen Dank für Ihre Beiträge!"
 
 #~ msgid "usb"
 #~ msgstr "USB"
@@ -446,15 +345,13 @@ msgstr "Schreiben abgeschlossen"
 #~ msgid "Flash Images"
 #~ msgstr "Datenträgerabbild Brennen"
 
-#, fuzzy
 #~ msgid "Open a disk image to flash to a USB drive"
 #~ msgstr ""
-#~ "Öffne ein Datenträgerabbild, um es auf ein USB-Laufwerk zu übertragen."
+#~ "Öffne ein Datenträgerabbild, um es auf ein USB-Laufwerk zu übertragen"
 
-#, fuzzy
 #~ msgid "Warning: This will erase all data on the selected drive"
 #~ msgstr ""
-#~ "Achtung: Dies wird alle Daten auf dem ausgewählten Laufwerk überschreiben."
+#~ "Achtung: Dies wird alle Daten auf dem ausgewählten Laufwerk überschreiben"
 
 #~ msgid "Updating device list…"
 #~ msgstr "Gerätliste wird aktualisiert…"
