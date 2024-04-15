@@ -21,13 +21,14 @@ pub fn get_osinfodb_url() -> Option<String> {
     Some(info["release"]["archive"].as_str()?.to_owned())
 }
 
-const GOOD_DISTROS: [(&str, &str); 6] = [
-    ("archlinux.org", "Arch Linux"),
-    ("endlessos.com", "Endless OS"),
-    ("fedoraproject.org", "Fedora"),
-    ("manjaro.org", "Manjaro"),
-    ("opensuse.org", "OpenSUSE"),
-    ("ubuntu.com", "Ubuntu"),
+const GOOD_DISTROS: [(&str, &str, Option<&str>); 7] = [
+    ("archlinux.org", "Arch Linux", None),
+    ("endlessos.com", "Endless OS", None),
+    ("fedoraproject.org", "Fedora", None),
+    ("manjaro.org", "Manjaro", None),
+    ("opensuse.org", "OpenSUSE", None),
+    ("ubuntu.com", "Ubuntu", None),
+    ("ubuntu.com", "Ubuntu LTS", Some("LTS")),
 ];
 
 pub fn collect_online_distros(latest_url: &str) -> Option<(Vec<Distro>, Vec<Distro>)> {
@@ -54,7 +55,8 @@ pub fn collect_online_distros(latest_url: &str) -> Option<(Vec<Distro>, Vec<Dist
         .args(
             GOOD_DISTROS
                 .into_iter()
-                .map(|(name, _)| format!("*/os/{name}")),
+                .map(|(name, _, _)| format!("*/os/{name}"))
+                .unique(),
         )
         .status()
         .unwrap();
@@ -67,7 +69,7 @@ pub fn collect_online_distros(latest_url: &str) -> Option<(Vec<Distro>, Vec<Dist
 
     let (amd, arm): (Vec<Option<Distro>>, Vec<Option<Distro>>) = GOOD_DISTROS
         .into_par_iter()
-        .map(|(distro, distro_name)| {
+        .map(|(distro, distro_name, suffix)| {
             let files = std::fs::read_dir(temp_dir.join(distro)).unwrap();
 
             let y = files
@@ -85,7 +87,6 @@ pub fn collect_online_distros(latest_url: &str) -> Option<(Vec<Distro>, Vec<Dist
                             let (year, month, day) = rd
                                 .text()
                                 .unwrap()
-                                .to_owned()
                                 .split('-')
                                 .map(|x| x.parse::<u32>().unwrap())
                                 .collect_tuple()
@@ -159,6 +160,7 @@ pub fn collect_online_distros(latest_url: &str) -> Option<(Vec<Distro>, Vec<Dist
                         });
 
                     Some((
+                        name,
                         amd.into_iter().next()?,
                         arm.into_iter().next(),
                         release_date,
@@ -166,7 +168,7 @@ pub fn collect_online_distros(latest_url: &str) -> Option<(Vec<Distro>, Vec<Dist
                         version,
                     ))
                 })
-                .filter(|(_, _, date, status, _)| {
+                .filter(|(_, _, _, date, status, _)| {
                     !matches!(status, Some(x) if x == "prerelease")
                         && (date.is_some() || matches!(status, Some(x) if x == "rolling"))
                         && (date.is_none()
@@ -175,8 +177,15 @@ pub fn collect_online_distros(latest_url: &str) -> Option<(Vec<Distro>, Vec<Dist
                                     .expect("duration is overflow")
                                 >= chrono::offset::Local::now().date_naive())
                 })
-                .max_by_key(|(_, _, date, _, _)| date.to_owned())
-                .map(|(amd, arm, _, _, version)| {
+                .filter(|(name, _, _, _, _, _)| {
+                    if let Some(suffix) = suffix {
+                        name.ends_with(suffix)
+                    } else {
+                        true
+                    }
+                })
+                .max_by_key(|(_, _, _, date, _, _)| date.to_owned())
+                .map(|(_, amd, arm, _, _, version)| {
                     (
                         Distro {
                             name: distro_name.to_owned(),
