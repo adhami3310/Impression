@@ -67,6 +67,11 @@
     <content_rating type="oars-1.1" />
 
     <releases>
+        <release version="3.2.0" date="2024-04-15">
+          <description translate="no">
+            <p>This is a minor release of Impression to resolve missing icons issues and add Ubuntu LTS to the list options.</p>
+          </description>
+        </release>
         <release version="3.1.0" date="2024-03-13">
           <description translate="no">
             <p>This is a minor release of Impression with a few small improvements.</p>
