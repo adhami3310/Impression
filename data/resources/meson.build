@@ -22,23 +22,6 @@ install_data(
   install_dir: datadir / symbolic_dir
 )
 
-action_dir = 'icons' / 'hicolor' / 'scalable' / 'actions'
-action_icons = [
-    # each icon must be registered here
-    action_dir / 'image-missing-symbolic.svg',
-    action_dir / 'paper-symbolic.svg',
-    action_dir / 'usb-stick-symbolic.svg',
-    action_dir / 'check-round-outline-symbolic.svg',
-    action_dir / 'view-refresh-symbolic.svg',
-    action_dir / 'error-symbolic.svg',
-    action_dir / 'flash-symbolic.svg',
-]
-
-install_data(
-  action_icons,
-  install_dir: pkgdatadir / action_dir
-)
-
 # Resources
 resources = gnome.compile_resources(
     'resources',
