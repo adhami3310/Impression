@@ -129,6 +129,26 @@ impl App {
         info!("Version: {} ({})", VERSION, PROFILE);
         info!("Datadir: {}", PKGDATADIR);
 
+        glib::spawn_future_local(async {
+            if ashpd::is_sandboxed().await {
+                if let Err(e) = (|| {
+                    for entry in std::fs::read_dir(glib::user_cache_dir())? {
+                        let entry = entry?;
+                        if entry.file_type()?.is_file() {
+                            if matches!(entry.path().extension(), Some(x) if x == "iso") {
+                                dbg!("deleting", entry.path());
+                                std::fs::remove_file(entry.path())?;
+                            }
+                        }
+                    }
+
+                    Ok::<(), std::io::Error>(())
+                })() {
+                    dbg!(e);
+                }
+            }
+        });
+
         ApplicationExtManual::run(self)
     }
 }
