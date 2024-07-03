@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: impression\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-03-20 21:04-0400\n"
-"PO-Revision-Date: 2023-08-13 09:42+0200\n"
-"Last-Translator: Amerey.eu <info@amerey.eu>\n"
+"PO-Revision-Date: 2024-07-03 13:48+0200\n"
+"Last-Translator: Amerey <info@amerey.eu>\n"
 "Language-Team: \n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.3.1\n"
+"X-Generator: Poedit 3.4.4\n"
 
 #: data/io.gitlab.adhami3310.Impression.desktop.in.in:3
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:5
@@ -35,7 +35,6 @@ msgid "Create bootable drives"
 msgstr "Vytvořte bootovatelné disky"
 
 #: data/io.gitlab.adhami3310.Impression.desktop.in.in:11
-#, fuzzy
 msgid "usb;flash;writer;bootable;drive;iso;img;disk;image"
 msgstr "usb;flash;bootable;drive;iso;disk;image;jednotka;obraz;bootování"
 
@@ -58,27 +57,24 @@ msgid "Khaleel Al-Adhami"
 msgstr "Khaleel Al-Adhami"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:17
-#, fuzzy
 msgid ""
 "Write disk images to your drives with ease. Select an image, insert your "
 "drive, and you're good to go! Impression is a useful tool for both avid "
 "distro-hoppers and casual computer users."
 msgstr ""
-"Přeneste obrazy disků snadno na vaše disky. Vyberte obraz disku, vložte USB "
+"Přeneste snadno obrazy disků na vaše disky. Vyberte obraz disku, vložte USB "
 "disk a můžete začít! Impression je užitečný nástroj jak pro zapálené distro-"
 "hoppery, tak pro běžné uživatelé počítačů."
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:38
 msgid "Screen with a choice of a local image or internet download"
-msgstr ""
+msgstr "Obrazovka s výběrem místního obrazu disku nebo stažení z internetu"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:42
-#, fuzzy
 msgid "Screen with a chosen ISO and available USB memories"
-msgstr "Hlavní obrazovka s vybraným ISO a dostupnými USB disky"
+msgstr "Obrazovka s vybraným ISO a dostupnými USB disky"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:46
-#, fuzzy
 msgid "Writing the ISO in progress"
 msgstr "Probíhá nahrávání ISO"
 
@@ -87,19 +83,16 @@ msgid "Success screen with a big check mark"
 msgstr "Obrazovka úspěchu s velkým zaškrtnutím"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:70
-#, fuzzy
 msgid "This is a minor release of Impression with a few small improvements."
-msgstr "Tato verze Impression přináší spoustu zajímavých vylepšení:"
+msgstr "Tato verze Impression přináší spoustu drobných vylepšení."
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:72
-#, fuzzy
 msgid "Support for .xz files"
-msgstr "Podpora velikostí obrazovky mobilních zařízení"
+msgstr "Podpora souborů .xz"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:73
-#, fuzzy
 msgid "Faster downloading of images"
-msgstr "Nepodařilo se nahrát obraz disku"
+msgstr "Rychlejší stahování obrazů disků"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:75
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:91
@@ -115,26 +108,26 @@ msgstr ""
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:80
 msgid ""
 "This minor release fixes a bug where some .ISO files wouldn't be detected."
-msgstr ""
+msgstr "Tato verze opravuje chybu, kdy některé soubory .ISO nebyly detekovány."
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:85
-#, fuzzy
 msgid ""
 "This release of Impression brings even more convenience and power to your "
 "fingertips:"
-msgstr "Tato verze Impression přináší spoustu zajímavých vylepšení:"
+msgstr ""
+"Tato verze Impression přináší ještě více pohodlí a výkonu na dosah ruky:"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:87
 msgid "Direct download of a selection of images directly from the app"
-msgstr ""
+msgstr "Přímé stažení výběru obrazů disků přímo z aplikace"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:88
 msgid "Updated and more understandable terminology"
-msgstr ""
+msgstr "Aktualizovaná a srozumitelnější terminologie"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:89
 msgid "Security fixes"
-msgstr ""
+msgstr "Bezpečnostní opravy"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:96
 msgid "This minor release of Impression delivers:"
@@ -231,7 +224,7 @@ msgstr "Ukončit"
 
 #: data/resources/blueprints/window.blp:25
 msgid "Drop Here to Open"
-msgstr ""
+msgstr "Přetažením sem otevřete"
 
 #: data/resources/blueprints/window.blp:35
 #: data/resources/blueprints/window.blp:156
@@ -240,9 +233,8 @@ msgid "Main Menu"
 msgstr "Hlavní menu"
 
 #: data/resources/blueprints/window.blp:54
-#, fuzzy
 msgid "Choose Image"
-msgstr "Vyberte obraz disku pro nahrání"
+msgstr "Vyberte obraz disku"
 
 #: data/resources/blueprints/window.blp:64
 msgid "Open File…"
@@ -250,15 +242,15 @@ msgstr "Otevřít soubor…"
 
 #: data/resources/blueprints/window.blp:74
 msgid "Direct Download"
-msgstr ""
+msgstr "Přímé stahování"
 
 #: data/resources/blueprints/window.blp:108
 msgid "No Connection"
-msgstr ""
+msgstr "Žádné připojení"
 
 #: data/resources/blueprints/window.blp:109
 msgid "Connect to the internet to view available images"
-msgstr ""
+msgstr "Chcete-li zobrazit dostupné obrazy disků, připojte se k internetu"
 
 #: data/resources/blueprints/window.blp:218
 msgid "All data on the selected drive will be erased"
@@ -266,19 +258,17 @@ msgstr "Všechna data na vybraném disku budou vymazána"
 
 #: data/resources/blueprints/window.blp:221
 msgid "Write"
-msgstr ""
+msgstr "Nahrát"
 
 #: data/resources/blueprints/window.blp:283
 msgid "No Drives"
 msgstr "Žádné disky"
 
 #: data/resources/blueprints/window.blp:284
-#, fuzzy
 msgid "Insert a drive to write to"
 msgstr "Vložte disk, na který chcete nahrát obraz disku"
 
 #: data/resources/blueprints/window.blp:295
-#, fuzzy
 msgid "Writing Completed"
 msgstr "Nahrávání ukončeno"
 
@@ -291,7 +281,6 @@ msgid "Finish"
 msgstr "Dokončit"
 
 #: data/resources/blueprints/window.blp:326
-#, fuzzy
 msgid "Writing Unsuccessful"
 msgstr "Nahrávání bylo neúspěšné"
 
@@ -301,7 +290,7 @@ msgstr "Opakovat"
 
 #: data/resources/blueprints/window.blp:355 src/window.rs:331 src/window.rs:365
 msgid "Writing…"
-msgstr ""
+msgstr "Nahrávání…"
 
 #: data/resources/blueprints/window.blp:357 src/window.rs:330
 msgid "Do not remove the drive"
@@ -320,7 +309,6 @@ msgid "About Impression"
 msgstr "O aplikaci Impression"
 
 #: src/window.rs:246
-#, fuzzy
 msgid "Stop Writing?"
 msgstr "Zastavit nahrávání?"
 
@@ -330,45 +318,43 @@ msgstr "Mohlo by to vést k tomu, že disk bude nečitelný."
 
 #: src/window.rs:250
 msgid "_Stop"
-msgstr "_Zastavit"
+msgstr "Zas_tavit"
 
 #: src/window.rs:279
 msgid "Erase Drive?"
-msgstr ""
+msgstr "Vymazat Disk?"
 
 #: src/window.rs:287
 msgid "_Erase"
-msgstr ""
+msgstr "_Vymazat"
 
 #: src/window.rs:324 src/window.rs:353
 msgid "Writing will begin once the download is completed"
-msgstr ""
+msgstr "Zápis začne po dokončení stahování"
 
 #: src/window.rs:326 src/window.rs:362
 msgid "Downloading Image…"
-msgstr ""
+msgstr "Stahování obrazu disku…"
 
 #: src/window.rs:356
 msgid "Copying files…"
-msgstr ""
+msgstr "Kopírování souborů…"
 
 #: src/window.rs:391
-#, fuzzy
 msgid "Failed to write image"
 msgstr "Nepodařilo se nahrát obraz disku"
 
 #: src/window.rs:399
 msgid "Image Written"
-msgstr ""
+msgstr "Obraz disku nahrán"
 
 #: src/window.rs:603
 msgid "Disk Images"
 msgstr "Obrazy disků"
 
 #: src/window.rs:629
-#, fuzzy
 msgid "File is not a Disk Image"
-msgstr "Nepodařilo se nahrát obraz disku"
+msgstr "Soubor není obraz disku"
 
 #: src/window.rs:734
 msgid "translator-credits"
@@ -379,24 +365,20 @@ msgid "Code borrowed from"
 msgstr "Kód vypůjčený od"
 
 #: src/flash.rs:95
-#, fuzzy
 msgid "Failed to open disk"
-msgstr "Nepodařilo se nahrát obraz disku"
+msgstr "Nepodařilo se otevřít disk"
 
 #: src/flash.rs:145
-#, fuzzy
 msgid "Failed to extract drive"
-msgstr "Nepodařilo se nahrát obraz disku"
+msgstr "Nepodařilo se extrahovat disk"
 
 #: src/flash.rs:203
-#, fuzzy
 msgid "Failed to download image"
-msgstr "Nepodařilo se nahrát obraz disku"
+msgstr "Nepodařilo se stáhnout obraz disku"
 
 #: src/flash.rs:256
-#, fuzzy
 msgid "Writing to disk failed"
-msgstr "Nahrávání ukončeno"
+msgstr "Nahrávání na disk se nezdařilo"
 
 #~ msgid "usb"
 #~ msgstr "usb"
