@@ -12,7 +12,7 @@ A straight-forward and modern application to create bootable drives.
 </div>
 
 ## Installation
-<a href='https://flathub.org/apps/details/io.gitlab.adhami3310.Impression'><img width='240' alt='Download on Flathub' src='https://flathub.org/assets/badges/flathub-badge-en.png'/></a>
+<a href='https://flathub.org/apps/details/io.gitlab.adhami3310.Impression'><img width='240' alt='Download on Flathub' src='https://flathub.org/api/badge?svg&locale=en'/></a>
 
 
 ### Third Party Packages
