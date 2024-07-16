@@ -51,6 +51,11 @@
         </screenshot>
     </screenshots>
 
+    <branding>
+      <color type="primary" scheme_preference="light">#ffb63f</color>
+      <color type="primary" scheme_preference="dark">#c54400</color>
+    </branding>
+
     <launchable type="desktop-id">@app-id@.desktop</launchable>
 
     <url type="homepage">https://apps.gnome.org/Impression/</url>
