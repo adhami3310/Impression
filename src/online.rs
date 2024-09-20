@@ -6,6 +6,7 @@ use itertools::Itertools;
 #[error("Error while extracting compressed file")]
 struct TarError {}
 
+#[derive(Debug)]
 pub struct Distro {
     pub name: String,
     pub version: Option<String>,
@@ -21,14 +22,24 @@ pub fn get_osinfodb_url() -> Option<String> {
     Some(info["release"]["archive"].as_str()?.to_owned())
 }
 
-const GOOD_DISTROS: [(&str, &str, Option<&str>); 7] = [
+type NameCheck = fn(&str) -> bool;
+
+const GOOD_DISTROS: [(&str, &str, Option<NameCheck>); 7] = [
     ("archlinux.org", "Arch Linux", None),
     ("endlessos.com", "Endless OS", None),
-    ("fedoraproject.org", "Fedora", None),
+    (
+        "fedoraproject.org",
+        "Fedora",
+        Some(|name: &str| !name.contains("Silverblue")),
+    ),
     ("manjaro.org", "Manjaro", None),
     ("opensuse.org", "OpenSUSE", None),
     ("ubuntu.com", "Ubuntu", None),
-    ("ubuntu.com", "Ubuntu LTS", Some("LTS")),
+    (
+        "ubuntu.com",
+        "Ubuntu LTS",
+        Some(|name: &str| name.contains("LTS")),
+    ),
 ];
 
 pub fn collect_online_distros(latest_url: &str) -> Option<(Vec<Distro>, Vec<Distro>)> {
@@ -69,7 +80,7 @@ pub fn collect_online_distros(latest_url: &str) -> Option<(Vec<Distro>, Vec<Dist
 
     let (amd, arm): (Vec<Option<Distro>>, Vec<Option<Distro>>) = GOOD_DISTROS
         .into_par_iter()
-        .map(|(distro, distro_name, suffix)| {
+        .map(|(distro, distro_name, filter)| {
             let files = std::fs::read_dir(temp_dir.join(distro)).unwrap();
 
             let y = files
@@ -178,8 +189,9 @@ pub fn collect_online_distros(latest_url: &str) -> Option<(Vec<Distro>, Vec<Dist
                                 >= chrono::offset::Local::now().date_naive())
                 })
                 .filter(|(name, _, _, _, _, _)| {
-                    if let Some(suffix) = suffix {
-                        name.ends_with(suffix)
+                    println!("{}", name);
+                    if let Some(filter) = filter {
+                        filter(name)
                     } else {
                         true
                     }
