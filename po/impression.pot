@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: impression\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-08 17:38-0400\n"
+"POT-Creation-Date: 2024-09-19 19:05-0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,7 +21,7 @@ msgstr ""
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:5
 #: data/resources/blueprints/window.blp:9
 #: data/resources/blueprints/window.blp:21
-#: data/resources/blueprints/window.blp:146 src/main.rs:57 src/window.rs:424
+#: data/resources/blueprints/window.blp:146 src/main.rs:44 src/window.rs:435
 msgid "Impression"
 msgstr ""
 
@@ -170,15 +170,15 @@ msgstr ""
 msgid "Retry"
 msgstr ""
 
-#: data/resources/blueprints/window.blp:355 src/window.rs:331 src/window.rs:365
+#: data/resources/blueprints/window.blp:355 src/window.rs:344 src/window.rs:373
 msgid "Writing"
 msgstr ""
 
-#: data/resources/blueprints/window.blp:357 src/window.rs:330
+#: data/resources/blueprints/window.blp:357 src/window.rs:343
 msgid "Do not remove the drive"
 msgstr ""
 
-#: data/resources/blueprints/window.blp:372 src/window.rs:250 src/window.rs:286
+#: data/resources/blueprints/window.blp:372 src/window.rs:258 src/window.rs:295
 msgid "_Cancel"
 msgstr ""
 
@@ -190,59 +190,63 @@ msgstr ""
 msgid "About Impression"
 msgstr ""
 
-#: src/window.rs:246
+#: src/window.rs:254
 msgid "Stop Writing?"
 msgstr ""
 
-#: src/window.rs:247
+#: src/window.rs:255
 msgid "This might leave the drive in a faulty state"
 msgstr ""
 
-#: src/window.rs:250
+#: src/window.rs:258
 msgid "_Stop"
 msgstr ""
 
-#: src/window.rs:279
+#: src/window.rs:288
 msgid "Erase Drive?"
 msgstr ""
 
-#: src/window.rs:287
+#: src/window.rs:289
+msgid "You will lose all data stored on {}"
+msgstr ""
+
+#: src/window.rs:296
 msgid "_Erase"
 msgstr ""
 
-#: src/window.rs:324 src/window.rs:353
+#: src/window.rs:337 src/window.rs:367
 msgid "Writing will begin once the download is completed"
 msgstr ""
 
-#: src/window.rs:326 src/window.rs:362
+#: src/window.rs:339 src/window.rs:372
 msgid "Downloading Image"
 msgstr ""
 
-#: src/window.rs:356
+#: src/window.rs:369
 msgid "This could take a while"
 msgstr ""
 
-#: src/window.rs:391
+#: src/window.rs:397
 msgid "Failed to write image"
 msgstr ""
 
-#: src/window.rs:399
+#: src/window.rs:409
 msgid "Image Written"
 msgstr ""
 
-#: src/window.rs:603
+#: src/window.rs:674
 msgid "Disk Images"
 msgstr ""
 
-#: src/window.rs:629
+#: src/window.rs:700
 msgid "File is not a Disk Image"
 msgstr ""
 
-#: src/window.rs:734
+#: src/window.rs:804
 msgid "translator-credits"
 msgstr ""
 
-#: src/window.rs:736
+#: src/window.rs:806
 msgid "Code borrowed from"
 msgstr ""
 
