@@ -9,7 +9,6 @@ mod window;
 
 use gettextrs::{gettext, LocaleCategory};
 use glib::ExitCode;
-use gtk::prelude::WidgetExt;
 use gtk::{gio, glib};
 
 use self::application::App;
@@ -21,18 +20,6 @@ macro_rules! spawn {
         let ctx = glib::MainContext::default();
         ctx.spawn_local($future);
     };
-}
-
-trait RemoveAll {
-    fn remove_all(&self);
-}
-
-impl RemoveAll for gtk::ListBox {
-    fn remove_all(&self) {
-        while let Some(child) = self.first_child() {
-            self.remove(&child);
-        }
-    }
 }
 
 fn get_size_string(bytes_size: u64) -> String {

@@ -23,16 +23,24 @@ pub fn new(
         cb.add_css_class("selection-mode");
 
         if devices.len() == 1 {
-            cb.connect_toggled(clone!(@weak app as this => move |x| {
-                x.set_active(true);
-                this.set_selected_device_index(Some(0));
-            }));
-        } else {
-            cb.connect_toggled(clone!(@weak app as this => move |x| {
-                if x.is_active() {
-                    this.set_selected_device_index(Some(i));
+            cb.connect_toggled(clone!(
+                #[weak(rename_to=this)]
+                app,
+                move |x| {
+                    x.set_active(true);
+                    this.set_selected_device_index(Some(0));
                 }
-            }));
+            ));
+        } else {
+            cb.connect_toggled(clone!(
+                #[weak(rename_to=this)]
+                app,
+                move |x| {
+                    if x.is_active() {
+                        this.set_selected_device_index(Some(i));
+                    }
+                }
+            ));
         }
         check_buttons.push(cb);
     }

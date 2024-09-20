@@ -105,9 +105,13 @@ impl App {
 
     fn setup_gactions(&self) {
         self.add_action_entries([gio::ActionEntry::builder("quit")
-            .activate(clone!(@weak self as app => move |_,_, _| {
-                app.quit();
-            }))
+            .activate(clone!(
+                #[weak(rename_to=app)]
+                self,
+                move |_, _, _| {
+                    app.quit();
+                }
+            ))
             .build()]);
     }
 
@@ -134,11 +138,11 @@ impl App {
                 if let Err(e) = (|| {
                     for entry in std::fs::read_dir(glib::user_cache_dir())? {
                         let entry = entry?;
-                        if entry.file_type()?.is_file() {
-                            if matches!(entry.path().extension(), Some(x) if x == "iso") {
-                                dbg!("deleting", entry.path());
-                                std::fs::remove_file(entry.path())?;
-                            }
+                        if entry.file_type()?.is_file()
+                            && matches!(entry.path().extension(), Some(x) if x == "iso")
+                        {
+                            dbg!("deleting", entry.path());
+                            std::fs::remove_file(entry.path())?;
                         }
                     }
 

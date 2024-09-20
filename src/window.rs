@@ -45,7 +45,7 @@ mod imp {
     };
 
     use crate::{
-        config::{APP_ID, PKGDATADIR, PROFILE},
+        config::{APP_ID, PROFILE},
         drag_overlay::DragOverlay,
     };
 
@@ -189,23 +189,33 @@ impl AppWindow {
     fn setup_gactions(&self) {
         self.add_action_entries([
             gio::ActionEntry::builder("close")
-                .activate(clone!(@weak self as window => move |_,_, _| {
-                    window.close();
-                }))
+                .activate(clone!(
+                    #[weak(rename_to=window)]
+                    self,
+                    move |_, _, _| {
+                        window.close();
+                    },
+                ))
                 .build(),
             gio::ActionEntry::builder("about")
-                .activate(clone!(@weak self as window => move |_, _, _| {
-                    window.show_about();
-                }))
+                .activate(clone!(
+                    #[weak(rename_to=window)]
+                    self,
+                    move |_, _, _| {
+                        window.show_about();
+                    }
+                ))
                 .build(),
             gio::ActionEntry::builder("open")
-                .activate(clone!(@weak self as window => move |_, _, _| {
-                    if !window.imp().is_running.load(std::sync::atomic::Ordering::SeqCst) {
+                .activate(clone!(
+                    #[weak(rename_to=window)]
+                    self,
+                    move |_, _, _| {
                         spawn!(async move {
                             window.open_dialog().await;
                         });
                     }
-                }))
+                ))
                 .build(),
         ]);
     }
@@ -217,27 +227,30 @@ impl AppWindow {
             .formats(&gdk::ContentFormats::for_type(gdk::FileList::static_type()))
             .build();
 
-        drop_target.connect_drop(
-            clone!(@weak self as win => @default-return false, move |_, value, _, _| {
+        drop_target.connect_drop(clone!(
+            #[weak(rename_to=win)]
+            self,
+            #[upgrade_or_default]
+            move |_, value, _, _| {
                 if let Ok(file_list) = value.get::<gdk::FileList>() {
                     if let Some(input_file) = file_list.files().into_iter().next() {
                         spawn!(async move {
-                            win.open_file(input_file.path().expect("Must have file path")).await;
+                            win.open_file(input_file.path().expect("Must have file path"))
+                                .await;
                         });
                         return true;
                     }
                 }
 
                 false
-            }),
-        );
+            }
+        ));
 
         self.imp().drag_overlay.set_drop_target(&drop_target);
     }
 
     fn cancel_request(&self, close_after: bool) {
-        let dialog = adw::MessageDialog::new(
-            Some(self),
+        let dialog = adw::AlertDialog::new(
             Some(&gettext("Stop Writing?")),
             Some(&gettext("This might leave the drive in a faulty state")),
         );
@@ -247,8 +260,10 @@ impl AppWindow {
 
         dialog.connect_response(
             None,
-            clone!(@weak self as this => move |_, response_id| {
-                if response_id == "stop" {
+            clone!(
+                #[weak(rename_to=this)]
+                self,
+                move |_, _| {
                     this.imp()
                         .is_running
                         .store(false, std::sync::atomic::Ordering::SeqCst);
@@ -262,19 +277,18 @@ impl AppWindow {
                         this.imp().main_stack.set_visible_child_name("choose");
                     }
                 }
-            }),
+            ),
         );
 
-        dialog.present();
+        dialog.present(Some(self));
     }
 
     fn flash_dialog(&self) {
-        let flash_dialog = adw::MessageDialog::new(
-            Some(self),
+        let flash_dialog = adw::AlertDialog::new(
             Some(&gettext("Erase Drive?")),
-            Some(&gettext!(
-                "You will lose all data stored on {}",
-                device_list::device_label(&self.selected_device().unwrap())
+            Some(&gettext("You will lose all data stored on {}").replace(
+                "{}",
+                &device_list::device_label(&self.selected_device().unwrap()),
             )),
         );
 
@@ -284,14 +298,18 @@ impl AppWindow {
 
         flash_dialog.connect_response(
             None,
-            clone!(@weak self as this => move |_, response_id| {
-                if response_id == "erase" {
-                    this.flash();
+            clone!(
+                #[weak(rename_to=this)]
+                self,
+                move |_, response_id| {
+                    if response_id == "erase" {
+                        this.flash();
+                    }
                 }
-            }),
+            ),
         );
 
-        flash_dialog.present();
+        flash_dialog.present(Some(self));
     }
 
     fn flash(&self) {
@@ -329,75 +347,73 @@ impl AppWindow {
                 .is_flashing
                 .store(true, std::sync::atomic::Ordering::SeqCst);
         }
-        glib::spawn_future_local(clone!(@weak self as this => async move {
-            while let Ok(x) = rx.recv().await {
-                if !this.imp().is_running.load(std::sync::atomic::Ordering::SeqCst) {
-                    break;
-                }
-                match x {
-                    FlashStatus::Active(p, x) => {
-                        if !matches!(p, FlashPhase::Download) {
-                            this.imp()
-                                .is_flashing
-                                .store(true, std::sync::atomic::Ordering::SeqCst);
-                        }
-                        let flashing_page = &this.imp().flashing_page;
-                        flashing_page
-                            .set_description(Some(&match p {
+        glib::spawn_future_local(clone!(
+            #[weak(rename_to=this)]
+            self,
+            async move {
+                while let Ok(x) = rx.recv().await {
+                    if !this
+                        .imp()
+                        .is_running
+                        .load(std::sync::atomic::Ordering::SeqCst)
+                    {
+                        break;
+                    }
+                    match x {
+                        FlashStatus::Active(p, x) => {
+                            let flashing_page = &this.imp().flashing_page;
+                            flashing_page.set_description(Some(&match p {
                                 FlashPhase::Download => {
                                     gettext("Writing will begin once the download is completed")
                                 }
-                                FlashPhase::Copy => {
-                                    gettext("This could take a while")
-                                }
+                                FlashPhase::Copy => gettext("This could take a while"),
                             }));
-                        flashing_page
-                            .set_title(&match p {
-                                FlashPhase::Download => {
-                                    gettext("Downloading Image")
-                                }
-                                _ => {
-                                    gettext("Writing")
-                                }
+                            flashing_page.set_title(&match p {
+                                FlashPhase::Download => gettext("Downloading Image"),
+                                _ => gettext("Writing"),
                             });
-                        flashing_page
-                            .set_icon_name(Some(match p {
-                                FlashPhase::Download => {
-                                    "folder-download-symbolic"
-                                }
-                                _ => {
-                                    "flash-symbolic"
-                                }
+                            flashing_page.set_icon_name(Some(match p {
+                                FlashPhase::Download => "folder-download-symbolic",
+                                _ => "flash-symbolic",
                             }));
-                        match x {
-                            Progress::Fraction(x) => {
-                                this.imp().progress_bar.set_fraction(x);
+                            match x {
+                                Progress::Fraction(x) => {
+                                    this.imp().progress_bar.set_fraction(x);
+                                }
+                                Progress::Pulse => {
+                                    this.imp().progress_bar.pulse();
+                                }
                             }
-                            Progress::Pulse => {
-                                this.imp().progress_bar.pulse();
-                            }
+                            glib::MainContext::default().iteration(true);
                         }
-                        glib::MainContext::default().iteration(true);
-                    }
-                    FlashStatus::Done(Some(_)) => {
-                        this.imp().stack.set_visible_child_name("failure");
-                        this.imp().is_running.store(false, std::sync::atomic::Ordering::SeqCst);
-                        this.imp().is_flashing.store(false, std::sync::atomic::Ordering::SeqCst);
-                        this.send_notification(gettext("Failed to write image"));
-                        glib::MainContext::default().iteration(true);
-                        break;
-                    }
-                    FlashStatus::Done(None) => {
-                        this.imp().stack.set_visible_child_name("success");
-                        this.imp().is_running.store(false, std::sync::atomic::Ordering::SeqCst);
-                        this.imp().is_flashing.store(false, std::sync::atomic::Ordering::SeqCst);
-                        this.send_notification(gettext("Image Written"));
-                        glib::MainContext::default().iteration(true);
-                         break;
+                        FlashStatus::Done(Some(_)) => {
+                            this.imp().stack.set_visible_child_name("failure");
+                            this.imp()
+                                .is_running
+                                .store(false, std::sync::atomic::Ordering::SeqCst);
+                            this.imp()
+                                .is_flashing
+                                .store(false, std::sync::atomic::Ordering::SeqCst);
+                            this.send_notification(gettext("Failed to write image"));
+                            glib::MainContext::default().iteration(true);
+                            break;
+                        }
+                        FlashStatus::Done(None) => {
+                            this.imp().stack.set_visible_child_name("success");
+                            this.imp()
+                                .is_running
+                                .store(false, std::sync::atomic::Ordering::SeqCst);
+                            this.imp()
+                                .is_flashing
+                                .store(false, std::sync::atomic::Ordering::SeqCst);
+                            this.send_notification(gettext("Image Written"));
+                            glib::MainContext::default().iteration(true);
+                            break;
+                        }
                     }
                 }
             }
-        }));
+        ));
         std::thread::spawn(|| {
             let rt = tokio::runtime::Builder::new_multi_thread()
                 .enable_all()
@@ -456,19 +472,31 @@ impl AppWindow {
     fn setup_callbacks(&self) {
         let imp = self.imp();
 
-        imp.open_image_button
-            .connect_activated(clone!(@weak self as this => move |_| {
+        imp.open_image_button.connect_activated(clone!(
+            #[weak(rename_to=this)]
+            self,
+            move |_| {
                 spawn!(async move {
                     this.open_dialog().await;
                 });
-            }));
-        imp.flash_button
-            .connect_clicked(clone!(@weak self as this => move |_| {
+            }
+        ));
+        imp.flash_button.connect_clicked(clone!(
+            #[weak(rename_to=this)]
+            self,
+            move |_| {
                 this.flash_dialog();
-            }));
-        imp.cancel_button
-            .connect_clicked(clone!(@weak self as this => move |_| {
-                if this.imp().is_flashing.load(std::sync::atomic::Ordering::SeqCst) {
+            }
+        ));
+        imp.cancel_button.connect_clicked(clone!(
+            #[weak(rename_to=this)]
+            self,
+            move |_| {
+                if this
+                    .imp()
+                    .is_flashing
+                    .load(std::sync::atomic::Ordering::SeqCst)
+                {
                     this.cancel_request(false);
                 } else {
                     this.imp()
@@ -477,36 +505,59 @@ impl AppWindow {
                     this.imp().main_stack.set_visible_child_name("choose");
                     this.refresh_devices();
                 }
-            }));
-        imp.done_button
-            .connect_clicked(clone!(@weak self as this => move |_| {
+            }
+        ));
+        imp.done_button.connect_clicked(clone!(
+            #[weak(rename_to=this)]
+            self,
+            move |_| {
                 this.imp().available_devices.replace(vec![]);
                 this.imp().main_stack.set_visible_child_name("status");
                 this.imp().stack.set_visible_child_name("no_devices");
                 this.imp().open_image_button.grab_focus();
-            }));
-        imp.try_again_button
-            .connect_clicked(clone!(@weak self as this => move |_| {
+            }
+        ));
+        imp.try_again_button.connect_clicked(clone!(
+            #[weak(rename_to=this)]
+            self,
+            move |_| {
                 this.refresh_devices();
                 this.imp().main_stack.set_visible_child_name("choose");
-            }));
+            }
+        ));
         timeout_add_seconds_local(
             2,
-            clone!(@weak self as this => @default-return glib::ControlFlow::Break, move || {
-                let main_stack = this.imp().main_stack.visible_child_name().unwrap();
-                let current_stack = this.imp().stack.visible_child_name().unwrap();
-                let current_page = this.imp().navigation.visible_page().and_then(|x| x.tag()).map(|x| x.as_str().to_owned());
-                if main_stack == "status" && current_stack == "no_devices" || main_stack == "choose" && matches!(current_page, Some(x) if x == "device_list" || x == "welcome") {
-                    this.refresh_devices();
+            clone!(
+                #[weak(rename_to=this)]
+                self,
+                #[upgrade_or]
+                glib::ControlFlow::Break,
+                move || {
+                    let main_stack = this.imp().main_stack.visible_child_name().unwrap();
+                    let current_stack = this.imp().stack.visible_child_name().unwrap();
+                    let current_page = this
+                        .imp()
+                        .navigation
+                        .visible_page()
+                        .and_then(|x| x.tag())
+                        .map(|x| x.as_str().to_owned());
+                    if main_stack == "status" && current_stack == "no_devices"
+                        || main_stack == "choose"
+                            && matches!(current_page, Some(x) if x == "device_list" || x == "welcome")
+                    {
+                        this.refresh_devices();
+                    }
+                    glib::ControlFlow::Continue
                 }
-                glib::ControlFlow::Continue
-            }),
+            ),
         );
 
         self.refresh_devices();
 
-        imp.architecture
-            .connect_selected_notify(clone!(@weak self as this => move |a| {
+        imp.architecture.connect_selected_notify(clone!(
+            #[weak(rename_to=this)]
+            self,
+            move |a| {
                 match a.selected() {
                     0 => {
                         this.imp().amd_distros.set_visible(true);
@@ -518,19 +569,33 @@ impl AppWindow {
                     }
                     _ => {}
                 }
-            }));
+            }
+        ));
 
         timeout_add_seconds_local(
             10,
-            clone!(@weak self as this => @default-return glib::ControlFlow::Break, move || {
-                // For some reason this never works (dns error)
-                let main_stack = this.imp().stack.visible_child_name().unwrap();
-                let current_page = this.imp().navigation.visible_page().and_then(|x| x.tag()).map(|x| x.as_str().to_owned());
-                if main_stack == "choose" && matches!(current_page, Some(x) if x == "welcome") && this.imp().offline_screen.is_visible() {
-                    this.get_distros();
+            clone!(
+                #[weak(rename_to=this)]
+                self,
+                #[upgrade_or]
+                glib::ControlFlow::Break,
+                move || {
+                    let main_stack = this.imp().stack.visible_child_name().unwrap();
+                    let current_page = this
+                        .imp()
+                        .navigation
+                        .visible_page()
+                        .and_then(|x| x.tag())
+                        .map(|x| x.as_str().to_owned());
+                    if main_stack == "choose"
+                        && matches!(current_page, Some(x) if x == "welcome")
+                        && this.imp().offline_screen.is_visible()
+                    {
+                        this.get_distros();
+                    }
+                    glib::ControlFlow::Continue
                 }
-                glib::ControlFlow::Continue
-            }),
+            ),
         );
 
         self.get_distros();
@@ -545,21 +610,25 @@ impl AppWindow {
             Some(())
         });
 
-        glib::spawn_future_local(clone!(@weak self as this => async move {
-            if let Ok(online_distros) = rx.recv().await {
-                if let Some((amd_distros, arm_distros)) = online_distros {
-                    this.load_distros(&this.imp().amd_distros, amd_distros);
-                    this.load_distros(&this.imp().arm_distros, arm_distros);
-                    this.imp().download_spinner.set_visible(false);
-                    this.imp().offline_screen.set_visible(false);
-                    this.imp().distros.set_visible(true);
-                    this.imp().architecture.set_sensitive(true);
-                } else {
-                    this.imp().download_spinner.set_visible(false);
-                    this.imp().offline_screen.set_visible(true);
+        glib::spawn_future_local(clone!(
+            #[weak(rename_to=this)]
+            self,
+            async move {
+                if let Ok(online_distros) = rx.recv().await {
+                    if let Some((amd_distros, arm_distros)) = online_distros {
+                        this.load_distros(&this.imp().amd_distros, amd_distros);
+                        this.load_distros(&this.imp().arm_distros, arm_distros);
+                        this.imp().download_spinner.set_visible(false);
+                        this.imp().offline_screen.set_visible(false);
+                        this.imp().distros.set_visible(true);
+                        this.imp().architecture.set_sensitive(true);
+                    } else {
+                        this.imp().download_spinner.set_visible(false);
+                        this.imp().offline_screen.set_visible(true);
+                    }
                 }
             }
-        }));
+        ));
     }
 
     fn load_distros(&self, target: &TemplateChild<gtk::ListBox>, distros: Vec<Distro>) {
@@ -574,14 +643,20 @@ impl AppWindow {
             next_image.set_icon_name(Some("go-next-symbolic"));
             action_row.add_suffix(&next_image);
             action_row.set_activatable_widget(Some(&next_image));
-            action_row.connect_activated(clone!(@weak self as this => move |_| {
-                let name = name.clone();
-                let url = url.clone();
-                spawn!(async move {
-                    this.imp().selected_image.replace(Some(DiskImage::Online { url, name }));
-                    this.load_stored();
-                });
-            }));
+            action_row.connect_activated(clone!(
+                #[weak(rename_to=this)]
+                self,
+                move |_| {
+                    let url = url.clone();
+                    let name = name.clone();
+                    spawn!(async move {
+                        this.imp()
+                            .selected_image
+                            .replace(Some(DiskImage::Online { url, name }));
+                        this.load_stored();
+                    });
+                }
+            ));
             target.append(&action_row);
         }
     }
@@ -719,11 +794,10 @@ impl AppWindow {
         let designers = ["Brage Fuglseth https://bragefuglseth.dev"];
         let artists = ["Brage Fuglseth https://bragefuglseth.dev"];
 
-        let about = adw::AboutWindow::from_appdata(
+        let about = adw::AboutDialog::from_appdata(
             "/io/gitlab/adhami3310/Impression/io.gitlab.adhami3310.Impression.metainfo.xml",
             Some("3.1.0"),
         );
-        about.set_transient_for(Some(self));
         about.set_developers(&developers);
         about.set_designers(&designers);
         about.set_artists(&artists);
@@ -733,7 +807,7 @@ impl AppWindow {
             &["Popsicle https://github.com/pop-os/popsicle"],
         );
 
-        about.present();
+        about.present(Some(self));
     }
 }
 
