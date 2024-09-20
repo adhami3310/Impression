@@ -1,143 +1,159 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop-application">
-    <id>@app-id@</id>
+  <id>@app-id@</id>
 
-    <name>Impression</name>
-    <!-- developer_name tag deprecated with Appstream 1.0 -->
-    <developer_name>Khaleel Al-Adhami</developer_name>
-    <developer id="io.gitlab.adhami3310">
-      <name>Khaleel Al-Adhami</name>
-    </developer>
-    <summary>Create bootable drives</summary>
+  <name>Impression</name>
+  <!-- developer_name tag deprecated with Appstream 1.0 -->
+  <developer_name>Khaleel Al-Adhami</developer_name>
+  <developer id="io.gitlab.adhami3310">
+    <name>Khaleel Al-Adhami</name>
+  </developer>
+  <summary>Create bootable drives</summary>
 
-    <metadata_license>CC-BY-SA-4.0</metadata_license>
-    <project_license>GPL-3.0</project_license>
+  <metadata_license>CC-BY-SA-4.0</metadata_license>
+  <project_license>GPL-3.0</project_license>
 
-    <description>
-        <p>
-            Write disk images to your drives with ease. Select an image, insert your drive, and you're good to go! Impression is a useful tool for both avid distro-hoppers and casual computer users.
-        </p>
-    </description>
+  <description>
+    <p>
+      Write disk images to your drives with ease. Select an image, insert your drive, and you're
+      good to go! Impression is a useful tool for both avid distro-hoppers and casual computer
+      users.
+    </p>
+  </description>
 
-    <translation type="gettext">@gettext-package@</translation>
+  <translation type="gettext">@gettext-package@</translation>
 
-    <requires>
-        <internet>offline-only</internet>
-        <display_length compare="ge">360</display_length>
-    </requires>
+  <requires>
+    <internet>offline-only</internet>
+    <display_length compare="ge">360</display_length>
+  </requires>
 
-    <recommends>
-        <control>pointing</control>
-        <control>keyboard</control>
-        <control>touch</control>
-    </recommends>
+  <recommends>
+    <control>pointing</control>
+    <control>keyboard</control>
+    <control>touch</control>
+  </recommends>
 
-    <screenshots>
-        <screenshot type="default">
-            <image>https://gitlab.com/adhami3310/Impression/-/raw/main/data/resources/screenshots/3.png</image>
-            <caption>Screen with a choice of a local image or internet download</caption>
-        </screenshot>
-        <screenshot>
-            <image>https://gitlab.com/adhami3310/Impression/-/raw/main/data/resources/screenshots/0.png</image>
-            <caption>Screen with a chosen ISO and available USB memories</caption>
-        </screenshot>
-        <screenshot>
-            <image>https://gitlab.com/adhami3310/Impression/-/raw/main/data/resources/screenshots/1.png</image>
-            <caption>Writing the ISO in progress</caption>
-        </screenshot>
-        <screenshot>
-            <image>https://gitlab.com/adhami3310/Impression/-/raw/main/data/resources/screenshots/2.png</image>
-            <caption>Success screen with a big check mark</caption>
-        </screenshot>
-    </screenshots>
+  <screenshots>
+    <screenshot type="default">
+      <image>https://gitlab.com/adhami3310/Impression/-/raw/main/data/resources/screenshots/3.png</image>
+      <caption>Screen with a choice of a local image or internet download</caption>
+    </screenshot>
+    <screenshot>
+      <image>https://gitlab.com/adhami3310/Impression/-/raw/main/data/resources/screenshots/0.png</image>
+      <caption>Screen with a chosen ISO and available USB memories</caption>
+    </screenshot>
+    <screenshot>
+      <image>https://gitlab.com/adhami3310/Impression/-/raw/main/data/resources/screenshots/1.png</image>
+      <caption>Writing the ISO in progress</caption>
+    </screenshot>
+    <screenshot>
+      <image>https://gitlab.com/adhami3310/Impression/-/raw/main/data/resources/screenshots/2.png</image>
+      <caption>Success screen with a big check mark</caption>
+    </screenshot>
+  </screenshots>
 
-    <branding>
-      <color type="primary" scheme_preference="light">#ffb63f</color>
-      <color type="primary" scheme_preference="dark">#c54400</color>
-    </branding>
+  <branding>
+    <color type="primary" scheme_preference="light">#ffb63f</color>
+    <color type="primary" scheme_preference="dark">#c54400</color>
+  </branding>
 
-    <launchable type="desktop-id">@app-id@.desktop</launchable>
+  <launchable type="desktop-id">@app-id@.desktop</launchable>
 
-    <url type="homepage">https://apps.gnome.org/Impression/</url>
-    <url type="donation">https://opencollective.com/impression</url>
-    <url type="bugtracker">https://gitlab.com/adhami3310/Impression/-/issues</url>
-    <url type="translate">https://gitlab.com/adhami3310/Impression/-/tree/main/po</url>
-    <url type="help">https://gitlab.com/adhami3310/Impression/-/issues</url>
-    <url type="vcs-browser">https://gitlab.com/adhami3310/Impression</url>
-    <url type="contribute">https://gitlab.com/adhami3310/Impression</url>
-    <url type="contact">https://matrix.to/#/@khaleela:gnome.org</url>
+  <url type="homepage">https://apps.gnome.org/Impression/</url>
+  <url type="donation">https://opencollective.com/impression</url>
+  <url type="bugtracker">https://gitlab.com/adhami3310/Impression/-/issues</url>
+  <url type="translate">https://gitlab.com/adhami3310/Impression/-/tree/main/po</url>
+  <url type="help">https://gitlab.com/adhami3310/Impression/-/issues</url>
+  <url type="vcs-browser">https://gitlab.com/adhami3310/Impression</url>
+  <url type="contribute">https://gitlab.com/adhami3310/Impression</url>
+  <url type="contact">https://matrix.to/#/@khaleela:gnome.org</url>
 
-    <update_contact>khaleel.aladhami@gmail.com</update_contact>
+  <update_contact>khaleel.aladhami@gmail.com</update_contact>
 
-    <content_rating type="oars-1.1" />
+  <content_rating type="oars-1.1" />
 
-    <releases>
-        <release version="3.2.0" date="2024-04-15">
-          <description translate="no">
-            <p>This is a minor release of Impression to resolve missing icons issues and add Ubuntu LTS to the list options.</p>
-          </description>
-        </release>
-        <release version="3.1.0" date="2024-03-13">
-          <description translate="no">
-            <p>This is a minor release of Impression with a few small improvements.</p>
-            <ul>
-              <li>Support for .xz files</li>
-              <li>Faster downloading of images</li>
-            </ul>
-            <p>Impression is made possible by volunteer developers, designers, and translators. Thank you for your contributions!</p>
-          </description>
-        </release>
-        <release version="3.0.1" date="2023-11-07">
-          <description translate="no">
-            <p>This minor release fixes a bug where some .ISO files wouldn't be detected.</p>
-          </description>
-        </release>
-        <release version="3.0" date="2023-11-05">
-          <description translate="no">
-            <p>This release of Impression brings even more convenience and power to your fingertips:</p>
-            <ul>
-              <li>Direct download of a selection of images directly from the app</li>
-              <li>Updated and more understandable terminology</li>
-              <li>Security fixes</li>
-            </ul>
-            <p>Impression is made possible by volunteer developers, designers, and translators. Thank you for your contributions!</p>
-          </description>
-        </release>
-        <release version="2.1" date="2023-06-20">
-          <description translate="no">
-            <p>This minor release of Impression delivers:</p>
-            <ul>
-              <li>Support for mobile screen sizes</li>
-              <li>Various bug fixes, improving reliability and stability</li>
-              <li>Brazillian Portugese translations, making Impression available in a total of 9 languages</li>
-            </ul>
-            <p>Impression is made possible by volunteer developers, designers, and translators. Thank you for your contributions!</p>
-          </description>
-        </release>
-        <release version="2.0" date="2023-06-13">
-          <description translate="no">
-            <p>This major release of Impression brings a bunch of exciting improvements:</p>
-            <ul>
-              <li>Visual enhancements to make the app more beautiful, focused, and engaging</li>
-              <li>Automatic updates of the available drives list</li>
-              <li>Explicit drive selection before flashing, to avoid accidental data loss</li>
-              <li>Turkish and Czech translations, making Impression available in a total of 8 languages</li>
-            </ul>
-            <p>The versioning scheme has been simplified to only include major and minor versions. The previous version of Impression was 1.0.1,
-              this is version 2.0. Going forward, new features and noticeable changes will be included in
-              new major releases, while fixes and translations will result in new minor releases.</p>
-            <p>Impression is made possible by volunteer developers, designers, and translators. Thank you for your contributions!</p>
-          </description>
-        </release>
-        <release version="1.0.1" date="2023-06-07">
-            <description translate="no">
-                <p>Added Spanish, French, German, Russian, and Italian translations.</p>
-            </description>
-        </release>
-        <release version="1.0.0" date="2023-06-03">
-            <description translate="no">
-                <p>Initial version.</p>
-            </description>
-        </release>
-    </releases>
+  <releases>
+    <release version="3.3.0" date="2024-09-23">
+      <description translate="no">
+        <p>Updated to GNOME 47 runtime and fix bug where Fedora Silverblue was being selected over
+          Fedora Workstation.</p>
+      </description>
+    </release>
+    <release version="3.2.0" date="2024-04-15">
+      <description translate="no">
+        <p>This is a minor release of Impression to resolve missing icons issues and add Ubuntu LTS
+          to the list options.</p>
+      </description>
+    </release>
+    <release version="3.1.0" date="2024-03-13">
+      <description translate="no">
+        <p>This is a minor release of Impression with a few small improvements.</p>
+        <ul>
+          <li>Support for .xz files</li>
+          <li>Faster downloading of images</li>
+        </ul>
+        <p>Impression is made possible by volunteer developers, designers, and translators. Thank
+          you for your contributions!</p>
+      </description>
+    </release>
+    <release version="3.0.1" date="2023-11-07">
+      <description translate="no">
+        <p>This minor release fixes a bug where some .ISO files wouldn't be detected.</p>
+      </description>
+    </release>
+    <release version="3.0" date="2023-11-05">
+      <description translate="no">
+        <p>This release of Impression brings even more convenience and power to your fingertips:</p>
+        <ul>
+          <li>Direct download of a selection of images directly from the app</li>
+          <li>Updated and more understandable terminology</li>
+          <li>Security fixes</li>
+        </ul>
+        <p>Impression is made possible by volunteer developers, designers, and translators. Thank
+          you for your contributions!</p>
+      </description>
+    </release>
+    <release version="2.1" date="2023-06-20">
+      <description translate="no">
+        <p>This minor release of Impression delivers:</p>
+        <ul>
+          <li>Support for mobile screen sizes</li>
+          <li>Various bug fixes, improving reliability and stability</li>
+          <li>Brazillian Portugese translations, making Impression available in a total of 9
+            languages</li>
+        </ul>
+        <p>Impression is made possible by volunteer developers, designers, and translators. Thank
+          you for your contributions!</p>
+      </description>
+    </release>
+    <release version="2.0" date="2023-06-13">
+      <description translate="no">
+        <p>This major release of Impression brings a bunch of exciting improvements:</p>
+        <ul>
+          <li>Visual enhancements to make the app more beautiful, focused, and engaging</li>
+          <li>Automatic updates of the available drives list</li>
+          <li>Explicit drive selection before flashing, to avoid accidental data loss</li>
+          <li>Turkish and Czech translations, making Impression available in a total of 8 languages</li>
+        </ul>
+        <p>The versioning scheme has been simplified to only include major and minor versions. The
+          previous version of Impression was 1.0.1,
+          this is version 2.0. Going forward, new features and noticeable changes will be included
+          in
+          new major releases, while fixes and translations will result in new minor releases.</p>
+        <p>Impression is made possible by volunteer developers, designers, and translators. Thank
+          you for your contributions!</p>
+      </description>
+    </release>
+    <release version="1.0.1" date="2023-06-07">
+      <description translate="no">
+        <p>Added Spanish, French, German, Russian, and Italian translations.</p>
+      </description>
+    </release>
+    <release version="1.0.0" date="2023-06-03">
+      <description translate="no">
+        <p>Initial version.</p>
+      </description>
+    </release>
+  </releases>
 </component>

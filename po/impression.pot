@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: impression\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-19 19:05-0700\n"
+"POT-Creation-Date: 2024-09-20 12:50-0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -63,19 +63,19 @@ msgid ""
 "distro-hoppers and casual computer users."
 msgstr ""
 
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:38
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:40
 msgid "Screen with a choice of a local image or internet download"
 msgstr ""
 
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:42
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:44
 msgid "Screen with a chosen ISO and available USB memories"
 msgstr ""
 
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:46
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:48
 msgid "Writing the ISO in progress"
 msgstr ""
 
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:50
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:52
 msgid "Success screen with a big check mark"
 msgstr ""
 
