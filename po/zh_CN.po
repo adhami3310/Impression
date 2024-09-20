@@ -1,0 +1,263 @@
+# Chinese translations for impression package
+# impression 软件包的简体中文翻译.
+# Copyright (C) 2024 THE impression'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the impression package.
+#  <yuhldr@qq.com>, 2024.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: impression\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-04-08 17:38-0400\n"
+"PO-Revision-Date: 2024-07-01 21:55+0800\n"
+"Last-Translator:  <yuhldr@qq.com>\n"
+"Language-Team: Chinese (simplified) <i18n-zh@googlegroups.com>\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: data/io.gitlab.adhami3310.Impression.desktop.in.in:3
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:5
+#: data/resources/blueprints/window.blp:9
+#: data/resources/blueprints/window.blp:21
+#: data/resources/blueprints/window.blp:146 src/main.rs:57 src/window.rs:424
+msgid "Impression"
+msgstr "Impression"
+
+#: data/io.gitlab.adhami3310.Impression.desktop.in.in:4
+msgid "Media Writer"
+msgstr "媒体写入程序"
+
+#: data/io.gitlab.adhami3310.Impression.desktop.in.in:5
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:11
+msgid "Create bootable drives"
+msgstr "创建可引导驱动器"
+
+#: data/io.gitlab.adhami3310.Impression.desktop.in.in:11
+msgid "usb;flash;writer;bootable;drive;iso;img;disk;image"
+msgstr ""
+
+#: data/io.gitlab.adhami3310.Impression.gschema.xml.in:6
+msgid "Window width"
+msgstr "窗口宽度"
+
+#: data/io.gitlab.adhami3310.Impression.gschema.xml.in:10
+msgid "Window height"
+msgstr "窗口高度"
+
+#: data/io.gitlab.adhami3310.Impression.gschema.xml.in:14
+msgid "Window maximized state"
+msgstr "窗口最大化状态"
+
+#. developer_name tag deprecated with Appstream 1.0
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:7
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:9
+msgid "Khaleel Al-Adhami"
+msgstr ""
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:17
+msgid ""
+"Write disk images to your drives with ease. Select an image, insert your "
+"drive, and you're good to go! Impression is a useful tool for both avid "
+"distro-hoppers and casual computer users."
+msgstr "轻松地将磁盘映像写入驱动器。选择一个镜像，插入驱动器，就可以开始了！Impression对于狂热的发行版爱好者和普通的计算机用户来说都是一个有用的工具。"
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:38
+msgid "Screen with a choice of a local image or internet download"
+msgstr "屏幕可选择本地镜像或互联网下载"
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:42
+msgid "Screen with a chosen ISO and available USB memories"
+msgstr "屏幕上有选定的ISO和可用的USB存储器"
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:46
+msgid "Writing the ISO in progress"
+msgstr "ISO写入进度"
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:50
+msgid "Success screen with a big check mark"
+msgstr "刻录成功"
+
+#: data/resources/blueprints/help-overlay.blp:11
+msgctxt "shortcut window"
+msgid "General"
+msgstr "通用"
+
+#: data/resources/blueprints/help-overlay.blp:14
+msgctxt "shortcut window"
+msgid "Open File"
+msgstr "打开文件"
+
+#: data/resources/blueprints/help-overlay.blp:19
+msgctxt "shortcut window"
+msgid "New Window"
+msgstr "新建窗口"
+
+#: data/resources/blueprints/help-overlay.blp:24
+msgctxt "shortcut window"
+msgid "Show Shortcuts"
+msgstr "显示快捷键"
+
+#: data/resources/blueprints/help-overlay.blp:29
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "退出"
+
+#: data/resources/blueprints/window.blp:25
+msgid "Drop Here to Open"
+msgstr "拖拽到这里打开"
+
+#: data/resources/blueprints/window.blp:35
+#: data/resources/blueprints/window.blp:156
+#: data/resources/blueprints/window.blp:254
+msgid "Main Menu"
+msgstr "主菜单"
+
+#: data/resources/blueprints/window.blp:54
+msgid "Choose Image"
+msgstr "选择一个镜像"
+
+#: data/resources/blueprints/window.blp:64
+msgid "Open File…"
+msgstr "打开文件……"
+
+#: data/resources/blueprints/window.blp:74
+msgid "Direct Download"
+msgstr "直接下载"
+
+#: data/resources/blueprints/window.blp:108
+msgid "No Connection"
+msgstr "无连接"
+
+#: data/resources/blueprints/window.blp:109
+msgid "Connect to the internet to view available images"
+msgstr "连接到互联网查看可用镜像"
+
+#: data/resources/blueprints/window.blp:218
+msgid "All data on the selected drive will be erased"
+msgstr "所选驱动器上的所有数据都将被擦除"
+
+#: data/resources/blueprints/window.blp:221
+msgid "Write"
+msgstr "写入"
+
+#: data/resources/blueprints/window.blp:283
+msgid "No Drives"
+msgstr "没有驱动器"
+
+#: data/resources/blueprints/window.blp:284
+msgid "Insert a drive to write to"
+msgstr "插入要写入的驱动器"
+
+#: data/resources/blueprints/window.blp:295
+msgid "Writing Completed"
+msgstr "写入完成"
+
+#: data/resources/blueprints/window.blp:296
+msgid "The drive can be safely removed"
+msgstr "可以安全地取出驱动器"
+
+#: data/resources/blueprints/window.blp:305
+msgid "Finish"
+msgstr "结束"
+
+#: data/resources/blueprints/window.blp:326
+msgid "Writing Unsuccessful"
+msgstr "写入成功"
+
+#: data/resources/blueprints/window.blp:335
+msgid "Retry"
+msgstr "重试"
+
+#: data/resources/blueprints/window.blp:355 src/window.rs:331 src/window.rs:365
+msgid "Writing"
+msgstr "写入中"
+
+#: data/resources/blueprints/window.blp:357 src/window.rs:330
+msgid "Do not remove the drive"
+msgstr "不要移除驱动器"
+
+#: data/resources/blueprints/window.blp:372 src/window.rs:250 src/window.rs:286
+msgid "_Cancel"
+msgstr "_取消"
+
+#: data/resources/blueprints/window.blp:400
+msgid "Keyboard Shortcuts"
+msgstr "快捷键"
+
+#: data/resources/blueprints/window.blp:405
+msgid "About Impression"
+msgstr "关于Impression"
+
+#: src/window.rs:246
+msgid "Stop Writing?"
+msgstr "停止写入？"
+
+#: src/window.rs:247
+msgid "This might leave the drive in a faulty state"
+msgstr "这可能会使驱动器处于故障状态"
+
+#: src/window.rs:250
+msgid "_Stop"
+msgstr "_停止"
+
+#: src/window.rs:279
+msgid "Erase Drive?"
+msgstr "擦除驱动器 ？"
+
+#: src/window.rs:287
+msgid "_Erase"
+msgstr "_擦除"
+
+#: src/window.rs:324 src/window.rs:353
+msgid "Writing will begin once the download is completed"
+msgstr ""
+
+#: src/window.rs:326 src/window.rs:362
+msgid "Downloading Image"
+msgstr "镜像下载中"
+
+#: src/window.rs:356
+msgid "This could take a while"
+msgstr "这可能需要一段时间"
+
+#: src/window.rs:391
+msgid "Failed to write image"
+msgstr "镜像写入失败"
+
+#: src/window.rs:399
+msgid "Image Written"
+msgstr "镜像被写入"
+
+#: src/window.rs:603
+msgid "Disk Images"
+msgstr "磁盘镜像"
+
+#: src/window.rs:629
+msgid "File is not a Disk Image"
+msgstr "该文件不是磁盘镜像"
+
+#: src/window.rs:734
+msgid "translator-credits"
+msgstr "余航 <yuhldr@qq.com>"
+
+#: src/window.rs:736
+msgid "Code borrowed from"
+msgstr "代码参考自"
+
+#: src/flash.rs:95
+msgid "Failed to open disk"
+msgstr "打开磁盘失败"
+
+#: src/flash.rs:145
+msgid "Failed to extract drive"
+msgstr "提取驱动器失败"
+
+#: src/flash.rs:203
+msgid "Failed to download image"
+msgstr "下载镜像失败"
+
+#: src/flash.rs:256
+msgid "Writing to disk failed"
+msgstr "写入磁盘失败"
