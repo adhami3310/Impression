@@ -10,6 +10,11 @@
         <file preprocess="xml-stripblanks">icons/hicolor/scalable/apps/io.gitlab.adhami3310.Impression.svg</file>
         <file preprocess="xml-stripblanks">icons/hicolor/scalable/apps/io.gitlab.adhami3310.Impression.Devel.svg</file>
     </gresource>
+    
+    <gresource prefix="/io/gitlab/adhami3310/Impression/icons/scalable/apps/">
+        <file alias="io.gitlab.adhami3310.Converter.svg" compressed="true" preprocess="xml-stripblanks">icons/hicolor/scalable/apps/io.gitlab.adhami3310.Converter.svg</file>
+        <file alias="io.gitlab.adhami3310.Footage.svg" compressed="true" preprocess="xml-stripblanks">icons/hicolor/scalable/apps/io.gitlab.adhami3310.Footage.svg</file>
+    </gresource>
 
     <gresource prefix="/io/gitlab/adhami3310/Impression/icons/scalable/actions/">
         <file alias="image-missing-symbolic.svg" compressed="true" preprocess="xml-stripblanks">icons/hicolor/scalable/actions/image-missing-symbolic.svg</file>
