@@ -1,7 +1,7 @@
 # Polish translation for impression.
 # Copyright (C) 2024 impression's COPYRIGHT HOLDER
 # This file is distributed under the same license as the impression package.
-# Mateusz Dadura <mateusz.dadura@int.pl>, 2004.
+# Mateusz Dadura <mateusz.dadura@int.pl>, 2024.
 #
 #, fuzzy
 msgid ""
@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: impression\n"
 "Report-Msgid-Bugs-To: https://gitlab.com/adhami3310/Impression/-/issues\n"
 "POT-Creation-Date: 2024-09-20 12:55-0700\n"
-"PO-Revision-Date: 2024-09-30 11:22+0200\n"
+"PO-Revision-Date: 2024-09-30 11:24+0200\n"
 "Last-Translator: Mateusz Dadura <mateusz.dadura@int.pl>\n"
 "Language-Team: Polish <community-poland@mozilla.org>\n"
 "Language: pl\n"
