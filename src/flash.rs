@@ -1,12 +1,6 @@
-use dbus::arg::{OwnedFd, RefArg, Variant};
-use dbus::blocking::{Connection, Proxy};
-use dbus_udisks2::{DiskDevice, Disks, UDisks2};
 use gettextrs::gettext;
-use itertools::Itertools;
 use std::collections::HashMap;
-use std::os::unix::io::FromRawFd;
 use std::process::Stdio;
-use std::str;
 use std::sync::atomic::AtomicBool;
 use std::sync::Arc;
 use std::time::Duration;
@@ -15,18 +9,35 @@ use tokio::time::Instant;
 
 use crate::window::{Compression, DiskImage};
 
-type UDisksOptions = HashMap<&'static str, Variant<Box<dyn RefArg>>>;
+pub async fn refresh_devices() -> udisks::Result<Vec<udisks::Object>> {
+    let client = udisks::Client::new().await?;
 
-pub fn refresh_devices() -> Result<Vec<DiskDevice>, ()> {
-    let udisks = UDisks2::new().map_err(|_| ())?;
-    let devices = Disks::new(&udisks).devices;
-    let devices = devices
+    let mut drives = vec![];
+    for object in client
+        .object_manager()
+        .get_managed_objects()
+        .await
+        .unwrap_or_default()
         .into_iter()
-        .filter(|d| d.drive.connection_bus == "usb" || d.drive.connection_bus == "sdio")
-        .filter(|d| d.parent.size != 0)
-        .sorted_by_key(|d| d.drive.id.clone())
-        .collect_vec();
-    Ok(devices)
+        .filter_map(|(object_path, _)| client.object(object_path).ok())
+    {
+        let Ok(drive): udisks::Result<udisks::drive::DriveProxy> = object.drive().await else {
+            continue;
+        };
+        if drive
+            .connection_bus()
+            .await
+            .is_ok_and(|bus| bus != "usb" && bus != "sdio")
+        {
+            continue;
+        }
+
+        if let Some(block) = client.block_for_drive(&drive, false).await {
+            let object = client.object(block.inner().path().to_owned()).unwrap();
+            drives.push(object);
+        }
+    }
+    Ok(drives)
 }
 
 #[derive(Clone, Debug, PartialEq)]
@@ -50,7 +61,7 @@ pub enum FlashStatus {
 
 pub struct FlashRequest {
     source: DiskImage,
-    destination: DiskDevice,
+    destination: udisks::Object,
     sender: async_channel::Sender<FlashStatus>,
     is_running: Arc<AtomicBool>,
 }
@@ -58,7 +69,7 @@ pub struct FlashRequest {
 impl FlashRequest {
     pub fn new(
         source: DiskImage,
-        destination: DiskDevice,
+        destination: udisks::Object,
         sender: async_channel::Sender<FlashStatus>,
         is_running: Arc<AtomicBool>,
     ) -> Self {
@@ -72,25 +83,39 @@ impl FlashRequest {
 
     pub async fn perform(self) {
         let source = self.source;
-        let device = self.destination;
 
         if !self.is_running.load(std::sync::atomic::Ordering::SeqCst) {
             return;
         }
+
+        let Ok(client) = udisks::Client::new().await else {
+            self.sender
+                .send(FlashStatus::Done(Some(gettext("Failed to unmount disk"))))
+                .await
+                .expect("Concurrency Issues");
+            return;
+        };
+
+        let destination_block = self.destination.block().await.unwrap();
+        let destination_drive = client.drive_for_block(&destination_block).await.unwrap();
 
         // Unmount the devices beforehand.
-        udisks_unmount(&device.parent.path).ok();
-        for partition in &device.partitions {
-            udisks_unmount(&partition.path).ok();
+        if let Ok(partition_table) = self.destination.partition_table().await {
+            for partition in client
+                .partitions(&partition_table)
+                .await
+                .iter()
+                .filter_map(|partition| client.object(partition.inner().path().clone()).ok())
+            {
+                udisks_unmount(&partition).await.ok();
+            }
         }
 
         if !self.is_running.load(std::sync::atomic::Ordering::SeqCst) {
             return;
         }
 
-        let target_path = device.parent.path.clone();
-
-        let Ok(file) = udisks_open(&target_path) else {
+        let Ok(file) = udisks_open(&destination_block).await else {
             self.sender
                 .send(FlashStatus::Done(Some(gettext("Failed to open disk"))))
                 .await
@@ -211,6 +236,8 @@ impl FlashRequest {
             }
         };
 
+        //TODO: we should probably spawn a UDIsks.Job for this operation,
+        //but udisks-rs does not support this yet
         FlashRequest::load_file(
             image.expect("where is file :("),
             file,
@@ -219,7 +246,9 @@ impl FlashRequest {
         )
         .await;
 
-        let _ = udisks_eject(&device.drive.path);
+        destination_block.rescan(HashMap::new()).await.ok();
+
+        let _ = destination_drive.eject(HashMap::new()).await;
     }
 
     async fn load_file(
@@ -281,127 +310,21 @@ impl FlashRequest {
     }
 }
 
-// fn udisks_delete_partition(dbus_path: &str) -> Result<(), ()> {
-//     let connection = Connection::new_system().map_err(|_| ())?;
-
-//     let dbus_path = ::dbus::strings::Path::new(dbus_path).map_err(|_| ())?;
-
-//     let proxy: Proxy<'_, &Connection> = Proxy::new(
-//         "org.freedesktop.UDisks2",
-//         dbus_path,
-//         Duration::new(25, 0),
-//         &connection,
-//     );
-
-//     let options = UDisksOptions::new();
-//     let res: Result<(), _> =
-//         proxy.method_call("org.freedesktop.UDisks2.Partition", "Delete", (options,));
-
-//     dbg!(&res);
-
-//     if res.is_err() {
-//         return Err(());
-//     }
-
-//     Ok(())
-// }
-
-// fn udisks_format(dbus_path: &str, ntfs: bool) -> Result<(), ()> {
-//     let connection = Connection::new_system().map_err(|_| ())?;
-
-//     let dbus_path = ::dbus::strings::Path::new(dbus_path).map_err(|_| ())?;
-
-//     let proxy: Proxy<'_, &Connection> = Proxy::new(
-//         "org.freedesktop.UDisks2",
-//         dbus_path,
-//         Duration::new(25, 0),
-//         &connection,
-//     );
-
-//     let format_options = UDisksOptions::new();
-//     let res: Result<(), _> = proxy.method_call(
-//         "org.freedesktop.UDisks2.Block",
-//         "Format",
-//         (if ntfs { "ntfs " } else { "vfat" }, format_options),
-//     );
-
-//     if res.is_err() {
-//         return Err(());
-//     }
-
-//     Ok(())
-// }
-
-fn udisks_eject(dbus_path: &str) -> Result<(), ()> {
-    let connection = Connection::new_system().map_err(|_| ())?;
-
-    let dbus_path = ::dbus::strings::Path::new(dbus_path).map_err(|_| ())?;
-
-    let proxy = Proxy::new(
-        "org.freedesktop.UDisks2",
-        dbus_path,
-        Duration::new(25, 0),
-        &connection,
-    );
-
-    let options = UDisksOptions::new();
-    let res: Result<(), _> =
-        proxy.method_call("org.freedesktop.UDisks2.Drive", "Eject", (options,));
-
-    if res.is_err() {
-        return Err(());
+async fn udisks_unmount(object: &udisks::Object) -> udisks::Result<()> {
+    let filesystem = object.filesystem().await?;
+    let err = filesystem
+        .unmount(HashMap::from([("force", true.into())]))
+        .await;
+    if err != Err(udisks::Error::NotMounted) {
+        return err;
     }
-
     Ok(())
 }
 
-fn udisks_unmount(dbus_path: &str) -> Result<(), ()> {
-    let connection = Connection::new_system().map_err(|_| ())?;
-
-    let dbus_path = ::dbus::strings::Path::new(dbus_path).map_err(|_| ())?;
-
-    let proxy = Proxy::new(
-        "org.freedesktop.UDisks2",
-        dbus_path,
-        Duration::new(25, 0),
-        &connection,
-    );
-
-    let mut options = UDisksOptions::new();
-    options.insert("force", Variant(Box::new(true)));
-    let res: Result<(), _> =
-        proxy.method_call("org.freedesktop.UDisks2.Filesystem", "Unmount", (options,));
-
-    if let Err(err) = res {
-        if err.name() != Some("org.freedesktop.UDisks2.Error.NotMounted") {
-            return Err(());
-        }
-    }
-
-    Ok(())
-}
-
-fn udisks_open(dbus_path: &str) -> Result<File, ()> {
-    let connection = Connection::new_system().map_err(|_| ())?;
-
-    let dbus_path = ::dbus::strings::Path::new(dbus_path).map_err(|_| ())?;
-
-    let proxy = Proxy::new(
-        "org.freedesktop.UDisks2",
-        &dbus_path,
-        Duration::new(25, 0),
-        &connection,
-    );
-
-    let mut options = UDisksOptions::new();
-    options.insert("flags", Variant(Box::new(libc::O_SYNC)));
-    let res: (OwnedFd,) = proxy
-        .method_call(
-            "org.freedesktop.UDisks2.Block",
-            "OpenDevice",
-            ("rw", options),
-        )
-        .map_err(|_| ())?;
-
-    Ok(unsafe { File::from_raw_fd(res.0.into_fd()) })
+async fn udisks_open(block: &udisks::block::BlockProxy<'_>) -> udisks::Result<File> {
+    let fd: std::os::fd::OwnedFd = block
+        .open_device("rw", HashMap::from([("flags", libc::O_SYNC.into())]))
+        .await?
+        .into();
+    Ok(std::fs::File::from(fd).into())
 }

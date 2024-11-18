@@ -1,7 +1,6 @@
 use std::path::PathBuf;
 
 use adw::prelude::*;
-use dbus_udisks2::DiskDevice;
 use gettextrs::gettext;
 use glib::{clone, timeout_add_seconds_local};
 use gtk::gdk;
@@ -108,7 +107,7 @@ mod imp {
         pub is_running: std::sync::Arc<AtomicBool>,
         pub is_flashing: std::sync::Arc<AtomicBool>,
         pub selected_image: RefCell<Option<DiskImage>>,
-        pub available_devices: RefCell<Vec<DiskDevice>>,
+        pub available_devices: RefCell<Vec<udisks::Object>>,
         pub provider: gtk::CssProvider,
         #[derivative(Default(value = "gio::Settings::new(APP_ID)"))]
         pub settings: gio::Settings,
@@ -121,7 +120,8 @@ mod imp {
         type ParentType = adw::ApplicationWindow;
 
         fn class_init(klass: &mut Self::Class) {
-            Self::bind_template(klass);
+            klass.bind_template();
+            klass.bind_template_instance_callbacks();
         }
 
         fn instance_init(obj: &glib::subclass::InitializingObject<Self>) {
@@ -283,13 +283,18 @@ impl AppWindow {
         dialog.present(Some(self));
     }
 
-    fn flash_dialog(&self) {
+    #[template_callback]
+    async fn flash_dialog(&self) {
         let flash_dialog = adw::AlertDialog::new(
             Some(&gettext("Erase Drive?")),
-            Some(&gettext("You will lose all data stored on {}").replace(
-                "{}",
-                &device_list::device_label(&self.selected_device().unwrap()),
-            )),
+            Some(
+                &gettext("You will lose all data stored on {}").replace(
+                    "{}",
+                    &device_list::device_label(&self.selected_device().unwrap())
+                        .await
+                        .unwrap_or_default(),
+                ),
+            ),
         );
 
         flash_dialog.add_response("cancel", &gettext("_Cancel"));
@@ -394,7 +399,8 @@ impl AppWindow {
                             this.imp()
                                 .is_flashing
                                 .store(false, std::sync::atomic::Ordering::SeqCst);
-                            this.send_notification(gettext("Failed to write image"));
+                            this.send_notification(gettext("Failed to write image"))
+                                .await;
                             glib::MainContext::default().iteration(true);
                             break;
                         }
@@ -406,7 +412,7 @@ impl AppWindow {
                             this.imp()
                                 .is_flashing
                                 .store(false, std::sync::atomic::Ordering::SeqCst);
-                            this.send_notification(gettext("Image Written"));
+                            this.send_notification(gettext("Image Written")).await;
                             glib::MainContext::default().iteration(true);
                             break;
                         }
@@ -423,28 +429,25 @@ impl AppWindow {
         });
     }
 
-    fn send_notification(&self, message: String) {
+    async fn send_notification(&self, message: String) {
         if !self.is_active() {
-            spawn!(async move {
-                let proxy = ashpd::desktop::notification::NotificationProxy::new()
-                    .await
-                    .unwrap();
-                proxy
-                    .add_notification(
-                        APP_ID,
-                        ashpd::desktop::notification::Notification::new(&gettext("Impression"))
-                            .body(Some(message.as_ref()))
-                            .priority(Some(ashpd::desktop::notification::Priority::Normal)),
-                    )
-                    .await
-                    .unwrap();
-            });
+            let proxy = ashpd::desktop::notification::NotificationProxy::new()
+                .await
+                .unwrap();
+            proxy
+                .add_notification(
+                    APP_ID,
+                    ashpd::desktop::notification::Notification::new(&gettext("Impression"))
+                        .body(Some(message.as_ref()))
+                        .priority(Some(ashpd::desktop::notification::Priority::Normal)),
+                )
+                .await
+                .unwrap();
         }
     }
 
     fn selected_image(&self) -> Option<DiskImage> {
-        let x = self.imp().selected_image.borrow().to_owned();
-        x
+        self.imp().selected_image.borrow().to_owned()
     }
 
     fn selected_device_index(&self) -> Option<usize> {
@@ -456,7 +459,7 @@ impl AppWindow {
         self.imp().selected_device_index.replace(new_index);
     }
 
-    fn selected_device(&self) -> Option<DiskDevice> {
+    fn selected_device(&self) -> Option<udisks::Object> {
         let index = self.selected_device_index();
         index.map(|index| {
             self.imp()
@@ -481,13 +484,7 @@ impl AppWindow {
                 });
             }
         ));
-        imp.flash_button.connect_clicked(clone!(
-            #[weak(rename_to=this)]
-            self,
-            move |_| {
-                this.flash_dialog();
-            }
-        ));
+
         imp.cancel_button.connect_clicked(clone!(
             #[weak(rename_to=this)]
             self,
@@ -745,23 +742,26 @@ impl AppWindow {
     }
 
     fn refresh_devices(&self) {
-        if let Ok(devices) = refresh_devices() {
-            self.load_devices(devices);
-        }
+        glib::spawn_future_local(glib::clone!(
+            #[weak(rename_to = this)]
+            self,
+            async move {
+                if let Ok(devices) = refresh_devices().await {
+                    this.load_devices(devices).await;
+                }
+            }
+        ));
     }
 
-    fn load_devices(&self, devices: Vec<DiskDevice>) {
+    async fn load_devices(&self, devices: Vec<udisks::Object>) {
         let imp = self.imp();
 
         let current_devices = imp.available_devices.borrow().clone();
 
-        if devices
-            .iter()
-            .map(|d| d.parent.preferred_device.as_path().to_str().unwrap())
-            .collect_vec()
+        if devices.iter().map(|d| d.object_path()).collect_vec()
             == current_devices
                 .iter()
-                .map(|d| d.parent.preferred_device.as_path().to_str().unwrap())
+                .map(|d| d.object_path())
                 .collect_vec()
             && !devices.is_empty()
         {
@@ -770,9 +770,11 @@ impl AppWindow {
 
         imp.selected_device_index.set(None);
 
-        let selected_device = self
-            .selected_device()
-            .map(|x| x.parent.preferred_device.to_str().unwrap().to_owned());
+        let selected_device = if let Some(dev) = self.selected_device() {
+            device_list::preferred_device(&dev).await
+        } else {
+            None
+        };
 
         imp.available_devices_list.remove_all();
         imp.available_devices.replace(devices.clone());
@@ -782,7 +784,7 @@ impl AppWindow {
             self.imp().stack.set_visible_child_name("no_devices");
             self.imp().main_stack.set_visible_child_name("status");
         } else {
-            for device in device_list::new(self, devices, selected_device) {
+            for device in device_list::new(self, devices, selected_device).await {
                 imp.available_devices_list.append(&device);
             }
             self.imp().main_stack.set_visible_child_name("choose");
