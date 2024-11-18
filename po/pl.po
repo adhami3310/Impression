@@ -1,0 +1,271 @@
+# Polish translation for impression.
+# Copyright (C) 2024 impression's COPYRIGHT HOLDER
+# This file is distributed under the same license as the impression package.
+# Mateusz Dadura <mateusz.dadura@int.pl>, 2024.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: impression\n"
+"Report-Msgid-Bugs-To: https://gitlab.com/adhami3310/Impression/-/issues\n"
+"POT-Creation-Date: 2024-09-20 12:55-0700\n"
+"PO-Revision-Date: 2024-09-30 11:24+0200\n"
+"Last-Translator: Mateusz Dadura <mateusz.dadura@int.pl>\n"
+"Language-Team: Polish <community-poland@mozilla.org>\n"
+"Language: pl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#: data/io.gitlab.adhami3310.Impression.desktop.in.in:3
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:5
+#: data/resources/blueprints/window.blp:9
+#: data/resources/blueprints/window.blp:21
+#: data/resources/blueprints/window.blp:146 src/main.rs:44 src/window.rs:435
+msgid "Impression"
+msgstr "Impresja"
+
+#: data/io.gitlab.adhami3310.Impression.desktop.in.in:4
+msgid "Media Writer"
+msgstr "Zapisywanie nośników"
+
+#: data/io.gitlab.adhami3310.Impression.desktop.in.in:5
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:11
+msgid "Create bootable drives"
+msgstr "Tworzenie dysków startowych"
+
+#: data/io.gitlab.adhami3310.Impression.desktop.in.in:11
+msgid "usb;flash;writer;bootable;drive;iso;img;disk;image"
+msgstr "usb;flash;zapisywanie;bootowalny;napęd;iso;img;dysk;obraz"
+
+#: data/io.gitlab.adhami3310.Impression.gschema.xml.in:6
+msgid "Window width"
+msgstr "Szerokość okna"
+
+#: data/io.gitlab.adhami3310.Impression.gschema.xml.in:10
+msgid "Window height"
+msgstr "Wysokość okna"
+
+#: data/io.gitlab.adhami3310.Impression.gschema.xml.in:14
+msgid "Window maximized state"
+msgstr "Stan maksymalizacji okna"
+
+#. developer_name tag deprecated with Appstream 1.0
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:7
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:9
+msgid "Khaleel Al-Adhami"
+msgstr "Khaleel Al-Adhami"
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:17
+msgid ""
+"Write disk images to your drives with ease. Select an image, insert your "
+"drive, and you're good to go! Impression is a useful tool for both avid "
+"distro-hoppers and casual computer users."
+msgstr ""
+"Z łatwością zapisuj obrazy dysków na swoich nośnikach. Wybierz obraz, włóż "
+"dysk i gotowe! Impresja to przydatne narzędzie zarówno dla zapalonych "
+"distro-hopperów, jak i zwykłych użytkowników komputerów."
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:40
+msgid "Screen with a choice of a local image or internet download"
+msgstr "Ekran z wyborem obrazu lokalnego lub pobranego z Internetu"
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:44
+msgid "Screen with a chosen ISO and available USB memories"
+msgstr "Ekran z wybranym ISO i dostępnymi pamięciami USB"
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:48
+msgid "Writing the ISO in progress"
+msgstr "Zapisywanie pliku ISO w toku"
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:52
+msgid "Success screen with a big check mark"
+msgstr "Ekran sukcesu z dużym znacznikiem wyboru"
+
+#: data/resources/blueprints/help-overlay.blp:11
+msgctxt "shortcut window"
+msgid "General"
+msgstr "Ogólne"
+
+#: data/resources/blueprints/help-overlay.blp:14
+msgctxt "shortcut window"
+msgid "Open File"
+msgstr "Otwórz plik"
+
+#: data/resources/blueprints/help-overlay.blp:19
+msgctxt "shortcut window"
+msgid "New Window"
+msgstr "Nowe okno"
+
+#: data/resources/blueprints/help-overlay.blp:24
+msgctxt "shortcut window"
+msgid "Show Shortcuts"
+msgstr "Pokaż skróty klawiszowe"
+
+#: data/resources/blueprints/help-overlay.blp:29
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "Wyjdź"
+
+#: data/resources/blueprints/window.blp:25
+msgid "Drop Here to Open"
+msgstr "Upuść tutaj, aby otworzyć"
+
+#: data/resources/blueprints/window.blp:35
+#: data/resources/blueprints/window.blp:156
+#: data/resources/blueprints/window.blp:254
+msgid "Main Menu"
+msgstr "Menu główne"
+
+#: data/resources/blueprints/window.blp:54
+msgid "Choose Image"
+msgstr "Wybierz obraz"
+
+#: data/resources/blueprints/window.blp:64
+msgid "Open File…"
+msgstr "Otwórz plik…"
+
+#: data/resources/blueprints/window.blp:74
+msgid "Direct Download"
+msgstr "Bezpośrednie pobieranie"
+
+#: data/resources/blueprints/window.blp:108
+msgid "No Connection"
+msgstr "Brak połączenia"
+
+#: data/resources/blueprints/window.blp:109
+msgid "Connect to the internet to view available images"
+msgstr "Połącz się z Internetem, aby wyświetlić dostępne obrazy"
+
+#: data/resources/blueprints/window.blp:218
+msgid "All data on the selected drive will be erased"
+msgstr "Wszystkie dane na wybranym dysku zostaną usunięte"
+
+#: data/resources/blueprints/window.blp:221
+msgid "Write"
+msgstr "Zapisz"
+
+#: data/resources/blueprints/window.blp:283
+msgid "No Drives"
+msgstr "Brak dysków"
+
+#: data/resources/blueprints/window.blp:284
+msgid "Insert a drive to write to"
+msgstr "Włóż dysk do zapisu"
+
+#: data/resources/blueprints/window.blp:295
+msgid "Writing Completed"
+msgstr "Zapisywanie ukończone"
+
+#: data/resources/blueprints/window.blp:296
+msgid "The drive can be safely removed"
+msgstr "Dysk można bezpiecznie wyjąć"
+
+#: data/resources/blueprints/window.blp:305
+msgid "Finish"
+msgstr "Zakończ"
+
+#: data/resources/blueprints/window.blp:326
+msgid "Writing Unsuccessful"
+msgstr "Zapis nie powiódł się"
+
+#: data/resources/blueprints/window.blp:335
+msgid "Retry"
+msgstr "Spróbuj ponownie"
+
+#: data/resources/blueprints/window.blp:355 src/window.rs:344 src/window.rs:373
+msgid "Writing"
+msgstr "Zapisywanie"
+
+#: data/resources/blueprints/window.blp:357 src/window.rs:343
+msgid "Do not remove the drive"
+msgstr "Nie wyjmuj dysku"
+
+#: data/resources/blueprints/window.blp:372 src/window.rs:258 src/window.rs:295
+msgid "_Cancel"
+msgstr "_Anuluj"
+
+#: data/resources/blueprints/window.blp:400
+msgid "Keyboard Shortcuts"
+msgstr "Skróty klawiszowe"
+
+#: data/resources/blueprints/window.blp:405
+msgid "About Impression"
+msgstr "O Impresji"
+
+#: src/window.rs:254
+msgid "Stop Writing?"
+msgstr "Zatrzymać zapis?"
+
+#: src/window.rs:255
+msgid "This might leave the drive in a faulty state"
+msgstr "Może to spowodować uszkodzenie dysku"
+
+#: src/window.rs:258
+msgid "_Stop"
+msgstr "_Stop"
+
+#: src/window.rs:288
+msgid "Erase Drive?"
+msgstr "Wymazać dysk?"
+
+#: src/window.rs:289
+msgid "You will lose all data stored on {}"
+msgstr "Utracone zostaną wszystkie dane zapisane na {}"
+
+#: src/window.rs:296
+msgid "_Erase"
+msgstr "_Wymaż"
+
+#: src/window.rs:337 src/window.rs:367
+msgid "Writing will begin once the download is completed"
+msgstr "Zapisywanie rozpocznie się po zakończeniu pobierania"
+
+#: src/window.rs:339 src/window.rs:372
+msgid "Downloading Image"
+msgstr "Pobieranie obrazu"
+
+#: src/window.rs:369
+msgid "This could take a while"
+msgstr "To może trochę potrwać"
+
+#: src/window.rs:397
+msgid "Failed to write image"
+msgstr "Nie udało się zapisać obrazu"
+
+#: src/window.rs:409
+msgid "Image Written"
+msgstr "Obraz zapisany"
+
+#: src/window.rs:674
+msgid "Disk Images"
+msgstr "Obrazy dysku"
+
+#: src/window.rs:700
+msgid "File is not a Disk Image"
+msgstr "Plik nie jest obrazem dysku"
+
+#: src/window.rs:804
+msgid "translator-credits"
+msgstr "Mateusz Dadura <mateusz.dadura@int.pl>"
+
+#: src/window.rs:806
+msgid "Code borrowed from"
+msgstr "Kod zapożyczony od"
+
+#: src/flash.rs:95
+msgid "Failed to open disk"
+msgstr "Nie udało się otworzyć dysku"
+
+#: src/flash.rs:145
+msgid "Failed to extract drive"
+msgstr "Nie udało się wyodrębnić dysku"
+
+#: src/flash.rs:203
+msgid "Failed to download image"
+msgstr "Nie udało się pobrać obrazu"
+
+#: src/flash.rs:256
+msgid "Writing to disk failed"
+msgstr "Zapis na dysk nie powiódł się"
