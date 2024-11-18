@@ -221,6 +221,7 @@ template $AppWindow : Adw.ApplicationWindow {
                   label: _("Write");
                   sensitive: false;
                   halign: center;
+                  clicked => $flash_dialog() swapped;
 
                   styles [
                     "destructive-action",

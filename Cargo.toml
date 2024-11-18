@@ -19,8 +19,7 @@ once_cell = "1.19"
 pretty_env_logger = "0.5"
 itertools = "0.13"
 ashpd = "0.9"
-dbus-udisks2 = { version = "0.3" }
-dbus = "0.9"
+udisks = { package = "udisks2", git = "https://github.com/FineFindus/udisks-rs.git", rev = "31db0a4ba0cb5940ab79c6e603ba94667eb6d500"}
 libc = "0.2"
 reqwest = { version = "0.12", features = ["blocking", "stream", "json"] }
 regex = "1.10"
