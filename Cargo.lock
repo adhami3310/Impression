@@ -2362,8 +2362,9 @@ checksum = "42ff0bf0c66b8238c6f3b578df37d0b7848e55df8577b3f74f92a69acceeb825"
 
 [[package]]
 name = "udisks2"
-version = "0.1.0"
-source = "git+https://github.com/FineFindus/udisks-rs.git?rev=31db0a4ba0cb5940ab79c6e603ba94667eb6d500#31db0a4ba0cb5940ab79c6e603ba94667eb6d500"
+version = "0.2.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "3dfe7eb1a7ed09d26666837de91d4cff0cde45215aa23559f5edd2bee4455db3"
 dependencies = [
  "enumflags2",
  "gettext-rs",
