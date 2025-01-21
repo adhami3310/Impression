@@ -11,6 +11,7 @@ pub struct Distro {
     pub name: String,
     pub version: Option<String>,
     pub url: String,
+    pub variant: String
 }
 
 pub fn get_osinfodb_url() -> Option<String> {
@@ -212,12 +213,22 @@ pub fn collect_online_distros(latest_url: &str) -> Option<(Vec<Distro>, Vec<Dist
                         }
                     })
                     .map(|(name, arch, url, _, _, version)| {
+                        let mut variant = String::new();
+
+                        for (k, v) in &variants {
+                            if name == *v {
+                                variant = k.to_string();
+                                break;
+                            }
+                        }
+
                         (
                             arch,
                             Distro {
                                 name,
                                 version,
-                                url
+                                url,
+                                variant
                             }
                         )
                     })
@@ -230,7 +241,45 @@ pub fn collect_online_distros(latest_url: &str) -> Option<(Vec<Distro>, Vec<Dist
 
                 distros
             }).collect();
-        y
+
+        let mut amd: HashMap<String, Distro> = HashMap::new();
+        let mut arm: HashMap<String, Distro> = HashMap::new();
+
+        for item in y.0 {
+            if let Some(distro) = item {
+                if !amd.contains_key(&distro.variant) {
+                    amd.insert(distro.variant.to_owned(), distro);
+                } else {
+                    let ds = amd.get_mut(&distro.variant).unwrap();
+                    *ds = distro;
+                }
+            }
+        }
+
+        for item in y.1 {
+            if let Some(distro) = item {
+                if !arm.contains_key(&distro.variant) {
+                    arm.insert(distro.variant.to_owned(), distro);
+                } else {
+                    let ds = arm.get_mut(&distro.variant).unwrap();
+                    *ds = distro;
+                }
+            }
+        }
+
+        let amd: Vec<Option<Distro>> = amd
+            .into_iter()
+            .map(|(_, v)|{
+                Some(v)
+            }).collect();
+
+        let arm: Vec<Option<Distro>> = arm
+            .into_iter()
+            .map(|(_, v)|{
+                Some(v)
+            }).collect();
+
+        (amd, arm)
     }).collect();
 
     let (amd, arm): (Vec<Vec<Distro>>, Vec<Vec<Distro>>) = distros
