@@ -72,7 +72,7 @@ msgstr ""
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:38
 msgid "Screen with a choice of a local image or internet download"
-msgstr ""
+msgstr "Tela com opção de imagem local ou download da internet"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:42
 #, fuzzy
@@ -90,11 +90,11 @@ msgstr "Tela de sucesso com uma grande marca de verificação"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:70
 msgid "This is a minor release of Impression with a few small improvements."
-msgstr ""
+msgstr "Esta é uma versão secundária do Impression com algumas pequenas melhorias."
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:72
 msgid "Support for .xz files"
-msgstr ""
+msgstr "Suporte a arquivos .xz"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:73
 #, fuzzy
@@ -109,71 +109,84 @@ msgid ""
 "Impression is made possible by volunteer developers, designers, and "
 "translators. Thank you for your contributions!"
 msgstr ""
+"Impression faz o possível graças a desenvolvedores, designers e voluntários"
+"tradutores. Obrigado por suas contribuições!"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:80
 msgid ""
 "This minor release fixes a bug where some .ISO files wouldn't be detected."
 msgstr ""
+"Esta versão secundária corrige um bug onde alguns arquivos .ISO não eram detectados."
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:85
 msgid ""
 "This release of Impression brings even more convenience and power to your "
 "fingertips:"
 msgstr ""
+"Esta versão do Impression traz ainda mais comodidade e potência para o seu "
+"fingertips:"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:87
 msgid "Direct download of a selection of images directly from the app"
-msgstr ""
+msgstr "Download direto de uma seleção de imagens diretamente do aplicativo"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:88
 msgid "Updated and more understandable terminology"
-msgstr ""
+msgstr "Terminologia atualizada e mais entendivel"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:89
 msgid "Security fixes"
-msgstr ""
+msgstr "Correções de segurança"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:96
 msgid "This minor release of Impression delivers:"
-msgstr ""
+msgstr "Essa versão de Impression entrega:"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:98
 msgid "Support for mobile screen sizes"
-msgstr ""
+msgstr "Suporte para tamalho de telas de mobile"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:99
 msgid "Various bug fixes, improving reliability and stability"
-msgstr ""
+msgstr "Várias correções de bugs, melhorando a confiabilidade e a estabilidade"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:100
 msgid ""
 "Brazillian Portugese translations, making Impression available in a total of "
 "9 languages"
 msgstr ""
+Traduções para o português brasileiro, disponibilizando o Impression em um total de "
+"9 idiomas"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:107
 msgid ""
 "This major release of Impression brings a bunch of exciting improvements:"
 msgstr ""
+"Esta versão principal do Impression traz uma série de melhorias interessantes:"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:109
 msgid ""
 "Visual enhancements to make the app more beautiful, focused, and engaging"
 msgstr ""
+"Melhorias visuais para tornar o aplicativo mais bonito, focado e envolvente"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:110
 msgid "Automatic updates of the available drives list"
 msgstr ""
 
+"Atualizações automáticas da lista de drives disponíveis"
+
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:111
 msgid "Explicit drive selection before flashing, to avoid accidental data loss"
-msgstr ""
+msgstr "Seleção explícita da unidade antes de piscar, para evitar perda acidental de dados"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:112
 msgid ""
 "Turkish and Czech translations, making Impression available in a total of 8 "
 "languages"
 msgstr ""
+"Traduções para turco e tcheco, disponibilizando o Impression em um total de 8 "
+"línguas"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:114
 msgid ""
@@ -183,14 +196,19 @@ msgid ""
 "major releases, while fixes and translations will result in new minor "
 "releases."
 msgstr ""
+"O esquema de versionamento foi simplificado para incluir apenas versões principais "
+"e secundárias. A versão anterior do Impression era 1.0.1, esta é a versão 2.0. "
+"No futuro, novos recursos e mudanças perceptíveis serão incluídos em novos "
+"lançamentos principais, enquanto que correções e traduções resultarão em novos "
+"lançamentos secundários."
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:122
 msgid "Added Spanish, French, German, Russian, and Italian translations."
-msgstr ""
+msgstr "Adicionado traduções para Espanhol, Françes, Alemão, Russo e Italiano."
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:127
 msgid "Initial version."
-msgstr ""
+msgstr "Versão inicial."
 
 #: data/resources/blueprints/help-overlay.blp:11
 msgctxt "shortcut window"
@@ -219,7 +237,7 @@ msgstr "Sair"
 
 #: data/resources/blueprints/window.blp:25
 msgid "Drop Here to Open"
-msgstr ""
+msgstr "Solte aqui para Abrir"
 
 #: data/resources/blueprints/window.blp:35
 #: data/resources/blueprints/window.blp:156
