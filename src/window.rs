@@ -819,6 +819,22 @@ impl AppWindow {
             &["Popsicle https://github.com/pop-os/popsicle"],
         );
 
+        about.add_other_app(
+            "io.gitlab.adhami3310.Footage",
+            // Translators: Metainfo for the app Footage. <https://gitlab.com/adhami3310/Footage>
+            &gettext("Footage"),
+            // Translators: Metainfo for the app Footage. <https://gitlab.com/adhami3310/Footage>
+            &gettext("Polish your videos")
+        );
+
+        about.add_other_app(
+            "io.gitlab.adhami3310.Converter",
+            // Translators: Metainfo for the app Switcheroo. <https://gitlab.com/adhami3310/Switcheroo>
+            &gettext("Switcheroo"),
+            // Translators: Metainfo for the app Switcheroo. <https://gitlab.com/adhami3310/Switcheroo>
+            &gettext("Convert and manipulate images")
+        );
+
         about.present(Some(self));
     }
 }
