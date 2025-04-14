@@ -1,7 +1,7 @@
 {
     "id": "io.gitlab.adhami3310.Impression",
     "runtime": "org.gnome.Platform",
-    "runtime-version": "master",
+    "runtime-version": "48",
     "sdk": "org.gnome.Sdk",
     "sdk-extensions": [
         "org.freedesktop.Sdk.Extension.rust-stable"
@@ -13,7 +13,8 @@
         "--device=dri",
         "--socket=wayland",
         "--system-talk-name=org.freedesktop.UDisks2",
-        "--share=network"
+        "--share=network",
+        "--env=RUST_BACKTRACE=1"
     ],
     "build-options": {
         "append-path": "/usr/lib/sdk/rust-stable/bin",
@@ -43,7 +44,7 @@
                 {
                     "type": "git",
                     "url": "https://gitlab.gnome.org/jwestman/blueprint-compiler.git",
-                    "tag": "v0.14.0"
+                    "tag": "v0.16.0"
                 }
             ]
         },

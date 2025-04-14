@@ -1,0 +1,273 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the impression package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: impression\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-09-20 12:55-0700\n"
+"PO-Revision-Date: 2024-09-28 15:08+0200\n"
+"Last-Translator: Sunniva Løvstad <turtle@turtle.garden>\n"
+"Language-Team: \n"
+"Language: nb\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4.4\n"
+
+#: data/io.gitlab.adhami3310.Impression.desktop.in.in:3
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:5
+#: data/resources/blueprints/window.blp:9
+#: data/resources/blueprints/window.blp:21
+#: data/resources/blueprints/window.blp:146 src/main.rs:44 src/window.rs:435
+msgid "Impression"
+msgstr "Impression"
+
+#: data/io.gitlab.adhami3310.Impression.desktop.in.in:4
+msgid "Media Writer"
+msgstr "Mediaskriver"
+
+#: data/io.gitlab.adhami3310.Impression.desktop.in.in:5
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:11
+msgid "Create bootable drives"
+msgstr "Opprett oppstartbare disker"
+
+#: data/io.gitlab.adhami3310.Impression.desktop.in.in:11
+msgid "usb;flash;writer;bootable;drive;iso;img;disk;image"
+msgstr "usb;flash;skrivere;oppstartbar;bootable;iso;img;disk;bilete;bilde;"
+
+#: data/io.gitlab.adhami3310.Impression.gschema.xml.in:6
+msgid "Window width"
+msgstr "Vindubredde"
+
+#: data/io.gitlab.adhami3310.Impression.gschema.xml.in:10
+msgid "Window height"
+msgstr "Vinduhøyde"
+
+#: data/io.gitlab.adhami3310.Impression.gschema.xml.in:14
+msgid "Window maximized state"
+msgstr "Hvorvidt vinduet er maskimisert"
+
+#. developer_name tag deprecated with Appstream 1.0
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:7
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:9
+msgid "Khaleel Al-Adhami"
+msgstr "Khaleel Al-Adhami"
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:17
+msgid ""
+"Write disk images to your drives with ease. Select an image, insert your "
+"drive, and you're good to go! Impression is a useful tool for both avid "
+"distro-hoppers and casual computer users."
+msgstr ""
+"Skriv diskbilder til diskene dine med letthet. Velg et bilde, sett inn "
+"disken din, og så er du klar! Impression er et nyttig verktøy for begge "
+"ivrige distrohoppere og vanlige datamaskinbrukere."
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:40
+msgid "Screen with a choice of a local image or internet download"
+msgstr ""
+"Skjerm med et valg mellom et lokalt bilde eller nedlastbare bilder fra "
+"internett"
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:44
+msgid "Screen with a chosen ISO and available USB memories"
+msgstr "Skjerm med et valgt ISO-bilde og tilgjengelige USB-disker"
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:48
+msgid "Writing the ISO in progress"
+msgstr "Skjerm som er i gang med å skrive ISO-bildet"
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:52
+msgid "Success screen with a big check mark"
+msgstr "Lykkeskjerm med en stor hake"
+
+#: data/resources/blueprints/help-overlay.blp:11
+msgctxt "shortcut window"
+msgid "General"
+msgstr "Generelt"
+
+#: data/resources/blueprints/help-overlay.blp:14
+msgctxt "shortcut window"
+msgid "Open File"
+msgstr "Åpne fil"
+
+#: data/resources/blueprints/help-overlay.blp:19
+msgctxt "shortcut window"
+msgid "New Window"
+msgstr "Nytt vindu"
+
+#: data/resources/blueprints/help-overlay.blp:24
+msgctxt "shortcut window"
+msgid "Show Shortcuts"
+msgstr "Vis tastatursnarveier"
+
+#: data/resources/blueprints/help-overlay.blp:29
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "Avslutt"
+
+#: data/resources/blueprints/window.blp:25
+msgid "Drop Here to Open"
+msgstr "Slipp her for å åpne"
+
+#: data/resources/blueprints/window.blp:35
+#: data/resources/blueprints/window.blp:156
+#: data/resources/blueprints/window.blp:254
+msgid "Main Menu"
+msgstr "Hovedmeny"
+
+#: data/resources/blueprints/window.blp:54
+msgid "Choose Image"
+msgstr "Velg bilde"
+
+#: data/resources/blueprints/window.blp:64
+msgid "Open File…"
+msgstr "Åpne fil…"
+
+#: data/resources/blueprints/window.blp:74
+msgid "Direct Download"
+msgstr "Direkte nedlasting"
+
+#: data/resources/blueprints/window.blp:108
+msgid "No Connection"
+msgstr "Ingen tilkobling"
+
+#: data/resources/blueprints/window.blp:109
+msgid "Connect to the internet to view available images"
+msgstr "Koble til internett for å vise tilgjengelige bilder"
+
+#: data/resources/blueprints/window.blp:218
+msgid "All data on the selected drive will be erased"
+msgstr "Alle data på den valgte disken skal slettes"
+
+#: data/resources/blueprints/window.blp:221
+msgid "Write"
+msgstr "Skriv"
+
+#: data/resources/blueprints/window.blp:283
+msgid "No Drives"
+msgstr "Ingen disker"
+
+#: data/resources/blueprints/window.blp:284
+msgid "Insert a drive to write to"
+msgstr "Sett inn en disk for å skrive bilde"
+
+#: data/resources/blueprints/window.blp:295
+msgid "Writing Completed"
+msgstr "Skriving fullført"
+
+#: data/resources/blueprints/window.blp:296
+msgid "The drive can be safely removed"
+msgstr "Disken kan trygt fjernes"
+
+#: data/resources/blueprints/window.blp:305
+msgid "Finish"
+msgstr "Fullfør"
+
+#: data/resources/blueprints/window.blp:326
+msgid "Writing Unsuccessful"
+msgstr "Skriving mislyktes"
+
+#: data/resources/blueprints/window.blp:335
+msgid "Retry"
+msgstr "Prøv på nytt"
+
+#: data/resources/blueprints/window.blp:355 src/window.rs:344 src/window.rs:373
+msgid "Writing"
+msgstr "Skriver"
+
+#: data/resources/blueprints/window.blp:357 src/window.rs:343
+msgid "Do not remove the drive"
+msgstr "Ikke fjern disken"
+
+#: data/resources/blueprints/window.blp:372 src/window.rs:258 src/window.rs:295
+msgid "_Cancel"
+msgstr "_Avbryt"
+
+#: data/resources/blueprints/window.blp:400
+msgid "Keyboard Shortcuts"
+msgstr "Tastatursnarveier"
+
+#: data/resources/blueprints/window.blp:405
+msgid "About Impression"
+msgstr "Om Impression"
+
+#: src/window.rs:254
+msgid "Stop Writing?"
+msgstr "Avslutt skriving?"
+
+#: src/window.rs:255
+msgid "This might leave the drive in a faulty state"
+msgstr "Dette kan gjør disken unyttbar."
+
+#: src/window.rs:258
+msgid "_Stop"
+msgstr "Av_slutt"
+
+#: src/window.rs:288
+msgid "Erase Drive?"
+msgstr "Slett disken?"
+
+#: src/window.rs:289
+msgid "You will lose all data stored on {}"
+msgstr "Du vil tape alle data lagret på {}. Dette kan ikke angres."
+
+#: src/window.rs:296
+msgid "_Erase"
+msgstr "_Slett"
+
+#: src/window.rs:337 src/window.rs:367
+msgid "Writing will begin once the download is completed"
+msgstr "Skrivingen begynner når bildet er fullstendig nedlastet"
+
+#: src/window.rs:339 src/window.rs:372
+msgid "Downloading Image"
+msgstr "Laster ned bilde"
+
+#: src/window.rs:369
+msgid "This could take a while"
+msgstr "Dette kan ta en stund"
+
+#: src/window.rs:397
+msgid "Failed to write image"
+msgstr "Mislyktes med å skrive bildet"
+
+#: src/window.rs:409
+msgid "Image Written"
+msgstr "Skrev bildet"
+
+#: src/window.rs:674
+msgid "Disk Images"
+msgstr "Diskbilder"
+
+#: src/window.rs:700
+msgid "File is not a Disk Image"
+msgstr "Filen er ikke et diskbilde"
+
+#: src/window.rs:804
+msgid "translator-credits"
+msgstr "Sunniva Løvstad <impression@turtle.garden>"
+
+#: src/window.rs:806
+msgid "Code borrowed from"
+msgstr "Kode lånet fra"
+
+#: src/flash.rs:95
+msgid "Failed to open disk"
+msgstr "Mislyktes med å åpne disken"
+
+#: src/flash.rs:145
+msgid "Failed to extract drive"
+msgstr "Mislyktes med å ekstrahere disken"
+
+#: src/flash.rs:203
+msgid "Failed to download image"
+msgstr "Mislyktes med å laste ned bildet"
+
+#: src/flash.rs:256
+msgid "Writing to disk failed"
+msgstr "Mislyktes med å skrive til disken"

@@ -2,15 +2,12 @@ use std::collections::HashMap;
 
 use itertools::Itertools;
 
-#[derive(thiserror::Error, Debug)]
-#[error("Error while extracting compressed file")]
-struct TarError {}
-
 #[derive(Debug)]
 pub struct Distro {
     pub name: String,
     pub version: Option<String>,
     pub url: String,
+    pub variant: String,
 }
 
 pub fn get_osinfodb_url() -> Option<String> {
@@ -78,16 +75,16 @@ pub fn collect_online_distros(latest_url: &str) -> Option<(Vec<Distro>, Vec<Dist
 
     use rayon::prelude::*;
 
-    let (amd, arm): (Vec<Option<Distro>>, Vec<Option<Distro>>) = GOOD_DISTROS
+    let distros: Vec<(Vec<Option<Distro>>, Vec<Option<Distro>>)> = GOOD_DISTROS
         .into_par_iter()
-        .map(|(distro, distro_name, filter)| {
+        .map(|(distro, _, filter)| {
             let files = std::fs::read_dir(temp_dir.join(distro)).unwrap();
 
-            let y = files
+            let y: (Vec<Option<Distro>>, Vec<Option<Distro>>) = files
                 .flatten()
                 .flat_map(|file| {
-                    let content = std::fs::read_to_string(file.path()).unwrap();
-                    let doc = roxmltree::Document::parse(&content).unwrap();
+                    let content = std::fs::read_to_string(file.path()).expect("Cannot read xml");
+                    let doc = roxmltree::Document::parse(&content).expect("Cannot parse document");
 
                     let os_element = doc.descendants().find(|d| d.has_tag_name("os")).unwrap();
 
@@ -164,61 +161,138 @@ pub fn collect_online_distros(latest_url: &str) -> Option<(Vec<Distro>, Vec<Dist
                         })
                         .collect_vec();
 
-                    let (amd, arm): (Vec<_>, Vec<_>) =
-                        medias.into_iter().partition_map(|(_, a, url)| match a {
-                            "x86_64" => itertools::Either::Left(url),
-                            _ => itertools::Either::Right(url),
-                        });
+                    let distros: Vec<(Option<Distro>, Option<Distro>)> = medias
+                        .into_iter()
+                        .map(|media| {
+                            Some((
+                                media.0, // name
+                                media.1, // arch
+                                media.2, // url
+                                release_date.clone(),
+                                release_status.clone(),
+                                version.clone(),
+                            ))
+                        })
+                        .flatten()
+                        .filter(|(_, _, _, date, status, _)| {
+                            !matches!(status, Some(x) if x == "prerelease")
+                                && (date.is_some() || matches!(status, Some(x) if x == "rolling"))
+                                && (date.is_none()
+                                    || date.unwrap()
+                                        + chrono::Duration::try_days(365 * 2)
+                                            .expect("duration is overflow")
+                                        >= chrono::offset::Local::now().date_naive())
+                        })
+                        .filter(|(name, _, _, _, _, _)| {
+                            if let Some(filter) = filter {
+                                filter(name)
+                            } else {
+                                true
+                            }
+                        })
+                        .filter(|(_, _, _, date, status, _)| {
+                            !matches!(status, Some(x) if x == "prerelease")
+                                && (date.is_some() || matches!(status, Some(x) if x == "rolling"))
+                                && (date.is_none()
+                                    || date.unwrap()
+                                        + chrono::Duration::try_days(365 * 2)
+                                            .expect("duration is overflow")
+                                        >= chrono::offset::Local::now().date_naive())
+                        })
+                        .filter(|(name, _, _, _, _, _)| {
+                            if let Some(filter) = filter {
+                                filter(name)
+                            } else {
+                                true
+                            }
+                        })
+                        .map(|(name, arch, url, _, _, version)| {
+                            let mut variant = String::new();
 
-                    Some((
-                        name,
-                        amd.into_iter().next()?,
-                        arm.into_iter().next(),
-                        release_date,
-                        release_status,
-                        version,
-                    ))
+                            for (k, v) in &variants {
+                                if name == *v {
+                                    variant = k.to_string();
+                                    break;
+                                }
+                            }
+
+                            (
+                                arch,
+                                Distro {
+                                    name,
+                                    version,
+                                    url,
+                                    variant,
+                                },
+                            )
+                        })
+                        .map(|(arch, distro)| match arch {
+                            "x86_64" => (Some(distro), None),
+                            _ => (None, Some(distro)),
+                        })
+                        .collect();
+
+                    distros
                 })
-                .filter(|(_, _, _, date, status, _)| {
-                    !matches!(status, Some(x) if x == "prerelease")
-                        && (date.is_some() || matches!(status, Some(x) if x == "rolling"))
-                        && (date.is_none()
-                            || date.unwrap()
-                                + chrono::Duration::try_days(365 * 2)
-                                    .expect("duration is overflow")
-                                >= chrono::offset::Local::now().date_naive())
-                })
-                .filter(|(name, _, _, _, _, _)| {
-                    println!("{}", name);
-                    if let Some(filter) = filter {
-                        filter(name)
+                .collect();
+
+            let mut amd: HashMap<String, Distro> = HashMap::new();
+            let mut arm: HashMap<String, Distro> = HashMap::new();
+
+            for item in y.0 {
+                if let Some(distro) = item {
+                    if !amd.contains_key(&distro.variant) {
+                        amd.insert(distro.variant.to_owned(), distro);
                     } else {
-                        true
+                        let ds = amd.get_mut(&distro.variant).unwrap();
+                        *ds = distro;
                     }
-                })
-                .max_by_key(|(_, _, _, date, _, _)| date.to_owned())
-                .map(|(_, amd, arm, _, _, version)| {
-                    (
-                        Distro {
-                            name: distro_name.to_owned(),
-                            version: version.clone(),
-                            url: amd,
-                        },
-                        arm.map(|arm| Distro {
-                            name: distro_name.to_owned(),
-                            version: version.clone(),
-                            url: arm,
-                        }),
-                    )
-                })
-                .unzip();
+                }
+            }
 
-            (y.0, y.1.flatten())
+            for item in y.1 {
+                if let Some(distro) = item {
+                    if !arm.contains_key(&distro.variant) {
+                        arm.insert(distro.variant.to_owned(), distro);
+                    } else {
+                        let ds = arm.get_mut(&distro.variant).unwrap();
+                        *ds = distro;
+                    }
+                }
+            }
+
+            let amd: Vec<Option<Distro>> = amd.into_iter().map(|(_, v)| Some(v)).collect();
+
+            let arm: Vec<Option<Distro>> = arm.into_iter().map(|(_, v)| Some(v)).collect();
+
+            (amd, arm)
+        })
+        .collect();
+
+    let (amd, arm): (Vec<Vec<Distro>>, Vec<Vec<Distro>>) = distros
+        .into_iter()
+        .map(|distro| {
+            let mut amd = Vec::<Distro>::new();
+            let mut arm = Vec::<Distro>::new();
+
+            for elem in distro.0 {
+                if let Some(elem) = elem {
+                    amd.push(elem);
+                }
+            }
+
+            for elem in distro.1 {
+                if let Some(elem) = elem {
+                    arm.push(elem);
+                }
+            }
+
+            (amd, arm)
         })
         .unzip();
 
     Some((
-        amd.into_iter().flatten().collect(),
-        arm.into_iter().flatten().collect(),
+        amd.into_iter().flatten().collect::<Vec<_>>(),
+        arm.into_iter().flatten().collect::<Vec<_>>(),
     ))
 }
