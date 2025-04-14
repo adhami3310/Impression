@@ -1,0 +1,273 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the impression package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: impression\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-09-20 12:55-0700\n"
+"PO-Revision-Date: 2025-02-09 16:48+0200\n"
+"Last-Translator: Jiri Grönroos <jiri.gronroos+l10n@iki.fi>\n"
+"Language-Team: Finnish\n"
+"Language: fi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4.4\n"
+
+#: data/io.gitlab.adhami3310.Impression.desktop.in.in:3
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:5
+#: data/resources/blueprints/window.blp:9
+#: data/resources/blueprints/window.blp:21
+#: data/resources/blueprints/window.blp:146 src/main.rs:44 src/window.rs:435
+msgid "Impression"
+msgstr "Impression"
+
+#: data/io.gitlab.adhami3310.Impression.desktop.in.in:4
+msgid "Media Writer"
+msgstr "Mediakirjoitin"
+
+#: data/io.gitlab.adhami3310.Impression.desktop.in.in:5
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:11
+msgid "Create bootable drives"
+msgstr "Luo käynnistettäviä asemia"
+
+#: data/io.gitlab.adhami3310.Impression.desktop.in.in:11
+msgid "usb;flash;writer;bootable;drive;iso;img;disk;image"
+msgstr "usb;flash;writer;bootable;drive;iso;img;disk;image;levykuva"
+
+#: data/io.gitlab.adhami3310.Impression.gschema.xml.in:6
+msgid "Window width"
+msgstr "Ikkunan leveys"
+
+#: data/io.gitlab.adhami3310.Impression.gschema.xml.in:10
+msgid "Window height"
+msgstr "Ikkunan korkeus"
+
+#: data/io.gitlab.adhami3310.Impression.gschema.xml.in:14
+msgid "Window maximized state"
+msgstr "Ikkunan suurennettu tila"
+
+#. developer_name tag deprecated with Appstream 1.0
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:7
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:9
+msgid "Khaleel Al-Adhami"
+msgstr "Khaleel Al-Adhami"
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:17
+msgid ""
+"Write disk images to your drives with ease. Select an image, insert your "
+"drive, and you're good to go! Impression is a useful tool for both avid "
+"distro-hoppers and casual computer users."
+msgstr ""
+"Kirjoita levykuvia asemille vaivatta. Valitse levykuva, liitä asema ja siinä "
+"se! Impression on hyödyllinen työkalu distro-vaihtajille ja tavallisille "
+"tietokoneen käyttäjille."
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:40
+msgid "Screen with a choice of a local image or internet download"
+msgstr ""
+"Ikkuna, josta on mahdollista valita paikallinen levykuva tai lataus "
+"Internetistä"
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:44
+msgid "Screen with a chosen ISO and available USB memories"
+msgstr "Ikkuna, jossa on ISO-levykuva valittu ja käytettävissä oleva USB-asema"
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:48
+msgid "Writing the ISO in progress"
+msgstr "ISO-levykuvan kirjoittaminen meneillään"
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:52
+msgid "Success screen with a big check mark"
+msgstr "Ikkuna, joka ilmaisee kirjoittamisen onnistuneen"
+
+#: data/resources/blueprints/help-overlay.blp:11
+msgctxt "shortcut window"
+msgid "General"
+msgstr "Yleiset"
+
+#: data/resources/blueprints/help-overlay.blp:14
+msgctxt "shortcut window"
+msgid "Open File"
+msgstr "Avaa tiedosto"
+
+#: data/resources/blueprints/help-overlay.blp:19
+msgctxt "shortcut window"
+msgid "New Window"
+msgstr "Uusi ikkuna"
+
+#: data/resources/blueprints/help-overlay.blp:24
+msgctxt "shortcut window"
+msgid "Show Shortcuts"
+msgstr "Näytä pikanäppäimet"
+
+#: data/resources/blueprints/help-overlay.blp:29
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "Lopeta"
+
+#: data/resources/blueprints/window.blp:25
+msgid "Drop Here to Open"
+msgstr "Pudota tähän avataksesi"
+
+#: data/resources/blueprints/window.blp:35
+#: data/resources/blueprints/window.blp:156
+#: data/resources/blueprints/window.blp:254
+msgid "Main Menu"
+msgstr "Päävalikko"
+
+#: data/resources/blueprints/window.blp:54
+msgid "Choose Image"
+msgstr "Valitse levykuva"
+
+#: data/resources/blueprints/window.blp:64
+msgid "Open File…"
+msgstr "Avaa tiedosto…"
+
+#: data/resources/blueprints/window.blp:74
+msgid "Direct Download"
+msgstr "Suora lataus"
+
+#: data/resources/blueprints/window.blp:108
+msgid "No Connection"
+msgstr "Ei yhteyttä"
+
+#: data/resources/blueprints/window.blp:109
+msgid "Connect to the internet to view available images"
+msgstr "Yhdistä Internetiin nähdäksesi saatavilla olevat levykuvat"
+
+#: data/resources/blueprints/window.blp:218
+msgid "All data on the selected drive will be erased"
+msgstr "Kaikki valitulla asemalla oleva data poistetaan"
+
+#: data/resources/blueprints/window.blp:221
+msgid "Write"
+msgstr "Kirjoita"
+
+#: data/resources/blueprints/window.blp:283
+msgid "No Drives"
+msgstr "Ei asemia"
+
+#: data/resources/blueprints/window.blp:284
+msgid "Insert a drive to write to"
+msgstr "Liitä asema, johon kirjoittaa"
+
+#: data/resources/blueprints/window.blp:295
+msgid "Writing Completed"
+msgstr "Kirjoittaminen valmistui"
+
+#: data/resources/blueprints/window.blp:296
+msgid "The drive can be safely removed"
+msgstr "Asema voidaan irrottaa turvallisesti"
+
+#: data/resources/blueprints/window.blp:305
+msgid "Finish"
+msgstr "Valmis"
+
+#: data/resources/blueprints/window.blp:326
+msgid "Writing Unsuccessful"
+msgstr "Kirjoittaminen epäonnistui"
+
+#: data/resources/blueprints/window.blp:335
+msgid "Retry"
+msgstr "Yritä uudelleen"
+
+#: data/resources/blueprints/window.blp:355 src/window.rs:344 src/window.rs:373
+msgid "Writing"
+msgstr "Kirjoitetaan"
+
+#: data/resources/blueprints/window.blp:357 src/window.rs:343
+msgid "Do not remove the drive"
+msgstr "Älä irrota asemaa"
+
+#: data/resources/blueprints/window.blp:372 src/window.rs:258 src/window.rs:295
+msgid "_Cancel"
+msgstr "_Peru"
+
+#: data/resources/blueprints/window.blp:400
+msgid "Keyboard Shortcuts"
+msgstr "Pikanäppäimet"
+
+#: data/resources/blueprints/window.blp:405
+msgid "About Impression"
+msgstr "Tietoja - Impression"
+
+#: src/window.rs:254
+msgid "Stop Writing?"
+msgstr "Lopetetaanko kirjoittaminen?"
+
+#: src/window.rs:255
+msgid "This might leave the drive in a faulty state"
+msgstr "Tämä saattaa jättää aseman vialliseen tilaan"
+
+#: src/window.rs:258
+msgid "_Stop"
+msgstr "_Pysäytä"
+
+#: src/window.rs:288
+msgid "Erase Drive?"
+msgstr "Tyhjennetäänkö asema?"
+
+#: src/window.rs:289
+msgid "You will lose all data stored on {}"
+msgstr "Menetät kaiken aseman {} sisältämän datan"
+
+#: src/window.rs:296
+msgid "_Erase"
+msgstr "_Tyhjennä"
+
+#: src/window.rs:337 src/window.rs:367
+msgid "Writing will begin once the download is completed"
+msgstr "Kirjoittaminen alkaa, kun lataus on valmistunut"
+
+#: src/window.rs:339 src/window.rs:372
+msgid "Downloading Image"
+msgstr "Ladataan levykuvaa"
+
+#: src/window.rs:369
+msgid "This could take a while"
+msgstr "Tämä saattaa kestää hetken"
+
+#: src/window.rs:397
+msgid "Failed to write image"
+msgstr "Levykuvan kirjoittaminen epäonnistui"
+
+#: src/window.rs:409
+msgid "Image Written"
+msgstr "Levykuva kirjoitettu"
+
+#: src/window.rs:674
+msgid "Disk Images"
+msgstr "Levykuvat"
+
+#: src/window.rs:700
+msgid "File is not a Disk Image"
+msgstr "Tiedosto ei ole levykuva"
+
+#: src/window.rs:804
+msgid "translator-credits"
+msgstr "Jiri Grönroos"
+
+#: src/window.rs:806
+msgid "Code borrowed from"
+msgstr "Koodia lainattu projektilta"
+
+#: src/flash.rs:95
+msgid "Failed to open disk"
+msgstr "Aseman avaaminen epäonnistui"
+
+#: src/flash.rs:145
+msgid "Failed to extract drive"
+msgstr "Aseman purkaminen epäonnistui"
+
+#: src/flash.rs:203
+msgid "Failed to download image"
+msgstr "Levykuvan lataaminen epäonnistui"
+
+#: src/flash.rs:256
+msgid "Writing to disk failed"
+msgstr "Asemalle kirjoittaminen epäonnistui"
