@@ -155,7 +155,7 @@ msgid ""
 "Brazillian Portugese translations, making Impression available in a total of "
 "9 languages"
 msgstr ""
-Traduções para o português brasileiro, disponibilizando o Impression em um total de "
+"Traduções para o português brasileiro, disponibilizando o Impression em um total de "
 "9 idiomas"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:107
