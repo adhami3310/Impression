@@ -11,6 +11,7 @@ pub struct Distro {
     pub name: String,
     pub version: Option<String>,
     pub url: String,
+    pub variant: String
 }
 
 pub fn get_osinfodb_url() -> Option<String> {
@@ -78,147 +79,232 @@ pub fn collect_online_distros(latest_url: &str) -> Option<(Vec<Distro>, Vec<Dist
 
     use rayon::prelude::*;
 
-    let (amd, arm): (Vec<Option<Distro>>, Vec<Option<Distro>>) = GOOD_DISTROS
+    let distros: Vec<(Vec<Option<Distro>>, Vec<Option<Distro>>)> = GOOD_DISTROS
         .into_par_iter()
-        .map(|(distro, distro_name, filter)| {
-            let files = std::fs::read_dir(temp_dir.join(distro)).unwrap();
+        .map(|(distro, _, filter)| {
+        let files = std::fs::read_dir(temp_dir.join(distro)).unwrap();
 
-            let y = files
-                .flatten()
-                .flat_map(|file| {
-                    let content = std::fs::read_to_string(file.path()).unwrap();
-                    let doc = roxmltree::Document::parse(&content).unwrap();
+        let y: (Vec<Option<Distro>>, Vec<Option<Distro>>) = files
+            .flatten()
+            .flat_map(|file| {
+                let content = std::fs::read_to_string(file.path())
+                    .expect("Cannot read xml");
+                let doc = roxmltree::Document::parse(&content)
+                    .expect("Cannot parse document");
 
-                    let os_element = doc.descendants().find(|d| d.has_tag_name("os")).unwrap();
+                let os_element = doc.descendants().find(|d| d.has_tag_name("os")).unwrap();
 
-                    let release_date = os_element
-                        .children()
-                        .find(|d| d.has_tag_name("release-date"))
-                        .map(|rd| {
-                            let (year, month, day) = rd
+                let release_date = os_element
+                    .children()
+                    .find(|d| d.has_tag_name("release-date"))
+                    .map(|rd| {
+                        let (year, month, day) = rd
+                            .text()
+                            .unwrap()
+                            .split('-')
+                            .map(|x| x.parse::<u32>().unwrap())
+                            .collect_tuple()
+                            .unwrap();
+                        chrono::NaiveDate::from_ymd_opt(year as i32, month, day).unwrap()
+                    });
+                let release_status = os_element
+                    .children()
+                    .find(|d| d.has_tag_name("release-status"))
+                    .map(|rs| rs.text().unwrap().to_string());
+
+                let name = os_element
+                    .children()
+                    .find(|d| d.has_tag_name("name"))
+                    .unwrap()
+                    .text()
+                    .unwrap()
+                    .to_string();
+
+                let version = os_element
+                    .children()
+                    .find(|d| d.has_tag_name("version"))
+                    .and_then(|x| x.text().map(|x| x.to_owned()));
+
+                let variants = os_element
+                    .children()
+                    .filter(|d| d.has_tag_name("variant"))
+                    .map(|d| {
+                        (
+                            d.attribute("id").unwrap().to_string(),
+                            d.descendants()
+                                .find(|n| n.has_tag_name("name"))
+                                .map(|n| n.text().unwrap().to_string())
+                                .unwrap_or(name.clone()),
+                        )
+                    })
+                    .collect::<HashMap<_, _>>();
+
+                let medias = os_element
+                    .children()
+                    .filter(|d| {
+                        d.has_tag_name("media")
+                            && (d.attribute("arch") == Some("x86_64")
+                                || d.attribute("arch") == Some("aarch64"))
+                            && d.descendants()
+                            .any(|u| u.has_tag_name("url") && !u.text().unwrap().is_empty())
+                    })
+                    .map(|m| {
+                        (
+                            m.children()
+                                .find(|d| d.has_tag_name("variant"))
+                                .map(|n| {
+                                    variants.get(n.attribute("id").unwrap()).unwrap().to_owned()
+                                })
+                                .unwrap_or(name.clone()),
+                            m.attribute("arch").unwrap(),
+                            m.descendants()
+                                .find(|d| d.has_tag_name("url"))
+                                .unwrap()
                                 .text()
                                 .unwrap()
-                                .split('-')
-                                .map(|x| x.parse::<u32>().unwrap())
-                                .collect_tuple()
-                                .unwrap();
-                            chrono::NaiveDate::from_ymd_opt(year as i32, month, day).unwrap()
-                        });
-                    let release_status = os_element
-                        .children()
-                        .find(|d| d.has_tag_name("release-status"))
-                        .map(|rs| rs.text().unwrap().to_string());
+                                .to_string(),
+                        )
+                    })
+                    .collect_vec();
 
-                    let name = os_element
-                        .children()
-                        .find(|d| d.has_tag_name("name"))
-                        .unwrap()
-                        .text()
-                        .unwrap()
-                        .to_string();
-
-                    let version = os_element
-                        .children()
-                        .find(|d| d.has_tag_name("version"))
-                        .and_then(|x| x.text().map(|x| x.to_owned()));
-
-                    let variants = os_element
-                        .children()
-                        .filter(|d| d.has_tag_name("variant"))
-                        .map(|d| {
-                            (
-                                d.attribute("id").unwrap().to_string(),
-                                d.descendants()
-                                    .find(|n| n.has_tag_name("name"))
-                                    .map(|n| n.text().unwrap().to_string())
-                                    .unwrap_or(name.clone()),
-                            )
-                        })
-                        .collect::<HashMap<_, _>>();
-
-                    let medias = os_element
-                        .children()
-                        .filter(|d| {
-                            d.has_tag_name("media")
-                                && (d.attribute("arch") == Some("x86_64")
-                                    || d.attribute("arch") == Some("aarch64"))
-                                && d.descendants()
-                                    .any(|u| u.has_tag_name("url") && !u.text().unwrap().is_empty())
-                        })
-                        .map(|m| {
-                            (
-                                m.children()
-                                    .find(|d| d.has_tag_name("variant"))
-                                    .map(|n| {
-                                        variants.get(n.attribute("id").unwrap()).unwrap().to_owned()
-                                    })
-                                    .unwrap_or(name.clone()),
-                                m.attribute("arch").unwrap(),
-                                m.descendants()
-                                    .find(|d| d.has_tag_name("url"))
-                                    .unwrap()
-                                    .text()
-                                    .unwrap()
-                                    .to_string(),
-                            )
-                        })
-                        .collect_vec();
-
-                    let (amd, arm): (Vec<_>, Vec<_>) =
-                        medias.into_iter().partition_map(|(_, a, url)| match a {
-                            "x86_64" => itertools::Either::Left(url),
-                            _ => itertools::Either::Right(url),
-                        });
-
-                    Some((
-                        name,
-                        amd.into_iter().next()?,
-                        arm.into_iter().next(),
-                        release_date,
-                        release_status,
-                        version,
-                    ))
-                })
-                .filter(|(_, _, _, date, status, _)| {
-                    !matches!(status, Some(x) if x == "prerelease")
-                        && (date.is_some() || matches!(status, Some(x) if x == "rolling"))
-                        && (date.is_none()
-                            || date.unwrap()
+                let distros: Vec<(Option<Distro>, Option<Distro>)> = medias
+                    .into_iter()
+                    .map(|media| {
+                        Some((
+                            media.0,  // name
+                            media.1,  // arch
+                            media.2,  // url
+                            release_date.clone(),
+                            release_status.clone(),
+                            version.clone(),
+                        ))
+                    })
+                    .flatten()
+                    .filter(|(_, _, _, date, status, _)| {
+                        !matches!(status, Some(x) if x == "prerelease")
+                            && (date.is_some() || matches!(status, Some(x) if x == "rolling"))
+                            && (date.is_none()
+                                || date.unwrap()
+                                + chrono::Duration::try_days(365 * 2)
+                                .expect("duration is overflow")
+                                >= chrono::offset::Local::now().date_naive())
+                    })
+                    .filter(|(name, _, _, _, _, _)| {
+                        if let Some(filter) = filter {
+                            filter(name)
+                        } else {
+                            true
+                        }
+                    })
+                    .filter(|(_, _, _, date, status, _)| {
+                        !matches!(status, Some(x) if x == "prerelease")
+                            && (date.is_some() || matches!(status, Some(x) if x == "rolling"))
+                            && (date.is_none()
+                                || date.unwrap()
                                 + chrono::Duration::try_days(365 * 2)
                                     .expect("duration is overflow")
                                 >= chrono::offset::Local::now().date_naive())
-                })
-                .filter(|(name, _, _, _, _, _)| {
-                    println!("{}", name);
-                    if let Some(filter) = filter {
-                        filter(name)
-                    } else {
-                        true
-                    }
-                })
-                .max_by_key(|(_, _, _, date, _, _)| date.to_owned())
-                .map(|(_, amd, arm, _, _, version)| {
-                    (
-                        Distro {
-                            name: distro_name.to_owned(),
-                            version: version.clone(),
-                            url: amd,
-                        },
-                        arm.map(|arm| Distro {
-                            name: distro_name.to_owned(),
-                            version: version.clone(),
-                            url: arm,
-                        }),
-                    )
-                })
-                .unzip();
+                    })
+                    .filter(|(name, _, _, _, _, _)| {
+                        if let Some(filter) = filter {
+                            filter(name)
+                        } else {
+                            true
+                        }
+                    })
+                    .map(|(name, arch, url, _, _, version)| {
+                        let mut variant = String::new();
 
-            (y.0, y.1.flatten())
-        })
-        .unzip();
+                        for (k, v) in &variants {
+                            if name == *v {
+                                variant = k.to_string();
+                                break;
+                            }
+                        }
+
+                        (
+                            arch,
+                            Distro {
+                                name,
+                                version,
+                                url,
+                                variant
+                            }
+                        )
+                    })
+                    .map(|(arch, distro)| {
+                        match arch {
+                            "x86_64" => (Some(distro), None),
+                            _ => (None, Some(distro))
+                        }
+                    }).collect();
+
+                distros
+            }).collect();
+
+        let mut amd: HashMap<String, Distro> = HashMap::new();
+        let mut arm: HashMap<String, Distro> = HashMap::new();
+
+        for item in y.0 {
+            if let Some(distro) = item {
+                if !amd.contains_key(&distro.variant) {
+                    amd.insert(distro.variant.to_owned(), distro);
+                } else {
+                    let ds = amd.get_mut(&distro.variant).unwrap();
+                    *ds = distro;
+                }
+            }
+        }
+
+        for item in y.1 {
+            if let Some(distro) = item {
+                if !arm.contains_key(&distro.variant) {
+                    arm.insert(distro.variant.to_owned(), distro);
+                } else {
+                    let ds = arm.get_mut(&distro.variant).unwrap();
+                    *ds = distro;
+                }
+            }
+        }
+
+        let amd: Vec<Option<Distro>> = amd
+            .into_iter()
+            .map(|(_, v)|{
+                Some(v)
+            }).collect();
+
+        let arm: Vec<Option<Distro>> = arm
+            .into_iter()
+            .map(|(_, v)|{
+                Some(v)
+            }).collect();
+
+        (amd, arm)
+    }).collect();
+
+    let (amd, arm): (Vec<Vec<Distro>>, Vec<Vec<Distro>>) = distros
+        .into_iter()
+        .map(|distro| {
+            let mut amd = Vec::<Distro>::new();
+            let mut arm = Vec::<Distro>::new();
+
+            for elem in distro.0 {
+                if let Some(elem) = elem {
+                    amd.push(elem);
+                }
+            }
+
+            for elem in distro.1 {
+                if let Some(elem) = elem {
+                    arm.push(elem);
+                }
+            }
+
+            (amd, arm)
+        }).unzip();
 
     Some((
-        amd.into_iter().flatten().collect(),
-        arm.into_iter().flatten().collect(),
+        amd.into_iter().flatten().collect::<Vec<_>>(),
+        arm.into_iter().flatten().collect::<Vec<_>>()
     ))
 }

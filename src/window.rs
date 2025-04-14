@@ -630,7 +630,7 @@ impl AppWindow {
 
     fn load_distros(&self, target: &TemplateChild<gtk::ListBox>, distros: Vec<Distro>) {
         target.remove_all();
-        for Distro { name, version, url } in distros {
+        for Distro { name, version, url, .. } in distros {
             let action_row = adw::ActionRow::new();
             action_row.set_title(&name);
             if let Some(subtitle) = version {
