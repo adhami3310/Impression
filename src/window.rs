@@ -430,18 +430,20 @@ impl AppWindow {
 
     async fn send_notification(&self, message: String) {
         if !self.is_active() {
-            let proxy = ashpd::desktop::notification::NotificationProxy::new()
-                .await
-                .unwrap();
-            proxy
-                .add_notification(
-                    APP_ID,
-                    ashpd::desktop::notification::Notification::new(&gettext("Impression"))
-                        .body(Some(message.as_ref()))
-                        .priority(Some(ashpd::desktop::notification::Priority::Normal)),
-                )
-                .await
-                .unwrap();
+            runtime().spawn(async move {
+                let proxy = ashpd::desktop::notification::NotificationProxy::new()
+                    .await
+                    .unwrap();
+                proxy
+                    .add_notification(
+                        APP_ID,
+                        ashpd::desktop::notification::Notification::new(&gettext("Impression"))
+                            .body(Some(message.as_ref()))
+                            .priority(Some(ashpd::desktop::notification::Priority::Normal)),
+                    )
+                    .await
+                    .unwrap();
+            });
         }
     }
 
