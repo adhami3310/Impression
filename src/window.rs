@@ -7,6 +7,7 @@ use gtk::gdk;
 use gtk::{gio, subclass::prelude::*};
 use itertools::Itertools;
 
+use crate::runtime;
 use crate::{
     config::APP_ID,
     flash::{refresh_devices, FlashPhase, FlashRequest, FlashStatus, Progress},
@@ -168,7 +169,7 @@ mod imp {
 
 glib::wrapper! {
     pub struct AppWindow(ObjectSubclass<imp::AppWindow>)
-        @extends gtk::Widget, gtk::Window,  gtk::ApplicationWindow,
+        @extends gtk::Widget, gtk::Window,  gtk::ApplicationWindow, adw::ApplicationWindow,
         @implements gio::ActionMap, gio::ActionGroup, gtk::Root;
 }
 
@@ -263,7 +264,11 @@ impl AppWindow {
             clone!(
                 #[weak(rename_to=this)]
                 self,
-                move |_, _| {
+                move |_, id| {
+                    if id == "cancel" {
+                        return;
+                    }
+
                     this.imp()
                         .is_running
                         .store(false, std::sync::atomic::Ordering::SeqCst);
@@ -285,16 +290,15 @@ impl AppWindow {
 
     #[template_callback]
     async fn flash_dialog(&self) {
+        let selected_device = runtime()
+            .block_on(async move {
+                device_list::preferred_device(&self.selected_device().unwrap()).await
+            })
+            .unwrap_or_default();
+
         let flash_dialog = adw::AlertDialog::new(
             Some(&gettext("Erase Drive?")),
-            Some(
-                &gettext("You will lose all data stored on {}").replace(
-                    "{}",
-                    &device_list::device_label(&self.selected_device().unwrap())
-                        .await
-                        .unwrap_or_default(),
-                ),
-            ),
+            Some(&gettext("You will lose all data stored on {}").replace("{}", &selected_device)),
         );
 
         flash_dialog.add_response("cancel", &gettext("_Cancel"));
@@ -420,13 +424,8 @@ impl AppWindow {
                 }
             }
         ));
-        std::thread::spawn(|| {
-            let rt = tokio::runtime::Builder::new_multi_thread()
-                .enable_all()
-                .build()
-                .expect("Cannot Build a runtime");
-            rt.block_on(flash_job.perform());
-        });
+
+        runtime().spawn(flash_job.perform());
     }
 
     async fn send_notification(&self, message: String) {
@@ -599,19 +598,16 @@ impl AppWindow {
     }
 
     fn get_distros(&self) {
-        let (tx, rx) = async_channel::bounded(1);
+        let (sender, receiver) = async_channel::bounded(1);
 
-        std::thread::spawn(move || {
-            let distros = get_osinfodb_url().and_then(|u| collect_online_distros(&u));
-            tx.send_blocking(distros).expect("Concurrency Issues");
-            Some(())
-        });
+        let distros = get_osinfodb_url().and_then(|u| collect_online_distros(&u));
+        runtime().spawn(async move { sender.send(distros).await.expect("Concurrency Issues") });
 
         glib::spawn_future_local(clone!(
             #[weak(rename_to=this)]
             self,
             async move {
-                if let Ok(online_distros) = rx.recv().await {
+                if let Ok(online_distros) = receiver.recv().await {
                     if let Some((amd_distros, arm_distros)) = online_distros {
                         this.load_distros(&this.imp().amd_distros, amd_distros);
                         this.load_distros(&this.imp().arm_distros, arm_distros);
@@ -630,7 +626,10 @@ impl AppWindow {
 
     fn load_distros(&self, target: &TemplateChild<gtk::ListBox>, distros: Vec<Distro>) {
         target.remove_all();
-        for Distro { name, version, url, .. } in distros {
+        for Distro {
+            name, version, url, ..
+        } in distros
+        {
             let action_row = adw::ActionRow::new();
             action_row.set_title(&name);
             if let Some(subtitle) = version {
@@ -742,11 +741,18 @@ impl AppWindow {
     }
 
     fn refresh_devices(&self) {
+        let (sender, receiver) = async_channel::bounded(1);
+
+        runtime().block_on(async move {
+            let devices = refresh_devices().await;
+            sender.send(devices).await.expect("Concurrency Issues");
+        });
+
         glib::spawn_future_local(glib::clone!(
             #[weak(rename_to = this)]
             self,
             async move {
-                if let Ok(devices) = refresh_devices().await {
+                while let Ok(Ok(devices)) = receiver.recv().await {
                     this.load_devices(devices).await;
                 }
             }
@@ -771,7 +777,7 @@ impl AppWindow {
         imp.selected_device_index.set(None);
 
         let selected_device = if let Some(dev) = self.selected_device() {
-            device_list::preferred_device(&dev).await
+            runtime().block_on(async move { device_list::preferred_device(&dev).await })
         } else {
             None
         };
@@ -784,7 +790,9 @@ impl AppWindow {
             self.imp().stack.set_visible_child_name("no_devices");
             self.imp().main_stack.set_visible_child_name("status");
         } else {
-            for device in device_list::new(self, devices, selected_device).await {
+            let devices = runtime()
+                .block_on(async move { device_list::new(self, devices, selected_device).await });
+            for device in devices {
                 imp.available_devices_list.append(&device);
             }
             self.imp().main_stack.set_visible_child_name("choose");

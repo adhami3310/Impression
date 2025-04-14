@@ -4,6 +4,7 @@ use log::{debug, info};
 use gtk::{gio, glib, prelude::*, subclass::prelude::*};
 
 use crate::config::{APP_ID, PKGDATADIR, PROFILE, VERSION};
+use crate::runtime;
 use crate::window::AppWindow;
 
 mod imp {
@@ -133,7 +134,7 @@ impl App {
         info!("Version: {} ({})", VERSION, PROFILE);
         info!("Datadir: {}", PKGDATADIR);
 
-        glib::spawn_future_local(async {
+        runtime().spawn(async {
             if ashpd::is_sandboxed().await {
                 if let Err(e) = (|| {
                     for entry in std::fs::read_dir(glib::user_cache_dir())? {

@@ -8,17 +8,14 @@ edition = "2021"
 [dependencies]
 gettext-rs = { version = "0.7", features = ["gettext-system"] }
 glib = "0.20"
-gtk = { version = "0.9", package = "gtk4", features = [
-    "blueprint",
-    "gnome_47",
-] }
+gtk = { version = "0.9", package = "gtk4", features = ["blueprint", "v4_16"] }
 gtk-macros = { version = "0.9", package = "gtk4-macros" }
-adw = { version = "0.7", package = "libadwaita", features = ["v1_6"] }
+adw = { version = "0.7", package = "libadwaita", features = ["v1_7"] }
 log = "0.4"
 once_cell = "1.19"
 pretty_env_logger = "0.5"
-itertools = "0.13"
-ashpd = "0.9"
+itertools = "0.14"
+ashpd = "0.11"
 udisks = { package = "udisks2", version = "0.3.1" }
 libc = "0.2"
 reqwest = { version = "0.12", features = ["blocking", "stream", "json"] }
@@ -26,7 +23,7 @@ regex = "1.10"
 roxmltree = "0.20"
 chrono = "0.4"
 anyhow = "1.0"
-thiserror = "1.0"
+thiserror = "2.0"
 derivative = "2.2"
 tokio = { version = "1.40", features = ["process", "rt-multi-thread"] }
 serde_json = "1.0"
