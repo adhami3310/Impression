@@ -256,7 +256,10 @@ impl AppWindow {
             Some(&gettext("This might leave the drive in a faulty state")),
         );
 
-        dialog.add_responses(&[("cancel", &gettext("_Cancel")), ("stop", &gettext("_Stop"))]);
+        dialog.add_responses(&[
+            ("cancel", &gettext("_Cancel")),
+            ("stop", &gettext("_Stop Writing")),
+        ]);
         dialog.set_response_appearance("stop", adw::ResponseAppearance::Destructive);
 
         dialog.connect_response(

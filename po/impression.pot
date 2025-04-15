@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: impression\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-20 12:55-0700\n"
+"POT-Creation-Date: 2025-04-14 22:38-0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,24 +17,24 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: data/io.gitlab.adhami3310.Impression.desktop.in.in:3
+#: data/io.gitlab.adhami3310.Impression.desktop.in.in:2
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:5
 #: data/resources/blueprints/window.blp:9
 #: data/resources/blueprints/window.blp:21
-#: data/resources/blueprints/window.blp:146 src/main.rs:44 src/window.rs:435
+#: data/resources/blueprints/window.blp:146 src/main.rs:51 src/window.rs:443
 msgid "Impression"
 msgstr ""
 
-#: data/io.gitlab.adhami3310.Impression.desktop.in.in:4
+#: data/io.gitlab.adhami3310.Impression.desktop.in.in:3
 msgid "Media Writer"
 msgstr ""
 
-#: data/io.gitlab.adhami3310.Impression.desktop.in.in:5
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:11
+#: data/io.gitlab.adhami3310.Impression.desktop.in.in:4
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:9
 msgid "Create bootable drives"
 msgstr ""
 
-#: data/io.gitlab.adhami3310.Impression.desktop.in.in:11
+#: data/io.gitlab.adhami3310.Impression.desktop.in.in:10
 msgid "usb;flash;writer;bootable;drive;iso;img;disk;image"
 msgstr ""
 
@@ -50,32 +50,30 @@ msgstr ""
 msgid "Window maximized state"
 msgstr ""
 
-#. developer_name tag deprecated with Appstream 1.0
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:7
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:9
 msgid "Khaleel Al-Adhami"
 msgstr ""
 
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:17
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:15
 msgid ""
 "Write disk images to your drives with ease. Select an image, insert your "
 "drive, and you're good to go! Impression is a useful tool for both avid "
 "distro-hoppers and casual computer users."
 msgstr ""
 
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:40
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:41
 msgid "Screen with a choice of a local image or internet download"
 msgstr ""
 
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:44
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:45
 msgid "Screen with a chosen ISO and available USB memories"
 msgstr ""
 
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:48
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:49
 msgid "Writing the ISO in progress"
 msgstr ""
 
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:52
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:53
 msgid "Success screen with a big check mark"
 msgstr ""
 
@@ -110,7 +108,7 @@ msgstr ""
 
 #: data/resources/blueprints/window.blp:35
 #: data/resources/blueprints/window.blp:156
-#: data/resources/blueprints/window.blp:254
+#: data/resources/blueprints/window.blp:255
 msgid "Main Menu"
 msgstr ""
 
@@ -142,126 +140,151 @@ msgstr ""
 msgid "Write"
 msgstr ""
 
-#: data/resources/blueprints/window.blp:283
+#: data/resources/blueprints/window.blp:284
 msgid "No Drives"
 msgstr ""
 
-#: data/resources/blueprints/window.blp:284
+#: data/resources/blueprints/window.blp:285
 msgid "Insert a drive to write to"
 msgstr ""
 
-#: data/resources/blueprints/window.blp:295
+#: data/resources/blueprints/window.blp:296
 msgid "Writing Completed"
 msgstr ""
 
-#: data/resources/blueprints/window.blp:296
+#: data/resources/blueprints/window.blp:297
 msgid "The drive can be safely removed"
 msgstr ""
 
-#: data/resources/blueprints/window.blp:305
+#: data/resources/blueprints/window.blp:306
 msgid "Finish"
 msgstr ""
 
-#: data/resources/blueprints/window.blp:326
+#: data/resources/blueprints/window.blp:327
 msgid "Writing Unsuccessful"
 msgstr ""
 
-#: data/resources/blueprints/window.blp:335
+#: data/resources/blueprints/window.blp:336
 msgid "Retry"
 msgstr ""
 
-#: data/resources/blueprints/window.blp:355 src/window.rs:344 src/window.rs:373
+#: data/resources/blueprints/window.blp:356 src/window.rs:356 src/window.rs:385
 msgid "Writing"
 msgstr ""
 
-#: data/resources/blueprints/window.blp:357 src/window.rs:343
+#: data/resources/blueprints/window.blp:358 src/window.rs:355
 msgid "Do not remove the drive"
 msgstr ""
 
-#: data/resources/blueprints/window.blp:372 src/window.rs:258 src/window.rs:295
+#: data/resources/blueprints/window.blp:373 src/window.rs:260 src/window.rs:307
 msgid "_Cancel"
 msgstr ""
 
-#: data/resources/blueprints/window.blp:400
+#: data/resources/blueprints/window.blp:401
 msgid "Keyboard Shortcuts"
 msgstr ""
 
-#: data/resources/blueprints/window.blp:405
+#: data/resources/blueprints/window.blp:406
 msgid "About Impression"
 msgstr ""
 
-#: src/window.rs:254
+#: src/window.rs:255
 msgid "Stop Writing?"
 msgstr ""
 
-#: src/window.rs:255
+#: src/window.rs:256
 msgid "This might leave the drive in a faulty state"
 msgstr ""
 
-#: src/window.rs:258
-msgid "_Stop"
+#: src/window.rs:261
+msgid "_Stop Writing"
 msgstr ""
 
-#: src/window.rs:288
+#: src/window.rs:303
 msgid "Erase Drive?"
 msgstr ""
 
-#: src/window.rs:289
+#: src/window.rs:304
+#, rust-format
 msgid "You will lose all data stored on {}"
 msgstr ""
 
-#: src/window.rs:296
+#: src/window.rs:308
 msgid "_Erase"
 msgstr ""
 
-#: src/window.rs:337 src/window.rs:367
+#: src/window.rs:349 src/window.rs:379
 msgid "Writing will begin once the download is completed"
 msgstr ""
 
-#: src/window.rs:339 src/window.rs:372
+#: src/window.rs:351 src/window.rs:384
 msgid "Downloading Image"
 msgstr ""
 
-#: src/window.rs:369
+#: src/window.rs:381
 msgid "This could take a while"
 msgstr ""
 
-#: src/window.rs:397
+#: src/window.rs:409
 msgid "Failed to write image"
 msgstr ""
 
-#: src/window.rs:409
+#: src/window.rs:422
 msgid "Image Written"
 msgstr ""
 
-#: src/window.rs:674
+#: src/window.rs:675
 msgid "Disk Images"
 msgstr ""
 
-#: src/window.rs:700
+#: src/window.rs:701
 msgid "File is not a Disk Image"
 msgstr ""
 
-#: src/window.rs:804
+#: src/window.rs:819
 msgid "translator-credits"
 msgstr ""
 
-#: src/window.rs:806
+#: src/window.rs:821
 msgid "Code borrowed from"
 msgstr ""
 
-#: src/flash.rs:95
+#. Translators: Metainfo for the app Footage. <https://gitlab.com/adhami3310/Footage>
+#: src/window.rs:828
+msgid "Footage"
+msgstr ""
+
+#. Translators: Metainfo for the app Footage. <https://gitlab.com/adhami3310/Footage>
+#: src/window.rs:830
+msgid "Polish your videos"
+msgstr ""
+
+#. Translators: Metainfo for the app Switcheroo. <https://gitlab.com/adhami3310/Switcheroo>
+#: src/window.rs:836
+msgid "Switcheroo"
+msgstr ""
+
+#. Translators: Metainfo for the app Switcheroo. <https://gitlab.com/adhami3310/Switcheroo>
+#: src/window.rs:838
+msgid "Convert and manipulate images"
+msgstr ""
+
+#: src/flash.rs:93
+msgid "Failed to unmount disk"
+msgstr ""
+
+#: src/flash.rs:120
 msgid "Failed to open disk"
 msgstr ""
 
-#: src/flash.rs:145
+#: src/flash.rs:170
 msgid "Failed to extract drive"
 msgstr ""
 
-#: src/flash.rs:203
+#: src/flash.rs:228
 msgid "Failed to download image"
 msgstr ""
 
-#: src/flash.rs:256
+#: src/flash.rs:285
 msgid "Writing to disk failed"
 msgstr ""
