@@ -75,6 +75,19 @@
   <content_rating type="oars-1.1" />
 
   <releases>
+    <rleease version="3.4.0" date="2025-04-15">
+      <description translate="no">
+        <p>Update to GNOME 48 runtime and bug fixes.</p>
+        <ul>
+          <li>Fix cancel button not working as expected</li>
+          <li>Add variants to the list of available images</li>
+        </ul>
+        <p>
+          Volunteers have contributed Norwegian Bokmål, Polish, and Finnish translations. Thank you
+          for your contributions!
+        </p>
+      </description>
+    </rleease>
     <release version="3.3.0" date="2024-09-20">
       <description translate="no">
         <p>Update to GNOME 47 runtime and bug fixes.</p>
