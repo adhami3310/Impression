@@ -124,8 +124,10 @@ impl App {
     }
 
     fn present_main_window(&self) {
-        let window = AppWindow::new(self);
-        let window: gtk::Window = window.upcast();
+        let window = self.active_window().unwrap_or_else(|| {
+            let window = AppWindow::new(self);
+            window.upcast()
+        });
         window.present();
     }
 
