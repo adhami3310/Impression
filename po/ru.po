@@ -3,40 +3,41 @@
 # This file is distributed under the same license as the impression package.
 # Сергей Ворон <voron@duck.com>, 2023.
 #
+# SPDX-FileCopyrightText: 2025 Olesya Gerasimenko <translation-team@basealt.ru>
 msgid ""
 msgstr ""
 "Project-Id-Version: impression\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-21 07:23-0400\n"
-"PO-Revision-Date: 2024-03-21 15:01+0300\n"
-"Last-Translator: Сергей Ворон <voron@duck.com>\n"
-"Language-Team: \n"
+"POT-Creation-Date: 2025-04-14 22:38-0700\n"
+"PO-Revision-Date: 2025-04-28 11:53+0300\n"
+"Last-Translator: Olesya Gerasimenko <translation-team@basealt.ru>\n"
+"Language-Team: Basealt Translation Team\n"
 "Language: ru_RU\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
-"n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
-"X-Generator: Poedit 3.4.2\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<"
+"=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
+"X-Generator: Lokalize 23.08.5\n"
 
-#: data/io.gitlab.adhami3310.Impression.desktop.in.in:3
+#: data/io.gitlab.adhami3310.Impression.desktop.in.in:2
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:5
 #: data/resources/blueprints/window.blp:9
 #: data/resources/blueprints/window.blp:21
-#: data/resources/blueprints/window.blp:146 src/main.rs:57 src/window.rs:424
+#: data/resources/blueprints/window.blp:146 src/main.rs:51 src/window.rs:443
 msgid "Impression"
 msgstr "Impression"
 
-#: data/io.gitlab.adhami3310.Impression.desktop.in.in:4
+#: data/io.gitlab.adhami3310.Impression.desktop.in.in:3
 msgid "Media Writer"
 msgstr "Запись носителей"
 
-#: data/io.gitlab.adhami3310.Impression.desktop.in.in:5
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:11
+#: data/io.gitlab.adhami3310.Impression.desktop.in.in:4
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:9
 msgid "Create bootable drives"
 msgstr "Создание загрузочных дисков"
 
-#: data/io.gitlab.adhami3310.Impression.desktop.in.in:11
+#: data/io.gitlab.adhami3310.Impression.desktop.in.in:10
 msgid "usb;flash;writer;bootable;drive;iso;img;disk;image"
 msgstr ""
 "usb;flash;bootable;drive;iso;disk;image;запись;загрузочный;накопитель;диск;"
@@ -54,13 +55,11 @@ msgstr "Высота окна"
 msgid "Window maximized state"
 msgstr "Окно развернуто"
 
-#. developer_name tag deprecated with Appstream 1.0
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:7
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:9
 msgid "Khaleel Al-Adhami"
 msgstr "Khaleel Al-Adhami"
 
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:17
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:15
 msgid ""
 "Write disk images to your drives with ease. Select an image, insert your "
 "drive, and you're good to go! Impression is a useful tool for both avid "
@@ -70,144 +69,21 @@ msgstr ""
 "и все готово! Impression — полезный инструмент как для заядлых любителей "
 "дистрибутивов, так и для обычных пользователей компьютеров."
 
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:38
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:41
 msgid "Screen with a choice of a local image or internet download"
 msgstr "Экран с выбором локального образа или загрузки из интернета"
 
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:42
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:45
 msgid "Screen with a chosen ISO and available USB memories"
 msgstr "Экран с выбранным ISO и доступными USB-накопителями"
 
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:46
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:49
 msgid "Writing the ISO in progress"
 msgstr "Выполняется запись ISO"
 
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:50
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:53
 msgid "Success screen with a big check mark"
 msgstr "Экран успешного выполнения с большой галочкой"
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:70
-msgid "This is a minor release of Impression with a few small improvements."
-msgstr "Это минорный релиз Impression с несколькими небольшими улучшениями."
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:72
-msgid "Support for .xz files"
-msgstr "Поддержка файлов .xz"
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:73
-msgid "Faster downloading of images"
-msgstr "Более быстрая загрузка образов"
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:75
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:91
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:102
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:117
-msgid ""
-"Impression is made possible by volunteer developers, designers, and "
-"translators. Thank you for your contributions!"
-msgstr ""
-"Impression существует благодаря добровольным разработчикам, дизайнерам и "
-"переводчикам. Спасибо за ваш вклад!"
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:80
-msgid ""
-"This minor release fixes a bug where some .ISO files wouldn't be detected."
-msgstr ""
-"В этом минорном релизе исправлена ошибка, из-за которой некоторые файлы .ISO "
-"не обнаруживались."
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:85
-msgid ""
-"This release of Impression brings even more convenience and power to your "
-"fingertips:"
-msgstr ""
-"Этот релиз Impression предоставляет вам еще больше удобств и возможностей:"
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:87
-msgid "Direct download of a selection of images directly from the app"
-msgstr "Прямая загрузка выбранного образа прямо из приложения"
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:88
-msgid "Updated and more understandable terminology"
-msgstr "Обновленная и более понятная терминология"
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:89
-msgid "Security fixes"
-msgstr "Исправления безопасности"
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:96
-msgid "This minor release of Impression delivers:"
-msgstr "Этот незначительный выпуск Impression приносит:"
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:98
-msgid "Support for mobile screen sizes"
-msgstr "Поддержка размеров экрана мобильных устройств"
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:99
-msgid "Various bug fixes, improving reliability and stability"
-msgstr ""
-"Различные исправления ошибок, повышающие надежность и стабильность работы"
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:100
-msgid ""
-"Brazillian Portugese translations, making Impression available in a total of "
-"9 languages"
-msgstr ""
-"Бразильский португальский перевод, что делает Impression доступным в общей "
-"сложности на 9 языках"
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:107
-msgid ""
-"This major release of Impression brings a bunch of exciting improvements:"
-msgstr ""
-"Этот крупный выпуск Impression содержит целый ряд интересных улучшений:"
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:109
-msgid ""
-"Visual enhancements to make the app more beautiful, focused, and engaging"
-msgstr ""
-"Визуальные улучшения, делающие приложение более красивым, целенаправленным и "
-"привлекательным"
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:110
-msgid "Automatic updates of the available drives list"
-msgstr "Автоматическое обновление списка доступных дисков"
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:111
-msgid "Explicit drive selection before flashing, to avoid accidental data loss"
-msgstr ""
-"Явный выбор диска перед записью позволяет избежать случайной потери данных"
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:112
-msgid ""
-"Turkish and Czech translations, making Impression available in a total of 8 "
-"languages"
-msgstr ""
-"Переводы на турецкий и чешский языки, благодаря чему Impression доступен в "
-"общей сложности на 8 языках"
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:114
-msgid ""
-"The versioning scheme has been simplified to only include major and minor "
-"versions. The previous version of Impression was 1.0.1, this is version 2.0. "
-"Going forward, new features and noticeable changes will be included in new "
-"major releases, while fixes and translations will result in new minor "
-"releases."
-msgstr ""
-"Схема версий была упрощена и теперь включает в себя только мажорные и "
-"минорные версии. Предыдущая версия Impression была 1.0.1, эта версия - 2.0. "
-"В дальнейшем новые возможности и заметные изменения будут включаться в новые "
-"мажорные версии, а исправления и переводы - в новые минорные версии."
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:122
-msgid "Added Spanish, French, German, Russian, and Italian translations."
-msgstr ""
-"Добавлены переводы на испанский, французский, немецкий, русский и "
-"итальянский языки."
-
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:127
-msgid "Initial version."
-msgstr "Первоначальная версия."
 
 #: data/resources/blueprints/help-overlay.blp:11
 msgctxt "shortcut window"
@@ -240,7 +116,7 @@ msgstr "Перетащите сюда, чтобы открыть"
 
 #: data/resources/blueprints/window.blp:35
 #: data/resources/blueprints/window.blp:156
-#: data/resources/blueprints/window.blp:254
+#: data/resources/blueprints/window.blp:255
 msgid "Main Menu"
 msgstr "Главное меню"
 
@@ -272,127 +148,260 @@ msgstr "Все данные на выбранном диске будут уда
 msgid "Write"
 msgstr "Записать"
 
-#: data/resources/blueprints/window.blp:283
+#: data/resources/blueprints/window.blp:284
 msgid "No Drives"
 msgstr "Нет дисков"
 
-#: data/resources/blueprints/window.blp:284
+#: data/resources/blueprints/window.blp:285
 msgid "Insert a drive to write to"
 msgstr "Вставьте диск для записи"
 
-#: data/resources/blueprints/window.blp:295
+#: data/resources/blueprints/window.blp:296
 msgid "Writing Completed"
 msgstr "Запись завершена"
 
-#: data/resources/blueprints/window.blp:296
+#: data/resources/blueprints/window.blp:297
 msgid "The drive can be safely removed"
 msgstr "Диск можно безопасно извлечь"
 
-#: data/resources/blueprints/window.blp:305
+#: data/resources/blueprints/window.blp:306
 msgid "Finish"
 msgstr "Готово"
 
-#: data/resources/blueprints/window.blp:326
+#: data/resources/blueprints/window.blp:327
 msgid "Writing Unsuccessful"
 msgstr "Запись не удалась"
 
-#: data/resources/blueprints/window.blp:335
+#: data/resources/blueprints/window.blp:336
 msgid "Retry"
 msgstr "Повторить попытку"
 
-#: data/resources/blueprints/window.blp:355 src/window.rs:331 src/window.rs:365
+#: data/resources/blueprints/window.blp:356 src/window.rs:356 src/window.rs:385
 msgid "Writing"
 msgstr "Запись"
 
-#: data/resources/blueprints/window.blp:357 src/window.rs:330
+#: data/resources/blueprints/window.blp:358 src/window.rs:355
 msgid "Do not remove the drive"
 msgstr "Не извлекайте диск"
 
-#: data/resources/blueprints/window.blp:372 src/window.rs:250 src/window.rs:286
+#: data/resources/blueprints/window.blp:373 src/window.rs:260 src/window.rs:307
 msgid "_Cancel"
 msgstr "_Отменить"
 
-#: data/resources/blueprints/window.blp:400
+#: data/resources/blueprints/window.blp:401
 msgid "Keyboard Shortcuts"
 msgstr "Комбинации клавиш"
 
-#: data/resources/blueprints/window.blp:405
+#: data/resources/blueprints/window.blp:406
 msgid "About Impression"
 msgstr "О приложении"
 
-#: src/window.rs:246
+#: src/window.rs:255
 msgid "Stop Writing?"
 msgstr "Остановить запись?"
 
-#: src/window.rs:247
+#: src/window.rs:256
 msgid "This might leave the drive in a faulty state"
 msgstr "Это может привести к выходу накопителя из строя."
 
-#: src/window.rs:250
-msgid "_Stop"
-msgstr "_Остановить"
+#: src/window.rs:261
+msgid "_Stop Writing"
+msgstr "_Остановить запись"
 
-#: src/window.rs:279
+#: src/window.rs:303
 msgid "Erase Drive?"
 msgstr "Стереть диск?"
 
-#: src/window.rs:287
+#: src/window.rs:304
+msgid "You will lose all data stored on {}"
+msgstr "Будут потеряны все данные на {}"
+
+#: src/window.rs:308
 msgid "_Erase"
 msgstr "_Стереть"
 
-#: src/window.rs:324 src/window.rs:353
+#: src/window.rs:349 src/window.rs:379
 msgid "Writing will begin once the download is completed"
 msgstr "Запись начнется сразу после завершения загрузки"
 
-#: src/window.rs:326 src/window.rs:362
+#: src/window.rs:351 src/window.rs:384
 msgid "Downloading Image"
 msgstr "Загрузка образа"
 
-#: src/window.rs:356
+#: src/window.rs:381
 msgid "This could take a while"
 msgstr "Это может занять некоторое время"
 
-#: src/window.rs:391
+#: src/window.rs:409
 msgid "Failed to write image"
 msgstr "Не удалось записать образ"
 
-#: src/window.rs:399
+#: src/window.rs:422
 msgid "Image Written"
 msgstr "Образ записан"
 
-#: src/window.rs:603
+#: src/window.rs:675
 msgid "Disk Images"
 msgstr "Образы дисков"
 
-#: src/window.rs:629
+#: src/window.rs:701
 msgid "File is not a Disk Image"
 msgstr "Файл не является образом диска"
 
-#: src/window.rs:734
+#: src/window.rs:819
 msgid "translator-credits"
 msgstr ""
 "Сергей Ворон <voron@duck.com>\n"
-"Aleksandr Melman <Alexmelman88@gmail.com>"
+"Aleksandr Melman <Alexmelman88@gmail.com>\n"
+"Герасименко Олеся <goa@altlinux.org>\n"
 
-#: src/window.rs:736
+#: src/window.rs:821
 msgid "Code borrowed from"
 msgstr "Код заимствован из"
 
-#: src/flash.rs:95
+#. Translators: Metainfo for the app Footage. <https://gitlab.com/adhami3310/Footage>
+#: src/window.rs:828
+msgid "Footage"
+msgstr "Footage"
+
+#. Translators: Metainfo for the app Footage. <https://gitlab.com/adhami3310/Footage>
+#: src/window.rs:830
+msgid "Polish your videos"
+msgstr "Улучшение ваших видео"
+
+#. Translators: Metainfo for the app Switcheroo. <https://gitlab.com/adhami3310/Switcheroo>
+#: src/window.rs:836
+msgid "Switcheroo"
+msgstr "Switcheroo"
+
+#. Translators: Metainfo for the app Switcheroo. <https://gitlab.com/adhami3310/Switcheroo>
+#: src/window.rs:838
+msgid "Convert and manipulate images"
+msgstr "Конвертирование и обработка изображений"
+
+#: src/flash.rs:93
+msgid "Failed to unmount disk"
+msgstr "Не удалось отключить диск"
+
+#: src/flash.rs:120
 msgid "Failed to open disk"
 msgstr "Не удалось открыть диск"
 
-#: src/flash.rs:145
+#: src/flash.rs:170
 msgid "Failed to extract drive"
 msgstr "Не удалось извлечь диск"
 
-#: src/flash.rs:203
+#: src/flash.rs:228
 msgid "Failed to download image"
 msgstr "Не удалось загрузить образ"
 
-#: src/flash.rs:256
+#: src/flash.rs:285
 msgid "Writing to disk failed"
 msgstr "Запись на диск не удалась"
+
+#~ msgid "This is a minor release of Impression with a few small improvements."
+#~ msgstr "Это минорный релиз Impression с несколькими небольшими улучшениями."
+
+#~ msgid "Support for .xz files"
+#~ msgstr "Поддержка файлов .xz"
+
+#~ msgid "Faster downloading of images"
+#~ msgstr "Более быстрая загрузка образов"
+
+#~ msgid ""
+#~ "Impression is made possible by volunteer developers, designers, and "
+#~ "translators. Thank you for your contributions!"
+#~ msgstr ""
+#~ "Impression существует благодаря добровольным разработчикам, дизайнерам и "
+#~ "переводчикам. Спасибо за ваш вклад!"
+
+#~ msgid ""
+#~ "This minor release fixes a bug where some .ISO files wouldn't be detected."
+#~ msgstr ""
+#~ "В этом минорном релизе исправлена ошибка, из-за которой некоторые файлы ."
+#~ "ISO не обнаруживались."
+
+#~ msgid ""
+#~ "This release of Impression brings even more convenience and power to your "
+#~ "fingertips:"
+#~ msgstr ""
+#~ "Этот релиз Impression предоставляет вам еще больше удобств и возможностей:"
+
+#~ msgid "Direct download of a selection of images directly from the app"
+#~ msgstr "Прямая загрузка выбранного образа прямо из приложения"
+
+#~ msgid "Updated and more understandable terminology"
+#~ msgstr "Обновленная и более понятная терминология"
+
+#~ msgid "Security fixes"
+#~ msgstr "Исправления безопасности"
+
+#~ msgid "This minor release of Impression delivers:"
+#~ msgstr "Этот незначительный выпуск Impression приносит:"
+
+#~ msgid "Support for mobile screen sizes"
+#~ msgstr "Поддержка размеров экрана мобильных устройств"
+
+#~ msgid "Various bug fixes, improving reliability and stability"
+#~ msgstr ""
+#~ "Различные исправления ошибок, повышающие надежность и стабильность работы"
+
+#~ msgid ""
+#~ "Brazillian Portugese translations, making Impression available in a total "
+#~ "of 9 languages"
+#~ msgstr ""
+#~ "Бразильский португальский перевод, что делает Impression доступным в "
+#~ "общей сложности на 9 языках"
+
+#~ msgid ""
+#~ "This major release of Impression brings a bunch of exciting improvements:"
+#~ msgstr ""
+#~ "Этот крупный выпуск Impression содержит целый ряд интересных улучшений:"
+
+#~ msgid ""
+#~ "Visual enhancements to make the app more beautiful, focused, and engaging"
+#~ msgstr ""
+#~ "Визуальные улучшения, делающие приложение более красивым, "
+#~ "целенаправленным и привлекательным"
+
+#~ msgid "Automatic updates of the available drives list"
+#~ msgstr "Автоматическое обновление списка доступных дисков"
+
+#~ msgid ""
+#~ "Explicit drive selection before flashing, to avoid accidental data loss"
+#~ msgstr ""
+#~ "Явный выбор диска перед записью позволяет избежать случайной потери данных"
+
+#~ msgid ""
+#~ "Turkish and Czech translations, making Impression available in a total of "
+#~ "8 languages"
+#~ msgstr ""
+#~ "Переводы на турецкий и чешский языки, благодаря чему Impression доступен "
+#~ "в общей сложности на 8 языках"
+
+#~ msgid ""
+#~ "The versioning scheme has been simplified to only include major and minor "
+#~ "versions. The previous version of Impression was 1.0.1, this is version "
+#~ "2.0. Going forward, new features and noticeable changes will be included "
+#~ "in new major releases, while fixes and translations will result in new "
+#~ "minor releases."
+#~ msgstr ""
+#~ "Схема версий была упрощена и теперь включает в себя только мажорные и "
+#~ "минорные версии. Предыдущая версия Impression была 1.0.1, эта версия - "
+#~ "2.0. В дальнейшем новые возможности и заметные изменения будут включаться "
+#~ "в новые мажорные версии, а исправления и переводы - в новые минорные "
+#~ "версии."
+
+#~ msgid "Added Spanish, French, German, Russian, and Italian translations."
+#~ msgstr ""
+#~ "Добавлены переводы на испанский, французский, немецкий, русский и "
+#~ "итальянский языки."
+
+#~ msgid "Initial version."
+#~ msgstr "Первоначальная версия."
+
+#~ msgid "_Stop"
+#~ msgstr "_Остановить"
 
 #~ msgid "Copying files…"
 #~ msgstr "Копирование файлов…"
@@ -405,9 +414,6 @@ msgstr "Запись на диск не удалась"
 
 #~ msgid "flash"
 #~ msgstr "запись"
-
-#~ msgid "bootable"
-#~ msgstr "загрузочный"
 
 #~ msgid "drive"
 #~ msgstr "накопитель"
@@ -476,3 +482,4 @@ msgstr "Запись на диск не удалась"
 
 #~ msgid "Primary Menu"
 #~ msgstr "Главное меню"
+
