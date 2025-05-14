@@ -261,7 +261,7 @@ msgstr "Footage"
 #. Translators: Metainfo for the app Footage. <https://gitlab.com/adhami3310/Footage>
 #: src/window.rs:830
 msgid "Polish your videos"
-msgstr "Melhoratz vòstras fòtos"
+msgstr "Melhoratz vòstras vidèos"
 
 #. Translators: Metainfo for the app Switcheroo. <https://gitlab.com/adhami3310/Switcheroo>
 #: src/window.rs:836
