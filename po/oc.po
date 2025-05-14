@@ -8,34 +8,34 @@ msgid ""
 msgstr ""
 "Project-Id-Version: impression\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-13 14:43-0400\n"
-"PO-Revision-Date: 2024-03-29 12:56+0100\n"
+"POT-Creation-Date: 2025-04-14 22:38-0700\n"
+"PO-Revision-Date: 2025-05-14 13:09+1000\n"
 "Last-Translator: Quentin PAGÈS\n"
 "Language-Team: \n"
 "Language: oc\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.4.2\n"
+"X-Generator: Poedit 3.6\n"
 
-#: data/io.gitlab.adhami3310.Impression.desktop.in.in:3
+#: data/io.gitlab.adhami3310.Impression.desktop.in.in:2
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:5
 #: data/resources/blueprints/window.blp:9
 #: data/resources/blueprints/window.blp:21
-#: data/resources/blueprints/window.blp:139 src/main.rs:56 src/window.rs:388
+#: data/resources/blueprints/window.blp:146 src/main.rs:51 src/window.rs:443
 msgid "Impression"
 msgstr "Impression"
 
-#: data/io.gitlab.adhami3310.Impression.desktop.in.in:4
+#: data/io.gitlab.adhami3310.Impression.desktop.in.in:3
 msgid "Media Writer"
 msgstr "Enregistrador de mèdia"
 
-#: data/io.gitlab.adhami3310.Impression.desktop.in.in:5
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:11
+#: data/io.gitlab.adhami3310.Impression.desktop.in.in:4
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:9
 msgid "Create bootable drives"
 msgstr "Crear de lector aviables"
 
-#: data/io.gitlab.adhami3310.Impression.desktop.in.in:11
+#: data/io.gitlab.adhami3310.Impression.desktop.in.in:10
 msgid "usb;flash;writer;bootable;drive;iso;img;disk;image"
 msgstr "usb;flash;escriure;aviable;bootable;lector;iso;disc;imatges"
 
@@ -51,12 +51,11 @@ msgstr "Nautor de la fenèstra"
 msgid "Window maximized state"
 msgstr "Estat maximizat de la fenèstra"
 
-#. developer_name tag deprecated with Appstream 1.0
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:7
 msgid "Khaleel Al-Adhami"
 msgstr "Khaleel Al-Adhami"
 
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:17
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:15
 msgid ""
 "Write disk images to your drives with ease. Select an image, insert your "
 "drive, and you're good to go! Impression is a useful tool for both avid "
@@ -67,19 +66,19 @@ msgstr ""
 "utila tan pels afogats de gravadura d’iso coma pels utilizaires d’ordenador "
 "ordinaris."
 
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:38
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:41
 msgid "Screen with a choice of a local image or internet download"
 msgstr "Ecran amb la causida d’imatges locals e lo telecargament internet"
 
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:42
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:45
 msgid "Screen with a chosen ISO and available USB memories"
 msgstr "Ecran amb l’ISO causit e las memòrias USB disponiblas"
 
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:46
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:49
 msgid "Writing the ISO in progress"
 msgstr "Escritura de l’ISO en cors"
 
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:50
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:53
 msgid "Success screen with a big check mark"
 msgstr "Ecran de succès amb una granda marca de verificacion"
 
@@ -108,156 +107,194 @@ msgctxt "shortcut window"
 msgid "Quit"
 msgstr "Quitar"
 
-#: data/resources/blueprints/window.blp:31
-#: data/resources/blueprints/window.blp:149
-#: data/resources/blueprints/window.blp:247
+#: data/resources/blueprints/window.blp:25
+msgid "Drop Here to Open"
+msgstr "Depausatz aicí per dobrir"
+
+#: data/resources/blueprints/window.blp:35
+#: data/resources/blueprints/window.blp:156
+#: data/resources/blueprints/window.blp:255
 msgid "Main Menu"
 msgstr "Menú principal"
 
-#: data/resources/blueprints/window.blp:50
+#: data/resources/blueprints/window.blp:54
 msgid "Choose Image"
 msgstr "Causir un imatge"
 
-#: data/resources/blueprints/window.blp:60
+#: data/resources/blueprints/window.blp:64
 msgid "Open File…"
 msgstr "Dobrir un fichièr…"
 
-#: data/resources/blueprints/window.blp:70
+#: data/resources/blueprints/window.blp:74
 msgid "Direct Download"
 msgstr "Telecargament dirècte"
 
-#: data/resources/blueprints/window.blp:104
+#: data/resources/blueprints/window.blp:108
 msgid "No Connection"
 msgstr "Cap de connexion"
 
-#: data/resources/blueprints/window.blp:105
+#: data/resources/blueprints/window.blp:109
 msgid "Connect to the internet to view available images"
 msgstr "Connectatz-vos a l’Internet per veire los imatges disponibles"
 
-#: data/resources/blueprints/window.blp:211
+#: data/resources/blueprints/window.blp:218
 msgid "All data on the selected drive will be erased"
 msgstr "Totas las donadas del lector seleccionat seràn escafadas"
 
-#: data/resources/blueprints/window.blp:214
+#: data/resources/blueprints/window.blp:221
 msgid "Write"
 msgstr "Escriure"
 
-#: data/resources/blueprints/window.blp:276
+#: data/resources/blueprints/window.blp:284
 msgid "No Drives"
 msgstr "Cap de lector"
 
-#: data/resources/blueprints/window.blp:277
+#: data/resources/blueprints/window.blp:285
 msgid "Insert a drive to write to"
 msgstr "Inserir un lector ont escriure"
 
-#: data/resources/blueprints/window.blp:288
+#: data/resources/blueprints/window.blp:296
 msgid "Writing Completed"
 msgstr "Escritura acabada"
 
-#: data/resources/blueprints/window.blp:289
+#: data/resources/blueprints/window.blp:297
 msgid "The drive can be safely removed"
 msgstr "Se pòt levar lo lector en tota seguretat"
 
-#: data/resources/blueprints/window.blp:298
+#: data/resources/blueprints/window.blp:306
 msgid "Finish"
 msgstr "Acabar"
 
-#: data/resources/blueprints/window.blp:319
+#: data/resources/blueprints/window.blp:327
 msgid "Writing Unsuccessful"
 msgstr "Escritura fracassada"
 
-#: data/resources/blueprints/window.blp:328
+#: data/resources/blueprints/window.blp:336
 msgid "Retry"
 msgstr "Tornar ensajar"
 
-#: data/resources/blueprints/window.blp:348 src/window.rs:295 src/window.rs:329
-msgid "Writing…"
-msgstr "Escritura…"
+#: data/resources/blueprints/window.blp:356 src/window.rs:356 src/window.rs:385
+msgid "Writing"
+msgstr "Escritura"
 
-#: data/resources/blueprints/window.blp:350 src/window.rs:294
+#: data/resources/blueprints/window.blp:358 src/window.rs:355
 msgid "Do not remove the drive"
 msgstr "Tiretz pas lo lector"
 
-#: data/resources/blueprints/window.blp:365 src/window.rs:214 src/window.rs:250
+#: data/resources/blueprints/window.blp:373 src/window.rs:260 src/window.rs:307
 msgid "_Cancel"
 msgstr "_Anullar"
 
-#: data/resources/blueprints/window.blp:393
+#: data/resources/blueprints/window.blp:401
 msgid "Keyboard Shortcuts"
 msgstr "Acorchis de clavièr"
 
-#: data/resources/blueprints/window.blp:398
+#: data/resources/blueprints/window.blp:406
 msgid "About Impression"
 msgstr "A prepaus d’Impression"
 
-#: src/window.rs:210
+#: src/window.rs:255
 msgid "Stop Writing?"
 msgstr "Arrestar l’escritura ?"
 
-#: src/window.rs:211
-msgid "This might leave the drive in a faulty state."
-msgstr "Aquò pòt daissar lo lector dins un estat defectuós."
+#: src/window.rs:256
+msgid "This might leave the drive in a faulty state"
+msgstr "Aquò pòt daissar lo lector dins un estat defectuós"
 
-#: src/window.rs:214
-msgid "_Stop"
-msgstr "_Arrestar"
+#: src/window.rs:261
+msgid "_Stop Writing"
+msgstr "_Arrestar l’escritura"
 
-#: src/window.rs:243
+#: src/window.rs:303
 msgid "Erase Drive?"
 msgstr "Espotir lo lector ?"
 
-#: src/window.rs:251
+#: src/window.rs:304
+msgid "You will lose all data stored on {}"
+msgstr "Perdretz totas las donadas gardadas sus {}"
+
+#: src/window.rs:308
 msgid "_Erase"
 msgstr "_Escafar"
 
-#: src/window.rs:288 src/window.rs:317
+#: src/window.rs:349 src/window.rs:379
 msgid "Writing will begin once the download is completed"
 msgstr "L’escritura començarà un còp lo telecargament terminat"
 
-#: src/window.rs:290 src/window.rs:326
-msgid "Downloading Image…"
-msgstr "Telecargament de l’imatge…"
+#: src/window.rs:351 src/window.rs:384
+msgid "Downloading Image"
+msgstr "Telecargament de l’imatge"
 
-#: src/window.rs:320
-msgid "Copying files…"
-msgstr "Còpia dels fichièrs…"
+#: src/window.rs:381
+msgid "This could take a while"
+msgstr "Aquò pòt trigar"
 
-#: src/window.rs:355
+#: src/window.rs:409
 msgid "Failed to write image"
 msgstr "Escritura impossibla de l’imatge disc"
 
-#: src/window.rs:363
+#: src/window.rs:422
 msgid "Image Written"
 msgstr "Imatge escrich"
 
-#: src/window.rs:567
+#: src/window.rs:675
 msgid "Disk Images"
 msgstr "Imatges disc"
 
-#: src/window.rs:593
+#: src/window.rs:701
 msgid "File is not a Disk Image"
 msgstr "Lo fichièr es pas un imatge disc"
 
-#: src/window.rs:698
+#: src/window.rs:819
 msgid "translator-credits"
 msgstr "Quentin PAGÈS"
 
-#: src/window.rs:700
+#: src/window.rs:821
 msgid "Code borrowed from"
 msgstr "Còdi empruntat de"
 
-#: src/flash.rs:95
+#. Translators: Metainfo for the app Footage. <https://gitlab.com/adhami3310/Footage>
+#: src/window.rs:828
+msgid "Footage"
+msgstr "Footage"
+
+#. Translators: Metainfo for the app Footage. <https://gitlab.com/adhami3310/Footage>
+#: src/window.rs:830
+msgid "Polish your videos"
+msgstr "Melhoratz vòstras fòtos"
+
+#. Translators: Metainfo for the app Switcheroo. <https://gitlab.com/adhami3310/Switcheroo>
+#: src/window.rs:836
+msgid "Switcheroo"
+msgstr "Switcheroo"
+
+#. Translators: Metainfo for the app Switcheroo. <https://gitlab.com/adhami3310/Switcheroo>
+#: src/window.rs:838
+msgid "Convert and manipulate images"
+msgstr "Convertir e manipular d’imatges"
+
+#: src/flash.rs:93
+msgid "Failed to unmount disk"
+msgstr "Desmontatge impossible del disc"
+
+#: src/flash.rs:120
 msgid "Failed to open disk"
 msgstr "Dobertura impossibla del disc"
 
-#: src/flash.rs:145
+#: src/flash.rs:170
 msgid "Failed to extract drive"
 msgstr "Extraccion impossibla del lector"
 
-#: src/flash.rs:203
+#: src/flash.rs:228
 msgid "Failed to download image"
 msgstr "Telecargament impossible de l’imatge"
 
-#: src/flash.rs:256
+#: src/flash.rs:285
 msgid "Writing to disk failed"
 msgstr "Fracàs de l’escritura al disc"
+
+#~ msgid "_Stop"
+#~ msgstr "_Arrestar"
+
+#~ msgid "Copying files…"
+#~ msgstr "Còpia dels fichièrs…"
