@@ -2,19 +2,22 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the impression package.
 # ALBANO BATTISTELLA <ALBANOBATTISTELLA@HOTMAIL.COM>, 2023.
+# Raffaele Gualtieri <raffaelegual@tutamail.com>, 2025.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: impression\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-03-20 21:04-0400\n"
-"PO-Revision-Date: 2023-06-14 12:13+0100\n"
-"Last-Translator: Albano Battistella <albano_battistella@hotmail.com>\n"
-"Language-Team: Italian <LL@li.org>\n"
+"PO-Revision-Date: 2025-05-21 19:55+0200\n"
+"Last-Translator: Raffaele Gualtieri <raffaelegual@tutamail.com>\n"
+"Language-Team: Italian\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Gtranslator 48.0\n"
 
 #: data/io.gitlab.adhami3310.Impression.desktop.in.in:3
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:5
@@ -90,7 +93,7 @@ msgstr ""
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:72
 msgid "Support for .xz files"
-msgstr ""
+msgstr "Supporto per i file .xz"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:73
 #, fuzzy
@@ -238,11 +241,12 @@ msgstr ""
 
 #: data/resources/blueprints/window.blp:108
 msgid "No Connection"
-msgstr ""
+msgstr "Nessuna connessione"
 
 #: data/resources/blueprints/window.blp:109
+#, fuzzy
 msgid "Connect to the internet to view available images"
-msgstr ""
+msgstr "Connettersi a Internet per visualizzare le iso disponibili"
 
 #: data/resources/blueprints/window.blp:218
 msgid "All data on the selected drive will be erased"
@@ -250,7 +254,7 @@ msgstr "Tutti i dati sull'unità selezionata verranno cancellati"
 
 #: data/resources/blueprints/window.blp:221
 msgid "Write"
-msgstr ""
+msgstr "Scrivi"
 
 #: data/resources/blueprints/window.blp:283
 msgid "No Drives"
@@ -319,19 +323,19 @@ msgstr "_Ferma"
 
 #: src/window.rs:279
 msgid "Erase Drive?"
-msgstr ""
+msgstr "Cancellare l'unità?"
 
 #: src/window.rs:287
 msgid "_Erase"
-msgstr ""
+msgstr "_Cancellare"
 
 #: src/window.rs:324 src/window.rs:353
 msgid "Writing will begin once the download is completed"
-msgstr ""
+msgstr "La scrittura inizierà una volta completato il download"
 
 #: src/window.rs:326 src/window.rs:362
 msgid "Downloading Image…"
-msgstr ""
+msgstr "Scaricamento dell'immagine..."
 
 #: src/window.rs:356
 msgid "Copying files…"
@@ -344,7 +348,7 @@ msgstr "Impossibile eseguire il flashing dell'immagine"
 
 #: src/window.rs:399
 msgid "Image Written"
-msgstr ""
+msgstr "Immagine scritta"
 
 #: src/window.rs:603
 msgid "Disk Images"
@@ -357,7 +361,7 @@ msgstr "Impossibile eseguire il flashing dell'immagine"
 
 #: src/window.rs:734
 msgid "translator-credits"
-msgstr "Albano Battistella"
+msgstr "Raffaele Gualtieri\nAlbano Battistella"
 
 #: src/window.rs:736
 msgid "Code borrowed from"
@@ -379,9 +383,8 @@ msgid "Failed to download image"
 msgstr "Impossibile eseguire il flashing dell'immagine"
 
 #: src/flash.rs:256
-#, fuzzy
 msgid "Writing to disk failed"
-msgstr "Flashing completato"
+msgstr "Scrittura su disco fallita"
 
 #~ msgid "usb"
 #~ msgstr "usb"
