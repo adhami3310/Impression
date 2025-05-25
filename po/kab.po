@@ -1,0 +1,291 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the impression package.
+# butterflyoffire <butterflyoffire@noreply.codeberg.org>, 2025.
+msgid ""
+msgstr ""
+"Project-Id-Version: impression\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-04-14 22:38-0700\n"
+"PO-Revision-Date: 2025-05-10 08:57+0000\n"
+"Last-Translator: butterflyoffire <butterflyoffire@noreply.codeberg.org>\n"
+"Language-Team: Kabyle <https://translate.codeberg.org/projects/impression/"
+"impression/kab/>\n"
+"Language: kab\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 5.10.2\n"
+
+#: data/io.gitlab.adhami3310.Impression.desktop.in.in:2
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:5
+#: data/resources/blueprints/window.blp:9
+#: data/resources/blueprints/window.blp:21
+#: data/resources/blueprints/window.blp:146 src/main.rs:51 src/window.rs:443
+msgid "Impression"
+msgstr "Impression"
+
+#: data/io.gitlab.adhami3310.Impression.desktop.in.in:3
+msgid "Media Writer"
+msgstr "Amyaru n imidyaten"
+
+#: data/io.gitlab.adhami3310.Impression.desktop.in.in:4
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:9
+msgid "Create bootable drives"
+msgstr "Snulfu-d iḍebsiyen yettekkaren"
+
+#: data/io.gitlab.adhami3310.Impression.desktop.in.in:10
+msgid "usb;flash;writer;bootable;drive;iso;img;disk;image"
+msgstr ""
+
+#: data/io.gitlab.adhami3310.Impression.gschema.xml.in:6
+msgid "Window width"
+msgstr "Teɣzi n usfaylu"
+
+#: data/io.gitlab.adhami3310.Impression.gschema.xml.in:10
+msgid "Window height"
+msgstr "Tehri n usfaylu"
+
+#: data/io.gitlab.adhami3310.Impression.gschema.xml.in:14
+msgid "Window maximized state"
+msgstr "Addad n usfaylu ameqqran"
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:7
+msgid "Khaleel Al-Adhami"
+msgstr "Khaleel Al-Adhami"
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:15
+msgid ""
+"Write disk images to your drives with ease. Select an image, insert your "
+"drive, and you're good to go! Impression is a useful tool for both avid "
+"distro-hoppers and casual computer users."
+msgstr ""
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:41
+msgid "Screen with a choice of a local image or internet download"
+msgstr "Agdil s ufran n tugna tadigant neɣ n usader seg Internet"
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:45
+msgid "Screen with a chosen ISO and available USB memories"
+msgstr "Agdil s tugna ISO yettwafernen akked yibenkan USB llan"
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:49
+msgid "Writing the ISO in progress"
+msgstr "Tira n ISO tteddu"
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:53
+msgid "Success screen with a big check mark"
+msgstr ""
+
+#: data/resources/blueprints/help-overlay.blp:11
+msgctxt "shortcut window"
+msgid "General"
+msgstr "Amatu"
+
+#: data/resources/blueprints/help-overlay.blp:14
+msgctxt "shortcut window"
+msgid "Open File"
+msgstr "Ldi Afaylu"
+
+#: data/resources/blueprints/help-overlay.blp:19
+msgctxt "shortcut window"
+msgid "New Window"
+msgstr "Asfaylu amaynut"
+
+#: data/resources/blueprints/help-overlay.blp:24
+msgctxt "shortcut window"
+msgid "Show Shortcuts"
+msgstr "Sken-d inegzumen"
+
+#: data/resources/blueprints/help-overlay.blp:29
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "Ffeɣ"
+
+#: data/resources/blueprints/window.blp:25
+msgid "Drop Here to Open"
+msgstr "Ssers-itt da akken ad teldiḍ"
+
+#: data/resources/blueprints/window.blp:35
+#: data/resources/blueprints/window.blp:156
+#: data/resources/blueprints/window.blp:255
+msgid "Main Menu"
+msgstr "Umuɣ agejdan"
+
+#: data/resources/blueprints/window.blp:54
+msgid "Choose Image"
+msgstr "Fren tugna"
+
+#: data/resources/blueprints/window.blp:64
+msgid "Open File…"
+msgstr "Ldi afaylu…"
+
+#: data/resources/blueprints/window.blp:74
+msgid "Direct Download"
+msgstr "Azdam srid"
+
+#: data/resources/blueprints/window.blp:108
+msgid "No Connection"
+msgstr "Ulac tuqqna"
+
+#: data/resources/blueprints/window.blp:109
+msgid "Connect to the internet to view available images"
+msgstr "Qqen ɣer Internet akken ad twaliḍ tugniwin yellan"
+
+#: data/resources/blueprints/window.blp:218
+msgid "All data on the selected drive will be erased"
+msgstr "Akk isefka yella deg uḍebsi yettwafernen ad ttwakksen"
+
+#: data/resources/blueprints/window.blp:221
+msgid "Write"
+msgstr "Aru"
+
+#: data/resources/blueprints/window.blp:284
+msgid "No Drives"
+msgstr "Ulac ibenk"
+
+#: data/resources/blueprints/window.blp:285
+msgid "Insert a drive to write to"
+msgstr "Qqen-d aḍebsi ɣef ara taruḍ"
+
+#: data/resources/blueprints/window.blp:296
+msgid "Writing Completed"
+msgstr "Tira temmed"
+
+#: data/resources/blueprints/window.blp:297
+msgid "The drive can be safely removed"
+msgstr ""
+
+#: data/resources/blueprints/window.blp:306
+msgid "Finish"
+msgstr "Fakk"
+
+#: data/resources/blueprints/window.blp:327
+msgid "Writing Unsuccessful"
+msgstr "Tuccḍa deg tira"
+
+#: data/resources/blueprints/window.blp:336
+msgid "Retry"
+msgstr "Ɛreḍ i tikkelt-nniḍen"
+
+#: data/resources/blueprints/window.blp:356 src/window.rs:356 src/window.rs:385
+msgid "Writing"
+msgstr "Tira"
+
+#: data/resources/blueprints/window.blp:358 src/window.rs:355
+msgid "Do not remove the drive"
+msgstr "Ur tekkes ara aḍebsi-nni"
+
+#: data/resources/blueprints/window.blp:373 src/window.rs:260 src/window.rs:307
+msgid "_Cancel"
+msgstr "_Semmet"
+
+#: data/resources/blueprints/window.blp:401
+msgid "Keyboard Shortcuts"
+msgstr "Inegzumen n unasiw"
+
+#: data/resources/blueprints/window.blp:406
+msgid "About Impression"
+msgstr "Ɣef Impression"
+
+#: src/window.rs:255
+msgid "Stop Writing?"
+msgstr "Seḥbes tira ?"
+
+#: src/window.rs:256
+msgid "This might leave the drive in a faulty state"
+msgstr ""
+
+#: src/window.rs:261
+msgid "_Stop Writing"
+msgstr "_Seḥbed tira"
+
+#: src/window.rs:303
+msgid "Erase Drive?"
+msgstr "Sfeḍ ibenk ?"
+
+#: src/window.rs:304
+#, rust-format
+msgid "You will lose all data stored on {}"
+msgstr "Ad tesṛuḥeḍ akk isefka yettwakelsen deg {}"
+
+#: src/window.rs:308
+msgid "_Erase"
+msgstr "Sf_eḍ"
+
+#: src/window.rs:349 src/window.rs:379
+msgid "Writing will begin once the download is completed"
+msgstr "Tira ad tebdu mi ara ifak wezdam"
+
+#: src/window.rs:351 src/window.rs:384
+msgid "Downloading Image"
+msgstr "Azdam n tugna"
+
+#: src/window.rs:381
+msgid "This could take a while"
+msgstr "Aya yezmer ad yeṭṭef cwiṭ n wakud"
+
+#: src/window.rs:409
+msgid "Failed to write image"
+msgstr "Ur yessaweḍ ara ad yesserɣ tugna"
+
+#: src/window.rs:422
+msgid "Image Written"
+msgstr "Tugna tettwaru"
+
+#: src/window.rs:675
+msgid "Disk Images"
+msgstr "Tugniwin n udebṣi"
+
+#: src/window.rs:701
+msgid "File is not a Disk Image"
+msgstr "Afaylu-nni mačči d tugna n uḍebsi"
+
+#: src/window.rs:819
+msgid "translator-credits"
+msgstr "ButterflyOfFire <butterflyoffire@protonmail.com>"
+
+#: src/window.rs:821
+msgid "Code borrowed from"
+msgstr "Tanglat tettwareḍled ɣer"
+
+#. Translators: Metainfo for the app Footage. <https://gitlab.com/adhami3310/Footage>
+#: src/window.rs:828
+msgid "Footage"
+msgstr ""
+
+#. Translators: Metainfo for the app Footage. <https://gitlab.com/adhami3310/Footage>
+#: src/window.rs:830
+msgid "Polish your videos"
+msgstr ""
+
+#. Translators: Metainfo for the app Switcheroo. <https://gitlab.com/adhami3310/Switcheroo>
+#: src/window.rs:836
+msgid "Switcheroo"
+msgstr "Switcheroo"
+
+#. Translators: Metainfo for the app Switcheroo. <https://gitlab.com/adhami3310/Switcheroo>
+#: src/window.rs:838
+msgid "Convert and manipulate images"
+msgstr "Selket yerna sseqdec tugniwin"
+
+#: src/flash.rs:93
+msgid "Failed to unmount disk"
+msgstr ""
+
+#: src/flash.rs:120
+msgid "Failed to open disk"
+msgstr "Ur yessaweḍ ara ad d-yeldi aḍebsi-nni"
+
+#: src/flash.rs:170
+msgid "Failed to extract drive"
+msgstr ""
+
+#: src/flash.rs:228
+msgid "Failed to download image"
+msgstr "Ur yessaweḍ ara ad d-yezdem tugna"
+
+#: src/flash.rs:285
+msgid "Writing to disk failed"
+msgstr "Ur yessaweḍ ara ad yaru ɣef uḍebsi"
