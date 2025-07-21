@@ -1,0 +1,295 @@
+# Arabic translation for impression.
+# Copyright (C) 2025 impression's COPYRIGHT HOLDER
+# This file is distributed under the same license as the impression package.
+# Ahmed Najmawi <iramosu@protonmail.com>, 2025.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: impression\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-04-14 22:38-0700\n"
+"PO-Revision-Date: 2025-07-21 06:41+0300\n"
+"Last-Translator: Ahmed Najmawi <iramosu@protonmail.com>\n"
+"Language-Team: ar\n"
+"Language: ar\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.6\n"
+
+#: data/io.gitlab.adhami3310.Impression.desktop.in.in:2
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:5
+#: data/resources/blueprints/window.blp:9
+#: data/resources/blueprints/window.blp:21
+#: data/resources/blueprints/window.blp:146 src/main.rs:51 src/window.rs:443
+msgid "Impression"
+msgstr "إمبرشن"
+
+#: data/io.gitlab.adhami3310.Impression.desktop.in.in:3
+msgid "Media Writer"
+msgstr "كاتب وسائط"
+
+#: data/io.gitlab.adhami3310.Impression.desktop.in.in:4
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:9
+msgid "Create bootable drives"
+msgstr "أنشئ سوَّاقات قابلة للإقلاع"
+
+#: data/io.gitlab.adhami3310.Impression.desktop.in.in:10
+msgid "usb;flash;writer;bootable;drive;iso;img;disk;image"
+msgstr ""
+"يو إس "
+"بي;فلاش;ناسخ;إقلاعي;سواقة;أيزو;صورة;قرص;usb;flash;writer;bootable;drive;iso;img;disk;image"
+
+#: data/io.gitlab.adhami3310.Impression.gschema.xml.in:6
+msgid "Window width"
+msgstr "عُرض النافذة"
+
+#: data/io.gitlab.adhami3310.Impression.gschema.xml.in:10
+msgid "Window height"
+msgstr "ارتفاع النافذة"
+
+#: data/io.gitlab.adhami3310.Impression.gschema.xml.in:14
+msgid "Window maximized state"
+msgstr "حالة تكبير النافذة"
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:7
+msgid "Khaleel Al-Adhami"
+msgstr "Khaleel Al-Adhami"
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:15
+msgid ""
+"Write disk images to your drives with ease. Select an image, insert your "
+"drive, and you're good to go! Impression is a useful tool for both avid "
+"distro-hoppers and casual computer users."
+msgstr ""
+"اكتب صور الأقراص على سوَّاقاتك بسهولة. اختر صورة، وأدخل سوَّاقتك، ثم ابدأ العمل! "
+"«إمبرشن» أداة مفيدة لهواة التنقل بين التوزيعات ومستخدمي الحاسوب العاديين على "
+"حد سواء."
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:41
+msgid "Screen with a choice of a local image or internet download"
+msgstr "شاشة اختيار لصورة محليَّة أو تنزيلها من الإنترنت"
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:45
+msgid "Screen with a chosen ISO and available USB memories"
+msgstr "شاشة تعرض ملف ISO المختار وذواكر USB المتاحة"
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:49
+msgid "Writing the ISO in progress"
+msgstr "كتابة ISO قيد التقدُّم"
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:53
+msgid "Success screen with a big check mark"
+msgstr "شاشة النجاح مع علامة صح كبيرة"
+
+#: data/resources/blueprints/help-overlay.blp:11
+msgctxt "shortcut window"
+msgid "General"
+msgstr "عام"
+
+#: data/resources/blueprints/help-overlay.blp:14
+msgctxt "shortcut window"
+msgid "Open File"
+msgstr "افتح ملفًا"
+
+#: data/resources/blueprints/help-overlay.blp:19
+msgctxt "shortcut window"
+msgid "New Window"
+msgstr "افتح نافذة جديدة"
+
+#: data/resources/blueprints/help-overlay.blp:24
+msgctxt "shortcut window"
+msgid "Show Shortcuts"
+msgstr "اعرض الاختصارات"
+
+#: data/resources/blueprints/help-overlay.blp:29
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "اخرج"
+
+#: data/resources/blueprints/window.blp:25
+msgid "Drop Here to Open"
+msgstr "أفلِت هنا للفتح"
+
+#: data/resources/blueprints/window.blp:35
+#: data/resources/blueprints/window.blp:156
+#: data/resources/blueprints/window.blp:255
+msgid "Main Menu"
+msgstr "القائمة الرئيسة"
+
+#: data/resources/blueprints/window.blp:54
+msgid "Choose Image"
+msgstr "اختر صورة"
+
+#: data/resources/blueprints/window.blp:64
+msgid "Open File…"
+msgstr "افتح ملفًا…"
+
+#: data/resources/blueprints/window.blp:74
+msgid "Direct Download"
+msgstr "نزِّل مباشرة"
+
+#: data/resources/blueprints/window.blp:108
+msgid "No Connection"
+msgstr "لا يوجد اتصال"
+
+#: data/resources/blueprints/window.blp:109
+msgid "Connect to the internet to view available images"
+msgstr "اتصل بالإنترنت لعرض الصور المتاحة"
+
+#: data/resources/blueprints/window.blp:218
+msgid "All data on the selected drive will be erased"
+msgstr "ستُمحى كل البيانات الموجودة على السوَّاقة المحدَّدة"
+
+#: data/resources/blueprints/window.blp:221
+msgid "Write"
+msgstr "اكتب"
+
+#: data/resources/blueprints/window.blp:284
+msgid "No Drives"
+msgstr "لا توجد سواقات"
+
+#: data/resources/blueprints/window.blp:285
+msgid "Insert a drive to write to"
+msgstr "أدخل سوَّاقة للكتابة عليها"
+
+#: data/resources/blueprints/window.blp:296
+msgid "Writing Completed"
+msgstr "اكتملت الكتابة"
+
+#: data/resources/blueprints/window.blp:297
+msgid "The drive can be safely removed"
+msgstr "يمكن إزالة السوَّاقة بأمان"
+
+#: data/resources/blueprints/window.blp:306
+msgid "Finish"
+msgstr "أنهِ"
+
+#: data/resources/blueprints/window.blp:327
+msgid "Writing Unsuccessful"
+msgstr "أخفقت الكتابة"
+
+#: data/resources/blueprints/window.blp:336
+msgid "Retry"
+msgstr "أعِد المحاولة"
+
+#: data/resources/blueprints/window.blp:356 src/window.rs:356 src/window.rs:385
+msgid "Writing"
+msgstr "يكتب"
+
+#: data/resources/blueprints/window.blp:358 src/window.rs:355
+msgid "Do not remove the drive"
+msgstr "لا تزِل السواقة"
+
+#: data/resources/blueprints/window.blp:373 src/window.rs:260 src/window.rs:307
+msgid "_Cancel"
+msgstr "أ_لغِ"
+
+#: data/resources/blueprints/window.blp:401
+msgid "Keyboard Shortcuts"
+msgstr "اختصارات لوحة المفاتيح"
+
+#: data/resources/blueprints/window.blp:406
+msgid "About Impression"
+msgstr "عَنْ «إمبرشن»"
+
+#: src/window.rs:255
+msgid "Stop Writing?"
+msgstr "أأوقف الكتابة؟"
+
+#: src/window.rs:256
+msgid "This might leave the drive in a faulty state"
+msgstr "قد يترك هذا الإجراء السواقة في حالة تالفة"
+
+#: src/window.rs:261
+msgid "_Stop Writing"
+msgstr "أو_قف الكتابة"
+
+#: src/window.rs:303
+msgid "Erase Drive?"
+msgstr "أأمحُ السواقة؟"
+
+#: src/window.rs:304
+msgid "You will lose all data stored on {}"
+msgstr "ستفقد كل البيانات المخزنة على {}"
+
+#: src/window.rs:308
+msgid "_Erase"
+msgstr "ا_محُ"
+
+#: src/window.rs:349 src/window.rs:379
+msgid "Writing will begin once the download is completed"
+msgstr "ستبدأ الكتابة فور اكتمال التنزيل"
+
+#: src/window.rs:351 src/window.rs:384
+msgid "Downloading Image"
+msgstr "تُنزَّل الصورة"
+
+#: src/window.rs:381
+msgid "This could take a while"
+msgstr "قد يستغرق هذا بعض الوقت"
+
+#: src/window.rs:409
+msgid "Failed to write image"
+msgstr "أخفقت كتابة الصورة"
+
+#: src/window.rs:422
+msgid "Image Written"
+msgstr "كُتبت الصورة"
+
+#: src/window.rs:675
+msgid "Disk Images"
+msgstr "صور الأقراص"
+
+#: src/window.rs:701
+msgid "File is not a Disk Image"
+msgstr "الملف ليس صورة قرص"
+
+#: src/window.rs:819
+msgid "translator-credits"
+msgstr "أحمد النجماوي <iramosu@protonmail.com>"
+
+#: src/window.rs:821
+msgid "Code borrowed from"
+msgstr "الكود مستعار من"
+
+#. Translators: Metainfo for the app Footage. <https://gitlab.com/adhami3310/Footage>
+#: src/window.rs:828
+msgid "Footage"
+msgstr ""
+
+#. Translators: Metainfo for the app Footage. <https://gitlab.com/adhami3310/Footage>
+#: src/window.rs:830
+msgid "Polish your videos"
+msgstr ""
+
+#. Translators: Metainfo for the app Switcheroo. <https://gitlab.com/adhami3310/Switcheroo>
+#: src/window.rs:836
+msgid "Switcheroo"
+msgstr "سويتشيرو"
+
+#. Translators: Metainfo for the app Switcheroo. <https://gitlab.com/adhami3310/Switcheroo>
+#: src/window.rs:838
+msgid "Convert and manipulate images"
+msgstr "حوِّل الصور وعالجها"
+
+#: src/flash.rs:93
+msgid "Failed to unmount disk"
+msgstr "تعذَّر إلغاء ضم القرص"
+
+#: src/flash.rs:120
+msgid "Failed to open disk"
+msgstr "تعذَّر فتح القرص"
+
+#: src/flash.rs:170
+msgid "Failed to extract drive"
+msgstr "تعذَّر استخراج السوَّاقة"
+
+#: src/flash.rs:228
+msgid "Failed to download image"
+msgstr "تعذَّر تنزيل الصورة"
+
+#: src/flash.rs:285
+msgid "Writing to disk failed"
+msgstr "تعذَّرت الكتابة على القرص"
