@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: impression\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-14 22:38-0700\n"
+"POT-Creation-Date: 2025-07-27 00:31-0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,7 +21,7 @@ msgstr ""
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:5
 #: data/resources/blueprints/window.blp:9
 #: data/resources/blueprints/window.blp:21
-#: data/resources/blueprints/window.blp:146 src/main.rs:51 src/window.rs:443
+#: data/resources/blueprints/window.blp:146 src/main.rs:51 src/window.rs:442
 msgid "Impression"
 msgstr ""
 
@@ -89,15 +89,10 @@ msgstr ""
 
 #: data/resources/blueprints/help-overlay.blp:19
 msgctxt "shortcut window"
-msgid "New Window"
-msgstr ""
-
-#: data/resources/blueprints/help-overlay.blp:24
-msgctxt "shortcut window"
 msgid "Show Shortcuts"
 msgstr ""
 
-#: data/resources/blueprints/help-overlay.blp:29
+#: data/resources/blueprints/help-overlay.blp:24
 msgctxt "shortcut window"
 msgid "Quit"
 msgstr ""
@@ -168,15 +163,15 @@ msgstr ""
 msgid "Retry"
 msgstr ""
 
-#: data/resources/blueprints/window.blp:356 src/window.rs:356 src/window.rs:385
+#: data/resources/blueprints/window.blp:356 src/window.rs:355 src/window.rs:384
 msgid "Writing"
 msgstr ""
 
-#: data/resources/blueprints/window.blp:358 src/window.rs:355
+#: data/resources/blueprints/window.blp:358 src/window.rs:354
 msgid "Do not remove the drive"
 msgstr ""
 
-#: data/resources/blueprints/window.blp:373 src/window.rs:260 src/window.rs:307
+#: data/resources/blueprints/window.blp:373 src/window.rs:259 src/window.rs:306
 msgid "_Cancel"
 msgstr ""
 
@@ -188,103 +183,103 @@ msgstr ""
 msgid "About Impression"
 msgstr ""
 
-#: src/window.rs:255
+#: src/window.rs:254
 msgid "Stop Writing?"
 msgstr ""
 
-#: src/window.rs:256
+#: src/window.rs:255
 msgid "This might leave the drive in a faulty state"
 msgstr ""
 
-#: src/window.rs:261
+#: src/window.rs:260
 msgid "_Stop Writing"
 msgstr ""
 
-#: src/window.rs:303
+#: src/window.rs:302
 msgid "Erase Drive?"
 msgstr ""
 
-#: src/window.rs:304
+#: src/window.rs:303
 #, rust-format
 msgid "You will lose all data stored on {}"
 msgstr ""
 
-#: src/window.rs:308
+#: src/window.rs:307
 msgid "_Erase"
 msgstr ""
 
-#: src/window.rs:349 src/window.rs:379
+#: src/window.rs:348 src/window.rs:378
 msgid "Writing will begin once the download is completed"
 msgstr ""
 
-#: src/window.rs:351 src/window.rs:384
+#: src/window.rs:350 src/window.rs:383
 msgid "Downloading Image"
 msgstr ""
 
-#: src/window.rs:381
+#: src/window.rs:380
 msgid "This could take a while"
 msgstr ""
 
-#: src/window.rs:409
+#: src/window.rs:408
 msgid "Failed to write image"
 msgstr ""
 
-#: src/window.rs:422
+#: src/window.rs:421
 msgid "Image Written"
 msgstr ""
 
-#: src/window.rs:675
+#: src/window.rs:677
 msgid "Disk Images"
 msgstr ""
 
-#: src/window.rs:701
+#: src/window.rs:703
 msgid "File is not a Disk Image"
 msgstr ""
 
-#: src/window.rs:819
+#: src/window.rs:821
 msgid "translator-credits"
 msgstr ""
 
-#: src/window.rs:821
+#: src/window.rs:823
 msgid "Code borrowed from"
 msgstr ""
 
 #. Translators: Metainfo for the app Footage. <https://gitlab.com/adhami3310/Footage>
-#: src/window.rs:828
+#: src/window.rs:830
 msgid "Footage"
 msgstr ""
 
 #. Translators: Metainfo for the app Footage. <https://gitlab.com/adhami3310/Footage>
-#: src/window.rs:830
+#: src/window.rs:832
 msgid "Polish your videos"
 msgstr ""
 
 #. Translators: Metainfo for the app Switcheroo. <https://gitlab.com/adhami3310/Switcheroo>
-#: src/window.rs:836
+#: src/window.rs:838
 msgid "Switcheroo"
 msgstr ""
 
 #. Translators: Metainfo for the app Switcheroo. <https://gitlab.com/adhami3310/Switcheroo>
-#: src/window.rs:838
+#: src/window.rs:840
 msgid "Convert and manipulate images"
 msgstr ""
 
-#: src/flash.rs:93
+#: src/flash.rs:96
 msgid "Failed to unmount disk"
 msgstr ""
 
-#: src/flash.rs:120
+#: src/flash.rs:123
 msgid "Failed to open disk"
 msgstr ""
 
-#: src/flash.rs:170
+#: src/flash.rs:173
 msgid "Failed to extract drive"
 msgstr ""
 
-#: src/flash.rs:228
+#: src/flash.rs:231
 msgid "Failed to download image"
 msgstr ""
 
-#: src/flash.rs:285
+#: src/flash.rs:288
 msgid "Writing to disk failed"
 msgstr ""
