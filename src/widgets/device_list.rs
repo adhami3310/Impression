@@ -14,7 +14,7 @@ pub async fn new(
 
     let mut check_buttons = Vec::new();
 
-    for i in 0..devices.len() {
+    for (i, device) in devices.iter().enumerate() {
         let cb = match i {
             0 => gtk::CheckButton::builder(),
             _ => gtk::CheckButton::builder().group(check_buttons.first().unwrap()),
@@ -23,13 +23,14 @@ pub async fn new(
 
         cb.add_css_class("selection-mode");
 
+        let object_path = device.object_path().to_string();
         if devices.len() == 1 {
             cb.connect_toggled(clone!(
                 #[weak(rename_to=this)]
                 app,
                 move |x| {
                     x.set_active(true);
-                    this.set_selected_device_index(Some(0));
+                    this.set_selected_device_object_path(Some(object_path.clone()));
                 }
             ));
         } else {
@@ -38,7 +39,7 @@ pub async fn new(
                 app,
                 move |x| {
                     if x.is_active() {
-                        this.set_selected_device_index(Some(i));
+                        this.set_selected_device_object_path(Some(object_path.clone()));
                     }
                 }
             ));
@@ -57,7 +58,7 @@ pub async fn new(
             || selected_device.is_none() && i == 0
         {
             cb.set_active(true);
-            app.set_selected_device_index(Some(i));
+            app.set_selected_device_object_path(Some(device.object_path().to_string()));
         }
 
         let info = device_info(&device).await;

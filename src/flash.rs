@@ -37,6 +37,9 @@ pub async fn refresh_devices() -> udisks::Result<Vec<udisks::Object>> {
             drives.push(object);
         }
     }
+
+    drives.sort_unstable_by_key(|x| x.object_path().to_string());
+
     Ok(drives)
 }
 

@@ -39,10 +39,7 @@ pub enum DiskImage {
 
 mod imp {
 
-    use std::{
-        cell::{Cell, RefCell},
-        sync::atomic::AtomicBool,
-    };
+    use std::{cell::RefCell, sync::atomic::AtomicBool};
 
     use crate::{
         config::{APP_ID, PROFILE},
@@ -104,7 +101,7 @@ mod imp {
         #[template_child]
         pub drag_overlay: TemplateChild<DragOverlay>,
 
-        pub selected_device_index: Cell<Option<usize>>,
+        pub selected_device_object_path: RefCell<Option<String>>,
         pub is_running: std::sync::Arc<AtomicBool>,
         pub is_flashing: std::sync::Arc<AtomicBool>,
         pub selected_image: RefCell<Option<DiskImage>>,
@@ -456,25 +453,28 @@ impl AppWindow {
         self.imp().selected_image.borrow().to_owned()
     }
 
-    fn selected_device_index(&self) -> Option<usize> {
-        self.imp().selected_device_index.get()
+    fn selected_device_object_path(&self) -> Option<String> {
+        self.imp().selected_device_object_path.borrow().clone()
     }
 
-    pub fn set_selected_device_index(&self, new_index: Option<usize>) {
-        self.imp().flash_button.set_sensitive(new_index.is_some());
-        self.imp().selected_device_index.replace(new_index);
+    pub fn set_selected_device_object_path(&self, selected_device_object_path: Option<String>) {
+        self.imp()
+            .flash_button
+            .set_sensitive(selected_device_object_path.is_some());
+        self.imp()
+            .selected_device_object_path
+            .replace(selected_device_object_path);
     }
 
     fn selected_device(&self) -> Option<udisks::Object> {
-        let index = self.selected_device_index();
-        index.map(|index| {
+        let object_path = self.selected_device_object_path();
+        object_path.and_then(|object_path| {
             self.imp()
                 .available_devices
                 .borrow()
                 .clone()
-                .get(index)
-                .unwrap()
-                .clone()
+                .into_iter()
+                .find(|x| x.object_path().to_string() == object_path)
         })
     }
 
@@ -688,7 +688,7 @@ impl AppWindow {
             .await
         {
             let path = file.path().unwrap();
-            println!("Selected Disk Image: {:?}", path);
+            println!("Selected Disk Image: {path:?}");
 
             self.open_file(path).await;
         }
@@ -701,7 +701,7 @@ impl AppWindow {
             self.imp()
                 .toast_overlay
                 .add_toast(adw::Toast::new(&gettext("File is not a Disk Image")));
-            println!("Not a Disk Image: {:?}", path);
+            println!("Not a Disk Image: {path:?}");
             return;
         }
 
@@ -781,7 +781,7 @@ impl AppWindow {
             return;
         }
 
-        imp.selected_device_index.set(None);
+        imp.selected_device_object_path.take();
 
         let selected_device = if let Some(dev) = self.selected_device() {
             runtime().block_on(async move { device_list::preferred_device(&dev).await })
@@ -793,7 +793,7 @@ impl AppWindow {
         imp.available_devices.replace(devices.clone());
 
         if devices.is_empty() {
-            self.set_selected_device_index(None);
+            self.set_selected_device_object_path(None);
             self.imp().stack.set_visible_child_name("no_devices");
             self.imp().main_stack.set_visible_child_name("status");
         } else {
