@@ -12,7 +12,7 @@ use crate::{
     config::APP_ID,
     flash::{FlashPhase, FlashRequest, FlashStatus, Progress, refresh_devices},
     get_size_string,
-    online::{Distro, collect_online_distros, get_osinfodb_url},
+    online::{DistroRelease, collect_online_distros, get_osinfodb_url},
     spawn,
     widgets::device_list,
 };
@@ -232,14 +232,14 @@ impl AppWindow {
             self,
             #[upgrade_or_default]
             move |_, value, _, _| {
-                if let Ok(file_list) = value.get::<gdk::FileList>() {
-                    if let Some(input_file) = file_list.files().into_iter().next() {
-                        spawn!(async move {
-                            win.open_file(input_file.path().expect("Must have file path"))
-                                .await;
-                        });
-                        return true;
-                    }
+                if let Ok(file_list) = value.get::<gdk::FileList>()
+                    && let Some(input_file) = file_list.files().into_iter().next()
+                {
+                    spawn!(async move {
+                        win.open_file(input_file.path().expect("Must have file path"))
+                            .await;
+                    });
+                    return true;
                 }
 
                 false
@@ -631,9 +631,9 @@ impl AppWindow {
         ));
     }
 
-    fn load_distros(&self, target: &TemplateChild<gtk::ListBox>, distros: Vec<Distro>) {
+    fn load_distros(&self, target: &TemplateChild<gtk::ListBox>, distros: Vec<DistroRelease>) {
         target.remove_all();
-        for Distro {
+        for DistroRelease {
             name, version, url, ..
         } in distros
         {

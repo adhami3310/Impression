@@ -132,13 +132,13 @@ impl App {
     }
 
     pub fn run(&self) -> ExitCode {
-        info!("Impression ({})", APP_ID);
-        info!("Version: {} ({})", VERSION, PROFILE);
-        info!("Datadir: {}", PKGDATADIR);
+        info!("Impression ({APP_ID})");
+        info!("Version: {VERSION} ({PROFILE})");
+        info!("Datadir: {PKGDATADIR}");
 
         runtime().spawn(async {
-            if ashpd::is_sandboxed().await {
-                if let Err(e) = (|| {
+            if ashpd::is_sandboxed().await
+                && let Err(e) = (|| {
                     for entry in std::fs::read_dir(glib::user_cache_dir())? {
                         let entry = entry?;
                         if entry.file_type()?.is_file()
@@ -150,9 +150,9 @@ impl App {
                     }
 
                     Ok::<(), std::io::Error>(())
-                })() {
-                    dbg!(e);
-                }
+                })()
+            {
+                dbg!(e);
             }
         });
 

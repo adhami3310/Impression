@@ -98,14 +98,14 @@ pub async fn device_label(object: &udisks::Object) -> udisks::Result<String> {
     let vendor = drive.vendor().await?;
     let model = drive.model().await?;
     Ok(match parent_id_label.or(partition_id_label) {
-        Some(label) => format!("{label} ({} {})", vendor, model).trim().to_owned(),
-        None => format!("{} {}", vendor, model).trim().to_owned(),
+        Some(label) => format!("{label} ({vendor} {model})").trim().to_owned(),
+        None => format!("{vendor} {model}").trim().to_owned(),
     })
 }
 
 async fn device_info(device: &udisks::Object) -> String {
     let client = udisks::Client::new().await.unwrap();
-    let info = client.object_info(&device).await;
+    let info = client.object_info(device).await;
     info.one_liner.unwrap_or_default()
 }
 

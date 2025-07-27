@@ -3,7 +3,7 @@ use std::collections::HashMap;
 use itertools::Itertools;
 
 #[derive(Debug)]
-pub struct Distro {
+pub struct DistroRelease {
     pub name: String,
     pub version: Option<String>,
     pub url: String,
@@ -39,7 +39,9 @@ const GOOD_DISTROS: [(&str, &str, Option<NameCheck>); 7] = [
     ),
 ];
 
-pub fn collect_online_distros(latest_url: &str) -> Option<(Vec<Distro>, Vec<Distro>)> {
+pub fn collect_online_distros(
+    latest_url: &str,
+) -> Option<(Vec<DistroRelease>, Vec<DistroRelease>)> {
     let temp_dir = glib::user_cache_dir();
 
     std::fs::create_dir_all(&temp_dir).expect("cannot create temp dir");
@@ -75,12 +77,17 @@ pub fn collect_online_distros(latest_url: &str) -> Option<(Vec<Distro>, Vec<Dist
 
     use rayon::prelude::*;
 
-    let distros: Vec<(Vec<Option<Distro>>, Vec<Option<Distro>>)> = GOOD_DISTROS
+    struct DistroInfo {
+        amd: Vec<DistroRelease>,
+        arm: Vec<DistroRelease>,
+    }
+
+    let distros: Vec<DistroInfo> = GOOD_DISTROS
         .into_par_iter()
         .map(|(distro, _, filter)| {
             let files = std::fs::read_dir(temp_dir.join(distro)).unwrap();
 
-            let y: (Vec<Option<Distro>>, Vec<Option<Distro>>) = files
+            let y: (Vec<Option<DistroRelease>>, Vec<Option<DistroRelease>>) = files
                 .flatten()
                 .flat_map(|file| {
                     let content = std::fs::read_to_string(file.path()).expect("Cannot read xml");
@@ -161,19 +168,18 @@ pub fn collect_online_distros(latest_url: &str) -> Option<(Vec<Distro>, Vec<Dist
                         })
                         .collect_vec();
 
-                    let distros: Vec<(Option<Distro>, Option<Distro>)> = medias
+                    let distros: Vec<(Option<DistroRelease>, Option<DistroRelease>)> = medias
                         .into_iter()
                         .map(|media| {
-                            Some((
+                            (
                                 media.0, // name
                                 media.1, // arch
                                 media.2, // url
-                                release_date.clone(),
+                                release_date,
                                 release_status.clone(),
                                 version.clone(),
-                            ))
+                            )
                         })
-                        .flatten()
                         .filter(|(_, _, _, date, status, _)| {
                             !matches!(status, Some(x) if x == "prerelease")
                                 && (date.is_some() || matches!(status, Some(x) if x == "rolling"))
@@ -218,7 +224,7 @@ pub fn collect_online_distros(latest_url: &str) -> Option<(Vec<Distro>, Vec<Dist
 
                             (
                                 arch,
-                                Distro {
+                                DistroRelease {
                                     name,
                                     version,
                                     url,
@@ -236,60 +242,36 @@ pub fn collect_online_distros(latest_url: &str) -> Option<(Vec<Distro>, Vec<Dist
                 })
                 .collect();
 
-            let mut amd: HashMap<String, Distro> = HashMap::new();
-            let mut arm: HashMap<String, Distro> = HashMap::new();
+            let mut amd: HashMap<String, DistroRelease> = HashMap::new();
+            let mut arm: HashMap<String, DistroRelease> = HashMap::new();
 
-            for item in y.0 {
-                if let Some(distro) = item {
-                    if !amd.contains_key(&distro.variant) {
-                        amd.insert(distro.variant.to_owned(), distro);
-                    } else {
-                        let ds = amd.get_mut(&distro.variant).unwrap();
-                        *ds = distro;
-                    }
+            for distro in y.0.into_iter().flatten() {
+                if !amd.contains_key(&distro.variant) {
+                    amd.insert(distro.variant.to_owned(), distro);
+                } else {
+                    let ds = amd.get_mut(&distro.variant).unwrap();
+                    *ds = distro;
                 }
             }
 
-            for item in y.1 {
-                if let Some(distro) = item {
-                    if !arm.contains_key(&distro.variant) {
-                        arm.insert(distro.variant.to_owned(), distro);
-                    } else {
-                        let ds = arm.get_mut(&distro.variant).unwrap();
-                        *ds = distro;
-                    }
+            for distro in y.1.into_iter().flatten() {
+                if !arm.contains_key(&distro.variant) {
+                    arm.insert(distro.variant.to_owned(), distro);
+                } else {
+                    let ds = arm.get_mut(&distro.variant).unwrap();
+                    *ds = distro;
                 }
             }
 
-            let amd: Vec<Option<Distro>> = amd.into_iter().map(|(_, v)| Some(v)).collect();
-
-            let arm: Vec<Option<Distro>> = arm.into_iter().map(|(_, v)| Some(v)).collect();
-
-            (amd, arm)
+            DistroInfo {
+                amd: amd.into_values().collect(),
+                arm: arm.into_values().collect(),
+            }
         })
         .collect();
 
-    let (amd, arm): (Vec<Vec<Distro>>, Vec<Vec<Distro>>) = distros
-        .into_iter()
-        .map(|distro| {
-            let mut amd = Vec::<Distro>::new();
-            let mut arm = Vec::<Distro>::new();
-
-            for elem in distro.0 {
-                if let Some(elem) = elem {
-                    amd.push(elem);
-                }
-            }
-
-            for elem in distro.1 {
-                if let Some(elem) = elem {
-                    arm.push(elem);
-                }
-            }
-
-            (amd, arm)
-        })
-        .unzip();
+    let (amd, arm): (Vec<Vec<DistroRelease>>, Vec<Vec<DistroRelease>>) =
+        distros.into_iter().map(|d| (d.amd, d.arm)).unzip();
 
     Some((
         amd.into_iter().flatten().collect::<Vec<_>>(),
