@@ -253,7 +253,7 @@ msgid "translator-credits"
 msgstr ""
 "Сергей Ворон <voron@duck.com>\n"
 "Aleksandr Melman <Alexmelman88@gmail.com>\n"
-"Герасименко Олеся <goa@altlinux.org>\n"
+"Герасименко Олеся <goa@altlinux.org>"
 
 #: src/window.rs:821
 msgid "Code borrowed from"
