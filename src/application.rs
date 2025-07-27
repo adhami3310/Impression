@@ -1,4 +1,4 @@
-use glib::{clone, ExitCode};
+use glib::{ExitCode, clone};
 use log::{debug, info};
 
 use gtk::{gio, glib, prelude::*, subclass::prelude::*};

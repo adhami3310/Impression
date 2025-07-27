@@ -7,7 +7,7 @@ mod online;
 mod widgets;
 mod window;
 
-use gettextrs::{gettext, LocaleCategory};
+use gettextrs::{LocaleCategory, gettext};
 use glib::ExitCode;
 use gtk::{gio, glib};
 

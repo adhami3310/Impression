@@ -1,8 +1,8 @@
 use gettextrs::gettext;
 use std::collections::HashMap;
 use std::process::Stdio;
-use std::sync::atomic::AtomicBool;
 use std::sync::Arc;
+use std::sync::atomic::AtomicBool;
 use std::time::Duration;
 use tokio::fs::File;
 use tokio::time::Instant;

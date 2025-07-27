@@ -10,9 +10,9 @@ use itertools::Itertools;
 use crate::runtime;
 use crate::{
     config::APP_ID,
-    flash::{refresh_devices, FlashPhase, FlashRequest, FlashStatus, Progress},
+    flash::{FlashPhase, FlashRequest, FlashStatus, Progress, refresh_devices},
     get_size_string,
-    online::{collect_online_distros, get_osinfodb_url, Distro},
+    online::{Distro, collect_online_distros, get_osinfodb_url},
     spawn,
     widgets::device_list,
 };
@@ -170,7 +170,9 @@ mod imp {
 glib::wrapper! {
     pub struct AppWindow(ObjectSubclass<imp::AppWindow>)
         @extends gtk::Widget, gtk::Window,  gtk::ApplicationWindow, adw::ApplicationWindow,
-        @implements gio::ActionMap, gio::ActionGroup, gtk::Root;
+        @implements gio::ActionMap, gio::ActionGroup,
+                    gtk::Root, gtk::Native, gtk::ShortcutManager,
+                    gtk::Accessible, gtk::Buildable, gtk::ConstraintTarget;
 }
 
 #[gtk::template_callbacks]
