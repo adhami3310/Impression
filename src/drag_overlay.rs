@@ -7,7 +7,7 @@ mod imp {
     use std::cell::RefCell;
 
     use adw::subclass::prelude::*;
-    use once_cell::sync::Lazy;
+    use std::sync::LazyLock;
 
     use super::*;
 
@@ -33,7 +33,7 @@ mod imp {
 
     impl ObjectImpl for DragOverlay {
         fn properties() -> &'static [glib::ParamSpec] {
-            static PROPERTIES: Lazy<Vec<glib::ParamSpec>> = Lazy::new(|| {
+            static PROPERTIES: LazyLock<Vec<glib::ParamSpec>> = LazyLock::new(|| {
                 vec![
                     glib::ParamSpecString::builder("title").build(),
                     glib::ParamSpecObject::builder::<gtk::Widget>("child").build(),

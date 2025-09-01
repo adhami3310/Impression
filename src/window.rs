@@ -624,16 +624,16 @@ impl AppWindow {
     }
 
     fn get_distros(&self) {
-        let (sender, receiver) = async_channel::bounded(1);
+        let (sender, receiver) = tokio::sync::oneshot::channel();
 
         let distros = get_osinfodb_url().and_then(|u| collect_online_distros(&u));
-        runtime().spawn(async move { sender.send(distros).await.expect("Concurrency Issues") });
+        runtime().spawn(async move { sender.send(distros).expect("Concurrency Issues") });
 
         glib::spawn_future_local(clone!(
             #[weak(rename_to=this)]
             self,
             async move {
-                if let Ok(online_distros) = receiver.recv().await {
+                if let Ok(online_distros) = receiver.await {
                     if let Some((amd_distros, arm_distros)) = online_distros {
                         this.load_distros(&this.imp().amd_distros, amd_distros);
                         this.load_distros(&this.imp().arm_distros, arm_distros);
@@ -767,18 +767,18 @@ impl AppWindow {
     }
 
     fn refresh_devices(&self) {
-        let (sender, receiver) = async_channel::bounded(1);
+        let (sender, receiver) = tokio::sync::oneshot::channel();
 
         runtime().block_on(async move {
             let devices = refresh_devices().await;
-            sender.send(devices).await.expect("Concurrency Issues");
+            sender.send(devices).expect("Concurrency Issues");
         });
 
         glib::spawn_future_local(glib::clone!(
             #[weak(rename_to = this)]
             self,
             async move {
-                while let Ok(Ok(devices)) = receiver.recv().await {
+                if let Ok(Ok(devices)) = receiver.await {
                     this.load_devices(devices).await;
                 }
             }
