@@ -331,14 +331,23 @@ impl AppWindow {
         self.imp()
             .is_running
             .store(true, std::sync::atomic::Ordering::SeqCst);
-        let (tx, rx) = async_channel::bounded(1);
 
         let selected_image = self.selected_image().unwrap();
+
+        let current_status = std::sync::Arc::<std::sync::Mutex<FlashStatus>>::new(
+            std::sync::Mutex::new(FlashStatus::Active(
+                match selected_image {
+                    DiskImage::Online { url: _, name: _ } => FlashPhase::Download,
+                    _ => FlashPhase::Copy,
+                },
+                Progress::Fraction(0.0),
+            )),
+        );
 
         let flash_job = FlashRequest::new(
             selected_image.clone(),
             self.selected_device().unwrap(),
-            tx,
+            current_status.clone(),
             self.imp().is_running.clone(),
         );
 
@@ -358,19 +367,29 @@ impl AppWindow {
                 .is_flashing
                 .store(true, std::sync::atomic::Ordering::SeqCst);
         }
-        glib::spawn_future_local(clone!(
-            #[weak(rename_to=this)]
-            self,
-            async move {
-                while let Ok(x) = rx.recv().await {
+        glib::timeout_add_seconds_local(
+            1,
+            clone!(
+                #[weak(rename_to=this)]
+                self,
+                #[upgrade_or]
+                glib::ControlFlow::Break,
+                move || {
                     if !this
                         .imp()
                         .is_running
                         .load(std::sync::atomic::Ordering::SeqCst)
                     {
-                        break;
+                        return glib::ControlFlow::Break;
                     }
-                    match x {
+                    let state = {
+                        if let Ok(lock) = current_status.lock() {
+                            lock.clone()
+                        } else {
+                            return glib::ControlFlow::Break;
+                        }
+                    };
+                    match state {
                         FlashStatus::Active(p, x) => {
                             let flashing_page = &this.imp().flashing_page;
                             flashing_page.set_description(Some(&match p {
@@ -405,10 +424,9 @@ impl AppWindow {
                             this.imp()
                                 .is_flashing
                                 .store(false, std::sync::atomic::Ordering::SeqCst);
-                            this.send_notification(gettext("Failed to write image"))
-                                .await;
+                            this.send_notification(gettext("Failed to write image"));
                             glib::MainContext::default().iteration(true);
-                            break;
+                            return glib::ControlFlow::Break;
                         }
                         FlashStatus::Done(None) => {
                             this.imp().stack.set_visible_child_name("success");
@@ -418,19 +436,20 @@ impl AppWindow {
                             this.imp()
                                 .is_flashing
                                 .store(false, std::sync::atomic::Ordering::SeqCst);
-                            this.send_notification(gettext("Image Written")).await;
+                            this.send_notification(gettext("Image Written"));
                             glib::MainContext::default().iteration(true);
-                            break;
+                            return glib::ControlFlow::Break;
                         }
-                    }
+                    };
+                    glib::ControlFlow::Continue
                 }
-            }
-        ));
+            ),
+        );
 
         runtime().spawn(flash_job.perform());
     }
 
-    async fn send_notification(&self, message: String) {
+    fn send_notification(&self, message: String) {
         if !self.is_active() {
             runtime().spawn(async move {
                 let proxy = ashpd::desktop::notification::NotificationProxy::new()

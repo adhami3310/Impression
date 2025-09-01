@@ -65,7 +65,7 @@ pub enum FlashStatus {
 pub struct FlashRequest {
     source: DiskImage,
     destination: udisks::Object,
-    sender: async_channel::Sender<FlashStatus>,
+    status: std::sync::Arc<std::sync::Mutex<FlashStatus>>,
     is_running: Arc<AtomicBool>,
 }
 
@@ -73,29 +73,30 @@ impl FlashRequest {
     pub fn new(
         source: DiskImage,
         destination: udisks::Object,
-        sender: async_channel::Sender<FlashStatus>,
+        status: std::sync::Arc<std::sync::Mutex<FlashStatus>>,
         is_running: Arc<AtomicBool>,
     ) -> Self {
         Self {
             source,
             destination,
-            sender,
+            status,
             is_running,
         }
     }
 
-    pub async fn perform(self) {
-        let source = self.source;
+    fn set_status(&self, status: FlashStatus) {
+        if let Ok(mut lock) = self.status.lock() {
+            *lock = status;
+        }
+    }
 
+    pub async fn perform(self) {
         if !self.is_running.load(std::sync::atomic::Ordering::SeqCst) {
             return;
         }
 
         let Ok(client) = udisks::Client::new().await else {
-            self.sender
-                .send(FlashStatus::Done(Some(gettext("Failed to unmount disk"))))
-                .await
-                .expect("Concurrency Issues");
+            self.set_status(FlashStatus::Done(Some(gettext("Failed to unmount disk"))));
             return;
         };
 
@@ -119,10 +120,7 @@ impl FlashRequest {
         }
 
         let Ok(file) = udisks_open(&destination_block).await else {
-            self.sender
-                .send(FlashStatus::Done(Some(gettext("Failed to open disk"))))
-                .await
-                .expect("Concurrency Issues");
+            self.set_status(FlashStatus::Done(Some(gettext("Failed to open disk"))));
 
             return;
         };
@@ -131,7 +129,7 @@ impl FlashRequest {
             return;
         }
 
-        let image = match source {
+        let image = match &self.source {
             DiskImage::Local {
                 path,
                 filename: _,
@@ -154,10 +152,7 @@ impl FlashRequest {
                         .await
                         .expect("cannot create uncompressed file");
 
-                    self.sender
-                        .send(FlashStatus::Active(FlashPhase::Copy, Progress::Pulse))
-                        .await
-                        .expect("concurrency issues");
+                    self.set_status(FlashStatus::Active(FlashPhase::Copy, Progress::Pulse));
 
                     match tokio::process::Command::new("xzcat")
                         .arg(path)
@@ -169,10 +164,9 @@ impl FlashRequest {
                     {
                         Ok(x) if x.success() => File::open(&result_path).await,
                         _ => {
-                            self.sender
-                                .send(FlashStatus::Done(Some(gettext("Failed to extract drive"))))
-                                .await
-                                .expect("concurrency issues");
+                            self.set_status(FlashStatus::Done(Some(gettext(
+                                "Failed to extract drive",
+                            ))));
                             return;
                         }
                     }
@@ -183,15 +177,13 @@ impl FlashRequest {
 
                 std::fs::create_dir_all(&temp_dir).expect("cannot create temporary directory");
 
-                let result_path = temp_dir.join(name + ".iso");
+                let result_path = temp_dir.join(name.to_owned() + ".iso");
 
                 let downloading_path = result_path.clone();
 
                 #[derive(thiserror::Error, Debug)]
                 #[error("Error while getting total size")]
                 struct TotalSize {}
-
-                let downloading_sender = self.sender.clone();
 
                 let file = async {
                     let mut file = File::create(downloading_path.clone()).await?;
@@ -209,13 +201,10 @@ impl FlashRequest {
                         downloaded = std::cmp::min(downloaded + (chunk.len() as u64), total_size);
 
                         if last_sent.elapsed() >= Duration::from_millis(250) {
-                            downloading_sender
-                                .send(FlashStatus::Active(
-                                    FlashPhase::Download,
-                                    Progress::Fraction(downloaded as f64 / total_size as f64),
-                                ))
-                                .await
-                                .expect("Concurrency Issues");
+                            self.set_status(FlashStatus::Active(
+                                FlashPhase::Download,
+                                Progress::Fraction(downloaded as f64 / total_size as f64),
+                            ));
 
                             last_sent = Instant::now();
                         }
@@ -227,11 +216,9 @@ impl FlashRequest {
 
                 match file {
                     anyhow::Result::Err(_) => {
-                        self.sender
-                            .send(FlashStatus::Done(Some(gettext("Failed to download image"))))
-                            .await
-                            .expect("Concurrency Issues");
-
+                        self.set_status(FlashStatus::Done(Some(gettext(
+                            "Failed to download image",
+                        ))));
                         return;
                     }
                     anyhow::Result::Ok(i) => Ok(File::open(i).await.expect("file where :(")),
@@ -244,7 +231,7 @@ impl FlashRequest {
         FlashRequest::load_file(
             image.expect("where is file :("),
             file,
-            &self.sender,
+            |status| self.set_status(status),
             self.is_running.clone(),
         )
         .await;
@@ -254,10 +241,10 @@ impl FlashRequest {
         let _ = destination_drive.eject(HashMap::new()).await;
     }
 
-    async fn load_file(
+    async fn load_file<F: Fn(FlashStatus) + Send>(
         image: File,
-        target_file: File,
-        sender: &async_channel::Sender<FlashStatus>,
+        mut target_file: File,
+        set_status: F,
         is_running: Arc<AtomicBool>,
     ) {
         let mut last_sent = Instant::now();
@@ -266,7 +253,7 @@ impl FlashRequest {
         let size = image.metadata().await.unwrap().len();
 
         let mut source = tokio::io::BufReader::with_capacity(128 * 1024, image);
-        let mut target = tokio::io::BufWriter::with_capacity(128 * 1024, target_file);
+        let mut target = tokio::io::BufWriter::with_capacity(128 * 1024, &mut target_file);
 
         let mut buf = [0; 64 * 1024];
 
@@ -284,10 +271,7 @@ impl FlashRequest {
                 .await
                 .is_err()
             {
-                sender
-                    .send(FlashStatus::Done(Some(gettext("Writing to disk failed"))))
-                    .await
-                    .expect("Concurrency failed");
+                set_status(FlashStatus::Done(Some(gettext("Writing to disk failed"))));
                 return;
             };
 
@@ -296,20 +280,17 @@ impl FlashRequest {
             }
 
             if last_sent.elapsed() >= Duration::from_millis(250) {
-                sender
-                    .send(FlashStatus::Active(
-                        FlashPhase::Copy,
-                        Progress::Fraction(total as f64 / size as f64),
-                    ))
-                    .await
-                    .expect("Concurrency failed");
+                set_status(FlashStatus::Active(
+                    FlashPhase::Copy,
+                    Progress::Fraction(total as f64 / size as f64),
+                ));
                 last_sent = Instant::now();
             }
         }
-        sender
-            .send(FlashStatus::Done(None))
-            .await
-            .expect("Concurrency failed");
+
+        let _ = target_file.sync_all().await;
+
+        set_status(FlashStatus::Done(None));
     }
 }
 
