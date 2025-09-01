@@ -75,6 +75,15 @@
   <content_rating type="oars-1.1" />
 
   <releases>
+    <release version="3.5.1" date="2025-09-01">
+      <description translate="no">
+        <ul>
+          <li>Add Dutch Translation.</li>
+          <li>Fixes a bug where the progress bar would update slowly when the app is not in focus.</li>
+          <li>Fixes a bug where the disk might unmount before the OS syncs all operations to disk.</li>
+        </ul>
+      </description>
+    </release>
     <release version="3.5.0" date="2025-07-27">
       <description translate="no">
         <p>Fixes a bug where the order of the drives list would randomly change.</p>
