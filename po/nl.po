@@ -1,0 +1,289 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the impression package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: impression\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-07-27 00:31-0700\n"
+"PO-Revision-Date: 2025-07-30 11:13+0200\n"
+"Last-Translator: Heimen Stoffels <vistausss@fastmail.com>\n"
+"Language-Team: \n"
+"Language: nl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.6\n"
+
+#: data/io.gitlab.adhami3310.Impression.desktop.in.in:2
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:5
+#: data/resources/blueprints/window.blp:9
+#: data/resources/blueprints/window.blp:21
+#: data/resources/blueprints/window.blp:146 src/main.rs:51 src/window.rs:442
+msgid "Impression"
+msgstr "Impression"
+
+#: data/io.gitlab.adhami3310.Impression.desktop.in.in:3
+msgid "Media Writer"
+msgstr "Mediamaker"
+
+#: data/io.gitlab.adhami3310.Impression.desktop.in.in:4
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:9
+msgid "Create bootable drives"
+msgstr "Maak opstartbare schijven"
+
+#: data/io.gitlab.adhami3310.Impression.desktop.in.in:10
+msgid "usb;flash;writer;bootable;drive;iso;img;disk;image"
+msgstr "usb;schrijven;opstartbaar;schijf;iso;schijfkopie;disk;flash;img;"
+
+#: data/io.gitlab.adhami3310.Impression.gschema.xml.in:6
+msgid "Window width"
+msgstr "Vensterbreedte"
+
+#: data/io.gitlab.adhami3310.Impression.gschema.xml.in:10
+msgid "Window height"
+msgstr "Vensterhoogte"
+
+#: data/io.gitlab.adhami3310.Impression.gschema.xml.in:14
+msgid "Window maximized state"
+msgstr "Venstermaximalisatie"
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:7
+msgid "Khaleel Al-Adhami"
+msgstr "Khaleel Al-Adhami"
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:15
+msgid ""
+"Write disk images to your drives with ease. Select an image, insert your "
+"drive, and you're good to go! Impression is a useful tool for both avid "
+"distro-hoppers and casual computer users."
+msgstr ""
+"Maak moeiteloos opstartbare schijven. Kies een schijfkopie, koppel een usb-"
+"schijf aan en gaan met die banaan! Impression is onmisbaar voor zowel "
+"‘distrohoppers’ als minder ervaren gebruikers."
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:41
+msgid "Screen with a choice of a local image or internet download"
+msgstr "Scherm met keuze uit lokale schijfkopie of download"
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:45
+msgid "Screen with a chosen ISO and available USB memories"
+msgstr "Scherm met gekozen iso-bestand en beschikbare schijven"
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:49
+msgid "Writing the ISO in progress"
+msgstr "Scherm met voortgangsstatus"
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:53
+msgid "Success screen with a big check mark"
+msgstr "Afrondingsscherm met groot vinkje"
+
+#: data/resources/blueprints/help-overlay.blp:11
+msgctxt "shortcut window"
+msgid "General"
+msgstr "Algemeen"
+
+#: data/resources/blueprints/help-overlay.blp:14
+msgctxt "shortcut window"
+msgid "Open File"
+msgstr "Bestand openen"
+
+#: data/resources/blueprints/help-overlay.blp:19
+msgctxt "shortcut window"
+msgid "Show Shortcuts"
+msgstr "Sneltoetsen tonen"
+
+#: data/resources/blueprints/help-overlay.blp:24
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "Afsluiten"
+
+#: data/resources/blueprints/window.blp:25
+msgid "Drop Here to Open"
+msgstr "Sleep een item hierheen"
+
+#: data/resources/blueprints/window.blp:35
+#: data/resources/blueprints/window.blp:156
+#: data/resources/blueprints/window.blp:255
+msgid "Main Menu"
+msgstr "Hoofdmenu"
+
+#: data/resources/blueprints/window.blp:54
+msgid "Choose Image"
+msgstr "Kies een schijfkopie"
+
+#: data/resources/blueprints/window.blp:64
+msgid "Open File…"
+msgstr "Bestand openen…"
+
+#: data/resources/blueprints/window.blp:74
+msgid "Direct Download"
+msgstr "Downloaden"
+
+#: data/resources/blueprints/window.blp:108
+msgid "No Connection"
+msgstr "Geen internetverbinding"
+
+#: data/resources/blueprints/window.blp:109
+msgid "Connect to the internet to view available images"
+msgstr "Maak verbinding met het internet om beschikbaar schijfkopieën te tonen"
+
+#: data/resources/blueprints/window.blp:218
+msgid "All data on the selected drive will be erased"
+msgstr "Let op: alle gegevens op de gekozen schijf worden gewist"
+
+#: data/resources/blueprints/window.blp:221
+msgid "Write"
+msgstr "Wegschrijven"
+
+#: data/resources/blueprints/window.blp:284
+msgid "No Drives"
+msgstr "Geen schijven"
+
+#: data/resources/blueprints/window.blp:285
+msgid "Insert a drive to write to"
+msgstr "Koppel een schijf aan om"
+
+#: data/resources/blueprints/window.blp:296
+msgid "Writing Completed"
+msgstr "Wegschrijven voltooid"
+
+#: data/resources/blueprints/window.blp:297
+msgid "The drive can be safely removed"
+msgstr "De schijf kan worden afgekoppeld"
+
+#: data/resources/blueprints/window.blp:306
+msgid "Finish"
+msgstr "Afronden"
+
+#: data/resources/blueprints/window.blp:327
+msgid "Writing Unsuccessful"
+msgstr "Het wegschrijven is mislukt"
+
+#: data/resources/blueprints/window.blp:336
+msgid "Retry"
+msgstr "Opnieuw proberen"
+
+#: data/resources/blueprints/window.blp:356 src/window.rs:355 src/window.rs:384
+msgid "Writing"
+msgstr "Bezig met wegschrijven…"
+
+#: data/resources/blueprints/window.blp:358 src/window.rs:354
+msgid "Do not remove the drive"
+msgstr "Let op: verwijder de schijf niet"
+
+#: data/resources/blueprints/window.blp:373 src/window.rs:259 src/window.rs:306
+msgid "_Cancel"
+msgstr "_Annuleren"
+
+#: data/resources/blueprints/window.blp:401
+msgid "Keyboard Shortcuts"
+msgstr "Sneltoetsen"
+
+#: data/resources/blueprints/window.blp:406
+msgid "About Impression"
+msgstr "Over Impression"
+
+#: src/window.rs:254
+msgid "Stop Writing?"
+msgstr "Wegschrijven afbreken?"
+
+#: src/window.rs:255
+msgid "This might leave the drive in a faulty state"
+msgstr "Hierdoor kan de schijf onbruikbaar worden"
+
+#: src/window.rs:260
+msgid "_Stop Writing"
+msgstr "_Afbreken"
+
+#: src/window.rs:302
+msgid "Erase Drive?"
+msgstr "Schijf wissen?"
+
+#: src/window.rs:303
+#, rust-format
+msgid "You will lose all data stored on {}"
+msgstr "Alle gegevens op {} worden gewist"
+
+#: src/window.rs:307
+msgid "_Erase"
+msgstr "Wiss_en"
+
+#: src/window.rs:348 src/window.rs:378
+msgid "Writing will begin once the download is completed"
+msgstr "Het wegschrijven begint zodra het downloaden is afgerond"
+
+#: src/window.rs:350 src/window.rs:383
+msgid "Downloading Image"
+msgstr "Bezig met downloaden van schijfkopie…"
+
+#: src/window.rs:380
+msgid "This could take a while"
+msgstr "Dit kan even duren"
+
+#: src/window.rs:408
+msgid "Failed to write image"
+msgstr "De schijfkopie kan niet worden weggeschreven"
+
+#: src/window.rs:421
+msgid "Image Written"
+msgstr "De schijfkopie is weggeschreven"
+
+#: src/window.rs:677
+msgid "Disk Images"
+msgstr "Schijfkopieën"
+
+#: src/window.rs:703
+msgid "File is not a Disk Image"
+msgstr "Dit bestand is geen schijfkopie"
+
+#: src/window.rs:821
+msgid "translator-credits"
+msgstr "Heimen Stoffels <vistausss@fastmail.com>"
+
+#: src/window.rs:823
+msgid "Code borrowed from"
+msgstr "Code geleend van"
+
+#. Translators: Metainfo for the app Footage. <https://gitlab.com/adhami3310/Footage>
+#: src/window.rs:830
+msgid "Footage"
+msgstr "Footage"
+
+#. Translators: Metainfo for the app Footage. <https://gitlab.com/adhami3310/Footage>
+#: src/window.rs:832
+msgid "Polish your videos"
+msgstr "Schaaf uw video's bij"
+
+#. Translators: Metainfo for the app Switcheroo. <https://gitlab.com/adhami3310/Switcheroo>
+#: src/window.rs:838
+msgid "Switcheroo"
+msgstr "Switcheroo"
+
+#. Translators: Metainfo for the app Switcheroo. <https://gitlab.com/adhami3310/Switcheroo>
+#: src/window.rs:840
+msgid "Convert and manipulate images"
+msgstr "Converteer en bewerk afbeeldingen"
+
+#: src/flash.rs:96
+msgid "Failed to unmount disk"
+msgstr "De schijf kan niet worden afgekoppeld"
+
+#: src/flash.rs:123
+msgid "Failed to open disk"
+msgstr "De schijf kan niet worden geopend"
+
+#: src/flash.rs:173
+msgid "Failed to extract drive"
+msgstr "De schijf kan niet worden geëxtraheerd"
+
+#: src/flash.rs:231
+msgid "Failed to download image"
+msgstr "De schijfkopie kan niet worden gedownload"
+
+#: src/flash.rs:288
+msgid "Writing to disk failed"
+msgstr "Het wegschrijven is mislukt"
