@@ -1,67 +1,52 @@
 {
-    "id": "io.gitlab.adhami3310.Impression",
-    "runtime": "org.gnome.Platform",
-    "runtime-version": "48",
-    "sdk": "org.gnome.Sdk",
-    "sdk-extensions": [
-        "org.freedesktop.Sdk.Extension.rust-stable"
-    ],
-    "command": "impression",
-    "finish-args": [
-        "--share=ipc",
-        "--socket=fallback-x11",
-        "--device=dri",
-        "--socket=wayland",
-        "--system-talk-name=org.freedesktop.UDisks2",
-        "--share=network",
-        "--env=RUST_BACKTRACE=1"
-    ],
-    "build-options": {
-        "append-path": "/usr/lib/sdk/rust-stable/bin",
-        "env": {
-            "CARGO_HOME": "/run/build/impression/cargo"
-        }
-    },
-    "cleanup": [
-        "/include",
-        "/lib/pkgconfig",
-        "/man",
-        "/share/doc",
-        "/share/gtk-doc",
-        "/share/man",
-        "/share/pkgconfig",
-        "*.la",
-        "*.a"
-    ],
-    "modules": [
+  "id": "io.gitlab.adhami3310.Impression",
+  "runtime": "org.gnome.Platform",
+  "runtime-version": "master",
+  "sdk": "org.gnome.Sdk",
+  "sdk-extensions": ["org.freedesktop.Sdk.Extension.rust-stable"],
+  "command": "impression",
+  "finish-args": [
+    "--share=ipc",
+    "--socket=fallback-x11",
+    "--device=dri",
+    "--socket=wayland",
+    "--system-talk-name=org.freedesktop.UDisks2",
+    "--share=network",
+    "--env=RUST_BACKTRACE=1"
+  ],
+  "build-options": {
+    "append-path": "/usr/lib/sdk/rust-stable/bin",
+    "env": {
+      "CARGO_HOME": "/run/build/impression/cargo"
+    }
+  },
+  "cleanup": [
+    "/include",
+    "/lib/pkgconfig",
+    "/man",
+    "/share/doc",
+    "/share/gtk-doc",
+    "/share/man",
+    "/share/pkgconfig",
+    "*.la",
+    "*.a"
+  ],
+  "modules": [
+    {
+      "name": "impression",
+      "builddir": true,
+      "buildsystem": "meson",
+      "config-opts": [
+        "--buildtype=release",
+        "-Dprofile=development",
+        "--libdir=lib"
+      ],
+      "sources": [
         {
-            "name": "blueprint-compiler",
-            "buildsystem": "meson",
-            "cleanup": [
-                "*"
-            ],
-            "sources": [
-                {
-                    "type": "git",
-                    "url": "https://gitlab.gnome.org/jwestman/blueprint-compiler.git",
-                    "tag": "v0.16.0"
-                }
-            ]
-        },
-        {
-            "name": "impression",
-            "builddir": true,
-            "buildsystem": "meson",
-            "config-opts": [
-                "--buildtype=release",
-                "-Dprofile=development"
-            ],
-            "sources": [
-                {
-                    "type": "dir",
-                    "path": "."
-                }
-            ]
+          "type": "dir",
+          "path": "."
         }
-    ]
+      ]
+    }
+  ]
 }
