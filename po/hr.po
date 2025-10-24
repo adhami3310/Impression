@@ -1,43 +1,41 @@
-# Croatian translation.
+# Croatian translation of impression.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the impression package.
-# Milo Ivir <mail@milotype.de>, 2024.
+# Milo Ivir <mail@milotype.de>, 2024., 2025.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: impression\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-08 17:38-0400\n"
-"PO-Revision-Date: 2024-07-08 16:21+0200\n"
+"POT-Creation-Date: 2025-07-27 00:31-0700\n"
+"PO-Revision-Date: 2025-10-24 18:25+0200\n"
 "Last-Translator: Milo Ivir <mail@mivirtype.de>\n"
 "Language-Team: \n"
 "Language: hr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.4.4\n"
+"X-Generator: Poedit 3.8\n"
 
-#: data/io.gitlab.adhami3310.Impression.desktop.in.in:3
+#: data/io.gitlab.adhami3310.Impression.desktop.in.in:2
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:5
-#: data/resources/blueprints/window.blp:9
-#: data/resources/blueprints/window.blp:21
-#: data/resources/blueprints/window.blp:146 src/main.rs:57 src/window.rs:424
+#: data/resources/blueprints/window.blp:9 data/resources/blueprints/window.blp:21
+#: data/resources/blueprints/window.blp:146 src/main.rs:51 src/window.rs:442
 msgid "Impression"
 msgstr "Impression"
 
-#: data/io.gitlab.adhami3310.Impression.desktop.in.in:4
+#: data/io.gitlab.adhami3310.Impression.desktop.in.in:3
 msgid "Media Writer"
 msgstr "Pisač medija"
 
-#: data/io.gitlab.adhami3310.Impression.desktop.in.in:5
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:11
+#: data/io.gitlab.adhami3310.Impression.desktop.in.in:4
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:9
 msgid "Create bootable drives"
 msgstr "Stvori diskove za pokretanje"
 
-#: data/io.gitlab.adhami3310.Impression.desktop.in.in:11
+#: data/io.gitlab.adhami3310.Impression.desktop.in.in:10
 msgid "usb;flash;writer;bootable;drive;iso;img;disk;image"
-msgstr ""
-"usb;flash;writer;pisač;bootable;pokretanje;drive;pogon;iso;img;disk;slika"
+msgstr "usb;flash;writer;pisač;bootable;pokretanje;drive;pogon;iso;img;disk;slika"
 
 #: data/io.gitlab.adhami3310.Impression.gschema.xml.in:6
 msgid "Window width"
@@ -51,35 +49,33 @@ msgstr "Visina prozora"
 msgid "Window maximized state"
 msgstr "Maksimalno povećani prozor"
 
-#. developer_name tag deprecated with Appstream 1.0
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:7
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:9
 msgid "Khaleel Al-Adhami"
 msgstr "Khaleel Al-Adhami"
 
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:17
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:15
 msgid ""
-"Write disk images to your drives with ease. Select an image, insert your "
-"drive, and you're good to go! Impression is a useful tool for both avid "
-"distro-hoppers and casual computer users."
+"Write disk images to your drives with ease. Select an image, insert your drive, "
+"and you're good to go! Impression is a useful tool for both avid distro-hoppers "
+"and casual computer users."
 msgstr ""
-"Zapiši slike diskova na svoje diskove s lakoćom. Odaberi sliku, umetni disk "
-"i gotovo! Impression je koristan alat za korisnike s raznim distribucijama "
-"kao i za obične korisnike računala."
+"Zapiši slike diskova na svoje diskove s lakoćom. Odaberi sliku, umetni disk i "
+"gotovo! Impression je koristan alat za korisnike s raznim distribucijama kao i "
+"za obične korisnike računala."
 
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:38
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:41
 msgid "Screen with a choice of a local image or internet download"
 msgstr "Ekran za biranje lokalne slike ili za preuzimanje s interneta"
 
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:42
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:45
 msgid "Screen with a chosen ISO and available USB memories"
 msgstr "Ekran s odabranom ISO datotekom i dostupnim USB memorijama"
 
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:46
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:49
 msgid "Writing the ISO in progress"
 msgstr "Zapisivanje ISO datoteke u tijeku"
 
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:50
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:53
 msgid "Success screen with a big check mark"
 msgstr "Ekran uspjeha s velikom kvačicom"
 
@@ -95,15 +91,10 @@ msgstr "Otvori datoteku"
 
 #: data/resources/blueprints/help-overlay.blp:19
 msgctxt "shortcut window"
-msgid "New Window"
-msgstr "Novi prozor"
-
-#: data/resources/blueprints/help-overlay.blp:24
-msgctxt "shortcut window"
 msgid "Show Shortcuts"
 msgstr "Prikaži prečace"
 
-#: data/resources/blueprints/help-overlay.blp:29
+#: data/resources/blueprints/help-overlay.blp:24
 msgctxt "shortcut window"
 msgid "Quit"
 msgstr "Zatvori aplikaciju"
@@ -114,7 +105,7 @@ msgstr "Ispusti ovdje za otvaranje"
 
 #: data/resources/blueprints/window.blp:35
 #: data/resources/blueprints/window.blp:156
-#: data/resources/blueprints/window.blp:254
+#: data/resources/blueprints/window.blp:255
 msgid "Main Menu"
 msgstr "Glavni izbornik"
 
@@ -146,122 +137,151 @@ msgstr "Svi podaci na odabranom disku će se izbrisati"
 msgid "Write"
 msgstr "Zapiši"
 
-#: data/resources/blueprints/window.blp:283
+#: data/resources/blueprints/window.blp:284
 msgid "No Drives"
 msgstr "Nema diskova"
 
-#: data/resources/blueprints/window.blp:284
+#: data/resources/blueprints/window.blp:285
 msgid "Insert a drive to write to"
 msgstr "Umetni disk za zapisivanje"
 
-#: data/resources/blueprints/window.blp:295
+#: data/resources/blueprints/window.blp:296
 msgid "Writing Completed"
 msgstr "Zapisivanje završeno"
 
-#: data/resources/blueprints/window.blp:296
+#: data/resources/blueprints/window.blp:297
 msgid "The drive can be safely removed"
 msgstr "Disk se može sigurno ukloniti"
 
-#: data/resources/blueprints/window.blp:305
+#: data/resources/blueprints/window.blp:306
 msgid "Finish"
 msgstr "Završi"
 
-#: data/resources/blueprints/window.blp:326
+#: data/resources/blueprints/window.blp:327
 msgid "Writing Unsuccessful"
 msgstr "Zapisivanje neuspjelo"
 
-#: data/resources/blueprints/window.blp:335
+#: data/resources/blueprints/window.blp:336
 msgid "Retry"
 msgstr "Pokušaj ponovo"
 
-#: data/resources/blueprints/window.blp:355 src/window.rs:331 src/window.rs:365
+#: data/resources/blueprints/window.blp:356 src/window.rs:355 src/window.rs:384
 msgid "Writing"
 msgstr "Zapisivanje"
 
-#: data/resources/blueprints/window.blp:357 src/window.rs:330
+#: data/resources/blueprints/window.blp:358 src/window.rs:354
 msgid "Do not remove the drive"
 msgstr "Ne uklanjaj disk"
 
-#: data/resources/blueprints/window.blp:372 src/window.rs:250 src/window.rs:286
+#: data/resources/blueprints/window.blp:373 src/window.rs:259 src/window.rs:306
 msgid "_Cancel"
 msgstr "_Odustani"
 
-#: data/resources/blueprints/window.blp:400
+#: data/resources/blueprints/window.blp:401
 msgid "Keyboard Shortcuts"
 msgstr "Tipkovnički prečaci"
 
-#: data/resources/blueprints/window.blp:405
+#: data/resources/blueprints/window.blp:406
 msgid "About Impression"
 msgstr "O aplikaciji Impression"
 
-#: src/window.rs:246
+#: src/window.rs:254
 msgid "Stop Writing?"
 msgstr "Prekinuti zapisivanje?"
 
-#: src/window.rs:247
+#: src/window.rs:255
 msgid "This might leave the drive in a faulty state"
 msgstr "To bi moglo ostaviti disk u neispravnom stanju"
 
-#: src/window.rs:250
-msgid "_Stop"
-msgstr "_Prekini"
+#: src/window.rs:260
+msgid "_Stop Writing"
+msgstr "_Prekini zapisivanje"
 
-#: src/window.rs:279
+#: src/window.rs:302
 msgid "Erase Drive?"
 msgstr "Izbrisati disk?"
 
-#: src/window.rs:287
+#: src/window.rs:303
+#, rust-format
+msgid "You will lose all data stored on {}"
+msgstr "Izgubit ćeš sve podatke spremljene na {}"
+
+#: src/window.rs:307
 msgid "_Erase"
 msgstr "_Izbriši"
 
-#: src/window.rs:324 src/window.rs:353
+#: src/window.rs:348 src/window.rs:378
 msgid "Writing will begin once the download is completed"
 msgstr "Zapisivanje će početi nakon završetka preuzimanja"
 
-#: src/window.rs:326 src/window.rs:362
+#: src/window.rs:350 src/window.rs:383
 msgid "Downloading Image"
 msgstr "Preuzimanje slike"
 
-#: src/window.rs:356
+#: src/window.rs:380
 msgid "This could take a while"
 msgstr "To može nešto potrajati"
 
-#: src/window.rs:391
+#: src/window.rs:408
 msgid "Failed to write image"
 msgstr "Zapisivanje slike nije uspjelo"
 
-#: src/window.rs:399
+#: src/window.rs:421
 msgid "Image Written"
 msgstr "Slika zapisana"
 
-#: src/window.rs:603
+#: src/window.rs:677
 msgid "Disk Images"
 msgstr "Slike diskova"
 
-#: src/window.rs:629
+#: src/window.rs:703
 msgid "File is not a Disk Image"
 msgstr "Datoteka nije slika diska"
 
-#: src/window.rs:734
+#: src/window.rs:821
 msgid "translator-credits"
 msgstr "Milo Ivir <mail@milotype.de>"
 
-#: src/window.rs:736
+#: src/window.rs:823
 msgid "Code borrowed from"
 msgstr "Programski kod je posuđen od"
 
-#: src/flash.rs:95
+#. Translators: Metainfo for the app Footage. <https://gitlab.com/adhami3310/Footage>
+#: src/window.rs:830
+msgid "Footage"
+msgstr "Footage"
+
+#. Translators: Metainfo for the app Footage. <https://gitlab.com/adhami3310/Footage>
+#: src/window.rs:832
+msgid "Polish your videos"
+msgstr "Dotjeraj svoja videa"
+
+#. Translators: Metainfo for the app Switcheroo. <https://gitlab.com/adhami3310/Switcheroo>
+#: src/window.rs:838
+msgid "Switcheroo"
+msgstr "Switcheroo"
+
+#. Translators: Metainfo for the app Switcheroo. <https://gitlab.com/adhami3310/Switcheroo>
+#: src/window.rs:840
+msgid "Convert and manipulate images"
+msgstr "Konvertiraj i uredi slike"
+
+#: src/flash.rs:96
+msgid "Failed to unmount disk"
+msgstr "Izbacivanje diska nije uspjelo"
+
+#: src/flash.rs:123
 msgid "Failed to open disk"
 msgstr "Otvaranje diska nije uspjelo"
 
-#: src/flash.rs:145
+#: src/flash.rs:173
 msgid "Failed to extract drive"
 msgstr "Izdvajanje diska nije uspjelo"
 
-#: src/flash.rs:203
+#: src/flash.rs:231
 msgid "Failed to download image"
 msgstr "Preuzimanje slike nije uspjelo"
 
-#: src/flash.rs:256
+#: src/flash.rs:288
 msgid "Writing to disk failed"
 msgstr "Zapisivanje na disk nije uspjelo"
