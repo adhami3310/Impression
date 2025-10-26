@@ -2,7 +2,7 @@ use std::collections::HashMap;
 
 use itertools::Itertools;
 
-#[derive(Debug)]
+#[derive(Debug, PartialEq, PartialOrd, Eq, Ord)]
 pub struct DistroRelease {
     pub name: String,
     pub version: Option<String>,
@@ -19,28 +19,11 @@ pub fn get_osinfodb_url() -> Option<String> {
     Some(info["release"]["archive"].as_str()?.to_owned())
 }
 
-type NameCheck = fn(&str) -> bool;
-
-const GOOD_DISTROS: [(&str, &str, Option<NameCheck>); 7] = [
-    ("archlinux.org", "Arch Linux", None),
-    ("endlessos.com", "Endless OS", None),
-    (
-        "fedoraproject.org",
-        "Fedora",
-        Some(|name: &str| !name.contains("Silverblue")),
-    ),
-    ("manjaro.org", "Manjaro", None),
-    ("opensuse.org", "OpenSUSE", None),
-    ("ubuntu.com", "Ubuntu", None),
-    (
-        "ubuntu.com",
-        "Ubuntu LTS",
-        Some(|name: &str| name.contains("LTS")),
-    ),
-];
+type DownloadableDistroInfo = (String, Option<String>, bool);
 
 pub fn collect_online_distros(
     latest_url: &str,
+    downloadable_distros: &[DownloadableDistroInfo],
 ) -> Option<(Vec<DistroRelease>, Vec<DistroRelease>)> {
     let temp_dir = glib::user_cache_dir();
 
@@ -63,8 +46,8 @@ pub fn collect_online_distros(
         .arg("--strip-components=2")
         .arg("--wildcards")
         .args(
-            GOOD_DISTROS
-                .into_iter()
+            downloadable_distros
+                .iter()
                 .map(|(name, _, _)| format!("*/os/{name}"))
                 .unique(),
         )
@@ -82,9 +65,9 @@ pub fn collect_online_distros(
         arm: Vec<DistroRelease>,
     }
 
-    let distros: Vec<DistroInfo> = GOOD_DISTROS
+    let distros: Vec<DistroInfo> = downloadable_distros
         .into_par_iter()
-        .map(|(distro, _, filter)| {
+        .map(|(distro, must_contains, invert_must_contains)| {
             let files = std::fs::read_dir(temp_dir.join(distro)).unwrap();
 
             let y: (Vec<Option<DistroRelease>>, Vec<Option<DistroRelease>>) = files
@@ -190,8 +173,8 @@ pub fn collect_online_distros(
                                         >= chrono::offset::Local::now().date_naive())
                         })
                         .filter(|(name, _, _, _, _, _)| {
-                            if let Some(filter) = filter {
-                                filter(name)
+                            if let Some(must_contains) = must_contains {
+                                name.contains(must_contains) != *invert_must_contains
                             } else {
                                 true
                             }
@@ -206,8 +189,8 @@ pub fn collect_online_distros(
                                         >= chrono::offset::Local::now().date_naive())
                         })
                         .filter(|(name, _, _, _, _, _)| {
-                            if let Some(filter) = filter {
-                                filter(name)
+                            if let Some(must_contains) = must_contains {
+                                name.contains(must_contains) != *invert_must_contains
                             } else {
                                 true
                             }
@@ -264,8 +247,8 @@ pub fn collect_online_distros(
             }
 
             DistroInfo {
-                amd: amd.into_values().collect(),
-                arm: arm.into_values().collect(),
+                amd: amd.into_values().sorted().collect(),
+                arm: arm.into_values().sorted().collect(),
             }
         })
         .collect();

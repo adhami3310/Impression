@@ -624,9 +624,23 @@ impl AppWindow {
     }
 
     fn get_distros(&self) {
+        let Some(downloadable_distros) = self
+            .imp()
+            .settings
+            .value("downloadable-distros")
+            .get::<Vec<(String, Option<String>, bool)>>()
+        else {
+            self.load_distros(&self.imp().amd_distros, vec![]);
+            self.load_distros(&self.imp().arm_distros, vec![]);
+            self.imp().download_spinner.set_visible(false);
+            self.imp().offline_screen.set_visible(false);
+            return;
+        };
+
         let (sender, receiver) = tokio::sync::oneshot::channel();
 
-        let distros = get_osinfodb_url().and_then(|u| collect_online_distros(&u));
+        let distros =
+            get_osinfodb_url().and_then(|u| collect_online_distros(&u, &downloadable_distros));
         runtime().spawn(async move { sender.send(distros).expect("Concurrency Issues") });
 
         glib::spawn_future_local(clone!(
