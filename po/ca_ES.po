@@ -1,0 +1,289 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the impression package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: impression\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-07-27 00:31-0700\n"
+"PO-Revision-Date: 2025-10-17 19:13+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ca_ES\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.6\n"
+
+#: data/io.gitlab.adhami3310.Impression.desktop.in.in:2
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:5
+#: data/resources/blueprints/window.blp:9
+#: data/resources/blueprints/window.blp:21
+#: data/resources/blueprints/window.blp:146 src/main.rs:51 src/window.rs:442
+msgid "Impression"
+msgstr "Impressió"
+
+#: data/io.gitlab.adhami3310.Impression.desktop.in.in:3
+msgid "Media Writer"
+msgstr "Eina d'escriptura multimèdia"
+
+#: data/io.gitlab.adhami3310.Impression.desktop.in.in:4
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:9
+msgid "Create bootable drives"
+msgstr "Creeu dispositius d'arrencada"
+
+#: data/io.gitlab.adhami3310.Impression.desktop.in.in:10
+msgid "usb;flash;writer;bootable;drive;iso;img;disk;image"
+msgstr "usb;flash;escriptor;llapis;arrencar;unitat;disc;iso;img;imatge;dispositiu"
+
+#: data/io.gitlab.adhami3310.Impression.gschema.xml.in:6
+msgid "Window width"
+msgstr "Amplada de la finestra"
+
+#: data/io.gitlab.adhami3310.Impression.gschema.xml.in:10
+msgid "Window height"
+msgstr "Alçada de la finestra"
+
+#: data/io.gitlab.adhami3310.Impression.gschema.xml.in:14
+msgid "Window maximized state"
+msgstr "Estat de maximització de la finestra"
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:7
+msgid "Khaleel Al-Adhami"
+msgstr "Khaleel Al-Adhami"
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:15
+msgid ""
+"Write disk images to your drives with ease. Select an image, insert your "
+"drive, and you're good to go! Impression is a useful tool for both avid "
+"distro-hoppers and casual computer users."
+msgstr ""
+"Escriviu imatges de disc als vostres dispositius amb facilitat. Seleccioneu "
+"una imatge, inseriu el vostre disc i estareu llest per començar! L'Impressió "
+"és una eina útil tant per als usuaris apassionats de les distribucions com "
+"per als usuaris d'ordinadors més ocasionals."
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:41
+msgid "Screen with a choice of a local image or internet download"
+msgstr "Pantalla amb l'opció d'una imatge local o una baixada d'internet"
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:45
+msgid "Screen with a chosen ISO and available USB memories"
+msgstr "Pantalla amb una ISO seleccionada i dispositius USB disponibles"
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:49
+msgid "Writing the ISO in progress"
+msgstr "Escriptura de la ISO en progrés"
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:53
+msgid "Success screen with a big check mark"
+msgstr "Pantalla d'èxit amb una gran marca de verificació"
+
+#: data/resources/blueprints/help-overlay.blp:11
+msgctxt "shortcut window"
+msgid "General"
+msgstr "General"
+
+#: data/resources/blueprints/help-overlay.blp:14
+msgctxt "shortcut window"
+msgid "Open File"
+msgstr "Obre un fitxer"
+
+#: data/resources/blueprints/help-overlay.blp:19
+msgctxt "shortcut window"
+msgid "Show Shortcuts"
+msgstr "Mostra les dreceres de teclat"
+
+#: data/resources/blueprints/help-overlay.blp:24
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "Surt"
+
+#: data/resources/blueprints/window.blp:25
+msgid "Drop Here to Open"
+msgstr "Deixeu-ho anar aquí per obrir-ho"
+
+#: data/resources/blueprints/window.blp:35
+#: data/resources/blueprints/window.blp:156
+#: data/resources/blueprints/window.blp:255
+msgid "Main Menu"
+msgstr "Menú principal"
+
+#: data/resources/blueprints/window.blp:54
+msgid "Choose Image"
+msgstr "Trieu la imatge"
+
+#: data/resources/blueprints/window.blp:64
+msgid "Open File…"
+msgstr "Obre un fitxer…"
+
+#: data/resources/blueprints/window.blp:74
+msgid "Direct Download"
+msgstr "Baixada directa"
+
+#: data/resources/blueprints/window.blp:108
+msgid "No Connection"
+msgstr "Sense connexió"
+
+#: data/resources/blueprints/window.blp:109
+msgid "Connect to the internet to view available images"
+msgstr "Connecteu-vos a internet per veure les imatges disponibles"
+
+#: data/resources/blueprints/window.blp:218
+msgid "All data on the selected drive will be erased"
+msgstr "Totes les dades de la unitat seleccionada seran esborrades"
+
+#: data/resources/blueprints/window.blp:221
+msgid "Write"
+msgstr "Escriu"
+
+#: data/resources/blueprints/window.blp:284
+msgid "No Drives"
+msgstr "Sense unitats"
+
+#: data/resources/blueprints/window.blp:285
+msgid "Insert a drive to write to"
+msgstr "Inseriu un dispositiu per escriure-hi"
+
+#: data/resources/blueprints/window.blp:296
+msgid "Writing Completed"
+msgstr "S'ha completat l'escriptura"
+
+#: data/resources/blueprints/window.blp:297
+msgid "The drive can be safely removed"
+msgstr "Es pot retirar la unitat de manera segura"
+
+#: data/resources/blueprints/window.blp:306
+msgid "Finish"
+msgstr "Finalitza"
+
+#: data/resources/blueprints/window.blp:327
+msgid "Writing Unsuccessful"
+msgstr "No s'ha pogut escriure"
+
+#: data/resources/blueprints/window.blp:336
+msgid "Retry"
+msgstr "Torna-ho a intentar"
+
+#: data/resources/blueprints/window.blp:356 src/window.rs:355 src/window.rs:384
+msgid "Writing"
+msgstr "S'està escrivint"
+
+#: data/resources/blueprints/window.blp:358 src/window.rs:354
+msgid "Do not remove the drive"
+msgstr "No desconnecteu la unitat"
+
+#: data/resources/blueprints/window.blp:373 src/window.rs:259 src/window.rs:306
+msgid "_Cancel"
+msgstr "_Cancel·la"
+
+#: data/resources/blueprints/window.blp:401
+msgid "Keyboard Shortcuts"
+msgstr "Dreceres de teclat"
+
+#: data/resources/blueprints/window.blp:406
+msgid "About Impression"
+msgstr "Quant a l'Impressió"
+
+#: src/window.rs:254
+msgid "Stop Writing?"
+msgstr "Voleu aturar l'escriptura?"
+
+#: src/window.rs:255
+msgid "This might leave the drive in a faulty state"
+msgstr "Això podria deixar la unitat en un estat defectuós"
+
+#: src/window.rs:260
+msgid "_Stop Writing"
+msgstr "_Atura l'escriptura"
+
+#: src/window.rs:302
+msgid "Erase Drive?"
+msgstr "Voleu eliminar la unitat?"
+
+#: src/window.rs:303
+msgid "You will lose all data stored on {}"
+msgstr "Perdreu totes les dades emmagatzemades a {}"
+
+#: src/window.rs:307
+msgid "_Erase"
+msgstr "_Suprimeix"
+
+#: src/window.rs:348 src/window.rs:378
+msgid "Writing will begin once the download is completed"
+msgstr "L'escriptura s'iniciarà un cop s'hagi finalitzat la baixada"
+
+#: src/window.rs:350 src/window.rs:383
+msgid "Downloading Image"
+msgstr "S'està baixant la imatge"
+
+#: src/window.rs:380
+msgid "This could take a while"
+msgstr "Això pot trigar una estona"
+
+#: src/window.rs:408
+msgid "Failed to write image"
+msgstr "No s'ha pogut escriure la imatge"
+
+#: src/window.rs:421
+msgid "Image Written"
+msgstr "S'ha escrit la imatge"
+
+#: src/window.rs:677
+msgid "Disk Images"
+msgstr "Imatges de disc"
+
+#: src/window.rs:703
+msgid "File is not a Disk Image"
+msgstr "El fitxer no és una imatge de disc"
+
+#: src/window.rs:821
+msgid "translator-credits"
+msgstr "Victor Dargallo <victordargallo@disroot.org>"
+
+#: src/window.rs:823
+msgid "Code borrowed from"
+msgstr "Codi obtingut de"
+
+#. Translators: Metainfo for the app Footage. <https://gitlab.com/adhami3310/Footage>
+#: src/window.rs:830
+msgid "Footage"
+msgstr "Footage"
+
+#. Translators: Metainfo for the app Footage. <https://gitlab.com/adhami3310/Footage>
+#: src/window.rs:832
+msgid "Polish your videos"
+msgstr "Milloreu els vostres vídeos"
+
+#. Translators: Metainfo for the app Switcheroo. <https://gitlab.com/adhami3310/Switcheroo>
+#: src/window.rs:838
+msgid "Switcheroo"
+msgstr "Switcheroo"
+
+#. Translators: Metainfo for the app Switcheroo. <https://gitlab.com/adhami3310/Switcheroo>
+#: src/window.rs:840
+msgid "Convert and manipulate images"
+msgstr "Convertiu i manipuleu imatges"
+
+#: src/flash.rs:96
+msgid "Failed to unmount disk"
+msgstr "No s'ha pogut desmuntar el disc"
+
+#: src/flash.rs:123
+msgid "Failed to open disk"
+msgstr "No s'ha pogut obrir el disc"
+
+#: src/flash.rs:173
+msgid "Failed to extract drive"
+msgstr "No s'ha pogut extreure la unitat"
+
+#: src/flash.rs:231
+msgid "Failed to download image"
+msgstr "No s'ha pogut baixar la imatge"
+
+#: src/flash.rs:288
+msgid "Writing to disk failed"
+msgstr "S'ha produït un error en escriure al disc"
