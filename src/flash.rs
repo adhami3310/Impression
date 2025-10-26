@@ -252,10 +252,10 @@ impl FlashRequest {
 
         let size = image.metadata().await.unwrap().len();
 
-        let mut source = tokio::io::BufReader::with_capacity(128 * 1024, image);
-        let mut target = tokio::io::BufWriter::with_capacity(128 * 1024, &mut target_file);
+        let mut source = tokio::io::BufReader::with_capacity(4 * 1024 * 1024, image);
+        let mut target = tokio::io::BufWriter::with_capacity(4 * 1024 * 1024, &mut target_file);
 
-        let mut buf = [0; 64 * 1024];
+        let mut buf = [0; 1024 * 1024];
 
         let stopped = || !is_running.load(std::sync::atomic::Ordering::SeqCst);
 
