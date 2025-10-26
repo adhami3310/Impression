@@ -4,8 +4,8 @@ use std::process::Stdio;
 use std::sync::Arc;
 use std::sync::atomic::AtomicBool;
 use std::time::Duration;
-use tokio::fs::File;
 use tokio::time::Instant;
+use tokio::{fs::File, io::AsyncWriteExt};
 
 use crate::window::{Compression, DiskImage};
 
@@ -287,6 +287,8 @@ impl FlashRequest {
                 last_sent = Instant::now();
             }
         }
+
+        target.flush().await.ok();
 
         let _ = target_file.sync_all().await;
 
