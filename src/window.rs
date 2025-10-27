@@ -846,7 +846,7 @@ impl AppWindow {
 
         let about = adw::AboutDialog::from_appdata(
             "/io/gitlab/adhami3310/Impression/io.gitlab.adhami3310.Impression.metainfo.xml",
-            Some("3.1.0"),
+            Some(crate::config::VERSION),
         );
         about.set_developers(&developers);
         about.set_designers(&designers);

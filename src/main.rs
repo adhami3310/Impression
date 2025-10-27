@@ -35,7 +35,11 @@ fn get_size_string(bytes_size: u64) -> String {
 fn runtime() -> &'static tokio::runtime::Runtime {
     static RUNTIME: std::sync::OnceLock<tokio::runtime::Runtime> = std::sync::OnceLock::new();
     RUNTIME.get_or_init(|| {
-        tokio::runtime::Runtime::new().expect("Setting up tokio runtime needs to succeed.")
+        tokio::runtime::Builder::new_multi_thread()
+            .enable_all()
+            .thread_stack_size(12 * 1024 * 1024)
+            .build()
+            .expect("Setting up tokio runtime needs to succeed.")
     })
 }
 

@@ -1,6 +1,6 @@
 project('impression',
   'rust',
-  version: '3.5.2',
+  version: '3.5.3',
   meson_version: '>= 0.59.0',
   license: 'GPLv3',
 )
