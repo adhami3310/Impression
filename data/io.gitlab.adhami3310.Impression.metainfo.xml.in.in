@@ -75,6 +75,13 @@
   <content_rating type="oars-1.1" />
 
   <releases>
+    <release version="3.5.4" date="2025-11-12">
+      <description translate="no">
+        <ul>
+          <li>Rewrite logic of parsing libosinfo to recover gracefully from errors.</li>
+        </ul>
+      </description>
+    </release>
     <release version="3.5.3" date="2025-10-26">
       <description translate="no">
         <ul>
