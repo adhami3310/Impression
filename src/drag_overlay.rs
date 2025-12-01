@@ -56,15 +56,19 @@ mod imp {
 
         fn set_property(&self, _id: usize, value: &glib::Value, pspec: &glib::ParamSpec) {
             match pspec.name() {
-                "title" => self.status.set_title(value.get().unwrap()),
+                "title" => self
+                    .status
+                    .set_title(value.get().expect("Title value must be a string")),
                 "child" => self
                     .overlay
                     .set_child(value.get::<gtk::Widget>().ok().as_ref()),
-                "drop-target" => self
-                    .obj()
-                    .set_drop_target(&value.get::<gtk::DropTarget>().unwrap()),
+                "drop-target" => self.obj().set_drop_target(
+                    &value
+                        .get::<gtk::DropTarget>()
+                        .expect("DropTarget value must be a gtk::DropTarget"),
+                ),
                 _ => unimplemented!(),
-            };
+            }
         }
 
         fn constructed(&self) {

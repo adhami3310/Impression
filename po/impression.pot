@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: impression\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-27 00:31-0700\n"
+"POT-Creation-Date: 2025-11-30 22:25-0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,8 +20,8 @@ msgstr ""
 #: data/io.gitlab.adhami3310.Impression.desktop.in.in:2
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:5
 #: data/resources/blueprints/window.blp:9
-#: data/resources/blueprints/window.blp:21
-#: data/resources/blueprints/window.blp:146 src/main.rs:51 src/window.rs:442
+#: data/resources/blueprints/window.blp:20
+#: data/resources/blueprints/window.blp:166 src/main.rs:46 src/window.rs:924
 msgid "Impression"
 msgstr ""
 
@@ -38,16 +38,22 @@ msgstr ""
 msgid "usb;flash;writer;bootable;drive;iso;img;disk;image"
 msgstr ""
 
-#: data/io.gitlab.adhami3310.Impression.gschema.xml.in:6
+#: data/io.gitlab.adhami3310.Impression.gschema.xml.in:7
 msgid "Window width"
 msgstr ""
 
-#: data/io.gitlab.adhami3310.Impression.gschema.xml.in:10
+#: data/io.gitlab.adhami3310.Impression.gschema.xml.in:11
 msgid "Window height"
 msgstr ""
 
-#: data/io.gitlab.adhami3310.Impression.gschema.xml.in:14
+#: data/io.gitlab.adhami3310.Impression.gschema.xml.in:15
 msgid "Window maximized state"
+msgstr ""
+
+#: data/io.gitlab.adhami3310.Impression.gschema.xml.in:24
+msgid ""
+"List of downloadable distros (distro_id, must_include, invert_must_include) "
+"tuples"
 msgstr ""
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:7
@@ -77,33 +83,13 @@ msgstr ""
 msgid "Success screen with a big check mark"
 msgstr ""
 
-#: data/resources/blueprints/help-overlay.blp:11
-msgctxt "shortcut window"
-msgid "General"
-msgstr ""
-
-#: data/resources/blueprints/help-overlay.blp:14
-msgctxt "shortcut window"
-msgid "Open File"
-msgstr ""
-
-#: data/resources/blueprints/help-overlay.blp:19
-msgctxt "shortcut window"
-msgid "Show Shortcuts"
-msgstr ""
-
-#: data/resources/blueprints/help-overlay.blp:24
-msgctxt "shortcut window"
-msgid "Quit"
-msgstr ""
-
-#: data/resources/blueprints/window.blp:25
+#: data/resources/blueprints/window.blp:23
 msgid "Drop Here to Open"
 msgstr ""
 
-#: data/resources/blueprints/window.blp:35
-#: data/resources/blueprints/window.blp:156
-#: data/resources/blueprints/window.blp:255
+#: data/resources/blueprints/window.blp:32
+#: data/resources/blueprints/window.blp:175
+#: data/resources/blueprints/window.blp:268
 msgid "Main Menu"
 msgstr ""
 
@@ -111,175 +97,179 @@ msgstr ""
 msgid "Choose Image"
 msgstr ""
 
-#: data/resources/blueprints/window.blp:64
+#: data/resources/blueprints/window.blp:67
 msgid "Open File…"
 msgstr ""
 
-#: data/resources/blueprints/window.blp:74
+#: data/resources/blueprints/window.blp:78
 msgid "Direct Download"
 msgstr ""
 
-#: data/resources/blueprints/window.blp:108
+#: data/resources/blueprints/window.blp:122
 msgid "No Connection"
 msgstr ""
 
-#: data/resources/blueprints/window.blp:109
+#: data/resources/blueprints/window.blp:123
 msgid "Connect to the internet to view available images"
 msgstr ""
 
-#: data/resources/blueprints/window.blp:218
+#: data/resources/blueprints/window.blp:238
 msgid "All data on the selected drive will be erased"
 msgstr ""
 
-#: data/resources/blueprints/window.blp:221
+#: data/resources/blueprints/window.blp:241
 msgid "Write"
 msgstr ""
 
-#: data/resources/blueprints/window.blp:284
+#: data/resources/blueprints/window.blp:293
 msgid "No Drives"
 msgstr ""
 
-#: data/resources/blueprints/window.blp:285
+#: data/resources/blueprints/window.blp:294
 msgid "Insert a drive to write to"
 msgstr ""
 
-#: data/resources/blueprints/window.blp:296
+#: data/resources/blueprints/window.blp:303
 msgid "Writing Completed"
 msgstr ""
 
-#: data/resources/blueprints/window.blp:297
+#: data/resources/blueprints/window.blp:304
 msgid "The drive can be safely removed"
 msgstr ""
 
-#: data/resources/blueprints/window.blp:306
+#: data/resources/blueprints/window.blp:313
 msgid "Finish"
 msgstr ""
 
-#: data/resources/blueprints/window.blp:327
+#: data/resources/blueprints/window.blp:331
 msgid "Writing Unsuccessful"
 msgstr ""
 
-#: data/resources/blueprints/window.blp:336
+#: data/resources/blueprints/window.blp:340
 msgid "Retry"
 msgstr ""
 
-#: data/resources/blueprints/window.blp:356 src/window.rs:355 src/window.rs:384
+#: data/resources/blueprints/window.blp:357 src/window.rs:371 src/window.rs:403
 msgid "Writing"
 msgstr ""
 
-#: data/resources/blueprints/window.blp:358 src/window.rs:354
+#: data/resources/blueprints/window.blp:359 src/window.rs:370
 msgid "Do not remove the drive"
 msgstr ""
 
-#: data/resources/blueprints/window.blp:373 src/window.rs:259 src/window.rs:306
+#: data/resources/blueprints/window.blp:374 src/window.rs:264 src/window.rs:315
 msgid "_Cancel"
 msgstr ""
 
-#: data/resources/blueprints/window.blp:401
+#: data/resources/blueprints/window.blp:394
+msgctxt "shortcut window"
+msgid "General"
+msgstr ""
+
+#: data/resources/blueprints/window.blp:397
+msgctxt "shortcut window"
+msgid "Open File"
+msgstr ""
+
+#: data/resources/blueprints/window.blp:402
+msgctxt "shortcut window"
+msgid "Show Shortcuts"
+msgstr ""
+
+#: data/resources/blueprints/window.blp:407
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr ""
+
+#: data/resources/blueprints/window.blp:416
 msgid "Keyboard Shortcuts"
 msgstr ""
 
-#: data/resources/blueprints/window.blp:406
+#: data/resources/blueprints/window.blp:421
 msgid "About Impression"
 msgstr ""
 
-#: src/window.rs:254
+#: src/window.rs:259
 msgid "Stop Writing?"
 msgstr ""
 
-#: src/window.rs:255
+#: src/window.rs:260
 msgid "This might leave the drive in a faulty state"
 msgstr ""
 
-#: src/window.rs:260
+#: src/window.rs:265
 msgid "_Stop Writing"
 msgstr ""
 
-#: src/window.rs:302
+#: src/window.rs:308
 msgid "Erase Drive?"
 msgstr ""
 
-#: src/window.rs:303
+#: src/window.rs:310
 #, rust-format
 msgid "You will lose all data stored on {}"
 msgstr ""
 
-#: src/window.rs:307
+#: src/window.rs:316
 msgid "_Erase"
 msgstr ""
 
-#: src/window.rs:348 src/window.rs:378
+#: src/window.rs:365 src/window.rs:397
 msgid "Writing will begin once the download is completed"
 msgstr ""
 
-#: src/window.rs:350 src/window.rs:383
+#: src/window.rs:367 src/window.rs:402
 msgid "Downloading Image"
 msgstr ""
 
-#: src/window.rs:380
+#: src/window.rs:399
 msgid "This could take a while"
 msgstr ""
 
-#: src/window.rs:408
+#: src/window.rs:422
 msgid "Failed to write image"
 msgstr ""
 
-#: src/window.rs:421
+#: src/window.rs:429
 msgid "Image Written"
 msgstr ""
 
-#: src/window.rs:677
+#: src/window.rs:691
 msgid "Disk Images"
 msgstr ""
 
-#: src/window.rs:703
+#: src/window.rs:726
 msgid "File is not a Disk Image"
 msgstr ""
 
-#: src/window.rs:821
+#: src/window.rs:852
 msgid "translator-credits"
 msgstr ""
 
-#: src/window.rs:823
+#: src/window.rs:854
 msgid "Code borrowed from"
 msgstr ""
 
 #. Translators: Metainfo for the app Footage. <https://gitlab.com/adhami3310/Footage>
-#: src/window.rs:830
+#: src/window.rs:861
 msgid "Footage"
 msgstr ""
 
 #. Translators: Metainfo for the app Footage. <https://gitlab.com/adhami3310/Footage>
-#: src/window.rs:832
+#: src/window.rs:863
 msgid "Polish your videos"
 msgstr ""
 
 #. Translators: Metainfo for the app Switcheroo. <https://gitlab.com/adhami3310/Switcheroo>
-#: src/window.rs:838
+#: src/window.rs:869
 msgid "Switcheroo"
 msgstr ""
 
 #. Translators: Metainfo for the app Switcheroo. <https://gitlab.com/adhami3310/Switcheroo>
-#: src/window.rs:840
+#: src/window.rs:871
 msgid "Convert and manipulate images"
 msgstr ""
 
-#: src/flash.rs:96
-msgid "Failed to unmount disk"
-msgstr ""
-
-#: src/flash.rs:123
-msgid "Failed to open disk"
-msgstr ""
-
-#: src/flash.rs:173
-msgid "Failed to extract drive"
-msgstr ""
-
-#: src/flash.rs:231
-msgid "Failed to download image"
-msgstr ""
-
-#: src/flash.rs:288
+#: src/flash.rs:291
 msgid "Writing to disk failed"
 msgstr ""

@@ -3,7 +3,6 @@
     <gresource prefix="/io/gitlab/adhami3310/Impression/">
         <file alias="io.gitlab.adhami3310.Impression.metainfo.xml" preprocess="xml-stripblanks">../io.gitlab.adhami3310.Impression.metainfo.xml</file>
         <file compressed="true" preprocess="xml-stripblanks">blueprints/window.ui</file>
-        <file compressed="true" preprocess="xml-stripblanks" alias="gtk/help-overlay.ui">blueprints/help-overlay.ui</file>
         <file compressed="true">style.css</file>
         <file compressed="true">style-hc.css</file>
         <file preprocess="xml-stripblanks">icons/hicolor/symbolic/apps/io.gitlab.adhami3310.Impression-symbolic.svg</file>

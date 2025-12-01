@@ -1,49 +1,29 @@
 use glib::{ExitCode, clone};
-use log::{debug, info};
+use log::{debug, error, info};
 
 use gtk::{gio, glib, prelude::*, subclass::prelude::*};
 
 use crate::config::{APP_ID, PKGDATADIR, PROFILE, VERSION};
-use crate::runtime;
-use crate::window::AppWindow;
+use crate::window::ImpressionAppWindow;
 
 mod imp {
-
-    use crate::spawn;
 
     use super::*;
     use adw::subclass::prelude::AdwApplicationImpl;
 
-    #[derive(Debug)]
-    pub struct App {
-        pub settings: gio::Settings,
-    }
+    #[derive(Debug, Default)]
+    pub struct ImpressionApp {}
 
     #[glib::object_subclass]
-    impl ObjectSubclass for App {
+    impl ObjectSubclass for ImpressionApp {
         const NAME: &'static str = "ImpressionApp";
-        type Type = super::App;
+        type Type = super::ImpressionApp;
         type ParentType = adw::Application;
-
-        fn new() -> Self {
-            Self {
-                settings: gio::Settings::new(APP_ID),
-            }
-        }
     }
 
-    impl ObjectImpl for App {
-        fn constructed(&self) {
-            self.parent_constructed();
+    impl ObjectImpl for ImpressionApp {}
 
-            let obj = self.obj();
-            obj.setup_gactions();
-            obj.setup_accels();
-            obj.setup_settings();
-        }
-    }
-
-    impl ApplicationImpl for App {
+    impl ApplicationImpl for ImpressionApp {
         fn activate(&self) {
             debug!("Application::activate");
 
@@ -56,54 +36,35 @@ mod imp {
 
             // Set icons for shell
             gtk::Window::set_default_icon_name(APP_ID);
+
+            let app = self.obj();
+            app.setup_gactions();
+            app.setup_accels();
         }
 
         fn open(&self, files: &[gio::File], _hint: &str) {
             if let Some(file) = files.first() {
-                let application = self.obj();
-                application.present_main_window();
-                if let Some(window) = application.active_window() {
-                    let file_path = file.path().unwrap();
-                    spawn!(async move {
-                        window
-                            .downcast_ref::<AppWindow>()
-                            .unwrap()
-                            .open_file(file_path)
-                            .await;
-                    });
-                }
+                let window = self.obj().present_main_window();
+                window
+                    .downcast_ref::<ImpressionAppWindow>()
+                    .expect("Failed to downcast to ImpressionAppWindow")
+                    .open_file(file);
             }
             debug!("Application::open");
         }
     }
 
-    impl gtk::subclass::prelude::GtkApplicationImpl for App {}
-    impl AdwApplicationImpl for App {}
+    impl GtkApplicationImpl for ImpressionApp {}
+    impl AdwApplicationImpl for ImpressionApp {}
 }
 
 glib::wrapper! {
-    pub struct App(ObjectSubclass<imp::App>)
+    pub struct ImpressionApp(ObjectSubclass<imp::ImpressionApp>)
         @extends gio::Application, gtk::Application, adw::Application,
         @implements gio::ActionMap, gio::ActionGroup;
 }
 
-impl Default for App {
-    fn default() -> Self {
-        glib::Object::builder::<Self>()
-            .property("application-id", Some(APP_ID))
-            .property("flags", gio::ApplicationFlags::HANDLES_OPEN)
-            .property("resource-base-path", "/io/gitlab/adhami3310/Impression/")
-            .build()
-    }
-}
-
-impl App {
-    pub fn new() -> Self {
-        Self::default()
-    }
-
-    fn setup_settings(&self) {}
-
+impl ImpressionApp {
     fn setup_gactions(&self) {
         self.add_action_entries([gio::ActionEntry::builder("quit")
             .activate(clone!(
@@ -121,14 +82,16 @@ impl App {
         self.set_accels_for_action("app.quit", &["<Control>q"]);
         self.set_accels_for_action("win.close", &["<Control>w"]);
         self.set_accels_for_action("win.open", &["<Control>o"]);
+        self.set_accels_for_action("win.show-help-overlay", &["<Control>question"]);
     }
 
-    fn present_main_window(&self) {
+    fn present_main_window(&self) -> gtk::Window {
         let window = self.active_window().unwrap_or_else(|| {
-            let window = AppWindow::new(self);
+            let window = ImpressionAppWindow::new(self);
             window.upcast()
         });
         window.present();
+        window
     }
 
     pub fn run(&self) -> ExitCode {
@@ -136,26 +99,40 @@ impl App {
         info!("Version: {VERSION} ({PROFILE})");
         info!("Datadir: {PKGDATADIR}");
 
-        runtime().spawn(async {
-            if ashpd::is_sandboxed().await
-                && let Err(e) = (|| {
-                    for entry in std::fs::read_dir(glib::user_cache_dir())? {
-                        let entry = entry?;
-                        if entry.file_type()?.is_file()
-                            && matches!(entry.path().extension(), Some(x) if x == "iso")
-                        {
-                            dbg!("deleting", entry.path());
-                            std::fs::remove_file(entry.path())?;
-                        }
-                    }
-
-                    Ok::<(), std::io::Error>(())
-                })()
-            {
-                dbg!(e);
+        glib::spawn_future_local(async {
+            if !ashpd::is_sandboxed().await {
+                debug!("Not running in a sandbox, skipping cache cleanup.");
+                return;
+            }
+            info!("Running in a sandbox, cleaning cache directory.");
+            if let Err(e) = clear_cache() {
+                error!("Failed to clean cache directory: {e}");
             }
         });
 
         ApplicationExtManual::run(self)
     }
+}
+
+impl Default for ImpressionApp {
+    fn default() -> Self {
+        glib::Object::builder::<Self>()
+            .property("application-id", Some(APP_ID))
+            .property("flags", gio::ApplicationFlags::HANDLES_OPEN)
+            .property("resource-base-path", "/io/gitlab/adhami3310/Impression/")
+            .build()
+    }
+}
+
+fn clear_cache() -> std::io::Result<()> {
+    for entry in std::fs::read_dir(glib::user_cache_dir())? {
+        let entry = entry?;
+        if entry.file_type()?.is_file() && matches!(entry.path().extension(), Some(x) if x == "iso")
+        {
+            info!("deleting {}", entry.path().display());
+            std::fs::remove_file(entry.path())?;
+        }
+    }
+
+    Ok(())
 }

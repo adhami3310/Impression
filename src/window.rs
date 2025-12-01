@@ -5,15 +5,14 @@ use gettextrs::gettext;
 use glib::{clone, timeout_add_seconds_local};
 use gtk::gdk;
 use gtk::{gio, subclass::prelude::*};
-use itertools::Itertools;
+use log::{error, info, warn};
 
+use crate::config::APP_ID;
 use crate::runtime;
 use crate::{
-    config::APP_ID,
-    flash::{FlashPhase, FlashRequest, FlashStatus, Progress, refresh_devices},
+    flash::{FlashPhase, FlashRequest, FlashStatus, Progress},
     get_size_string,
-    online::{DistroRelease, collect_online_distros, get_osinfodb_url},
-    spawn,
+    online::{DistroRelease, collect_online_distros, get_osinfo_db_url},
     widgets::device_list,
 };
 
@@ -27,8 +26,6 @@ pub enum Compression {
 pub enum DiskImage {
     Local {
         path: PathBuf,
-        filename: String,
-        size: u64,
         compression: Compression,
     },
     Online {
@@ -100,13 +97,15 @@ mod imp {
         pub architecture: TemplateChild<gtk::DropDown>,
         #[template_child]
         pub drag_overlay: TemplateChild<DragOverlay>,
+        #[template_child]
+        pub help_overlay: TemplateChild<adw::ShortcutsDialog>,
 
-        pub selected_device_object_path: RefCell<Option<String>>,
+        pub selected_device_object_path_for_writing: RefCell<Option<String>>,
+        pub selected_image_file_for_reading: RefCell<Option<DiskImage>>,
+        pub available_devices: RefCell<Vec<device_list::DeviceMetadata>>,
+
         pub is_running: std::sync::Arc<AtomicBool>,
-        pub is_flashing: std::sync::Arc<AtomicBool>,
-        pub selected_image: RefCell<Option<DiskImage>>,
-        pub available_devices: RefCell<Vec<udisks::Object>>,
-        pub provider: gtk::CssProvider,
+
         #[derivative(Default(value = "gio::Settings::new(APP_ID)"))]
         pub settings: gio::Settings,
     }
@@ -114,7 +113,7 @@ mod imp {
     #[glib::object_subclass]
     impl ObjectSubclass for AppWindow {
         const NAME: &'static str = "AppWindow";
-        type Type = super::AppWindow;
+        type Type = super::ImpressionAppWindow;
         type ParentType = adw::ApplicationWindow;
 
         fn class_init(klass: &mut Self::Class) {
@@ -147,10 +146,10 @@ mod imp {
             let obj = self.obj();
 
             if let Err(err) = obj.save_window_size() {
-                dbg!("Failed to save window state, {}", &err);
+                error!("Failed to save window state, {}", &err);
             }
 
-            if self.is_flashing.load(std::sync::atomic::Ordering::SeqCst) {
+            if obj.is_running() {
                 obj.cancel_request(true);
                 glib::Propagation::Stop
             } else {
@@ -165,7 +164,7 @@ mod imp {
 }
 
 glib::wrapper! {
-    pub struct AppWindow(ObjectSubclass<imp::AppWindow>)
+    pub struct ImpressionAppWindow(ObjectSubclass<imp::AppWindow>)
         @extends gtk::Widget, gtk::Window,  gtk::ApplicationWindow, adw::ApplicationWindow,
         @implements gio::ActionMap, gio::ActionGroup,
                     gtk::Root, gtk::Native, gtk::ShortcutManager,
@@ -173,9 +172,9 @@ glib::wrapper! {
 }
 
 #[gtk::template_callbacks]
-impl AppWindow {
+impl ImpressionAppWindow {
     pub fn new<P: glib::prelude::IsA<gtk::Application>>(app: &P) -> Self {
-        let win = glib::Object::builder::<AppWindow>()
+        let win = glib::Object::builder::<ImpressionAppWindow>()
             .property("application", app)
             .build();
 
@@ -206,12 +205,21 @@ impl AppWindow {
                     }
                 ))
                 .build(),
+            gio::ActionEntry::builder("show-help-overlay")
+                .activate(clone!(
+                    #[weak(rename_to=window)]
+                    self,
+                    move |_, _, _| {
+                        window.imp().help_overlay.present(Some(&window));
+                    }
+                ))
+                .build(),
             gio::ActionEntry::builder("open")
                 .activate(clone!(
                     #[weak(rename_to=window)]
                     self,
                     move |_, _, _| {
-                        spawn!(async move {
+                        glib::spawn_future_local(async move {
                             window.open_dialog().await;
                         });
                     }
@@ -233,12 +241,9 @@ impl AppWindow {
             #[upgrade_or_default]
             move |_, value, _, _| {
                 if let Ok(file_list) = value.get::<gdk::FileList>()
-                    && let Some(input_file) = file_list.files().into_iter().next()
+                    && let Some(input_file) = file_list.files().first()
                 {
-                    spawn!(async move {
-                        win.open_file(input_file.path().expect("Must have file path"))
-                            .await;
-                    });
+                    win.open_file(input_file);
                     return true;
                 }
 
@@ -271,12 +276,7 @@ impl AppWindow {
                         return;
                     }
 
-                    this.imp()
-                        .is_running
-                        .store(false, std::sync::atomic::Ordering::SeqCst);
-                    this.imp()
-                        .is_flashing
-                        .store(false, std::sync::atomic::Ordering::SeqCst);
+                    this.set_is_running(false);
                     if close_after {
                         this.close();
                     } else {
@@ -291,16 +291,25 @@ impl AppWindow {
     }
 
     #[template_callback]
-    async fn flash_dialog(&self) {
-        let selected_device = runtime()
-            .block_on(async move {
-                device_list::preferred_device(&self.selected_device().unwrap()).await
-            })
-            .unwrap_or_default();
+    fn flash_dialog(&self) {
+        let Some(selected_device) = self.selected_device_for_writing() else {
+            warn!("No device selected");
+            return;
+        };
+
+        let Some(selected_disk_image) = self.selected_image_file_for_reading() else {
+            warn!("No disk image selected");
+            return;
+        };
+
+        let selected_device_display_string = selected_device.display_string.unwrap_or_default();
 
         let flash_dialog = adw::AlertDialog::new(
             Some(&gettext("Erase Drive?")),
-            Some(&gettext("You will lose all data stored on {}").replace("{}", &selected_device)),
+            Some(
+                &gettext("You will lose all data stored on {}")
+                    .replace("{}", &selected_device_display_string),
+            ),
         );
 
         flash_dialog.add_response("cancel", &gettext("_Cancel"));
@@ -314,7 +323,7 @@ impl AppWindow {
                 self,
                 move |_, response_id| {
                     if response_id == "erase" {
-                        this.flash();
+                        this.flash(&selected_device.object, &selected_disk_image);
                     }
                 }
             ),
@@ -323,49 +332,44 @@ impl AppWindow {
         flash_dialog.present(Some(self));
     }
 
-    fn flash(&self) {
+    fn flash(&self, device_for_writing: &udisks::Object, disk_image_for_reading: &DiskImage) {
         self.imp().main_stack.set_visible_child_name("status");
         self.imp().stack.set_visible_child_name("flashing");
         self.imp().progress_bar.set_fraction(0.);
         glib::MainContext::default().iteration(true);
-        self.imp()
-            .is_running
-            .store(true, std::sync::atomic::Ordering::SeqCst);
-
-        let selected_image = self.selected_image().unwrap();
+        self.set_is_running(true);
 
         let current_status = std::sync::Arc::<std::sync::Mutex<FlashStatus>>::new(
             std::sync::Mutex::new(FlashStatus::Active(
-                match selected_image {
+                match disk_image_for_reading {
                     DiskImage::Online { url: _, name: _ } => FlashPhase::Download,
-                    _ => FlashPhase::Copy,
+                    DiskImage::Local { .. } => FlashPhase::Copy,
                 },
                 Progress::Fraction(0.0),
             )),
         );
 
         let flash_job = FlashRequest::new(
-            selected_image.clone(),
-            self.selected_device().unwrap(),
+            disk_image_for_reading.clone(),
+            device_for_writing.clone(),
             current_status.clone(),
             self.imp().is_running.clone(),
         );
 
-        if matches!(selected_image, DiskImage::Online { url: _, name: _ }) {
-            let flashing_page = &self.imp().flashing_page;
+        let flashing_page = &self.imp().flashing_page;
+        if matches!(
+            disk_image_for_reading,
+            DiskImage::Online { url: _, name: _ }
+        ) {
             flashing_page.set_description(Some(&gettext(
                 "Writing will begin once the download is completed",
             )));
             flashing_page.set_title(&gettext("Downloading Image"));
             flashing_page.set_icon_name(Some("folder-download-symbolic"));
         } else {
-            let flashing_page = &self.imp().flashing_page;
             flashing_page.set_description(Some(&gettext("Do not remove the drive")));
             flashing_page.set_title(&gettext("Writing"));
             flashing_page.set_icon_name(Some("flash-symbolic"));
-            self.imp()
-                .is_flashing
-                .store(true, std::sync::atomic::Ordering::SeqCst);
         }
         glib::timeout_add_seconds_local(
             1,
@@ -375,11 +379,7 @@ impl AppWindow {
                 #[upgrade_or]
                 glib::ControlFlow::Break,
                 move || {
-                    if !this
-                        .imp()
-                        .is_running
-                        .load(std::sync::atomic::Ordering::SeqCst)
-                    {
+                    if !this.is_running() {
                         return glib::ControlFlow::Break;
                     }
                     let state = {
@@ -400,11 +400,11 @@ impl AppWindow {
                             }));
                             flashing_page.set_title(&match p {
                                 FlashPhase::Download => gettext("Downloading Image"),
-                                _ => gettext("Writing"),
+                                FlashPhase::Copy => gettext("Writing"),
                             });
                             flashing_page.set_icon_name(Some(match p {
                                 FlashPhase::Download => "folder-download-symbolic",
-                                _ => "flash-symbolic",
+                                FlashPhase::Copy => "flash-symbolic",
                             }));
                             match x {
                                 Progress::Fraction(x) => {
@@ -418,29 +418,19 @@ impl AppWindow {
                         }
                         FlashStatus::Done(Some(_)) => {
                             this.imp().stack.set_visible_child_name("failure");
-                            this.imp()
-                                .is_running
-                                .store(false, std::sync::atomic::Ordering::SeqCst);
-                            this.imp()
-                                .is_flashing
-                                .store(false, std::sync::atomic::Ordering::SeqCst);
+                            this.set_is_running(false);
                             this.send_notification(gettext("Failed to write image"));
                             glib::MainContext::default().iteration(true);
                             return glib::ControlFlow::Break;
                         }
                         FlashStatus::Done(None) => {
                             this.imp().stack.set_visible_child_name("success");
-                            this.imp()
-                                .is_running
-                                .store(false, std::sync::atomic::Ordering::SeqCst);
-                            this.imp()
-                                .is_flashing
-                                .store(false, std::sync::atomic::Ordering::SeqCst);
+                            this.set_is_running(false);
                             this.send_notification(gettext("Image Written"));
                             glib::MainContext::default().iteration(true);
                             return glib::ControlFlow::Break;
                         }
-                    };
+                    }
                     glib::ControlFlow::Continue
                 }
             ),
@@ -452,101 +442,105 @@ impl AppWindow {
     fn send_notification(&self, message: String) {
         if !self.is_active() {
             runtime().spawn(async move {
-                let proxy = ashpd::desktop::notification::NotificationProxy::new()
-                    .await
-                    .unwrap();
-                proxy
-                    .add_notification(
-                        APP_ID,
-                        ashpd::desktop::notification::Notification::new(&gettext("Impression"))
-                            .body(Some(message.as_ref()))
-                            .priority(Some(ashpd::desktop::notification::Priority::Normal)),
-                    )
-                    .await
-                    .unwrap();
+                send_notification(Some(&message)).await;
             });
         }
     }
 
-    fn selected_image(&self) -> Option<DiskImage> {
-        self.imp().selected_image.borrow().to_owned()
+    fn selected_image_file_for_reading(&self) -> Option<DiskImage> {
+        self.imp()
+            .selected_image_file_for_reading
+            .borrow()
+            .to_owned()
     }
 
-    fn selected_device_object_path(&self) -> Option<String> {
-        self.imp().selected_device_object_path.borrow().clone()
+    fn selected_device_object_path_for_writing(&self) -> Option<String> {
+        self.imp()
+            .selected_device_object_path_for_writing
+            .borrow()
+            .clone()
     }
 
-    pub fn set_selected_device_object_path(&self, selected_device_object_path: Option<String>) {
+    pub fn set_selected_device_object_path_for_writing(
+        &self,
+        selected_device_object_path: Option<String>,
+    ) {
         self.imp()
             .flash_button
             .set_sensitive(selected_device_object_path.is_some());
         self.imp()
-            .selected_device_object_path
+            .selected_device_object_path_for_writing
             .replace(selected_device_object_path);
     }
 
-    fn selected_device(&self) -> Option<udisks::Object> {
-        let object_path = self.selected_device_object_path();
+    fn set_is_running(&self, is_running: bool) {
+        self.imp()
+            .is_running
+            .store(is_running, std::sync::atomic::Ordering::SeqCst);
+    }
+
+    fn is_running(&self) -> bool {
+        self.imp()
+            .is_running
+            .load(std::sync::atomic::Ordering::SeqCst)
+    }
+
+    fn selected_device_for_writing(&self) -> Option<device_list::DeviceMetadata> {
+        let object_path = self.selected_device_object_path_for_writing();
         object_path.and_then(|object_path| {
             self.imp()
                 .available_devices
                 .borrow()
-                .clone()
-                .into_iter()
-                .find(|x| x.object_path().to_string() == object_path)
+                .iter()
+                .find(|x| x.object.object_path().to_string() == object_path)
+                .cloned()
         })
     }
 
-    fn setup_callbacks(&self) {
+    #[template_callback]
+    fn cancel_clicked(&self) {
+        if self.is_running() {
+            self.cancel_request(false);
+        } else {
+            warn!("Cancel button clicked while not running, how did we get here?");
+            self.imp().main_stack.set_visible_child_name("choose");
+            self.refresh_devices();
+        }
+    }
+
+    #[template_callback]
+    fn done_clicked(&self) {
+        let window = self.imp();
+        window.available_devices.replace(vec![]);
+        window.main_stack.set_visible_child_name("status");
+        window.stack.set_visible_child_name("no_devices");
+        window.open_image_button.grab_focus();
+    }
+
+    #[template_callback]
+    fn try_again_clicked(&self) {
+        self.refresh_devices();
+        self.imp().main_stack.set_visible_child_name("choose");
+    }
+
+    #[template_callback]
+    fn on_architecture_changed(&self) {
         let imp = self.imp();
 
-        imp.open_image_button.connect_activated(clone!(
-            #[weak(rename_to=this)]
-            self,
-            move |_| {
-                spawn!(async move {
-                    this.open_dialog().await;
-                });
+        match imp.architecture.selected() {
+            0 => {
+                imp.amd_distros.set_visible(true);
+                imp.arm_distros.set_visible(false);
             }
-        ));
+            1 => {
+                imp.amd_distros.set_visible(false);
+                imp.arm_distros.set_visible(true);
+            }
+            _ => {}
+        }
+    }
 
-        imp.cancel_button.connect_clicked(clone!(
-            #[weak(rename_to=this)]
-            self,
-            move |_| {
-                if this
-                    .imp()
-                    .is_flashing
-                    .load(std::sync::atomic::Ordering::SeqCst)
-                {
-                    this.cancel_request(false);
-                } else {
-                    this.imp()
-                        .is_running
-                        .store(false, std::sync::atomic::Ordering::SeqCst);
-                    this.imp().main_stack.set_visible_child_name("choose");
-                    this.refresh_devices();
-                }
-            }
-        ));
-        imp.done_button.connect_clicked(clone!(
-            #[weak(rename_to=this)]
-            self,
-            move |_| {
-                this.imp().available_devices.replace(vec![]);
-                this.imp().main_stack.set_visible_child_name("status");
-                this.imp().stack.set_visible_child_name("no_devices");
-                this.imp().open_image_button.grab_focus();
-            }
-        ));
-        imp.try_again_button.connect_clicked(clone!(
-            #[weak(rename_to=this)]
-            self,
-            move |_| {
-                this.refresh_devices();
-                this.imp().main_stack.set_visible_child_name("choose");
-            }
-        ));
+    fn setup_callbacks(&self) {
         timeout_add_seconds_local(
             2,
             clone!(
@@ -555,17 +549,18 @@ impl AppWindow {
                 #[upgrade_or]
                 glib::ControlFlow::Break,
                 move || {
-                    let main_stack = this.imp().main_stack.visible_child_name().unwrap();
-                    let current_stack = this.imp().stack.visible_child_name().unwrap();
+                    let main_stack = this.imp().main_stack.visible_child_name();
+                    let current_stack = this.imp().stack.visible_child_name();
                     let current_page = this
                         .imp()
                         .navigation
                         .visible_page()
                         .and_then(|x| x.tag())
                         .map(|x| x.as_str().to_owned());
-                    if main_stack == "status" && current_stack == "no_devices"
-                        || main_stack == "choose"
-                            && matches!(current_page, Some(x) if x == "device_list" || x == "welcome")
+                    if matches!(main_stack.as_deref(), Some("status"))
+                        && matches!(current_stack.as_deref(), Some("no_devices"))
+                        || matches!(main_stack.as_deref(), Some("choose"))
+                            && matches!(current_page.as_deref(), Some("device_list" | "welcome"))
                     {
                         this.refresh_devices();
                     }
@@ -576,24 +571,6 @@ impl AppWindow {
 
         self.refresh_devices();
 
-        imp.architecture.connect_selected_notify(clone!(
-            #[weak(rename_to=this)]
-            self,
-            move |a| {
-                match a.selected() {
-                    0 => {
-                        this.imp().amd_distros.set_visible(true);
-                        this.imp().arm_distros.set_visible(false);
-                    }
-                    1 => {
-                        this.imp().amd_distros.set_visible(false);
-                        this.imp().arm_distros.set_visible(true);
-                    }
-                    _ => {}
-                }
-            }
-        ));
-
         timeout_add_seconds_local(
             10,
             clone!(
@@ -602,15 +579,15 @@ impl AppWindow {
                 #[upgrade_or]
                 glib::ControlFlow::Break,
                 move || {
-                    let main_stack = this.imp().stack.visible_child_name().unwrap();
+                    let main_stack = this.imp().stack.visible_child_name();
                     let current_page = this
                         .imp()
                         .navigation
                         .visible_page()
                         .and_then(|x| x.tag())
                         .map(|x| x.as_str().to_owned());
-                    if main_stack == "choose"
-                        && matches!(current_page, Some(x) if x == "welcome")
+                    if matches!(main_stack.as_deref(), Some("choose"))
+                        && matches!(current_page.as_deref(), Some("welcome"))
                         && this.imp().offline_screen.is_visible()
                     {
                         this.get_distros();
@@ -639,9 +616,14 @@ impl AppWindow {
 
         let (sender, receiver) = tokio::sync::oneshot::channel();
 
-        let distros =
-            get_osinfodb_url().and_then(|u| collect_online_distros(&u, &downloadable_distros));
-        runtime().spawn(async move { sender.send(distros).expect("Concurrency Issues") });
+        runtime().spawn(async move {
+            if let Some(osinfo_db_url) = get_osinfo_db_url().await {
+                let distros = collect_online_distros(&osinfo_db_url, &downloadable_distros).await;
+                sender.send(distros).expect("Concurrency Issues");
+            } else {
+                sender.send(None).expect("Concurrency Issues");
+            }
+        });
 
         glib::spawn_future_local(clone!(
             #[weak(rename_to=this)]
@@ -685,18 +667,17 @@ impl AppWindow {
                 move |_| {
                     let url = url.clone();
                     let name = name.clone();
-                    spawn!(async move {
-                        this.imp()
-                            .selected_image
-                            .replace(Some(DiskImage::Online { url, name }));
-                        this.load_stored();
-                    });
+                    this.imp()
+                        .selected_image_file_for_reading
+                        .replace(Some(DiskImage::Online { url, name }));
+                    this.load_stored();
                 }
             ));
             target.append(&action_row);
         }
     }
 
+    #[template_callback]
     async fn open_dialog(&self) {
         let filter = gtk::FileFilter::new();
         filter.add_mime_type("application/x-iso9660-image");
@@ -712,7 +693,7 @@ impl AppWindow {
         let model = gio::ListStore::new::<gtk::FileFilter>();
         model.append(&filter);
 
-        if let Ok(file) = gtk::FileDialog::builder()
+        match gtk::FileDialog::builder()
             .modal(true)
             .filters(&model)
             .default_filter(&filter)
@@ -720,60 +701,77 @@ impl AppWindow {
             .open_future(Some(self))
             .await
         {
-            let path = file.path().unwrap();
-            println!("Selected Disk Image: {path:?}");
-
-            self.open_file(path).await;
+            Ok(file) => self.open_file(&file),
+            Err(e) => {
+                error!("Failed to open file dialog: {e}");
+            }
         }
     }
 
-    pub async fn open_file(&self, path: PathBuf) {
-        let filename = path.file_name().unwrap().to_str().unwrap().to_owned();
+    pub fn open_file(&self, file: &gio::File) {
+        let Some(path) = file.path() else {
+            error!("Failed to get file path for {file:?}");
+            return;
+        };
 
-        if !["iso", "img", "xz"].contains(&path.extension().unwrap().to_str().unwrap()) {
+        info!("Selected file: {}", path.display());
+
+        if !path
+            .extension()
+            .and_then(|extension| extension.to_str())
+            .is_some_and(|extension| ["iso", "img", "xz"].contains(&extension))
+        {
             self.imp()
                 .toast_overlay
                 .add_toast(adw::Toast::new(&gettext("File is not a Disk Image")));
-            println!("Not a Disk Image: {path:?}");
+            error!("Not a Disk Image: {}", path.display());
             return;
         }
 
-        let size = std::fs::File::open(path.clone())
-            .unwrap()
-            .metadata()
-            .unwrap()
-            .len();
-
-        self.imp().selected_image.replace(Some(DiskImage::Local {
-            path: path.clone(),
-            filename,
-            size,
-            compression: {
-                if matches!(path.extension(), Some(x) if x == "xz") {
-                    Compression::Xz
-                } else {
-                    Compression::Raw
-                }
-            },
-        }));
+        self.imp()
+            .selected_image_file_for_reading
+            .replace(Some(DiskImage::Local {
+                path: path.clone(),
+                compression: {
+                    if matches!(path.extension(), Some(x) if x == "xz") {
+                        Compression::Xz
+                    } else {
+                        Compression::Raw
+                    }
+                },
+            }));
 
         self.load_stored();
     }
 
     fn load_stored(&self) {
-        match self.selected_image().unwrap() {
-            DiskImage::Local {
-                path: _,
-                filename,
-                size,
+        match self.selected_image_file_for_reading() {
+            Some(DiskImage::Local {
+                path,
                 compression: _,
-            } => {
-                self.imp().name_value_label.set_text(&filename);
-                self.imp().size_label.set_text(&get_size_string(size));
+            }) => {
+                self.imp().name_value_label.set_text(
+                    path.file_name()
+                        .and_then(|n| n.to_str())
+                        .unwrap_or_default(),
+                );
+                self.imp()
+                    .size_label
+                    .set_text(&match std::fs::metadata(path) {
+                        Ok(metadata) => get_size_string(metadata.len()),
+                        Err(e) => {
+                            error!("Failed to get file metadata: {e}");
+                            String::new()
+                        }
+                    });
             }
-            DiskImage::Online { url: _, name } => {
+            Some(DiskImage::Online { url: _, name }) => {
                 self.imp().name_value_label.set_text(&name);
                 self.imp().size_label.set_text("");
+            }
+            None => {
+                warn!("No disk image selected");
+                return;
             }
         }
 
@@ -784,7 +782,7 @@ impl AppWindow {
         let (sender, receiver) = tokio::sync::oneshot::channel();
 
         runtime().block_on(async move {
-            let devices = refresh_devices().await;
+            let devices = device_list::fetch_devices_metadata().await;
             sender.send(devices).expect("Concurrency Issues");
         });
 
@@ -793,45 +791,45 @@ impl AppWindow {
             self,
             async move {
                 if let Ok(Ok(devices)) = receiver.await {
-                    this.load_devices(devices).await;
+                    this.load_devices_into_ui(&devices);
                 }
             }
         ));
     }
 
-    async fn load_devices(&self, devices: Vec<udisks::Object>) {
+    fn load_devices_into_ui(&self, devices: &[device_list::DeviceMetadata]) {
         let imp = self.imp();
 
         let current_devices = imp.available_devices.borrow().clone();
 
-        if devices.iter().map(|d| d.object_path()).collect_vec()
+        if devices
+            .iter()
+            .map(|d| d.object.object_path().to_string())
+            .collect::<Vec<_>>()
             == current_devices
                 .iter()
-                .map(|d| d.object_path())
-                .collect_vec()
+                .map(|d| d.object.object_path().to_string())
+                .collect::<Vec<_>>()
             && !devices.is_empty()
         {
             return;
         }
 
-        imp.selected_device_object_path.take();
+        imp.selected_device_object_path_for_writing.take();
 
-        let selected_device = if let Some(dev) = self.selected_device() {
-            runtime().block_on(async move { device_list::preferred_device(&dev).await })
-        } else {
-            None
-        };
+        let selected_device = self
+            .selected_device_for_writing()
+            .and_then(|dev| dev.display_string);
 
         imp.available_devices_list.remove_all();
-        imp.available_devices.replace(devices.clone());
+        imp.available_devices.replace(devices.to_vec());
 
         if devices.is_empty() {
-            self.set_selected_device_object_path(None);
+            self.set_selected_device_object_path_for_writing(None);
             self.imp().stack.set_visible_child_name("no_devices");
             self.imp().main_stack.set_visible_child_name("status");
         } else {
-            let devices = runtime()
-                .block_on(async move { device_list::new(self, devices, selected_device).await });
+            let devices = device_list::new(self, devices, selected_device.as_deref());
             for device in devices {
                 imp.available_devices_list.append(&device);
             }
@@ -882,7 +880,7 @@ trait SettingsStore {
     fn load_window_size(&self);
 }
 
-impl SettingsStore for AppWindow {
+impl SettingsStore for ImpressionAppWindow {
     fn save_window_size(&self) -> Result<(), glib::BoolError> {
         let imp = self.imp();
 
@@ -909,5 +907,26 @@ impl SettingsStore for AppWindow {
         if is_maximized {
             self.maximize();
         }
+    }
+}
+
+async fn send_notification(message: Option<&str>) {
+    let proxy = match ashpd::desktop::notification::NotificationProxy::new().await {
+        Ok(proxy) => proxy,
+        Err(e) => {
+            error!("Failed to create notification proxy: {e}");
+            return;
+        }
+    };
+    if let Err(e) = proxy
+        .add_notification(
+            APP_ID,
+            ashpd::desktop::notification::Notification::new(&gettext("Impression"))
+                .body(message)
+                .priority(Some(ashpd::desktop::notification::Priority::Normal)),
+        )
+        .await
+    {
+        error!("Failed to send notification: {e}");
     }
 }

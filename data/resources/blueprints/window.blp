@@ -1,7 +1,7 @@
 using Gtk 4.0;
 using Adw 1;
 
-template $AppWindow : Adw.ApplicationWindow {
+template $AppWindow: Adw.ApplicationWindow {
   default-width: 500;
   default-height: 600;
   width-request: 360;
@@ -14,18 +14,15 @@ template $AppWindow : Adw.ApplicationWindow {
     StackPage {
       name: "choose";
 
-      child:
-      Adw.NavigationView navigation {
+      child: Adw.NavigationView navigation {
         Adw.NavigationPage {
           tag: "welcome";
           title: _("Impression");
 
-          child:
-          $DragOverlay drag_overlay {
+          child: $DragOverlay drag_overlay {
             title: _("Drop Here to Open");
-        
-            child:
-            Adw.ToolbarView {
+
+            child: Adw.ToolbarView {
               [top]
               Adw.HeaderBar {
                 [end]
@@ -37,23 +34,29 @@ template $AppWindow : Adw.ApplicationWindow {
                 }
               }
 
-              content:
-              Box {
+              content: Box {
                 hexpand: true;
                 vexpand: true;
                 orientation: vertical;
                 spacing: 12;
+
                 Adw.PreferencesPage {
                   Adw.PreferencesGroup {
                     Image {
                       icon-name: "io.gitlab.adhami3310.Impression";
-                      
-                      styles ["app_icon"]
+
+                      styles [
+                        "app_icon",
+                      ]
                     }
+
                     Label {
                       label: _("Choose Image");
 
-                      styles ["title", "title-1"]
+                      styles [
+                        "title",
+                        "title-1",
+                      ]
                     }
 
                     margin-bottom: 12;
@@ -63,6 +66,7 @@ template $AppWindow : Adw.ApplicationWindow {
                     Adw.ActionRow open_image_button {
                       title: _("Open File…");
                       activatable-widget: next_icon;
+                      activated => $open_dialog() swapped;
 
                       Image next_icon {
                         icon-name: 'go-next-symbolic';
@@ -76,12 +80,18 @@ template $AppWindow : Adw.ApplicationWindow {
                     [header-suffix]
                     DropDown architecture {
                       model: StringList {
-                        strings ["x86_64", "aarch64"]
+                        strings [
+                          "x86_64",
+                          "aarch64",
+                        ]
                       };
 
+                      notify::selected => $on_architecture_changed() swapped;
                       sensitive: false;
-                      
-                      styles ["architecture"]
+
+                      styles [
+                        "architecture",
+                      ]
                     }
 
                     Box {
@@ -97,7 +107,11 @@ template $AppWindow : Adw.ApplicationWindow {
                           width-request: 32;
                           spinning: true;
                         }
-                        styles ["card", "loading-frame"]
+
+                        styles [
+                          "card",
+                          "loading-frame",
+                        ]
                       }
 
                       Box offline_screen {
@@ -108,45 +122,50 @@ template $AppWindow : Adw.ApplicationWindow {
                           title: _("No Connection");
                           description: _("Connect to the internet to view available images");
 
-                          styles  ["dim-label"]
+                          styles [
+                            "dim-label",
+                          ]
                         }
-                        styles ["card"]
+
+                        styles [
+                          "card",
+                        ]
                       }
+
                       Box distros {
                         visible: false;
                         orientation: vertical;
+
                         ListBox amd_distros {
                           selection-mode: none;
-                          styles ["boxed-list"]
+
+                          styles [
+                            "boxed-list",
+                          ]
                         }
 
                         ListBox arm_distros {
                           visible: false;
                           selection-mode: none;
-                          styles ["boxed-list"]
+
+                          styles [
+                            "boxed-list",
+                          ]
                         }
                       }
-
                     }
                   }
                 }
-              }
-
-              ;
-            }
-
-            ;
-          }
-
-          ;
+              };
+            };
+          };
         }
 
         Adw.NavigationPage {
           tag: "device_list";
           title: _("Impression");
 
-          child:
-          Adw.ToolbarView {
+          child: Adw.ToolbarView {
             [top]
             Adw.HeaderBar {
               [end]
@@ -157,9 +176,8 @@ template $AppWindow : Adw.ApplicationWindow {
                 primary: true;
               }
             }
-            
-            content:
-            Adw.PreferencesPage {
+
+            content: Adw.PreferencesPage {
               valign: center;
 
               Adw.PreferencesGroup {
@@ -170,7 +188,10 @@ template $AppWindow : Adw.ApplicationWindow {
                   Image {
                     icon-name: "media-optical-cd-symbolic";
                     pixel-size: 64;
-                    styles ["dim-label"]
+
+                    styles [
+                      "dim-label",
+                    ]
                   }
 
                   Label name_value_label {
@@ -197,7 +218,6 @@ template $AppWindow : Adw.ApplicationWindow {
               }
 
               Adw.PreferencesGroup {
-
                 Adw.Clamp {
                   maximum-size: 450;
                   tightening-threshold: 200;
@@ -229,23 +249,16 @@ template $AppWindow : Adw.ApplicationWindow {
                   ]
                 }
               }
-            }
-
-            ;
-          }
-
-          ;
+            };
+          };
         }
-      }
-
-      ;
+      };
     }
 
     StackPage {
       name: "status";
 
-      child:
-      Adw.ToolbarView {
+      child: Adw.ToolbarView {
         [top]
         Adw.HeaderBar {
           [end]
@@ -257,46 +270,40 @@ template $AppWindow : Adw.ApplicationWindow {
           }
         }
 
-        content:
-        Adw.ToastOverlay toast_overlay {
-          child:
-          Stack stack {
+        content: Adw.ToastOverlay toast_overlay {
+          child: Stack stack {
             transition-type: crossfade;
 
             StackPage {
               name: "loading";
-              child:
-                  Spinner loading_spinner {
-                    valign: center;
-                    halign: center;
-                    height-request: 28;
-                    width-request: 28;
-                  }
 
-              ;
+              child: Spinner loading_spinner {
+                valign: center;
+                halign: center;
+                height-request: 28;
+                width-request: 28;
+              };
             }
 
             StackPage {
               name: "no_devices";
-              child:
-              Adw.StatusPage {
+
+              child: Adw.StatusPage {
                 icon-name: "io.gitlab.adhami3310.Impression";
                 title: _("No Drives");
                 description: _("Insert a drive to write to");
-              }
-
-              ;
+              };
             }
 
             StackPage {
               name: "success";
-              child: 
-              Adw.StatusPage {
+
+              child: Adw.StatusPage {
                 icon-name: "check-round-outline-symbolic";
                 title: _("Writing Completed");
                 description: _("The drive can be safely removed");
-                child:
-                Box {
+
+                child: Box {
                   orientation: vertical;
                   spacing: 12;
 
@@ -305,28 +312,25 @@ template $AppWindow : Adw.ApplicationWindow {
                     halign: center;
                     label: _("Finish");
                     use-underline: true;
+                    clicked => $done_clicked() swapped;
 
                     styles [
                       "suggested-action",
                       "pill",
                     ]
                   }
-                }
-
-                ;
-              }
-
-              ;
+                };
+              };
             }
 
             StackPage {
               name: "failure";
-              child: 
-              Adw.StatusPage {
+
+              child: Adw.StatusPage {
                 icon-name: "error-symbolic";
                 title: _("Writing Unsuccessful");
-                child:
-                Box {
+
+                child: Box {
                   orientation: vertical;
                   spacing: 12;
 
@@ -335,24 +339,21 @@ template $AppWindow : Adw.ApplicationWindow {
                     halign: center;
                     label: _("Retry");
                     use-underline: true;
+                    clicked => $try_again_clicked() swapped;
 
                     styles [
                       "suggested-action",
                       "pill",
                     ]
                   }
-                }
-
-                ;
-              }
-
-              ;
+                };
+              };
             }
 
             StackPage {
               name: "flashing";
-              child:
-              Adw.StatusPage flashing_page {
+
+              child: Adw.StatusPage flashing_page {
                 title: _("Writing");
                 icon-name: "flash-symbolic";
                 description: _("Do not remove the drive");
@@ -372,25 +373,39 @@ template $AppWindow : Adw.ApplicationWindow {
                     halign: center;
                     label: _("_Cancel");
                     use-underline: true;
+                    clicked => $cancel_clicked() swapped;
 
                     styles [
                       "pill",
                     ]
                   }
                 }
-              }
-
-              ;
+              };
             }
-          }
+          };
+        };
+      };
+    }
+  }
+}
 
-          ;
-        }
+Adw.ShortcutsDialog help_overlay {
+  Adw.ShortcutsSection {
+    title: C_("shortcut window", "General");
 
-        ;
-      }
+    Adw.ShortcutsItem {
+      title: C_("shortcut window", "Open File");
+      action-name: "win.open";
+    }
 
-      ;
+    Adw.ShortcutsItem {
+      title: C_("shortcut window", "Show Shortcuts");
+      action-name: "win.show-help-overlay";
+    }
+
+    Adw.ShortcutsItem {
+      title: C_("shortcut window", "Quit");
+      action-name: "app.quit";
     }
   }
 }
