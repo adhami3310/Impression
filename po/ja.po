@@ -1,0 +1,283 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the impression package.
+# ねこがくれ <info@mail.nekogakure.jp>, 2025.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: impression\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-07-27 00:31-0700\n"
+"PO-Revision-Date: 2025-11-30 15:58+0900\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.8\n"
+
+#: data/io.gitlab.adhami3310.Impression.desktop.in.in:2 data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:5
+#: data/resources/blueprints/window.blp:9 data/resources/blueprints/window.blp:21 data/resources/blueprints/window.blp:146
+#: src/main.rs:51 src/window.rs:442
+msgid "Impression"
+msgstr "Impression"
+
+#: data/io.gitlab.adhami3310.Impression.desktop.in.in:3
+msgid "Media Writer"
+msgstr "メディアライター"
+
+#: data/io.gitlab.adhami3310.Impression.desktop.in.in:4 data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:9
+msgid "Create bootable drives"
+msgstr "ブート可能なドライブを作成する"
+
+#: data/io.gitlab.adhami3310.Impression.desktop.in.in:10
+msgid "usb;flash;writer;bootable;drive;iso;img;disk;image"
+msgstr "usb;フラッシュ;ライター;ブート可能;ドライブ;iso;img;ディスク;イメージ"
+
+#: data/io.gitlab.adhami3310.Impression.gschema.xml.in:6
+msgid "Window width"
+msgstr "ウィンドウ幅"
+
+#: data/io.gitlab.adhami3310.Impression.gschema.xml.in:10
+msgid "Window height"
+msgstr "ウィンドウ高さ"
+
+#: data/io.gitlab.adhami3310.Impression.gschema.xml.in:14
+msgid "Window maximized state"
+msgstr "ウィンドウの最大化状態"
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:7
+msgid "Khaleel Al-Adhami"
+msgstr "Khaleel Al-Adhami"
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:15
+msgid ""
+"Write disk images to your drives with ease. Select an image, insert your drive, and you're good to go! Impression is a "
+"useful tool for both avid distro-hoppers and casual computer users."
+msgstr ""
+"ドライブにディスクイメージを書き込む作業を簡単に行えます。イメージを選択し、ドライブを挿入すれば準備完了です。Impression"
+"は、ディストリビューションを頻繁に切り替える上級者にも、普段使いのユーザーにも役立つツールです。"
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:41
+msgid "Screen with a choice of a local image or internet download"
+msgstr "ローカルイメージまたはインターネットからのダウンロードを選択する画面"
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:45
+msgid "Screen with a chosen ISO and available USB memories"
+msgstr "選択したISOと利用可能なUSBメモリを表示する画面"
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:49
+msgid "Writing the ISO in progress"
+msgstr "ISOを書き込み中"
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:53
+msgid "Success screen with a big check mark"
+msgstr "大きなチェックマークを表示する成功画面"
+
+#: data/resources/blueprints/help-overlay.blp:11
+msgctxt "shortcut window"
+msgid "General"
+msgstr "一般"
+
+#: data/resources/blueprints/help-overlay.blp:14
+msgctxt "shortcut window"
+msgid "Open File"
+msgstr "ファイルを開く"
+
+#: data/resources/blueprints/help-overlay.blp:19
+msgctxt "shortcut window"
+msgid "Show Shortcuts"
+msgstr "ショートカットを表示"
+
+#: data/resources/blueprints/help-overlay.blp:24
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "終了"
+
+#: data/resources/blueprints/window.blp:25
+msgid "Drop Here to Open"
+msgstr "ここにドロップして開く"
+
+#: data/resources/blueprints/window.blp:35 data/resources/blueprints/window.blp:156
+#: data/resources/blueprints/window.blp:255
+msgid "Main Menu"
+msgstr "メインメニュー"
+
+#: data/resources/blueprints/window.blp:54
+msgid "Choose Image"
+msgstr "イメージを選択"
+
+#: data/resources/blueprints/window.blp:64
+msgid "Open File…"
+msgstr "ファイルを開く…"
+
+#: data/resources/blueprints/window.blp:74
+msgid "Direct Download"
+msgstr "直接ダウンロード"
+
+#: data/resources/blueprints/window.blp:108
+msgid "No Connection"
+msgstr "接続なし"
+
+#: data/resources/blueprints/window.blp:109
+msgid "Connect to the internet to view available images"
+msgstr "利用可能なイメージを見るにはインターネットに接続してください"
+
+#: data/resources/blueprints/window.blp:218
+msgid "All data on the selected drive will be erased"
+msgstr "選択したドライブ上のすべてのデータは消去されます"
+
+#: data/resources/blueprints/window.blp:221
+msgid "Write"
+msgstr "書き込み"
+
+#: data/resources/blueprints/window.blp:284
+msgid "No Drives"
+msgstr "ドライブがありません"
+
+#: data/resources/blueprints/window.blp:285
+msgid "Insert a drive to write to"
+msgstr "書き込み先のドライブを挿入してください"
+
+#: data/resources/blueprints/window.blp:296
+msgid "Writing Completed"
+msgstr "書き込みが完了しました"
+
+#: data/resources/blueprints/window.blp:297
+msgid "The drive can be safely removed"
+msgstr "ドライブを安全に取り外せます"
+
+#: data/resources/blueprints/window.blp:306
+msgid "Finish"
+msgstr "完了"
+
+#: data/resources/blueprints/window.blp:327
+msgid "Writing Unsuccessful"
+msgstr "書き込みに失敗しました"
+
+#: data/resources/blueprints/window.blp:336
+msgid "Retry"
+msgstr "再試行"
+
+#: data/resources/blueprints/window.blp:356 src/window.rs:355 src/window.rs:384
+msgid "Writing"
+msgstr "書き込み中"
+
+#: data/resources/blueprints/window.blp:358 src/window.rs:354
+msgid "Do not remove the drive"
+msgstr "ドライブを取り外さないでください"
+
+#: data/resources/blueprints/window.blp:373 src/window.rs:259 src/window.rs:306
+msgid "_Cancel"
+msgstr "キャンセル (_c)"
+
+#: data/resources/blueprints/window.blp:401
+msgid "Keyboard Shortcuts"
+msgstr "キーボードショートカット"
+
+#: data/resources/blueprints/window.blp:406
+msgid "About Impression"
+msgstr "Impression について"
+
+#: src/window.rs:254
+msgid "Stop Writing?"
+msgstr "書き込みを停止しますか？"
+
+#: src/window.rs:255
+msgid "This might leave the drive in a faulty state"
+msgstr "これによりドライブが正常に動作しなくなる可能性があります"
+
+#: src/window.rs:260
+msgid "_Stop Writing"
+msgstr "_書き込みを停止"
+
+#: src/window.rs:302
+msgid "Erase Drive?"
+msgstr "ドライブを消去しますか？"
+
+#: src/window.rs:303
+#, rust-format
+msgid "You will lose all data stored on {}"
+msgstr "{} に保存されているすべてのデータは失われます"
+
+#: src/window.rs:307
+msgid "_Erase"
+msgstr "消去 (_e)"
+
+#: src/window.rs:348 src/window.rs:378
+msgid "Writing will begin once the download is completed"
+msgstr "ダウンロードが完了次第、書き込みを開始します"
+
+#: src/window.rs:350 src/window.rs:383
+msgid "Downloading Image"
+msgstr "イメージをダウンロード中"
+
+#: src/window.rs:380
+msgid "This could take a while"
+msgstr "しばらく時間がかかることがあります"
+
+#: src/window.rs:408
+msgid "Failed to write image"
+msgstr "イメージの書き込みに失敗しました"
+
+#: src/window.rs:421
+msgid "Image Written"
+msgstr "イメージの書き込みが完了しました"
+
+#: src/window.rs:677
+msgid "Disk Images"
+msgstr "ディスクイメージ"
+
+#: src/window.rs:703
+msgid "File is not a Disk Image"
+msgstr "ファイルはディスクイメージではありません"
+
+#: src/window.rs:821
+msgid "translator-credits"
+msgstr "翻訳者クレジット"
+
+#: src/window.rs:823
+msgid "Code borrowed from"
+msgstr "コードの一部は以下から借用"
+
+#. Translators: Metainfo for the app Footage. <https://gitlab.com/adhami3310/Footage>
+#: src/window.rs:830
+msgid "Footage"
+msgstr "Footage"
+
+#. Translators: Metainfo for the app Footage. <https://gitlab.com/adhami3310/Footage>
+#: src/window.rs:832
+msgid "Polish your videos"
+msgstr "動画を仕上げる"
+
+#. Translators: Metainfo for the app Switcheroo. <https://gitlab.com/adhami3310/Switcheroo>
+#: src/window.rs:838
+msgid "Switcheroo"
+msgstr "Switcheroo"
+
+#. Translators: Metainfo for the app Switcheroo. <https://gitlab.com/adhami3310/Switcheroo>
+#: src/window.rs:840
+msgid "Convert and manipulate images"
+msgstr "画像の変換と編集"
+
+#: src/flash.rs:96
+msgid "Failed to unmount disk"
+msgstr "ディスクのアンマウントに失敗しました"
+
+#: src/flash.rs:123
+msgid "Failed to open disk"
+msgstr "ディスクを開くことに失敗しました"
+
+#: src/flash.rs:173
+msgid "Failed to extract drive"
+msgstr "ドライブの抽出に失敗しました"
+
+#: src/flash.rs:231
+msgid "Failed to download image"
+msgstr "イメージのダウンロードに失敗しました"
+
+#: src/flash.rs:288
+msgid "Writing to disk failed"
+msgstr "ディスクへの書き込みに失敗しました"
