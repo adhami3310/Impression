@@ -4,6 +4,7 @@ use log::{debug, error, info};
 use gtk::{gio, glib, prelude::*, subclass::prelude::*};
 
 use crate::config::{APP_ID, PKGDATADIR, PROFILE, VERSION};
+use crate::runtime;
 use crate::window::ImpressionAppWindow;
 
 mod imp {
@@ -99,7 +100,7 @@ impl ImpressionApp {
         info!("Version: {VERSION} ({PROFILE})");
         info!("Datadir: {PKGDATADIR}");
 
-        glib::spawn_future_local(async {
+        runtime().spawn(async {
             if !ashpd::is_sandboxed().await {
                 debug!("Not running in a sandbox, skipping cache cleanup.");
                 return;
