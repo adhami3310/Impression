@@ -99,6 +99,8 @@ mod imp {
         pub drag_overlay: TemplateChild<DragOverlay>,
         #[template_child]
         pub help_overlay: TemplateChild<adw::ShortcutsDialog>,
+        #[template_child]
+        pub error_message_label: TemplateChild<gtk::Label>,
 
         pub selected_device_object_path_for_writing: RefCell<Option<String>>,
         pub selected_image_file_for_reading: RefCell<Option<DiskImage>>,
@@ -390,23 +392,9 @@ impl ImpressionAppWindow {
                         }
                     };
                     match state {
-                        FlashStatus::Active(p, x) => {
-                            let flashing_page = &this.imp().flashing_page;
-                            flashing_page.set_description(Some(&match p {
-                                FlashPhase::Download => {
-                                    gettext("Writing will begin once the download is completed")
-                                }
-                                FlashPhase::Copy => gettext("This could take a while"),
-                            }));
-                            flashing_page.set_title(&match p {
-                                FlashPhase::Download => gettext("Downloading Image"),
-                                FlashPhase::Copy => gettext("Writing"),
-                            });
-                            flashing_page.set_icon_name(Some(match p {
-                                FlashPhase::Download => "folder-download-symbolic",
-                                FlashPhase::Copy => "flash-symbolic",
-                            }));
-                            match x {
+                        FlashStatus::Active(phase, progress) => {
+                            this.update_flashing_page(&phase);
+                            match progress {
                                 Progress::Fraction(x) => {
                                     this.imp().progress_bar.set_fraction(x);
                                 }
@@ -416,8 +404,12 @@ impl ImpressionAppWindow {
                             }
                             glib::MainContext::default().iteration(true);
                         }
-                        FlashStatus::Done(Some(_)) => {
+                        FlashStatus::Done(Some(error_message)) => {
                             this.imp().stack.set_visible_child_name("failure");
+                            this.imp().error_message_label.set_label(&error_message);
+                            this.imp()
+                                .error_message_label
+                                .set_visible(!error_message.is_empty());
                             this.set_is_running(false);
                             this.send_notification(gettext("Failed to write image"));
                             glib::MainContext::default().iteration(true);
@@ -437,6 +429,24 @@ impl ImpressionAppWindow {
         );
 
         runtime().spawn(flash_job.perform());
+    }
+
+    fn update_flashing_page(&self, phase: &FlashPhase) {
+        let flashing_page = &self.imp().flashing_page;
+        match phase {
+            FlashPhase::Download => {
+                flashing_page.set_description(Some(&gettext(
+                    "Writing will begin once the download is completed",
+                )));
+                flashing_page.set_title(&gettext("Downloading Image"));
+                flashing_page.set_icon_name(Some("folder-download-symbolic"));
+            }
+            FlashPhase::Copy => {
+                flashing_page.set_description(Some(&gettext("This could take a while")));
+                flashing_page.set_title(&gettext("Writing"));
+                flashing_page.set_icon_name(Some("flash-symbolic"));
+            }
+        }
     }
 
     fn send_notification(&self, message: String) {

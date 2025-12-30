@@ -330,23 +330,49 @@ template $AppWindow: Adw.ApplicationWindow {
                 icon-name: "error-symbolic";
                 title: _("Writing Unsuccessful");
 
-                child: Box {
-                  orientation: vertical;
-                  spacing: 12;
+                Adw.Clamp {
+                  maximum-size: 600;
+                  tightening-threshold: 400;
 
-                  Button try_again_button {
-                    valign: center;
-                    halign: center;
-                    label: _("Retry");
-                    use-underline: true;
-                    clicked => $try_again_clicked() swapped;
+                  Box {
+                    orientation: vertical;
+                    spacing: 12;
 
-                    styles [
-                      "suggested-action",
-                      "pill",
-                    ]
+                    ScrolledWindow {
+                      min-content-height: 100;
+                      max-content-height: 200;
+
+                      Label error_message_label {
+                        wrap: true;
+                        wrap-mode: word_char;
+                        xalign: 0;
+                        yalign: 0;
+
+                        styles [
+                          "monospace",
+                          "error-message",
+                        ]
+                      }
+
+                      styles [
+                        "card",
+                      ]
+                    }
+
+                    Button try_again_button {
+                      valign: center;
+                      halign: center;
+                      label: _("Retry");
+                      use-underline: true;
+                      clicked => $try_again_clicked() swapped;
+
+                      styles [
+                        "suggested-action",
+                        "pill",
+                      ]
+                    }
                   }
-                };
+                }
               };
             }
 

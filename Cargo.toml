@@ -25,7 +25,6 @@ libc = "0.2"
 reqwest = { version = "0.12", features = ["stream", "json"] }
 roxmltree = "0.21"
 chrono = "0.4"
-anyhow = "1.0"
 thiserror = "2.0"
 derivative = "2.2"
 tokio = { version = "1.48", features = ["process", "rt-multi-thread"] }
@@ -33,3 +32,4 @@ serde_json = "1.0"
 rayon = "1.11"
 futures = "0.3"
 tracing-subscriber = "0.3"
+terrors = "0.3"

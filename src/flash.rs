@@ -1,10 +1,10 @@
-use gettextrs::gettext;
 use log::{error, info};
 use std::collections::HashMap;
 use std::process::Stdio;
 use std::sync::Arc;
 use std::sync::atomic::AtomicBool;
 use std::time::Duration;
+use terrors::OneOf;
 use tokio::time::Instant;
 use tokio::{fs::File, io::AsyncWriteExt};
 
@@ -48,12 +48,16 @@ pub struct FlashRequest {
 }
 
 #[derive(thiserror::Error, Debug)]
-#[error("Error while getting total size")]
-struct TotalSize;
+#[error("Process was stopped by the user")]
+struct ProcessStoppedByUser;
 
 #[derive(thiserror::Error, Debug)]
-#[error("Error during xz extraction: {details:?}")]
-struct XzExtractionError {
+#[error("Total size could not be determined")]
+struct TotalSizeCouldNotBeDetermined;
+
+#[derive(thiserror::Error, Debug)]
+#[error("XZ extraction failed: {details:?}")]
+struct XzExtractionFailed {
     details: Option<String>,
 }
 
@@ -82,19 +86,33 @@ impl FlashRequest {
         &self,
         downloading_path: std::path::PathBuf,
         url: &str,
-    ) -> anyhow::Result<File> {
-        let mut file = File::create(downloading_path.clone()).await?;
+    ) -> Result<
+        File,
+        OneOf<(
+            ProcessStoppedByUser,
+            TotalSizeCouldNotBeDetermined,
+            std::io::Error,
+            reqwest::Error,
+        )>,
+    > {
+        let mut file = File::create(downloading_path.clone())
+            .await
+            .map_err(OneOf::new)?;
 
-        let res = reqwest::get(url).await?;
+        let res = reqwest::get(url).await.map_err(OneOf::new)?;
 
-        let total_size = res.content_length().ok_or(TotalSize)?;
+        let total_size = res
+            .content_length()
+            .ok_or_else(|| OneOf::new(TotalSizeCouldNotBeDetermined))?;
         let mut downloaded: u64 = 0;
         let mut stream = res.bytes_stream();
 
         let mut last_sent = Instant::now();
 
         while let Some(Ok(chunk)) = futures::StreamExt::next(&mut stream).await {
-            tokio::io::AsyncWriteExt::write_all(&mut file, &chunk).await?;
+            tokio::io::AsyncWriteExt::write_all(&mut file, &chunk)
+                .await
+                .map_err(OneOf::new)?;
             downloaded = std::cmp::min(downloaded + (chunk.len() as u64), total_size);
 
             if last_sent.elapsed() >= Duration::from_millis(250) {
@@ -105,17 +123,23 @@ impl FlashRequest {
 
                 last_sent = Instant::now();
             }
+
+            self.stopped_running().map_err(OneOf::broaden)?;
         }
 
-        Ok(file)
+        file.flush().await.map_err(OneOf::new)?;
+
+        file.sync_all().await.map_err(OneOf::new)?;
+
+        File::open(downloading_path).await.map_err(OneOf::new)
     }
 
     async fn extract_xz_image(
         &self,
         input_path: &std::path::Path,
         output_path: &std::path::Path,
-    ) -> anyhow::Result<File> {
-        let output_file = File::create(&output_path).await?;
+    ) -> Result<File, OneOf<(XzExtractionFailed, std::io::Error)>> {
+        let output_file = File::create(&output_path).await.map_err(OneOf::new)?;
 
         self.set_status(FlashStatus::Active(FlashPhase::Copy, Progress::Pulse));
 
@@ -125,13 +149,14 @@ impl FlashRequest {
             .arg("-T0")
             .stdout(Stdio::from(output_file.into_std().await))
             .stderr(Stdio::piped())
-            .spawn()?;
+            .spawn()
+            .map_err(OneOf::new)?;
 
         let stderr = extract_process.stderr.take();
 
-        match extract_process.wait().await? {
-            x if x.success() => Ok(File::open(&output_path).await?),
-            _ => Err(XzExtractionError {
+        match extract_process.wait().await.map_err(OneOf::new)? {
+            x if x.success() => Ok(File::open(&output_path).await.map_err(OneOf::new)?),
+            _ => Err(OneOf::new(XzExtractionFailed {
                 details: match stderr {
                     Some(mut stderr) => {
                         let mut err_output = String::new();
@@ -142,30 +167,51 @@ impl FlashRequest {
                     }
                     None => None,
                 },
-            }
-            .into()),
+            })),
         }
     }
 
     pub async fn perform(self) {
-        if let Err(e) = self.perform_job().await {
-            error!("Flash operation failed: {e}");
-            self.set_status(FlashStatus::Done(Some(e.to_string())));
+        match self.perform_job().await {
+            Ok(()) => {
+                self.set_status(FlashStatus::Done(None));
+            }
+            Err(e) => {
+                if let Err(e) = e.narrow::<ProcessStoppedByUser, _>() {
+                    error!("Flashing process failed: {e}");
+                    self.set_status(FlashStatus::Done(Some(e.to_string())));
+                }
+            }
         }
     }
 
-    fn stopped_running(&self) -> bool {
-        !self.is_running.load(std::sync::atomic::Ordering::SeqCst)
+    fn stopped_running(&self) -> Result<(), OneOf<(ProcessStoppedByUser,)>> {
+        if self.is_running.load(std::sync::atomic::Ordering::SeqCst) {
+            Ok(())
+        } else {
+            Err(OneOf::new(ProcessStoppedByUser))
+        }
     }
 
-    async fn get_source_file_from_image(&self) -> anyhow::Result<File> {
+    async fn get_source_file_from_image(
+        &self,
+    ) -> Result<
+        File,
+        OneOf<(
+            ProcessStoppedByUser,
+            std::io::Error,
+            reqwest::Error,
+            XzExtractionFailed,
+            TotalSizeCouldNotBeDetermined,
+        )>,
+    > {
         match &self.source {
             DiskImage::Local { path, compression } => match compression {
-                Compression::Raw => Ok(File::open(path).await?),
+                Compression::Raw => Ok(File::open(path).await.map_err(OneOf::new)?),
                 Compression::Xz => {
                     let temp_dir = glib::user_cache_dir();
 
-                    std::fs::create_dir_all(&temp_dir)?;
+                    std::fs::create_dir_all(&temp_dir).map_err(OneOf::new)?;
 
                     let result_path = temp_dir.join(
                         path.file_name()
@@ -175,17 +221,23 @@ impl FlashRequest {
 
                     self.set_status(FlashStatus::Active(FlashPhase::Copy, Progress::Pulse));
 
-                    self.extract_xz_image(path, &result_path).await
+                    Ok(self
+                        .extract_xz_image(path, &result_path)
+                        .await
+                        .map_err(OneOf::broaden)?)
                 }
             },
             DiskImage::Online { url, name } => {
                 let temp_dir = glib::user_cache_dir();
 
-                std::fs::create_dir_all(&temp_dir)?;
+                std::fs::create_dir_all(&temp_dir).map_err(OneOf::new)?;
 
                 let temporary_download_path = temp_dir.join(name.to_owned() + ".iso");
 
-                self.download_file(temporary_download_path, url).await
+                Ok(self
+                    .download_file(temporary_download_path, url)
+                    .await
+                    .map_err(OneOf::broaden)?)
             }
         }
     }
@@ -199,41 +251,60 @@ impl FlashRequest {
             .iter()
             .filter_map(|partition| client.object(partition.inner().path().clone()).ok())
         {
-            udisks_unmount(&partition).await.ok();
+            if let Err(e) = udisks_unmount(&partition).await {
+                error!(
+                    "Failed to unmount partition {:?}, this will be ignored: {e}",
+                    partition.object_path()
+                );
+            }
         }
 
         Ok(())
     }
 
-    async fn perform_job(&self) -> anyhow::Result<()> {
-        if self.stopped_running() {
-            info!("Flash operation was cancelled before starting");
-            return Ok(());
+    async fn perform_job(
+        &self,
+    ) -> Result<
+        (),
+        OneOf<(
+            ProcessStoppedByUser,
+            std::io::Error,
+            reqwest::Error,
+            udisks::Error,
+            XzExtractionFailed,
+            TotalSizeCouldNotBeDetermined,
+        )>,
+    > {
+        self.stopped_running().map_err(OneOf::broaden)?;
+
+        info!(
+            "Flashing {:?} to {:?}",
+            self.source,
+            self.destination.object_path()
+        );
+
+        let client = udisks::Client::new().await.map_err(OneOf::new)?;
+
+        let destination_block = self.destination.block().await.map_err(OneOf::new)?;
+
+        let destination_drive = client
+            .drive_for_block(&destination_block)
+            .await
+            .map_err(OneOf::new)?;
+        if let Err(e) = self.unmount_partitions(&client).await {
+            error!("Error unmounting partitions, will be ignored: {e}");
         }
 
-        let client = udisks::Client::new().await?;
+        self.stopped_running().map_err(OneOf::broaden)?;
 
-        let destination_block = self.destination.block().await?;
+        let destination_file = udisks_open(&destination_block).await.map_err(OneOf::new)?;
 
-        let destination_drive = client.drive_for_block(&destination_block).await?;
+        let source_image = self
+            .get_source_file_from_image()
+            .await
+            .map_err(OneOf::broaden)?;
 
-        let _ = self.unmount_partitions(&client).await;
-
-        if self.stopped_running() {
-            info!("Flash operation was cancelled after unmounting partitions, but before flashing");
-            return Ok(());
-        }
-
-        let destination_file = udisks_open(&destination_block).await?;
-
-        let source_image = self.get_source_file_from_image().await?;
-
-        if self.stopped_running() {
-            info!(
-                "Flash operation was cancelled after preparing source image, but before flashing"
-            );
-            return Ok(());
-        }
+        self.stopped_running().map_err(OneOf::broaden)?;
 
         //TODO: we should probably spawn a UDIsks.Job for this operation,
         //but udisks-rs does not support this yet
@@ -243,11 +314,16 @@ impl FlashRequest {
             |status| self.set_status(status),
             self.is_running.clone(),
         )
-        .await;
+        .await
+        .map_err(OneOf::broaden)?;
 
-        let _ = destination_block.rescan(HashMap::new()).await;
+        if let Err(e) = destination_block.rescan(HashMap::new()).await {
+            error!("Error rescanning block device, will be ignored: {e}");
+        }
 
-        let _ = destination_drive.eject(HashMap::new()).await;
+        if let Err(e) = destination_drive.eject(HashMap::new()).await {
+            error!("Error ejecting drive, will be ignored: {e}");
+        }
 
         Ok(())
     }
@@ -257,8 +333,8 @@ impl FlashRequest {
         mut target_file: File,
         set_status: F,
         is_running: Arc<AtomicBool>,
-    ) {
-        let mut last_sent = Instant::now();
+    ) -> Result<(), OneOf<(std::io::Error, ProcessStoppedByUser)>> {
+        let mut last_set = Instant::now();
         let mut total = 0_u64;
 
         let size = match image.metadata().await {
@@ -269,47 +345,50 @@ impl FlashRequest {
             }
         };
 
+        info!("Writing file {image:?} ({size} bytes)");
+
         let mut source = tokio::io::BufReader::with_capacity(1024 * 1024, image);
         let mut target = tokio::io::BufWriter::with_capacity(1024 * 1024, &mut target_file);
 
         let mut buf = vec![0; 256 * 1024].into_boxed_slice();
 
-        let stopped = || !is_running.load(std::sync::atomic::Ordering::SeqCst);
+        loop {
+            let x = tokio::io::AsyncReadExt::read(&mut source, &mut buf)
+                .await
+                .map_err(OneOf::new)?;
 
-        while let Ok(x) = tokio::io::AsyncReadExt::read(&mut source, &mut buf).await {
-            if stopped() {
-                return;
-            }
             if x == 0 {
                 break;
             }
+
             total += x as u64;
-            if tokio::io::AsyncWriteExt::write_all(&mut target, &buf[..x])
+
+            tokio::io::AsyncWriteExt::write_all(&mut target, &buf[..x])
                 .await
-                .is_err()
-            {
-                set_status(FlashStatus::Done(Some(gettext("Writing to disk failed"))));
-                return;
+                .map_err(OneOf::new)?;
+
+            if !is_running.load(std::sync::atomic::Ordering::SeqCst) {
+                return Err(OneOf::new(ProcessStoppedByUser));
             }
 
-            if stopped() {
-                return;
-            }
-
-            if last_sent.elapsed() >= Duration::from_millis(250) {
+            if last_set.elapsed() >= Duration::from_millis(250) {
                 set_status(FlashStatus::Active(
                     FlashPhase::Copy,
                     Progress::from((total, size)),
                 ));
-                last_sent = Instant::now();
+                last_set = Instant::now();
             }
         }
 
-        target.flush().await.ok();
+        if let Err(e) = target.flush().await {
+            error!("Error flushing data to target, will be ignored: {e}");
+        }
 
-        let _ = target_file.sync_all().await;
+        if let Err(e) = target_file.sync_all().await {
+            error!("Error syncing data to target, will be ignored: {e}");
+        }
 
-        set_status(FlashStatus::Done(None));
+        Ok(())
     }
 }
 
