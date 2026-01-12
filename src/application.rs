@@ -1,10 +1,9 @@
 use glib::{ExitCode, clone};
-use log::{debug, error, info};
+use log::{debug, info};
 
 use gtk::{gio, glib, prelude::*, subclass::prelude::*};
 
 use crate::config::{APP_ID, PKGDATADIR, PROFILE, VERSION};
-use crate::runtime;
 use crate::window::ImpressionAppWindow;
 
 mod imp {
@@ -100,17 +99,6 @@ impl ImpressionApp {
         info!("Version: {VERSION} ({PROFILE})");
         info!("Datadir: {PKGDATADIR}");
 
-        runtime().spawn(async {
-            if !ashpd::is_sandboxed().await {
-                debug!("Not running in a sandbox, skipping cache cleanup.");
-                return;
-            }
-            info!("Running in a sandbox, cleaning cache directory.");
-            if let Err(e) = clear_cache() {
-                error!("Failed to clean cache directory: {e}");
-            }
-        });
-
         ApplicationExtManual::run(self)
     }
 }
@@ -123,17 +111,4 @@ impl Default for ImpressionApp {
             .property("resource-base-path", "/io/gitlab/adhami3310/Impression/")
             .build()
     }
-}
-
-fn clear_cache() -> std::io::Result<()> {
-    for entry in std::fs::read_dir(glib::user_cache_dir())? {
-        let entry = entry?;
-        if entry.file_type()?.is_file() && matches!(entry.path().extension(), Some(x) if x == "iso")
-        {
-            info!("deleting {}", entry.path().display());
-            std::fs::remove_file(entry.path())?;
-        }
-    }
-
-    Ok(())
 }

@@ -3,11 +3,11 @@ use std::{collections::HashMap, fs::DirEntry};
 use itertools::Itertools;
 use log::warn;
 
-#[derive(Debug, PartialEq, PartialOrd, Eq, Ord)]
+#[derive(Debug, Clone, PartialEq, PartialOrd, Eq, Ord)]
 pub struct DistroRelease {
     pub name: String,
     pub version: Option<String>,
-    pub url: String,
+    pub url: url::Url,
     pub variant: Option<String>,
 }
 
@@ -73,7 +73,7 @@ fn parse_date(date_str: &str) -> Option<chrono::NaiveDate> {
 struct MediaInfo {
     variant_name: String,
     architecture: String,
-    url: String,
+    url: url::Url,
 }
 
 fn get_media_info(
@@ -82,6 +82,7 @@ fn get_media_info(
     default_name: &str,
 ) -> Option<MediaInfo> {
     let url = get_text_of_first_child_node_with_tag(media_node, "url")?.to_owned();
+    let parsed_url = url::Url::parse(&url).ok()?;
 
     let architecture = media_node.attribute("arch")?.to_owned();
 
@@ -93,7 +94,7 @@ fn get_media_info(
     Some(MediaInfo {
         variant_name: variant_name.to_owned(),
         architecture,
-        url,
+        url: parsed_url,
     })
 }
 

@@ -1,7 +1,6 @@
 use std::ffi::CString;
 
 use adw::prelude::*;
-use glib::clone;
 
 use crate::window::ImpressionAppWindow;
 
@@ -87,7 +86,7 @@ pub fn new(
 
         let object_path = device.object.object_path().to_string();
         if devices.len() == 1 {
-            check_button.connect_toggled(clone!(
+            check_button.connect_toggled(glib::clone!(
                 #[weak(rename_to=this)]
                 app,
                 move |x| {
@@ -96,7 +95,7 @@ pub fn new(
                 }
             ));
         } else {
-            check_button.connect_toggled(clone!(
+            check_button.connect_toggled(glib::clone!(
                 #[weak(rename_to=this)]
                 app,
                 move |x| {

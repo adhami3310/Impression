@@ -84,8 +84,8 @@ impl FlashRequest {
 
     async fn download_file(
         &self,
-        downloading_path: std::path::PathBuf,
-        url: &str,
+        downloading_path: &std::path::PathBuf,
+        url: &url::Url,
     ) -> Result<
         File,
         OneOf<(
@@ -95,11 +95,9 @@ impl FlashRequest {
             reqwest::Error,
         )>,
     > {
-        let mut file = File::create(downloading_path.clone())
-            .await
-            .map_err(OneOf::new)?;
+        let mut file = File::create(downloading_path).await.map_err(OneOf::new)?;
 
-        let res = reqwest::get(url).await.map_err(OneOf::new)?;
+        let res = reqwest::get(url.to_owned()).await.map_err(OneOf::new)?;
 
         let total_size = res
             .content_length()
@@ -227,18 +225,12 @@ impl FlashRequest {
                         .map_err(OneOf::broaden)?)
                 }
             },
-            DiskImage::Online { url, name } => {
-                let temp_dir = glib::user_cache_dir();
-
-                std::fs::create_dir_all(&temp_dir).map_err(OneOf::new)?;
-
-                let temporary_download_path = temp_dir.join(name.to_owned() + ".iso");
-
-                Ok(self
-                    .download_file(temporary_download_path, url)
-                    .await
-                    .map_err(OneOf::broaden)?)
-            }
+            DiskImage::Online {
+                url, download_path, ..
+            } => Ok(self
+                .download_file(download_path, url)
+                .await
+                .map_err(OneOf::broaden)?),
         }
     }
 
@@ -299,10 +291,14 @@ impl FlashRequest {
 
         let destination_file = udisks_open(&destination_block).await.map_err(OneOf::new)?;
 
+        info!("Destination: {destination_file:?}");
+
         let source_image = self
             .get_source_file_from_image()
             .await
             .map_err(OneOf::broaden)?;
+
+        info!("Source: {source_image:?}");
 
         self.stopped_running().map_err(OneOf::broaden)?;
 
@@ -324,6 +320,8 @@ impl FlashRequest {
         if let Err(e) = destination_drive.eject(HashMap::new()).await {
             error!("Error ejecting drive, will be ignored: {e}");
         }
+
+        info!("Flashing completed successfully");
 
         Ok(())
     }

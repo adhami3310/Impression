@@ -29,7 +29,8 @@ pub enum DiskImage {
         compression: Compression,
     },
     Online {
-        url: String,
+        url: url::Url,
+        download_path: PathBuf,
         name: String,
     },
 }
@@ -176,15 +177,15 @@ glib::wrapper! {
 #[gtk::template_callbacks]
 impl ImpressionAppWindow {
     pub fn new<P: glib::prelude::IsA<gtk::Application>>(app: &P) -> Self {
-        let win = glib::Object::builder::<ImpressionAppWindow>()
+        let window = glib::Object::builder::<ImpressionAppWindow>()
             .property("application", app)
             .build();
 
-        win.setup_callbacks();
-        win.setup_drop_target();
-        win.imp().open_image_button.grab_focus();
+        window.setup_callbacks();
+        window.setup_drop_target();
+        window.imp().open_image_button.grab_focus();
 
-        win
+        window
     }
 
     fn setup_gactions(&self) {
@@ -221,9 +222,7 @@ impl ImpressionAppWindow {
                     #[weak(rename_to=window)]
                     self,
                     move |_, _, _| {
-                        glib::spawn_future_local(async move {
-                            window.open_dialog().await;
-                        });
+                        window.open_dialog();
                     }
                 ))
                 .build(),
@@ -238,14 +237,14 @@ impl ImpressionAppWindow {
             .build();
 
         drop_target.connect_drop(clone!(
-            #[weak(rename_to=win)]
+            #[weak(rename_to=window)]
             self,
             #[upgrade_or_default]
             move |_, value, _, _| {
                 if let Ok(file_list) = value.get::<gdk::FileList>()
                     && let Some(input_file) = file_list.files().first()
                 {
-                    win.open_file(input_file);
+                    window.open_file(input_file);
                     return true;
                 }
 
@@ -344,7 +343,7 @@ impl ImpressionAppWindow {
         let current_status = std::sync::Arc::<std::sync::Mutex<FlashStatus>>::new(
             std::sync::Mutex::new(FlashStatus::Active(
                 match disk_image_for_reading {
-                    DiskImage::Online { url: _, name: _ } => FlashPhase::Download,
+                    DiskImage::Online { .. } => FlashPhase::Download,
                     DiskImage::Local { .. } => FlashPhase::Copy,
                 },
                 Progress::Fraction(0.0),
@@ -359,10 +358,7 @@ impl ImpressionAppWindow {
         );
 
         let flashing_page = &self.imp().flashing_page;
-        if matches!(
-            disk_image_for_reading,
-            DiskImage::Online { url: _, name: _ }
-        ) {
+        if matches!(disk_image_for_reading, DiskImage::Online { .. }) {
             flashing_page.set_description(Some(&gettext(
                 "Writing will begin once the download is completed",
             )));
@@ -658,14 +654,11 @@ impl ImpressionAppWindow {
 
     fn load_distros(&self, target: &TemplateChild<gtk::ListBox>, distros: Vec<DistroRelease>) {
         target.remove_all();
-        for DistroRelease {
-            name, version, url, ..
-        } in distros
-        {
+        for distro in distros {
             let action_row = adw::ActionRow::new();
-            action_row.set_title(&name);
-            if let Some(subtitle) = version {
-                action_row.set_subtitle(&subtitle);
+            action_row.set_title(&distro.name);
+            if let Some(subtitle) = &distro.version {
+                action_row.set_subtitle(subtitle);
             }
             let next_image = gtk::Image::new();
             next_image.set_icon_name(Some("go-next-symbolic"));
@@ -675,20 +668,70 @@ impl ImpressionAppWindow {
                 #[weak(rename_to=this)]
                 self,
                 move |_| {
-                    let url = url.clone();
-                    let name = name.clone();
-                    this.imp()
-                        .selected_image_file_for_reading
-                        .replace(Some(DiskImage::Online { url, name }));
-                    this.load_stored();
+                    this.save_dialog(distro.clone());
                 }
             ));
             target.append(&action_row);
         }
     }
 
+    fn save_dialog(&self, distro: DistroRelease) {
+        let file_name = distro
+            .url
+            .path_segments()
+            .and_then(|mut segments| segments.next_back())
+            .unwrap_or("disk-image.img");
+
+        let filter = gtk::FileFilter::new();
+        filter.add_pattern("*.img");
+        filter.add_pattern("*.iso");
+        filter.set_name(Some(&gettext("Disk Image")));
+
+        let model = gio::ListStore::new::<gtk::FileFilter>();
+        model.append(&filter);
+
+        gtk::FileDialog::builder()
+            .modal(true)
+            .filters(&model)
+            .initial_name(file_name)
+            .default_filter(&filter)
+            .build()
+            .save(
+                Some(self),
+                gio::Cancellable::NONE,
+                clone!(
+                    #[weak(rename_to=window)]
+                    self,
+                    move |file| match file {
+                        Ok(file) => {
+                            info!("Selected file: {file:?}");
+
+                            let Some(path) = file.path() else {
+                                error!("Failed to get file path for {file:?}");
+                                return;
+                            };
+
+                            info!("Selected path: {}", path.display());
+                            window.imp().selected_image_file_for_reading.replace(Some(
+                                DiskImage::Online {
+                                    url: distro.url,
+                                    download_path: path,
+                                    name: distro.name,
+                                },
+                            ));
+
+                            window.load_stored();
+                        }
+                        Err(e) => {
+                            error!("Failed to open file dialog: {e}");
+                        }
+                    }
+                ),
+            );
+    }
+
     #[template_callback]
-    async fn open_dialog(&self) {
+    fn open_dialog(&self) {
         let filter = gtk::FileFilter::new();
         filter.add_mime_type("application/x-iso9660-image");
         filter.add_mime_type("application/x-raw-disk-image");
@@ -703,19 +746,28 @@ impl ImpressionAppWindow {
         let model = gio::ListStore::new::<gtk::FileFilter>();
         model.append(&filter);
 
-        match gtk::FileDialog::builder()
+        gtk::FileDialog::builder()
             .modal(true)
             .filters(&model)
             .default_filter(&filter)
             .build()
-            .open_future(Some(self))
-            .await
-        {
-            Ok(file) => self.open_file(&file),
-            Err(e) => {
-                error!("Failed to open file dialog: {e}");
-            }
-        }
+            .open(
+                Some(self),
+                gio::Cancellable::NONE,
+                clone!(
+                    #[weak(rename_to=window)]
+                    self,
+                    move |file| match file {
+                        Ok(file) => {
+                            info!("Selected file: {file:?}");
+                            window.open_file(&file);
+                        }
+                        Err(e) => {
+                            error!("Failed to open file dialog: {e}");
+                        }
+                    }
+                ),
+            );
     }
 
     pub fn open_file(&self, file: &gio::File) {
@@ -775,7 +827,7 @@ impl ImpressionAppWindow {
                         }
                     });
             }
-            Some(DiskImage::Online { url: _, name }) => {
+            Some(DiskImage::Online { name, .. }) => {
                 self.imp().name_value_label.set_text(&name);
                 self.imp().size_label.set_text("");
             }
@@ -796,7 +848,7 @@ impl ImpressionAppWindow {
             sender.send(devices).expect("Concurrency Issues");
         });
 
-        glib::spawn_future_local(glib::clone!(
+        glib::spawn_future_local(clone!(
             #[weak(rename_to = this)]
             self,
             async move {
