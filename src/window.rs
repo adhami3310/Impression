@@ -685,7 +685,7 @@ impl ImpressionAppWindow {
         let filter = gtk::FileFilter::new();
         filter.add_pattern("*.img");
         filter.add_pattern("*.iso");
-        filter.set_name(Some(&gettext("Disk Image")));
+        filter.set_name(Some(&gettext("Disk Images")));
 
         let model = gio::ListStore::new::<gtk::FileFilter>();
         model.append(&filter);

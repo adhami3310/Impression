@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: impression\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-29 18:46-0800\n"
+"POT-Creation-Date: 2026-01-11 21:48-0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,7 +21,7 @@ msgstr ""
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:5
 #: data/resources/blueprints/window.blp:9
 #: data/resources/blueprints/window.blp:20
-#: data/resources/blueprints/window.blp:166 src/main.rs:46 src/window.rs:934
+#: data/resources/blueprints/window.blp:166 src/main.rs:46 src/window.rs:986
 msgid "Impression"
 msgstr ""
 
@@ -149,15 +149,15 @@ msgstr ""
 msgid "Retry"
 msgstr ""
 
-#: data/resources/blueprints/window.blp:383 src/window.rs:373 src/window.rs:446
+#: data/resources/blueprints/window.blp:383 src/window.rs:369 src/window.rs:442
 msgid "Writing"
 msgstr ""
 
-#: data/resources/blueprints/window.blp:385 src/window.rs:372
+#: data/resources/blueprints/window.blp:385 src/window.rs:368
 msgid "Do not remove the drive"
 msgstr ""
 
-#: data/resources/blueprints/window.blp:400 src/window.rs:266 src/window.rs:317
+#: data/resources/blueprints/window.blp:400 src/window.rs:265 src/window.rs:316
 msgid "_Cancel"
 msgstr ""
 
@@ -189,83 +189,83 @@ msgstr ""
 msgid "About Impression"
 msgstr ""
 
-#: src/window.rs:261
+#: src/window.rs:260
 msgid "Stop Writing?"
 msgstr ""
 
-#: src/window.rs:262
+#: src/window.rs:261
 msgid "This might leave the drive in a faulty state"
 msgstr ""
 
-#: src/window.rs:267
+#: src/window.rs:266
 msgid "_Stop Writing"
 msgstr ""
 
-#: src/window.rs:310
+#: src/window.rs:309
 msgid "Erase Drive?"
 msgstr ""
 
-#: src/window.rs:312
+#: src/window.rs:311
 #, rust-format
 msgid "You will lose all data stored on {}"
 msgstr ""
 
-#: src/window.rs:318
+#: src/window.rs:317
 msgid "_Erase"
 msgstr ""
 
-#: src/window.rs:367 src/window.rs:439
+#: src/window.rs:363 src/window.rs:435
 msgid "Writing will begin once the download is completed"
 msgstr ""
 
-#: src/window.rs:369 src/window.rs:441
+#: src/window.rs:365 src/window.rs:437
 msgid "Downloading Image"
 msgstr ""
 
-#: src/window.rs:414
+#: src/window.rs:410
 msgid "Failed to write image"
 msgstr ""
 
-#: src/window.rs:421
+#: src/window.rs:417
 msgid "Image Written"
 msgstr ""
 
-#: src/window.rs:445
+#: src/window.rs:441
 msgid "This could take a while"
 msgstr ""
 
-#: src/window.rs:701
+#: src/window.rs:688 src/window.rs:744
 msgid "Disk Images"
 msgstr ""
 
-#: src/window.rs:736
+#: src/window.rs:788
 msgid "File is not a Disk Image"
 msgstr ""
 
-#: src/window.rs:862
+#: src/window.rs:914
 msgid "translator-credits"
 msgstr ""
 
-#: src/window.rs:864
+#: src/window.rs:916
 msgid "Code borrowed from"
 msgstr ""
 
 #. Translators: Metainfo for the app Footage. <https://gitlab.com/adhami3310/Footage>
-#: src/window.rs:871
+#: src/window.rs:923
 msgid "Footage"
 msgstr ""
 
 #. Translators: Metainfo for the app Footage. <https://gitlab.com/adhami3310/Footage>
-#: src/window.rs:873
+#: src/window.rs:925
 msgid "Polish your videos"
 msgstr ""
 
 #. Translators: Metainfo for the app Switcheroo. <https://gitlab.com/adhami3310/Switcheroo>
-#: src/window.rs:879
+#: src/window.rs:931
 msgid "Switcheroo"
 msgstr ""
 
 #. Translators: Metainfo for the app Switcheroo. <https://gitlab.com/adhami3310/Switcheroo>
-#: src/window.rs:881
+#: src/window.rs:933
 msgid "Convert and manipulate images"
 msgstr ""
