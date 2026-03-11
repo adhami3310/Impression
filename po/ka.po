@@ -1,0 +1,273 @@
+# Georgian translation for impression.
+# Copyright (C) 2026 impression authors.
+# This file is distributed under the same license as the impression package.
+# Ekaterine Papava <papava.e@gtu.ge>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: impression\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-01-11 21:48-0800\n"
+"PO-Revision-Date: 2026-02-02 08:18+0100\n"
+"Last-Translator: Ekaterine Papava <papava.e@gtu.ge>\n"
+"Language-Team: Georgian <(nothing)>\n"
+"Language: ka\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.8\n"
+
+#: data/io.gitlab.adhami3310.Impression.desktop.in.in:2
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:5
+#: data/resources/blueprints/window.blp:9 data/resources/blueprints/window.blp:20
+#: data/resources/blueprints/window.blp:166 src/main.rs:46 src/window.rs:986
+msgid "Impression"
+msgstr "Impression"
+
+#: data/io.gitlab.adhami3310.Impression.desktop.in.in:3
+msgid "Media Writer"
+msgstr "მედიის ჩამწერი"
+
+#: data/io.gitlab.adhami3310.Impression.desktop.in.in:4
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:9
+msgid "Create bootable drives"
+msgstr "შექმენით ჩატვირთვადი დისკები"
+
+#: data/io.gitlab.adhami3310.Impression.desktop.in.in:10
+msgid "usb;flash;writer;bootable;drive;iso;img;disk;image"
+msgstr "usb;flash;writer;bootable;drive;iso;img;disk;image;ასლისფაილი;ჩაწერა;ჩატვირთვადი;დისკი"
+
+#: data/io.gitlab.adhami3310.Impression.gschema.xml.in:7
+msgid "Window width"
+msgstr "ფანჯრის სიგანე"
+
+#: data/io.gitlab.adhami3310.Impression.gschema.xml.in:11
+msgid "Window height"
+msgstr "ფანჯრის სიმაღლე"
+
+#: data/io.gitlab.adhami3310.Impression.gschema.xml.in:15
+msgid "Window maximized state"
+msgstr "ფანჯრის სრულად გაშლილი მდგომარეობა"
+
+#: data/io.gitlab.adhami3310.Impression.gschema.xml.in:24
+msgid "List of downloadable distros (distro_id, must_include, invert_must_include) tuples"
+msgstr ""
+"გადმოწერადი დისტრიბუტივების სიის (distro_id, must_include, invert_must_include) კორტეჟები"
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:7
+msgid "Khaleel Al-Adhami"
+msgstr "Khaleel Al-Adhami"
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:15
+msgid ""
+"Write disk images to your drives with ease. Select an image, insert your drive, and you're "
+"good to go! Impression is a useful tool for both avid distro-hoppers and casual computer "
+"users."
+msgstr ""
+"ჩაწერეთ დისკის ასლის ფაილები დისკებზე ადვილად. აირჩიეთ დისკის ასლის ფაილი, მიაერთეთ დისკი და "
+"სულ ესაა! Impression სასარგებლო პროგრამაა ორივესთვის, ვინც დისტრიბუტივებს ხშირად იცვლის და "
+"ჩვეულებრივი მომხმარებლებისთვის."
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:41
+msgid "Screen with a choice of a local image or internet download"
+msgstr ""
+"ეკრანი არჩევნით, გამოყენებული იქნება ლოკალური დისკის ასლის ფაილი, თუ მოხდება ინტერნეტიდან "
+"გადმოწერა"
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:45
+msgid "Screen with a chosen ISO and available USB memories"
+msgstr "ეკრანი, სადაც ნაჩვენებია არჩეული ISO და ხელმისაწვდომი USB მეხსიერებები"
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:49
+msgid "Writing the ISO in progress"
+msgstr "მიმდინარეობს ISO-ს ჩაწერა"
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:53
+msgid "Success screen with a big check mark"
+msgstr "წარმატების გამომხატველი ეკრანი დიდი დასმული თოლიით"
+
+#: data/resources/blueprints/window.blp:23
+msgid "Drop Here to Open"
+msgstr "გასახსნელად, აქ დააგდეთ"
+
+#: data/resources/blueprints/window.blp:32 data/resources/blueprints/window.blp:175
+#: data/resources/blueprints/window.blp:268
+msgid "Main Menu"
+msgstr "მთავარი მენიუ"
+
+#: data/resources/blueprints/window.blp:54
+msgid "Choose Image"
+msgstr "აირჩიეთ სურათი"
+
+#: data/resources/blueprints/window.blp:67
+msgid "Open File…"
+msgstr "ფაილის გახსნა…"
+
+#: data/resources/blueprints/window.blp:78
+msgid "Direct Download"
+msgstr "პირდაპირი გადმოწერა"
+
+#: data/resources/blueprints/window.blp:122
+msgid "No Connection"
+msgstr "მიერთების გარეშე"
+
+#: data/resources/blueprints/window.blp:123
+msgid "Connect to the internet to view available images"
+msgstr "ხელმისაწვდომი დისკის ასლის ფაილები სანახავად დაუკავშირდით ინტერნეტს"
+
+#: data/resources/blueprints/window.blp:238
+msgid "All data on the selected drive will be erased"
+msgstr "არჩეულ დისკზე არსებული მონაცემები სრულად განადგურდება"
+
+#: data/resources/blueprints/window.blp:241
+msgid "Write"
+msgstr "ჩაწერა"
+
+#: data/resources/blueprints/window.blp:293
+msgid "No Drives"
+msgstr "დისკების გარეშე"
+
+#: data/resources/blueprints/window.blp:294
+msgid "Insert a drive to write to"
+msgstr "ჩადეთ ჩასაწერი დისკი"
+
+#: data/resources/blueprints/window.blp:303
+msgid "Writing Completed"
+msgstr "ჩაწერა დასრულდა"
+
+#: data/resources/blueprints/window.blp:304
+msgid "The drive can be safely removed"
+msgstr "დისკის გამოერთება ახლა უსაფრთხოა"
+
+#: data/resources/blueprints/window.blp:313
+msgid "Finish"
+msgstr "დასრულება"
+
+#: data/resources/blueprints/window.blp:331
+msgid "Writing Unsuccessful"
+msgstr "ჩაწერა წარუმატებელია"
+
+#: data/resources/blueprints/window.blp:365
+msgid "Retry"
+msgstr "თავიდან ცდა"
+
+#: data/resources/blueprints/window.blp:383 src/window.rs:369 src/window.rs:442
+msgid "Writing"
+msgstr "მიმდინარეობს ჩაწერა"
+
+#: data/resources/blueprints/window.blp:385 src/window.rs:368
+msgid "Do not remove the drive"
+msgstr "არ მოხსნათ დისკი"
+
+#: data/resources/blueprints/window.blp:400 src/window.rs:265 src/window.rs:316
+msgid "_Cancel"
+msgstr "გაუ_ქმება"
+
+#: data/resources/blueprints/window.blp:420
+msgctxt "shortcut window"
+msgid "General"
+msgstr "ზოგადი"
+
+#: data/resources/blueprints/window.blp:423
+msgctxt "shortcut window"
+msgid "Open File"
+msgstr "ფაილის გახსნა"
+
+#: data/resources/blueprints/window.blp:428
+msgctxt "shortcut window"
+msgid "Show Shortcuts"
+msgstr "მალსახმობების ჩვენება"
+
+#: data/resources/blueprints/window.blp:433
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "გასვლა"
+
+#: data/resources/blueprints/window.blp:442
+msgid "Keyboard Shortcuts"
+msgstr "კლავიატურის მალსახმობები"
+
+#: data/resources/blueprints/window.blp:447
+msgid "About Impression"
+msgstr "Impression-ის შესახებ"
+
+#: src/window.rs:260
+msgid "Stop Writing?"
+msgstr "შევწყვიტო ჩაწერა?"
+
+#: src/window.rs:261
+msgid "This might leave the drive in a faulty state"
+msgstr "ამან, შეუძლება, დისკი გაფუჭებულ მდგომარეობაში დატოვოს"
+
+#: src/window.rs:266
+msgid "_Stop Writing"
+msgstr "ჩაწერი_ს გაჩერება"
+
+#: src/window.rs:309
+msgid "Erase Drive?"
+msgstr "წავშალო დისკი?"
+
+#: src/window.rs:311
+#, rust-format
+msgid "You will lose all data stored on {}"
+msgstr "{}-ზე დამახსოვრებულ მონაცემებს სრულად დაკარგავთ"
+
+#: src/window.rs:317
+msgid "_Erase"
+msgstr "_წაშლა"
+
+#: src/window.rs:363 src/window.rs:435
+msgid "Writing will begin once the download is completed"
+msgstr "ჩაწერა მაშინვე დაიწყება, როცა გადმოწერა დასრულდება"
+
+#: src/window.rs:365 src/window.rs:437
+msgid "Downloading Image"
+msgstr "დისკის ასლის ფაილის გადმოწერა"
+
+#: src/window.rs:410
+msgid "Failed to write image"
+msgstr "დისკის ასლის ფაილის ჩაწერა ჩავარდა"
+
+#: src/window.rs:417
+msgid "Image Written"
+msgstr "ასლი წარმატებით ჩაიწერა"
+
+#: src/window.rs:441
+msgid "This could take a while"
+msgstr "ამას საკმაო დრო დასჭირდება"
+
+#: src/window.rs:688 src/window.rs:744
+msgid "Disk Images"
+msgstr "დისკის ასლის ფაილები"
+
+#: src/window.rs:788
+msgid "File is not a Disk Image"
+msgstr "ფაილი დისკის ასლის ფაილი არაა"
+
+#: src/window.rs:914
+msgid "translator-credits"
+msgstr "ეკატერინე პაპავა"
+
+#: src/window.rs:916
+msgid "Code borrowed from"
+msgstr "კოდი ვისესხეთ"
+
+#. Translators: Metainfo for the app Footage. <https://gitlab.com/adhami3310/Footage>
+#: src/window.rs:923
+msgid "Footage"
+msgstr "Footage"
+
+#. Translators: Metainfo for the app Footage. <https://gitlab.com/adhami3310/Footage>
+#: src/window.rs:925
+msgid "Polish your videos"
+msgstr "გააპრიალეთ თქვენი ვიდეოები"
+
+#. Translators: Metainfo for the app Switcheroo. <https://gitlab.com/adhami3310/Switcheroo>
+#: src/window.rs:931
+msgid "Switcheroo"
+msgstr "Switcheroo"
+
+#. Translators: Metainfo for the app Switcheroo. <https://gitlab.com/adhami3310/Switcheroo>
+#: src/window.rs:933
+msgid "Convert and manipulate images"
+msgstr "გადაიყვანეთ და შეცვალეთ გამოსახულებები"
