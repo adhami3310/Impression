@@ -1,0 +1,275 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the impression package.
+# Bjørn Mørkedal <gnome@morkedal.com>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: impression\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-01-11 21:48-0800\n"
+"PO-Revision-Date: 2026-04-03 13:39+0200\n"
+"Last-Translator: Bjørn Mørkedal <gnome@morkedal.com>\n"
+"Language-Team: Norwegian Nynorsk <nn@li.org>\n"
+"Language: nn\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Gtranslator 50.0\n"
+
+#: data/io.gitlab.adhami3310.Impression.desktop.in.in:2
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:5
+#: data/resources/blueprints/window.blp:9
+#: data/resources/blueprints/window.blp:20
+#: data/resources/blueprints/window.blp:166 src/main.rs:46 src/window.rs:986
+msgid "Impression"
+msgstr "Impression"
+
+#: data/io.gitlab.adhami3310.Impression.desktop.in.in:3
+msgid "Media Writer"
+msgstr "Medieskrivar"
+
+#: data/io.gitlab.adhami3310.Impression.desktop.in.in:4
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:9
+msgid "Create bootable drives"
+msgstr "Lag oppstartbare einingar"
+
+#: data/io.gitlab.adhami3310.Impression.desktop.in.in:10
+msgid "usb;flash;writer;bootable;drive;iso;img;disk;image"
+msgstr "usb;minnepinne;skrivar;oppstartbar;eining;iso;img;disk;bilete"
+
+#: data/io.gitlab.adhami3310.Impression.gschema.xml.in:7
+msgid "Window width"
+msgstr "Vindaugsbreidd"
+
+#: data/io.gitlab.adhami3310.Impression.gschema.xml.in:11
+msgid "Window height"
+msgstr "Vindaugshøgd"
+
+#: data/io.gitlab.adhami3310.Impression.gschema.xml.in:15
+msgid "Window maximized state"
+msgstr "Om vindauget er maksimert"
+
+#: data/io.gitlab.adhami3310.Impression.gschema.xml.in:24
+msgid ""
+"List of downloadable distros (distro_id, must_include, invert_must_include) "
+"tuples"
+msgstr "Liste over nedlastbare distribusjonar (distro_id, must_include, invert_must_include)"
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:7
+msgid "Khaleel Al-Adhami"
+msgstr "Khaleel Al-Adhami"
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:15
+msgid ""
+"Write disk images to your drives with ease. Select an image, insert your "
+"drive, and you're good to go! Impression is a useful tool for both avid "
+"distro-hoppers and casual computer users."
+msgstr ""
+"Skriv diskbilete til einingane dine på ein enkel måte. Vel eit bilete, set inn "
+"eininga, og du er klar! Impression er eit nyttig verktøy både for distro‑hoppare "
+"og vanlege databrukarar."
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:41
+msgid "Screen with a choice of a local image or internet download"
+msgstr "Skjerm med val mellom lokalt bilete eller nedlasting frå internett"
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:45
+msgid "Screen with a chosen ISO and available USB memories"
+msgstr "Skjerm med valt ISO og tilgjengelege USB‑minne"
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:49
+msgid "Writing the ISO in progress"
+msgstr "Skriving av ISO pågår"
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:53
+msgid "Success screen with a big check mark"
+msgstr "Suksesskjerm med stor avkryssing"
+
+#: data/resources/blueprints/window.blp:23
+msgid "Drop Here to Open"
+msgstr "Slepp her for å opne"
+
+#: data/resources/blueprints/window.blp:32
+#: data/resources/blueprints/window.blp:175
+#: data/resources/blueprints/window.blp:268
+msgid "Main Menu"
+msgstr "Hovudmeny"
+
+#: data/resources/blueprints/window.blp:54
+msgid "Choose Image"
+msgstr "Vel bilete"
+
+#: data/resources/blueprints/window.blp:67
+msgid "Open File…"
+msgstr "Opne fil …"
+
+#: data/resources/blueprints/window.blp:78
+msgid "Direct Download"
+msgstr "Direktenedlasting"
+
+#: data/resources/blueprints/window.blp:122
+msgid "No Connection"
+msgstr "Ingen tilkopling"
+
+#: data/resources/blueprints/window.blp:123
+msgid "Connect to the internet to view available images"
+msgstr "Kopla til internett for å sjå tilgjengelege bilete"
+
+#: data/resources/blueprints/window.blp:238
+msgid "All data on the selected drive will be erased"
+msgstr "All data på den valde eininga vert sletta"
+
+#: data/resources/blueprints/window.blp:241
+msgid "Write"
+msgstr "Skriv"
+
+#: data/resources/blueprints/window.blp:293
+msgid "No Drives"
+msgstr "Ingen einingar"
+
+#: data/resources/blueprints/window.blp:294
+msgid "Insert a drive to write to"
+msgstr "Set inn ei eining å skrive til"
+
+#: data/resources/blueprints/window.blp:303
+msgid "Writing Completed"
+msgstr "Skriving fullført"
+
+#: data/resources/blueprints/window.blp:304
+msgid "The drive can be safely removed"
+msgstr "Eininga kan trygt fjernast"
+
+#: data/resources/blueprints/window.blp:313
+msgid "Finish"
+msgstr "Fullfør"
+
+#: data/resources/blueprints/window.blp:331
+msgid "Writing Unsuccessful"
+msgstr "Skriving mislukkast"
+
+#: data/resources/blueprints/window.blp:365
+msgid "Retry"
+msgstr "Prøv igjen"
+
+#: data/resources/blueprints/window.blp:383 src/window.rs:369 src/window.rs:442
+msgid "Writing"
+msgstr "Skriv"
+
+#: data/resources/blueprints/window.blp:385 src/window.rs:368
+msgid "Do not remove the drive"
+msgstr "Ikkje fjern eininga"
+
+#: data/resources/blueprints/window.blp:400 src/window.rs:265 src/window.rs:316
+msgid "_Cancel"
+msgstr "_Avbryt"
+
+#: data/resources/blueprints/window.blp:420
+msgctxt "shortcut window"
+msgid "General"
+msgstr "Generelt"
+
+#: data/resources/blueprints/window.blp:423
+msgctxt "shortcut window"
+msgid "Open File"
+msgstr "Opne fil"
+
+#: data/resources/blueprints/window.blp:428
+msgctxt "shortcut window"
+msgid "Show Shortcuts"
+msgstr "Vis snøggtastar"
+
+#: data/resources/blueprints/window.blp:433
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "Avslutt"
+
+#: data/resources/blueprints/window.blp:442
+msgid "Keyboard Shortcuts"
+msgstr "Tastatursnarvegar"
+
+#: data/resources/blueprints/window.blp:447
+msgid "About Impression"
+msgstr "Om Impression"
+
+#: src/window.rs:260
+msgid "Stop Writing?"
+msgstr "Stoppe skriving?"
+
+#: src/window.rs:261
+msgid "This might leave the drive in a faulty state"
+msgstr "Dette kan gjere eininga ubrukande"
+
+#: src/window.rs:266
+msgid "_Stop Writing"
+msgstr "_Stopp skriving"
+
+#: src/window.rs:309
+msgid "Erase Drive?"
+msgstr "Slette eininga?"
+
+#: src/window.rs:311
+#, rust-format
+msgid "You will lose all data stored on {}"
+msgstr "Du mistar all data lagra på {}"
+
+#: src/window.rs:317
+msgid "_Erase"
+msgstr "_Slett"
+
+#: src/window.rs:363 src/window.rs:435
+msgid "Writing will begin once the download is completed"
+msgstr "Skriving startar når nedlastinga er ferdig"
+
+#: src/window.rs:365 src/window.rs:437
+msgid "Downloading Image"
+msgstr "Lastar ned bilete"
+
+#: src/window.rs:410
+msgid "Failed to write image"
+msgstr "Klarte ikkje å skrive bilete"
+
+#: src/window.rs:417
+msgid "Image Written"
+msgstr "Bilete skrive"
+
+#: src/window.rs:441
+msgid "This could take a while"
+msgstr "Dette kan ta ei stund"
+
+#: src/window.rs:688 src/window.rs:744
+msgid "Disk Images"
+msgstr "Diskbilete"
+
+#: src/window.rs:788
+msgid "File is not a Disk Image"
+msgstr "Fila er ikkje eit diskbilete"
+
+#: src/window.rs:914
+msgid "translator-credits"
+msgstr "Bjørn Mørkedal <gnome@morkedal.com>"
+
+#: src/window.rs:916
+msgid "Code borrowed from"
+msgstr "Kode lånt frå"
+
+#. Translators: Metainfo for the app Footage. <https://gitlab.com/adhami3310/Footage>
+#: src/window.rs:923
+msgid "Footage"
+msgstr "Footage"
+
+#. Translators: Metainfo for the app Footage. <https://gitlab.com/adhami3310/Footage>
+#: src/window.rs:925
+msgid "Polish your videos"
+msgstr "Puss på videoane dine"
+
+#. Translators: Metainfo for the app Switcheroo. <https://gitlab.com/adhami3310/Switcheroo>
+#: src/window.rs:931
+msgid "Switcheroo"
+msgstr "Switcheroo"
+
+#. Translators: Metainfo for the app Switcheroo. <https://gitlab.com/adhami3310/Switcheroo>
+#: src/window.rs:933
+msgid "Convert and manipulate images"
+msgstr "Konverter og handsam bilete"
