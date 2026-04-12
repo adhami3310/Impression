@@ -281,7 +281,6 @@ impl ImpressionAppWindow {
                     if close_after {
                         this.close();
                     } else {
-                        this.refresh_devices();
                         this.imp().main_stack.set_visible_child_name("choose");
                     }
                 }
@@ -510,7 +509,6 @@ impl ImpressionAppWindow {
         } else {
             warn!("Cancel button clicked while not running, how did we get here?");
             self.imp().main_stack.set_visible_child_name("choose");
-            self.refresh_devices();
         }
     }
 
@@ -525,7 +523,6 @@ impl ImpressionAppWindow {
 
     #[template_callback]
     fn try_again_clicked(&self) {
-        self.refresh_devices();
         self.imp().main_stack.set_visible_child_name("choose");
     }
 
@@ -547,35 +544,7 @@ impl ImpressionAppWindow {
     }
 
     fn setup_callbacks(&self) {
-        timeout_add_seconds_local(
-            2,
-            clone!(
-                #[weak(rename_to=this)]
-                self,
-                #[upgrade_or]
-                glib::ControlFlow::Break,
-                move || {
-                    let main_stack = this.imp().main_stack.visible_child_name();
-                    let current_stack = this.imp().stack.visible_child_name();
-                    let current_page = this
-                        .imp()
-                        .navigation
-                        .visible_page()
-                        .and_then(|x| x.tag())
-                        .map(|x| x.as_str().to_owned());
-                    if matches!(main_stack.as_deref(), Some("status"))
-                        && matches!(current_stack.as_deref(), Some("no_devices"))
-                        || matches!(main_stack.as_deref(), Some("choose"))
-                            && matches!(current_page.as_deref(), Some("device_list" | "welcome"))
-                    {
-                        this.refresh_devices();
-                    }
-                    glib::ControlFlow::Continue
-                }
-            ),
-        );
-
-        self.refresh_devices();
+        self.setup_device_monitor();
 
         timeout_add_seconds_local(
             10,
@@ -840,19 +809,14 @@ impl ImpressionAppWindow {
         self.imp().navigation.push_by_tag("device_list");
     }
 
-    fn refresh_devices(&self) {
-        let (sender, receiver) = tokio::sync::oneshot::channel();
-
-        runtime().block_on(async move {
-            let devices = device_list::fetch_devices_metadata().await;
-            sender.send(devices).expect("Concurrency Issues");
-        });
+    fn setup_device_monitor(&self) {
+        let mut receiver = device_list::monitor_devices();
 
         glib::spawn_future_local(clone!(
             #[weak(rename_to = this)]
             self,
             async move {
-                if let Ok(Ok(devices)) = receiver.await {
+                while let Some(devices) = receiver.recv().await {
                     this.load_devices_into_ui(&devices);
                 }
             }

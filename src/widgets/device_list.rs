@@ -1,6 +1,7 @@
 use std::ffi::CString;
 
 use adw::prelude::*;
+use log::{error, info};
 
 use crate::window::ImpressionAppWindow;
 
@@ -60,10 +61,109 @@ async fn get_devices_metadata(
     res
 }
 
-pub async fn fetch_devices_metadata() -> udisks::Result<Vec<DeviceMetadata>> {
-    let client = udisks::Client::new().await?;
-    let devices = refresh_devices(&client).await?;
-    Ok(get_devices_metadata(&client, &devices).await)
+pub async fn fetch_devices_metadata_with_client(
+    client: &udisks::Client,
+) -> udisks::Result<Vec<DeviceMetadata>> {
+    let devices = refresh_devices(client).await?;
+    Ok(get_devices_metadata(client, &devices).await)
+}
+
+/// Monitors `UDisks2` for device changes and sends updated device lists
+/// through the returned receiver. Creates one D-Bus client and listens for
+/// InterfacesAdded/InterfacesRemoved signals instead of polling.
+pub fn monitor_devices() -> tokio::sync::mpsc::UnboundedReceiver<Vec<DeviceMetadata>> {
+    use futures::future::{Either, select};
+    use std::pin::pin;
+
+    let (sender, receiver) = tokio::sync::mpsc::unbounded_channel();
+
+    crate::runtime().spawn(async move {
+        let client = match udisks::Client::new().await {
+            Ok(client) => client,
+            Err(err) => {
+                error!("Failed to connect to UDisks2: {err}");
+                return;
+            }
+        };
+
+        // Send initial device list
+        match fetch_devices_metadata_with_client(&client).await {
+            Ok(devices) => {
+                if let Err(err) = sender.send(devices) {
+                    error!("Failed to send device list: {err}");
+                    return;
+                }
+            }
+            Err(err) => error!("Failed to fetch initial devices: {err}"),
+        }
+
+        // Listen for device changes via ObjectManager signals
+        let mut added_stream = match client.object_manager().receive_interfaces_added().await {
+            Ok(stream) => stream,
+            Err(err) => {
+                error!("Failed to subscribe to InterfacesAdded: {err}");
+                return;
+            }
+        };
+        let mut removed_stream = match client.object_manager().receive_interfaces_removed().await {
+            Ok(stream) => stream,
+            Err(err) => {
+                error!("Failed to subscribe to InterfacesRemoved: {err}");
+                return;
+            }
+        };
+
+        loop {
+            // Wait for the first signal
+            let added_future = futures::StreamExt::next(&mut added_stream);
+            let removed_future = futures::StreamExt::next(&mut removed_stream);
+
+            match select(pin!(added_future), pin!(removed_future)).await {
+                Either::Left(_) => {
+                    info!("Device added, starting debounce");
+                }
+                Either::Right(_) => {
+                    info!("Device removed, starting debounce");
+                }
+            }
+
+            // Debounce: drain any additional signals that arrive within 500ms
+            let debounce = tokio::time::sleep(std::time::Duration::from_millis(500));
+            futures::pin_mut!(debounce);
+
+            loop {
+                let added_future = pin!(futures::StreamExt::next(&mut added_stream));
+                let removed_future = pin!(futures::StreamExt::next(&mut removed_stream));
+                let signal = pin!(select(added_future, removed_future));
+
+                match select(signal, &mut debounce).await {
+                    Either::Left((signal, _)) => match signal {
+                        Either::Left(_) => {
+                            info!("Device added during debounce, skipping");
+                        }
+                        Either::Right(_) => {
+                            info!("Device removed during debounce, skipping");
+                        }
+                    },
+                    Either::Right(_) => break,
+                }
+            }
+
+            info!("Debounce complete, refreshing device list");
+
+            match fetch_devices_metadata_with_client(&client).await {
+                Ok(devices) => {
+                    if let Err(err) = sender.send(devices) {
+                        error!("Failed to send device list: {err}");
+                        return;
+                    }
+                }
+                Err(err) => error!("Failed to fetch devices: {err}"),
+            }
+        }
+    });
+
+    receiver
 }
 
 pub fn new(

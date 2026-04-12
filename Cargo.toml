@@ -14,12 +14,15 @@ cast_precision_loss = "allow"
 
 [dependencies]
 gettext-rs = { version = "0.7", features = ["gettext-system"] }
-glib = "0.21"
-gtk = { version = "0.10", package = "gtk4", features = ["gnome_49"] }
-adw = { version = "0.8", package = "libadwaita", features = ["v1_8"] }
+glib = "0.22"
+gtk = { version = "0.11", package = "gtk4", features = ["gnome_50"] }
+adw = { version = "0.9", package = "libadwaita", features = ["v1_9"] }
 log = "0.4"
 itertools = "0.14"
-ashpd = "0.12"
+ashpd = { version = "0.13", default-features = false, features = [
+    "tokio",
+    "notification",
+] }
 udisks = { package = "udisks2", version = "0.3.1" }
 libc = "0.2"
 reqwest = { version = "0.13", default-features = false, features = [
@@ -33,7 +36,7 @@ roxmltree = "0.21"
 chrono = "0.4"
 thiserror = "2.0"
 derivative = "2.2"
-tokio = { version = "1.49", features = ["process", "rt-multi-thread"] }
+tokio = { version = "1.51", features = ["process", "rt-multi-thread", "time"] }
 serde_json = "1.0"
 rayon = "1.11"
 futures = "0.3"
