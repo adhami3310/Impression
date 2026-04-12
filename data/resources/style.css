@@ -12,8 +12,8 @@
 }
 
 .drag-overlay-status-page {
-  background-color: alpha(@accent_bg_color, 0.5);
-  color: @accent_fg_color;
+  background-color: alpha(var(--accent-bg-color), 0.5);
+  color: var(--accent-fg-color);
 }
 
 .error-message {
