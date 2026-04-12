@@ -49,7 +49,7 @@ You can build and install on your host system by directly using the Meson builds
 1. Install `blueprint-compiler`
 1. Run the following commands (with `/usr` prefix):
 ```
-meson --prefix=/usr build
+meson setup --prefix=/usr build
 ninja -C build
 sudo ninja -C build install
 ```

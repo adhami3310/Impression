@@ -75,6 +75,14 @@
   <content_rating type="oars-1.1" />
 
   <releases>
+    <release version="3.7.0" date="2026-04-12">
+      <description translate="no">
+        <ul>
+          <li>Subscribes to file events instead of polling for changes.</li>
+          <li>Bump GNOME runtime to 50.</li>
+        </ul>
+      </description>
+    </release>
     <release version="3.6.0" date="2026-01-11">
       <description translate="no">
         <ul>
