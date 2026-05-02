@@ -1,0 +1,277 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the impression package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: impression\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 11:50-0700\n"
+"PO-Revision-Date: 2026-05-02 15:10+0300\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: sv\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.9\n"
+
+#: data/io.gitlab.adhami3310.Impression.desktop.in.in:2
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:5
+#: data/resources/blueprints/window.blp:9
+#: data/resources/blueprints/window.blp:20
+#: data/resources/blueprints/window.blp:166 src/main.rs:46 src/window.rs:950
+msgid "Impression"
+msgstr "Impression"
+
+#: data/io.gitlab.adhami3310.Impression.desktop.in.in:3
+msgid "Media Writer"
+msgstr "Mediaskrivare"
+
+#: data/io.gitlab.adhami3310.Impression.desktop.in.in:4
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:9
+msgid "Create bootable drives"
+msgstr "Skapa startbara enheter"
+
+#: data/io.gitlab.adhami3310.Impression.desktop.in.in:10
+msgid "usb;flash;writer;bootable;drive;iso;img;disk;image"
+msgstr "usb;flash;skrivare;startbar;enhet;iso;img;disk;avbild"
+
+#: data/io.gitlab.adhami3310.Impression.gschema.xml.in:7
+msgid "Window width"
+msgstr "Fönsterbredd"
+
+#: data/io.gitlab.adhami3310.Impression.gschema.xml.in:11
+msgid "Window height"
+msgstr "Fönsterhöjd"
+
+#: data/io.gitlab.adhami3310.Impression.gschema.xml.in:15
+msgid "Window maximized state"
+msgstr "Fönstrets maximerade tillstånd"
+
+#: data/io.gitlab.adhami3310.Impression.gschema.xml.in:24
+msgid ""
+"List of downloadable distros (distro_id, must_include, invert_must_include) "
+"tuples"
+msgstr ""
+"Lista över nedladdningsbara distributioner (distro_id, must_include, "
+"invert_must_include) som tupler"
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:7
+msgid "Khaleel Al-Adhami"
+msgstr "Khaleel Al-Adhami"
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:15
+msgid ""
+"Write disk images to your drives with ease. Select an image, insert your "
+"drive, and you're good to go! Impression is a useful tool for both avid "
+"distro-hoppers and casual computer users."
+msgstr ""
+"Skriv diskavbildningar till dina enheter utan krångel. Välj en avbild, sätt "
+"i enheten, och du är redo att sätta igång! Impression är ett användbart "
+"verktyg både för erfarna distro-hoppare och vanliga datoranvändare."
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:41
+msgid "Screen with a choice of a local image or internet download"
+msgstr "Skärm med val av lokal avbild eller internetnedladdning"
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:45
+msgid "Screen with a chosen ISO and available USB memories"
+msgstr "Skärm med vald ISO och tillgängliga USB-minnen"
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:49
+msgid "Writing the ISO in progress"
+msgstr "Skrivning av ISO pågår"
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:53
+msgid "Success screen with a big check mark"
+msgstr "Framgångsskärm med en stor bock"
+
+#: data/resources/blueprints/window.blp:23
+msgid "Drop Here to Open"
+msgstr "Släpp här för att öppna"
+
+#: data/resources/blueprints/window.blp:32
+#: data/resources/blueprints/window.blp:175
+#: data/resources/blueprints/window.blp:268
+msgid "Main Menu"
+msgstr "Huvudmeny"
+
+#: data/resources/blueprints/window.blp:54
+msgid "Choose Image"
+msgstr "Välj avbild"
+
+#: data/resources/blueprints/window.blp:67
+msgid "Open File…"
+msgstr "Öppna fil…"
+
+#: data/resources/blueprints/window.blp:78
+msgid "Direct Download"
+msgstr "Direktnedladdning"
+
+#: data/resources/blueprints/window.blp:122
+msgid "No Connection"
+msgstr "Ingen anslutning"
+
+#: data/resources/blueprints/window.blp:123
+msgid "Connect to the internet to view available images"
+msgstr "Anslut till internet för att visa tillgängliga avbilder"
+
+#: data/resources/blueprints/window.blp:238
+msgid "All data on the selected drive will be erased"
+msgstr "All data på den valda enheten kommer att raderas"
+
+#: data/resources/blueprints/window.blp:241
+msgid "Write"
+msgstr "Skriv"
+
+#: data/resources/blueprints/window.blp:293
+msgid "No Drives"
+msgstr "Inga enheter"
+
+#: data/resources/blueprints/window.blp:294
+msgid "Insert a drive to write to"
+msgstr "Koppla in en enhet att skriva till"
+
+#: data/resources/blueprints/window.blp:303
+msgid "Writing Completed"
+msgstr "Skrivning slutförd"
+
+#: data/resources/blueprints/window.blp:304
+msgid "The drive can be safely removed"
+msgstr "Enheten kan nu kopplas ur"
+
+#: data/resources/blueprints/window.blp:313
+msgid "Finish"
+msgstr "Avsluta"
+
+#: data/resources/blueprints/window.blp:331
+msgid "Writing Unsuccessful"
+msgstr "Skrivning misslyckades"
+
+#: data/resources/blueprints/window.blp:365
+msgid "Retry"
+msgstr "Försök igen"
+
+#: data/resources/blueprints/window.blp:383 src/window.rs:368 src/window.rs:441
+msgid "Writing"
+msgstr "Skriver"
+
+#: data/resources/blueprints/window.blp:385 src/window.rs:367
+msgid "Do not remove the drive"
+msgstr "Koppla inte ur enheten"
+
+#: data/resources/blueprints/window.blp:400 src/window.rs:265 src/window.rs:315
+msgid "_Cancel"
+msgstr "_Avbryt"
+
+#: data/resources/blueprints/window.blp:420
+msgctxt "shortcut window"
+msgid "General"
+msgstr "Allmänt"
+
+#: data/resources/blueprints/window.blp:423
+msgctxt "shortcut window"
+msgid "Open File"
+msgstr "Öppna fil"
+
+#: data/resources/blueprints/window.blp:428
+msgctxt "shortcut window"
+msgid "Show Shortcuts"
+msgstr "Visa genvägar"
+
+#: data/resources/blueprints/window.blp:433
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "Avsluta"
+
+#: data/resources/blueprints/window.blp:442
+msgid "Keyboard Shortcuts"
+msgstr "Tangentbordsgenvägar"
+
+#: data/resources/blueprints/window.blp:447
+msgid "About Impression"
+msgstr "Om Impression"
+
+#: src/window.rs:260
+msgid "Stop Writing?"
+msgstr "Avbryt skrivningen?"
+
+#: src/window.rs:261
+msgid "This might leave the drive in a faulty state"
+msgstr "Detta kan lämna enheten i ett felaktigt tillstånd"
+
+#: src/window.rs:266
+msgid "_Stop Writing"
+msgstr "_Avbryt skrivning"
+
+#: src/window.rs:308
+msgid "Erase Drive?"
+msgstr "Radera enhet?"
+
+#: src/window.rs:310
+#, rust-format
+msgid "You will lose all data stored on {}"
+msgstr "Du kommer att förlora all data lagrad på {}"
+
+#: src/window.rs:316
+msgid "_Erase"
+msgstr "_Radera"
+
+#: src/window.rs:362 src/window.rs:434
+msgid "Writing will begin once the download is completed"
+msgstr "Skrivning påbörjas när nedladdningen är klar"
+
+#: src/window.rs:364 src/window.rs:436
+msgid "Downloading Image"
+msgstr "Laddar ner avbild"
+
+#: src/window.rs:409
+msgid "Failed to write image"
+msgstr "Det gick inte att skriva avbilden"
+
+#: src/window.rs:416
+msgid "Image Written"
+msgstr "Avbild skriven"
+
+#: src/window.rs:440
+msgid "This could take a while"
+msgstr "Det här kan ta ett tag"
+
+#: src/window.rs:657 src/window.rs:713
+msgid "Disk Images"
+msgstr "Diskavbilder"
+
+#: src/window.rs:757
+msgid "File is not a Disk Image"
+msgstr "Filen är inte en diskavbild"
+
+#: src/window.rs:878
+msgid "translator-credits"
+msgstr "Viktor Engkvist <viktor@rivig.net>"
+
+#: src/window.rs:880
+msgid "Code borrowed from"
+msgstr "Kod lånad från"
+
+#. Translators: Metainfo for the app Footage. <https://gitlab.com/adhami3310/Footage>
+#: src/window.rs:887
+msgid "Footage"
+msgstr "Footage"
+
+#. Translators: Metainfo for the app Footage. <https://gitlab.com/adhami3310/Footage>
+#: src/window.rs:889
+msgid "Polish your videos"
+msgstr "Förbättra dina videor"
+
+#. Translators: Metainfo for the app Switcheroo. <https://gitlab.com/adhami3310/Switcheroo>
+#: src/window.rs:895
+msgid "Switcheroo"
+msgstr "Switcheroo"
+
+#. Translators: Metainfo for the app Switcheroo. <https://gitlab.com/adhami3310/Switcheroo>
+#: src/window.rs:897
+msgid "Convert and manipulate images"
+msgstr "Konvertera och bearbeta bilder"
