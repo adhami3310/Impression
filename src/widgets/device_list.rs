@@ -11,8 +11,8 @@ async fn refresh_devices(client: &udisks::Client) -> udisks::Result<Vec<udisks::
         .object_manager()
         .get_managed_objects()
         .await?
-        .into_iter()
-        .filter_map(|(object_path, _)| client.object(object_path).ok())
+        .into_keys()
+        .filter_map(|object_path| client.object(object_path).ok())
     {
         let Ok(drive): udisks::Result<udisks::drive::DriveProxy> = object.drive().await else {
             continue;
@@ -210,7 +210,7 @@ pub fn new(
 
     let mut res = Vec::new();
 
-    for (i, (device, check_button)) in devices.iter().zip(check_buttons.into_iter()).enumerate() {
+    for (i, (device, check_button)) in devices.iter().zip(check_buttons).enumerate() {
         if device.display_string.as_ref().is_some_and(|device_name| {
             selected_device.is_some_and(|selected_device_name| device_name == selected_device_name)
         }) || selected_device.is_none() && i == 0
