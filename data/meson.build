@@ -1,5 +1,3 @@
-subdir('resources')
-
 # Desktop file
 desktop_conf = configuration_data()
 desktop_conf.set('icon', application_id)
@@ -54,6 +52,8 @@ if appstreamcli.found()
     depends: appdata_file,
   )
 endif
+
+subdir('resources')
 
 # GSchema
 gschema_conf = configuration_data()
