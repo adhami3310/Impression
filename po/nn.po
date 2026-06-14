@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: impression\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-01-11 21:48-0800\n"
-"PO-Revision-Date: 2026-04-03 13:39+0200\n"
+"POT-Creation-Date: 2026-06-13 19:05-0700\n"
+"PO-Revision-Date: 2026-06-14 18:18+0200\n"
 "Last-Translator: Bjørn Mørkedal <gnome@morkedal.com>\n"
 "Language-Team: Norwegian Nynorsk <nn@li.org>\n"
 "Language: nn\n"
@@ -22,7 +22,7 @@ msgstr ""
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:5
 #: data/resources/blueprints/window.blp:9
 #: data/resources/blueprints/window.blp:20
-#: data/resources/blueprints/window.blp:166 src/main.rs:46 src/window.rs:986
+#: data/resources/blueprints/window.blp:166 src/main.rs:48 src/window.rs:988
 msgid "Impression"
 msgstr "Impression"
 
@@ -55,7 +55,9 @@ msgstr "Om vindauget er maksimert"
 msgid ""
 "List of downloadable distros (distro_id, must_include, invert_must_include) "
 "tuples"
-msgstr "Liste over nedlastbare distribusjonar (distro_id, must_include, invert_must_include)"
+msgstr ""
+"Liste over nedlastbare distribusjonar (distro_id, must_include, "
+"invert_must_include)"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:7
 msgid "Khaleel Al-Adhami"
@@ -67,9 +69,9 @@ msgid ""
 "drive, and you're good to go! Impression is a useful tool for both avid "
 "distro-hoppers and casual computer users."
 msgstr ""
-"Skriv diskbilete til einingane dine på ein enkel måte. Vel eit bilete, set inn "
-"eininga, og du er klar! Impression er eit nyttig verktøy både for distro‑hoppare "
-"og vanlege databrukarar."
+"Skriv diskbilete til einingane dine på ein enkel måte. Vel eit bilete, set "
+"inn eininga, og du er klar! Impression er eit nyttig verktøy både for "
+"distro‑hoppare og vanlege databrukarar."
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:41
 msgid "Screen with a choice of a local image or internet download"
@@ -153,15 +155,15 @@ msgstr "Skriving mislukkast"
 msgid "Retry"
 msgstr "Prøv igjen"
 
-#: data/resources/blueprints/window.blp:383 src/window.rs:369 src/window.rs:442
+#: data/resources/blueprints/window.blp:383 src/window.rs:368 src/window.rs:465
 msgid "Writing"
 msgstr "Skriv"
 
-#: data/resources/blueprints/window.blp:385 src/window.rs:368
+#: data/resources/blueprints/window.blp:385 src/window.rs:367 src/window.rs:454
 msgid "Do not remove the drive"
 msgstr "Ikkje fjern eininga"
 
-#: data/resources/blueprints/window.blp:400 src/window.rs:265 src/window.rs:316
+#: data/resources/blueprints/window.blp:400 src/window.rs:265 src/window.rs:315
 msgid "_Cancel"
 msgstr "_Avbryt"
 
@@ -205,71 +207,99 @@ msgstr "Dette kan gjere eininga ubrukande"
 msgid "_Stop Writing"
 msgstr "_Stopp skriving"
 
-#: src/window.rs:309
+#: src/window.rs:308
 msgid "Erase Drive?"
 msgstr "Slette eininga?"
 
-#: src/window.rs:311
+#: src/window.rs:310
 #, rust-format
 msgid "You will lose all data stored on {}"
 msgstr "Du mistar all data lagra på {}"
 
-#: src/window.rs:317
+#: src/window.rs:316
 msgid "_Erase"
 msgstr "_Slett"
 
-#: src/window.rs:363 src/window.rs:435
+#: src/window.rs:362 src/window.rs:438
 msgid "Writing will begin once the download is completed"
 msgstr "Skriving startar når nedlastinga er ferdig"
 
-#: src/window.rs:365 src/window.rs:437
+#: src/window.rs:364 src/window.rs:440
 msgid "Downloading Image"
 msgstr "Lastar ned bilete"
 
-#: src/window.rs:410
+#: src/window.rs:413
 msgid "Failed to write image"
 msgstr "Klarte ikkje å skrive bilete"
 
-#: src/window.rs:417
+#: src/window.rs:420
 msgid "Image Written"
 msgstr "Bilete skrive"
 
-#: src/window.rs:441
+#: src/window.rs:444
+msgid "Reading the source image"
+msgstr "Les kjeldebilete"
+
+#: src/window.rs:445
+msgid "Extracting Image"
+msgstr "Pakkar ut bilete"
+
+#: src/window.rs:449
+msgid "Splitting the install image"
+msgstr "Delar opp installasjonsbiletet"
+
+#: src/window.rs:450
+msgid "Processing Image"
+msgstr "Behandlar bilete"
+
+#: src/window.rs:455
+msgid "Partitioning Drive"
+msgstr "Partisjonerar eininga"
+
+#: src/window.rs:459
+msgid "Building the installer filesystem"
+msgstr "Byggjer installasjonsfilsystemet"
+
+#: src/window.rs:460
+msgid "Preparing Installer Image"
+msgstr "Førebur installasjonsbiletet"
+
+#: src/window.rs:464
 msgid "This could take a while"
 msgstr "Dette kan ta ei stund"
 
-#: src/window.rs:688 src/window.rs:744
+#: src/window.rs:681 src/window.rs:737
 msgid "Disk Images"
 msgstr "Diskbilete"
 
-#: src/window.rs:788
+#: src/window.rs:781
 msgid "File is not a Disk Image"
 msgstr "Fila er ikkje eit diskbilete"
 
-#: src/window.rs:914
+#: src/window.rs:916
 msgid "translator-credits"
 msgstr "Bjørn Mørkedal <gnome@morkedal.com>"
 
-#: src/window.rs:916
+#: src/window.rs:918
 msgid "Code borrowed from"
 msgstr "Kode lånt frå"
 
 #. Translators: Metainfo for the app Footage. <https://gitlab.com/adhami3310/Footage>
-#: src/window.rs:923
+#: src/window.rs:925
 msgid "Footage"
 msgstr "Footage"
 
 #. Translators: Metainfo for the app Footage. <https://gitlab.com/adhami3310/Footage>
-#: src/window.rs:925
+#: src/window.rs:927
 msgid "Polish your videos"
 msgstr "Puss på videoane dine"
 
 #. Translators: Metainfo for the app Switcheroo. <https://gitlab.com/adhami3310/Switcheroo>
-#: src/window.rs:931
+#: src/window.rs:933
 msgid "Switcheroo"
 msgstr "Switcheroo"
 
 #. Translators: Metainfo for the app Switcheroo. <https://gitlab.com/adhami3310/Switcheroo>
-#: src/window.rs:933
+#: src/window.rs:935
 msgid "Convert and manipulate images"
 msgstr "Konverter og handsam bilete"
