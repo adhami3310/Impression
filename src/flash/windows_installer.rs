@@ -13,8 +13,7 @@
 //! sent synchronously to a stick but free in the page cache on local disk.
 
 use std::collections::HashMap;
-use std::io::{Read, Seek, SeekFrom, Write};
-use std::os::fd::AsRawFd;
+use std::io::{Read, Write};
 use std::path::Path;
 use std::time::Duration;
 
@@ -25,13 +24,18 @@ use super::udf::{UdfError, UdfImage};
 use super::wim::{self, WimError};
 
 use super::{
-    FlashPhase, FlashRequest, FlashStatus, Progress, ProcessStoppedByUser, udisks_open_fd,
+    FlashPhase, FlashRequest, FlashStatus, ProcessStoppedByUser, Progress, udisks_open_fd,
     udisks_unmount,
 };
 
 /// FAT32 cannot store a single file of 4 GiB or larger. Windows install images
 /// (`install.wim`/`install.esd`) regularly exceed this, so they must be split.
 const FAT32_MAX_FILE_SIZE: u64 = 4 * 1024 * 1024 * 1024 - 1;
+
+/// Headroom added to the content size when sizing the partition, covering FAT
+/// tables, directory entries, and cluster slack. Far more than needed (real
+/// overhead is tens of MiB), so the build never runs out of space.
+const PARTITION_MARGIN: u64 = 256 * 1024 * 1024;
 
 #[derive(thiserror::Error, Debug)]
 #[error("Installer creation failed: {details:?}")]
@@ -117,27 +121,34 @@ impl FlashRequest {
             .await
             .map_err(OneOf::broaden)?;
 
-        // udisks's vfat format zeroes the FAT/root/boot regions, so the later
-        // sparse clone can skip holes (they land on zeroed device regions).
+        // Size the partition to the content plus FAT overhead and leave the rest
+        // of the drive unallocated, exactly like a raw image write. The staged
+        // image is then dense, so cloning it is a plain full copy.
+        let content_total = dir_byte_total(work_dir).map_err(OneOf::new)?;
+        if content_total == 0 {
+            return Err(OneOf::new(WindowsInstallerFailed {
+                details: Some("extracted ISO was empty".to_owned()),
+            }));
+        }
+        let device_size = destination_block.size().await.map_err(OneOf::new)?;
+        let requested_size = content_total.saturating_add(PARTITION_MARGIN);
+        // A request at or above the device size means "use the whole drive".
+        let partition_arg = if requested_size >= device_size {
+            0
+        } else {
+            requested_size
+        };
+
         self.set_status(FlashStatus::Active(FlashPhase::Partition, Progress::Pulse));
         self.stopped_running().map_err(OneOf::broaden)?;
         let partition = self
-            .prepare_fat32_partition(client, destination_block, &label)
+            .prepare_fat32_partition(client, destination_block, &label, partition_arg)
             .await
             .map_err(OneOf::new)?;
-        let partition_block = partition.block().await.map_err(OneOf::new)?;
-        let partition_size = partition_block.size().await.map_err(OneOf::new)?;
 
         let image_path = glib::user_cache_dir().join("impression-windows.img");
         let staged = self
-            .stage_and_clone(
-                work_dir,
-                &partition,
-                &partition_block,
-                &image_path,
-                partition_size,
-                &label,
-            )
+            .stage_and_clone(work_dir, &partition, &image_path, &label, content_total)
             .await;
 
         if let Err(e) = std::fs::remove_file(&image_path)
@@ -150,15 +161,15 @@ impl FlashRequest {
     }
 
     /// Builds the FAT32 filesystem into `image_path` on local disk, then clones
-    /// it onto the freshly prepared `partition`.
+    /// it onto the freshly prepared `partition` with the same copy the raw path
+    /// uses. `content_total` drives the build-phase progress bar.
     async fn stage_and_clone(
         &self,
         work_dir: &Path,
         partition: &udisks::Object,
-        partition_block: &udisks::block::BlockProxy<'_>,
         image_path: &Path,
-        partition_size: u64,
         label: &str,
+        content_total: u64,
     ) -> Result<
         (),
         OneOf<(
@@ -168,9 +179,11 @@ impl FlashRequest {
             WindowsInstallerFailed,
         )>,
     > {
+        let partition_block = partition.block().await.map_err(OneOf::new)?;
+        let partition_size = partition_block.size().await.map_err(OneOf::new)?;
+
         self.set_status(FlashStatus::Active(FlashPhase::BuildImage, Progress::Pulse));
-        let content_total = self
-            .build_fat_image(work_dir, image_path, partition_size, label)
+        self.build_fat_image(work_dir, image_path, partition_size, label, content_total)
             .await
             .map_err(OneOf::broaden)?;
 
@@ -180,14 +193,23 @@ impl FlashRequest {
         // writes commit steadily rather than in bursts big enough to knock a
         // marginal stick off the bus.
         self.ensure_unmounted(partition).await.map_err(OneOf::new)?;
-        let device_fd = udisks_open_fd(partition_block, true)
+        let device_fd = udisks_open_fd(&partition_block, true)
             .await
             .map_err(OneOf::new)?;
-        self.clone_image_to_device(image_path, device_fd, content_total)
-            .await
-            .map_err(OneOf::broaden)?;
 
-        Ok(())
+        // The image is partition-sized and dense, so this is a plain full copy.
+        let image_file = tokio::fs::File::open(image_path)
+            .await
+            .map_err(OneOf::new)?;
+        let device_file = tokio::fs::File::from_std(std::fs::File::from(device_fd));
+        Self::load_file(
+            image_file,
+            device_file,
+            |status| self.set_status(status),
+            self.is_running.clone(),
+        )
+        .await
+        .map_err(OneOf::broaden)
     }
 
     /// Unmounts `partition` and confirms it stays unmounted, defeating the
@@ -199,7 +221,13 @@ impl FlashRequest {
             udisks_unmount(partition).await?;
             // Let a pending automount actually fire so we can see and undo it.
             tokio::time::sleep(Duration::from_millis(300)).await;
-            if partition.filesystem().await?.mount_points().await?.is_empty() {
+            if partition
+                .filesystem()
+                .await?
+                .mount_points()
+                .await?
+                .is_empty()
+            {
                 return Ok(());
             }
         }
@@ -290,7 +318,10 @@ impl FlashRequest {
             }
 
             info!("Splitting {} ({size} bytes) to fit FAT32", image.display());
-            self.set_status(FlashStatus::Active(FlashPhase::ProcessImage, Progress::Pulse));
+            self.set_status(FlashStatus::Active(
+                FlashPhase::ProcessImage,
+                Progress::Pulse,
+            ));
 
             // libwim's split is blocking and `!Send`, so run it off the executor.
             let input = image.clone();
@@ -321,29 +352,25 @@ impl FlashRequest {
         Ok(())
     }
 
-    /// Builds the installer's FAT32 filesystem into `image_path`, labelled
-    /// `label`, and returns the total file bytes written (for clone progress).
-    /// The image is sparse and partition-sized, so cloning it is a 1:1 copy;
-    /// source files are deleted as packed to bound peak scratch. Blocking.
+    /// Builds the installer's FAT32 filesystem (labelled `label`) into a
+    /// `partition_size` image at `image_path`. `content_total` is the file byte
+    /// count, for progress. Source files are deleted as packed to bound peak
+    /// scratch. Blocking (`fatfs` is `!Send`).
     async fn build_fat_image(
         &self,
         work_dir: &Path,
         image_path: &Path,
         partition_size: u64,
         label: &str,
-    ) -> Result<u64, OneOf<(ProcessStoppedByUser, std::io::Error, WindowsInstallerFailed)>> {
+        content_total: u64,
+    ) -> Result<(), OneOf<(ProcessStoppedByUser, std::io::Error, WindowsInstallerFailed)>> {
         let work = work_dir.to_owned();
         let image = image_path.to_owned();
         let status = self.status.clone();
         let is_running = self.is_running.clone();
         let label = fat_label_bytes(label);
 
-        let outcome = tokio::task::spawn_blocking(move || -> Result<u64, WriteError> {
-            let content_total = dir_byte_total(&work).map_err(WriteError::Io)?;
-            if content_total == 0 {
-                return Err(WriteError::Empty);
-            }
-
+        let outcome = tokio::task::spawn_blocking(move || -> Result<(), WriteError> {
             let file = std::fs::OpenOptions::new()
                 .read(true)
                 .write(true)
@@ -375,66 +402,22 @@ impl FlashRequest {
             sink.write_dir(&filesystem.root_dir(), &work)?;
             filesystem.unmount().map_err(WriteError::Fat)?;
 
-            Ok(content_total)
+            Ok(())
         })
         .await;
 
         finish_write(outcome, "building the installer image")
     }
 
-    /// Clones the staged image onto `device_fd` in large sequential blocks,
-    /// skipping sparse regions. Progress is reported over `content_total`.
-    /// Blocking.
-    async fn clone_image_to_device(
-        &self,
-        image_path: &Path,
-        device_fd: std::os::fd::OwnedFd,
-        content_total: u64,
-    ) -> Result<(), OneOf<(ProcessStoppedByUser, std::io::Error, WindowsInstallerFailed)>> {
-        let image = image_path.to_owned();
-        let status = self.status.clone();
-        let is_running = self.is_running.clone();
-
-        let outcome = tokio::task::spawn_blocking(move || -> Result<(), WriteError> {
-            let mut source = std::fs::File::open(&image).map_err(WriteError::Io)?;
-            let source_len = source.metadata().map_err(WriteError::Io)?.len();
-            let mut dest = std::fs::File::from(device_fd);
-
-            let mut cloned = 0_u64;
-            clone_image(
-                &mut source,
-                &mut dest,
-                source_len,
-                &mut |written| {
-                    cloned = cloned.saturating_add(written);
-                    if let Ok(mut lock) = status.lock() {
-                        let done = cloned.min(content_total);
-                        *lock = FlashStatus::Active(
-                            FlashPhase::Copy,
-                            Progress::from((done, content_total)),
-                        );
-                    }
-                },
-                &mut || !is_running.load(std::sync::atomic::Ordering::SeqCst),
-            )
-        })
-        .await;
-
-        finish_write(
-            outcome,
-            "writing to the USB device (it may have disconnected under load; try \
-             a different port, cable, or drive)",
-        )
-    }
-
-    /// Wipes the destination to a GPT disk holding a single FAT32 partition and
-    /// returns the new partition's udisks object. The partition and filesystem
-    /// are both named `label`.
+    /// Wipes the destination to a GPT disk holding a single FAT32 partition of
+    /// `size` bytes (0 means fill the drive) and returns the new partition's
+    /// udisks object. The partition and filesystem are both named `label`.
     async fn prepare_fat32_partition(
         &self,
         client: &udisks::Client,
         destination_block: &udisks::block::BlockProxy<'_>,
         label: &str,
+        size: u64,
     ) -> udisks::Result<udisks::Object> {
         destination_block.format("gpt", HashMap::new()).await?;
 
@@ -443,7 +426,7 @@ impl FlashRequest {
         let partition_path = partition_table
             .create_partition_and_format(
                 0,
-                0,
+                size,
                 "",
                 label,
                 HashMap::new(),
@@ -501,8 +484,6 @@ impl FlashRequest {
 enum WriteError {
     /// The user aborted.
     Cancelled,
-    /// The extracted ISO had no files.
-    Empty,
     /// Host-side error reading the scratch tree.
     Io(std::io::Error),
     /// Destination-write failure.
@@ -579,7 +560,8 @@ impl WriteSink {
                     if read == 0 {
                         break;
                     }
-                    dest.write_all(&self.buffer[..read]).map_err(WriteError::Fat)?;
+                    dest.write_all(&self.buffer[..read])
+                        .map_err(WriteError::Fat)?;
                     self.written += read as u64;
                     self.report_progress();
                 }
@@ -587,7 +569,9 @@ impl WriteSink {
                 if self.delete_packed {
                     drop(source);
                     if let Err(remove_error) = std::fs::remove_file(&source_path) {
-                        error!("Failed to remove packed source file, will be ignored: {remove_error}");
+                        error!(
+                            "Failed to remove packed source file, will be ignored: {remove_error}"
+                        );
                     }
                 }
             }
@@ -596,10 +580,6 @@ impl WriteSink {
         Ok(())
     }
 }
-
-/// Block size for the device clone: large and sequential, so the USB sees a few
-/// big writes instead of fatfs's metadata churn.
-const CLONE_CHUNK: usize = 4 * 1024 * 1024;
 
 /// Maps the outcome of a blocking FAT-build/clone task onto the caller's error
 /// set. `fat_context` describes the failing operation for [`WriteError::Fat`]
@@ -612,9 +592,6 @@ fn finish_write<T>(
         Ok(Ok(value)) => Ok(value),
         Ok(Err(WriteError::Cancelled)) => Err(OneOf::new(ProcessStoppedByUser)),
         Ok(Err(WriteError::Io(error))) => Err(OneOf::new(error)),
-        Ok(Err(WriteError::Empty)) => Err(OneOf::new(WindowsInstallerFailed {
-            details: Some("extracted ISO was empty".to_owned()),
-        })),
         Ok(Err(WriteError::Fat(error))) => Err(OneOf::new(WindowsInstallerFailed {
             details: Some(format!("{fat_context}: {error}")),
         })),
@@ -622,133 +599,6 @@ fn finish_write<T>(
             details: Some(format!("{fat_context}: task failed: {join_error}")),
         })),
     }
-}
-
-/// Reads up to `buffer.len()` bytes, looping over short reads until the buffer
-/// is full or EOF. Returns the number of bytes read (0 only at EOF).
-fn read_full(source: &mut impl Read, buffer: &mut [u8]) -> std::io::Result<usize> {
-    let mut filled = 0;
-    while filled < buffer.len() {
-        match source.read(&mut buffer[filled..]) {
-            Ok(0) => break,
-            Ok(read) => filled += read,
-            Err(ref error) if error.kind() == std::io::ErrorKind::Interrupted => {}
-            Err(error) => return Err(error),
-        }
-    }
-    Ok(filled)
-}
-
-/// Result of looking for the next populated extent in a sparse file: a data
-/// range `[start, end)`, no more data (trailing hole), or no `SEEK_DATA` support.
-enum NextExtent {
-    Data(u64, u64),
-    End,
-    Unsupported,
-}
-
-/// Finds the next populated extent at or after `pos` via `SEEK_DATA`/`SEEK_HOLE`,
-/// moving the fd offset as a side effect.
-// Offsets fit both `off_t` and `u64`; the i64 to u64 casts run only after a
-// non-negative check.
-#[allow(clippy::cast_possible_wrap, clippy::cast_sign_loss)]
-fn next_data_extent(fd: std::os::fd::RawFd, pos: u64, len: u64) -> std::io::Result<NextExtent> {
-    if pos >= len {
-        return Ok(NextExtent::End);
-    }
-    // SAFETY: `fd` is a live descriptor; lseek only reads/sets its offset.
-    let data = unsafe { libc::lseek(fd, pos as libc::off_t, libc::SEEK_DATA) };
-    if data < 0 {
-        let error = std::io::Error::last_os_error();
-        return match error.raw_os_error() {
-            Some(libc::ENXIO) => Ok(NextExtent::End),
-            Some(libc::EINVAL | libc::EOPNOTSUPP) => Ok(NextExtent::Unsupported),
-            _ => Err(error),
-        };
-    }
-    let data = data as u64;
-    // SAFETY: as above; SEEK_HOLE after valid data returns the extent end or EOF.
-    let hole = unsafe { libc::lseek(fd, data as libc::off_t, libc::SEEK_HOLE) };
-    let end = if hole < 0 { len } else { (hole as u64).min(len) };
-    Ok(NextExtent::Data(data, end.max(data)))
-}
-
-/// Clones the populated regions of sparse image `source` onto `dest` at matching
-/// offsets, in [`CLONE_CHUNK`] writes. Holes are skipped via `SEEK_DATA`/
-/// `SEEK_HOLE`, falling back to skipping all-zero chunks if unsupported.
-/// `on_written` reports bytes sent to the device.
-// `read` is bounded by `CLONE_CHUNK`, so the `usize` to `i64` seek cast can't wrap.
-#[allow(clippy::cast_possible_wrap)]
-fn clone_image(
-    source: &mut std::fs::File,
-    dest: &mut std::fs::File,
-    source_len: u64,
-    on_written: &mut dyn FnMut(u64),
-    should_cancel: &mut dyn FnMut() -> bool,
-) -> Result<(), WriteError> {
-    let source_fd = source.as_raw_fd();
-    let mut buffer = vec![0u8; CLONE_CHUNK];
-    let mut pos = 0_u64;
-    let mut have_seek_data = true;
-
-    while pos < source_len {
-        if should_cancel() {
-            return Err(WriteError::Cancelled);
-        }
-
-        // The extent to write next. With SEEK_DATA it is a fully-populated range;
-        // without it, the remainder of the file (zero chunks skipped per-chunk).
-        let (data_start, data_end) = if have_seek_data {
-            match next_data_extent(source_fd, pos, source_len).map_err(WriteError::Io)? {
-                NextExtent::Data(start, end) => (start, end),
-                NextExtent::End => break,
-                NextExtent::Unsupported => {
-                    have_seek_data = false;
-                    (pos, source_len)
-                }
-            }
-        } else {
-            (pos, source_len)
-        };
-
-        source
-            .seek(SeekFrom::Start(data_start))
-            .map_err(WriteError::Io)?;
-        dest.seek(SeekFrom::Start(data_start))
-            .map_err(WriteError::Fat)?;
-
-        let mut offset = data_start;
-        while offset < data_end {
-            if should_cancel() {
-                return Err(WriteError::Cancelled);
-            }
-            let want = usize::try_from((data_end - offset).min(CLONE_CHUNK as u64))
-                .unwrap_or(CLONE_CHUNK);
-            let read = read_full(source, &mut buffer[..want]).map_err(WriteError::Io)?;
-            if read == 0 {
-                break;
-            }
-            let chunk = &buffer[..read];
-            if have_seek_data || chunk.iter().any(|&byte| byte != 0) {
-                dest.write_all(chunk).map_err(WriteError::Fat)?;
-                on_written(read as u64);
-            } else {
-                // Fallback path only: leave the (already-zeroed) device region be.
-                dest.seek(SeekFrom::Current(read as i64))
-                    .map_err(WriteError::Fat)?;
-            }
-            offset += read as u64;
-        }
-        pos = data_end;
-    }
-
-    // A failure here means the device dropped writes (typically a USB
-    // disconnect), so surface it rather than reporting a silent partial flash.
-    dest.flush().map_err(WriteError::Fat)?;
-    if unsafe { libc::fsync(dest.as_raw_fd()) } != 0 {
-        return Err(WriteError::Fat(std::io::Error::last_os_error()));
-    }
-    Ok(())
 }
 
 /// Total size in bytes of every regular file under `dir`, recursively.
@@ -797,75 +647,4 @@ fn is_iso_path(path: &Path) -> bool {
     path.file_name()
         .and_then(|name| name.to_str())
         .is_some_and(|name| name.to_ascii_lowercase().contains(".iso"))
-}
-
-#[cfg(test)]
-mod tests {
-    #![allow(clippy::unwrap_used)]
-    use super::*;
-
-    /// `clone_image` must reproduce every populated byte at its offset and leave
-    /// the holes untouched (whichever path the scratch filesystem takes).
-    #[test]
-    fn clone_image_copies_data_extents_and_skips_holes() {
-        const LEN: u64 = 16 * 1024 * 1024;
-        const BLOCK: usize = 1024 * 1024;
-        let second = 8 * 1024 * 1024;
-
-        let base = std::env::temp_dir().join(format!("impression-clone-{}", std::process::id()));
-        std::fs::create_dir_all(&base).unwrap();
-        let src_path = base.join("src.img");
-        let dst_path = base.join("dst.img");
-
-        // Sparse source: data at [0, 1 MiB) and [8 MiB, 9 MiB), holes elsewhere.
-        {
-            let mut src = std::fs::OpenOptions::new()
-                .read(true)
-                .write(true)
-                .create(true)
-                .truncate(true)
-                .open(&src_path)
-                .unwrap();
-            src.set_len(LEN).unwrap();
-            src.write_all(&vec![0xAB; BLOCK]).unwrap();
-            src.seek(SeekFrom::Start(second as u64)).unwrap();
-            src.write_all(&vec![0xCD; BLOCK]).unwrap();
-            src.sync_all().unwrap();
-        }
-
-        // Fresh zeroed destination of the same size (as udisks's vfat format
-        // leaves the regions our clone will skip).
-        std::fs::OpenOptions::new()
-            .read(true)
-            .write(true)
-            .create(true)
-            .truncate(true)
-            .open(&dst_path)
-            .unwrap()
-            .set_len(LEN)
-            .unwrap();
-
-        let mut source = std::fs::File::open(&src_path).unwrap();
-        let mut dest = std::fs::OpenOptions::new()
-            .read(true)
-            .write(true)
-            .open(&dst_path)
-            .unwrap();
-        let mut written = 0_u64;
-        clone_image(&mut source, &mut dest, LEN, &mut |bytes| written += bytes, &mut || false)
-            .unwrap_or_else(|_| panic!("clone_image failed"));
-
-        let out = std::fs::read(&dst_path).unwrap();
-        assert_eq!(out.len() as u64, LEN);
-        assert!(out[..BLOCK].iter().all(|&byte| byte == 0xAB), "first extent");
-        assert!(
-            out[second..second + BLOCK].iter().all(|&byte| byte == 0xCD),
-            "second extent",
-        );
-        assert!(out[BLOCK..second].iter().all(|&byte| byte == 0), "gap stays zero");
-        assert!(out[second + BLOCK..].iter().all(|&byte| byte == 0), "tail stays zero");
-        assert!(written >= 2 * BLOCK as u64, "both extents reported as written");
-
-        std::fs::remove_dir_all(&base).unwrap();
-    }
 }

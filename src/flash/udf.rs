@@ -63,8 +63,11 @@ pub struct UdfImage {
 
 impl UdfImage {
     pub fn open(path: &Path) -> Result<Self, UdfError> {
-        let c_path = CString::new(path.to_str().ok_or_else(|| UdfError::Open(path.to_owned()))?)
-            .map_err(|_| UdfError::Open(path.to_owned()))?;
+        let c_path = CString::new(
+            path.to_str()
+                .ok_or_else(|| UdfError::Open(path.to_owned()))?,
+        )
+        .map_err(|_| UdfError::Open(path.to_owned()))?;
         // SAFETY: `c_path` is a valid NUL-terminated string for this call.
         let raw = unsafe { udf_open(c_path.as_ptr()) };
         if raw.is_null() {
@@ -109,7 +112,8 @@ impl UdfImage {
     /// Open a file by path, or `None` if it does not exist.
     pub fn open_file(&self, rel: &str) -> Result<Option<UdfFile<'_>>, UdfError> {
         let root = self.root()?;
-        let c_rel = CString::new(rel).map_err(|_| UdfError::Read(format!("invalid path: {rel}")))?;
+        let c_rel =
+            CString::new(rel).map_err(|_| UdfError::Read(format!("invalid path: {rel}")))?;
         // SAFETY: `root` is live; `udf_fopen` copies the path and does not take
         // ownership of `root`, which we free immediately after.
         let raw = unsafe {
@@ -143,7 +147,11 @@ impl UdfImage {
         should_cancel: &mut dyn FnMut() -> bool,
     ) -> Result<(), UdfError> {
         let entries = self.list()?;
-        let total: u64 = entries.iter().filter(|entry| !entry.is_dir).map(|entry| entry.len).sum();
+        let total: u64 = entries
+            .iter()
+            .filter(|entry| !entry.is_dir)
+            .map(|entry| entry.len)
+            .sum();
 
         for directory in entries.iter().filter(|entry| entry.is_dir) {
             std::fs::create_dir_all(dest.join(&directory.path))?;
@@ -322,6 +330,8 @@ unsafe fn filename(dirent: *mut UdfDirent) -> String {
     if ptr.is_null() {
         String::new()
     } else {
-        unsafe { CStr::from_ptr(ptr) }.to_string_lossy().into_owned()
+        unsafe { CStr::from_ptr(ptr) }
+            .to_string_lossy()
+            .into_owned()
     }
 }
