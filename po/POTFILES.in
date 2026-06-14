@@ -10,3 +10,4 @@ data/resources/blueprints/window.blp
 src/main.rs
 src/window.rs
 src/flash.rs
+src/flash/windows_installer.rs

@@ -1,5 +1,6 @@
 use log::{error, info};
 use std::collections::HashMap;
+use std::path::PathBuf;
 use std::process::Stdio;
 use std::sync::Arc;
 use std::sync::atomic::AtomicBool;
@@ -8,11 +9,24 @@ use terrors::OneOf;
 use tokio::time::Instant;
 use tokio::{fs::File, io::AsyncWriteExt};
 
+mod windows_installer;
+
 use crate::window::{Compression, DiskImage};
+use windows_installer::WindowsInstallerFailed;
 
 #[derive(Clone, Debug)]
 pub enum FlashPhase {
+    /// Downloading an online source image.
     Download,
+    /// Decompressing an `.xz` source, or extracting a Windows ISO's contents.
+    Extract,
+    /// Splitting an oversized Windows install image into FAT32-sized parts.
+    ProcessImage,
+    /// Partitioning and formatting the destination (Windows installer path).
+    Partition,
+    /// Building the Windows installer's FAT32 filesystem into a local image.
+    BuildImage,
+    /// Writing bytes to the destination device.
     Copy,
 }
 
@@ -139,7 +153,7 @@ impl FlashRequest {
     ) -> Result<File, OneOf<(XzExtractionFailed, std::io::Error)>> {
         let output_file = File::create(&output_path).await.map_err(OneOf::new)?;
 
-        self.set_status(FlashStatus::Active(FlashPhase::Copy, Progress::Pulse));
+        self.set_status(FlashStatus::Active(FlashPhase::Extract, Progress::Pulse));
 
         let mut extract_process = tokio::process::Command::new("xzcat")
             .arg(input_path)
@@ -191,10 +205,14 @@ impl FlashRequest {
         }
     }
 
-    async fn get_source_file_from_image(
+    /// Resolves the source image to an on-disk path, downloading or
+    /// decompressing as needed. Returns a path (not an open handle) so the
+    /// caller can either open it for a raw write or read it in-process for the
+    /// Windows installer path.
+    async fn prepared_source_path(
         &self,
     ) -> Result<
-        File,
+        PathBuf,
         OneOf<(
             ProcessStoppedByUser,
             std::io::Error,
@@ -205,7 +223,7 @@ impl FlashRequest {
     > {
         match &self.source {
             DiskImage::Local { path, compression } => match compression {
-                Compression::Raw => Ok(File::open(path).await.map_err(OneOf::new)?),
+                Compression::Raw => Ok(path.clone()),
                 Compression::Xz => {
                     let temp_dir = glib::user_cache_dir();
 
@@ -217,20 +235,24 @@ impl FlashRequest {
                             .unwrap_or("disk_image.iso"),
                     );
 
-                    self.set_status(FlashStatus::Active(FlashPhase::Copy, Progress::Pulse));
+                    self.set_status(FlashStatus::Active(FlashPhase::Extract, Progress::Pulse));
 
-                    Ok(self
-                        .extract_xz_image(path, &result_path)
+                    self.extract_xz_image(path, &result_path)
                         .await
-                        .map_err(OneOf::broaden)?)
+                        .map_err(OneOf::broaden)?;
+
+                    Ok(result_path)
                 }
             },
             DiskImage::Online {
                 url, download_path, ..
-            } => Ok(self
-                .download_file(download_path, url)
-                .await
-                .map_err(OneOf::broaden)?),
+            } => {
+                self.download_file(download_path, url)
+                    .await
+                    .map_err(OneOf::broaden)?;
+
+                Ok(download_path.clone())
+            }
         }
     }
 
@@ -265,6 +287,7 @@ impl FlashRequest {
             udisks::Error,
             XzExtractionFailed,
             TotalSizeCouldNotBeDetermined,
+            WindowsInstallerFailed,
         )>,
     > {
         self.stopped_running().map_err(OneOf::broaden)?;
@@ -289,29 +312,39 @@ impl FlashRequest {
 
         self.stopped_running().map_err(OneOf::broaden)?;
 
-        let destination_file = udisks_open(&destination_block).await.map_err(OneOf::new)?;
+        let source_path = self.prepared_source_path().await.map_err(OneOf::broaden)?;
 
-        info!("Destination: {destination_file:?}");
-
-        let source_image = self
-            .get_source_file_from_image()
-            .await
-            .map_err(OneOf::broaden)?;
-
-        info!("Source: {source_image:?}");
+        info!("Source: {}", source_path.display());
 
         self.stopped_running().map_err(OneOf::broaden)?;
 
-        //TODO: we should probably spawn a UDIsks.Job for this operation,
-        //but udisks-rs does not support this yet
-        Self::load_file(
-            source_image,
-            destination_file,
-            |status| self.set_status(status),
-            self.is_running.clone(),
-        )
-        .await
-        .map_err(OneOf::broaden)?;
+        // Windows ISOs cannot simply be raw-copied: they carry no hybrid boot
+        // record and ship an `install.wim` larger than FAT32's 4 GiB file
+        // limit. `try_flash_windows` builds a bootable FAT32 USB for them, and
+        // returns false for anything else so we fall back to a raw byte copy.
+        let handled_as_windows = self
+            .try_flash_windows(&client, &destination_block, &source_path)
+            .await
+            .map_err(OneOf::broaden)?;
+
+        if !handled_as_windows {
+            let destination_file = udisks_open(&destination_block).await.map_err(OneOf::new)?;
+
+            info!("Destination: {destination_file:?}");
+
+            let source_image = File::open(&source_path).await.map_err(OneOf::new)?;
+
+            //TODO: we should probably spawn a UDIsks.Job for this operation,
+            //but udisks-rs does not support this yet
+            Self::load_file(
+                source_image,
+                destination_file,
+                |status| self.set_status(status),
+                self.is_running.clone(),
+            )
+            .await
+            .map_err(OneOf::broaden)?;
+        }
 
         if let Err(e) = destination_block.rescan(HashMap::new()).await {
             error!("Error rescanning block device, will be ignored: {e}");
@@ -401,10 +434,22 @@ async fn udisks_unmount(object: &udisks::Object) -> udisks::Result<()> {
     Ok(())
 }
 
-async fn udisks_open(block: &udisks::block::BlockProxy<'_>) -> udisks::Result<File> {
-    let fd: std::os::fd::OwnedFd = block
-        .open_device("rw", HashMap::from([("flags", libc::O_SYNC.into())]))
+/// Opens the block device read-write through udisks. When `sync` is set, writes
+/// are issued synchronously (`O_SYNC`): each commits to the device before the
+/// next, avoiding the large buffered write bursts that can knock a marginal USB
+/// drive off the bus. Used by both the raw write and the Windows installer copy.
+async fn udisks_open_fd(
+    block: &udisks::block::BlockProxy<'_>,
+    sync: bool,
+) -> udisks::Result<std::os::fd::OwnedFd> {
+    let flags = if sync { libc::O_SYNC } else { 0 };
+    Ok(block
+        .open_device("rw", HashMap::from([("flags", flags.into())]))
         .await?
-        .into();
+        .into())
+}
+
+async fn udisks_open(block: &udisks::block::BlockProxy<'_>) -> udisks::Result<File> {
+    let fd = udisks_open_fd(block, true).await?;
     Ok(std::fs::File::from(fd).into())
 }
