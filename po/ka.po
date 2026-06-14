@@ -7,20 +7,20 @@ msgid ""
 msgstr ""
 "Project-Id-Version: impression\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-01-11 21:48-0800\n"
-"PO-Revision-Date: 2026-02-02 08:18+0100\n"
+"POT-Creation-Date: 2026-06-13 19:05-0700\n"
+"PO-Revision-Date: 2026-06-14 10:39+0200\n"
 "Last-Translator: Ekaterine Papava <papava.e@gtu.ge>\n"
 "Language-Team: Georgian <(nothing)>\n"
 "Language: ka\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.8\n"
+"X-Generator: Poedit 3.9\n"
 
 #: data/io.gitlab.adhami3310.Impression.desktop.in.in:2
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:5
 #: data/resources/blueprints/window.blp:9 data/resources/blueprints/window.blp:20
-#: data/resources/blueprints/window.blp:166 src/main.rs:46 src/window.rs:986
+#: data/resources/blueprints/window.blp:166 src/main.rs:48 src/window.rs:988
 msgid "Impression"
 msgstr "Impression"
 
@@ -151,15 +151,15 @@ msgstr "ჩაწერა წარუმატებელია"
 msgid "Retry"
 msgstr "თავიდან ცდა"
 
-#: data/resources/blueprints/window.blp:383 src/window.rs:369 src/window.rs:442
+#: data/resources/blueprints/window.blp:383 src/window.rs:368 src/window.rs:465
 msgid "Writing"
 msgstr "მიმდინარეობს ჩაწერა"
 
-#: data/resources/blueprints/window.blp:385 src/window.rs:368
+#: data/resources/blueprints/window.blp:385 src/window.rs:367 src/window.rs:454
 msgid "Do not remove the drive"
 msgstr "არ მოხსნათ დისკი"
 
-#: data/resources/blueprints/window.blp:400 src/window.rs:265 src/window.rs:316
+#: data/resources/blueprints/window.blp:400 src/window.rs:265 src/window.rs:315
 msgid "_Cancel"
 msgstr "გაუ_ქმება"
 
@@ -203,71 +203,99 @@ msgstr "ამან, შეუძლება, დისკი გაფუჭ�
 msgid "_Stop Writing"
 msgstr "ჩაწერი_ს გაჩერება"
 
-#: src/window.rs:309
+#: src/window.rs:308
 msgid "Erase Drive?"
 msgstr "წავშალო დისკი?"
 
-#: src/window.rs:311
+#: src/window.rs:310
 #, rust-format
 msgid "You will lose all data stored on {}"
 msgstr "{}-ზე დამახსოვრებულ მონაცემებს სრულად დაკარგავთ"
 
-#: src/window.rs:317
+#: src/window.rs:316
 msgid "_Erase"
 msgstr "_წაშლა"
 
-#: src/window.rs:363 src/window.rs:435
+#: src/window.rs:362 src/window.rs:438
 msgid "Writing will begin once the download is completed"
 msgstr "ჩაწერა მაშინვე დაიწყება, როცა გადმოწერა დასრულდება"
 
-#: src/window.rs:365 src/window.rs:437
+#: src/window.rs:364 src/window.rs:440
 msgid "Downloading Image"
 msgstr "დისკის ასლის ფაილის გადმოწერა"
 
-#: src/window.rs:410
+#: src/window.rs:413
 msgid "Failed to write image"
 msgstr "დისკის ასლის ფაილის ჩაწერა ჩავარდა"
 
-#: src/window.rs:417
+#: src/window.rs:420
 msgid "Image Written"
 msgstr "ასლი წარმატებით ჩაიწერა"
 
-#: src/window.rs:441
+#: src/window.rs:444
+msgid "Reading the source image"
+msgstr "მიმდინარეობს წყარო ასლის ფაილის წაკითხვა"
+
+#: src/window.rs:445
+msgid "Extracting Image"
+msgstr "დისკის ასლის ფაილის ამოღება"
+
+#: src/window.rs:449
+msgid "Splitting the install image"
+msgstr "დაყენების ასლის ფაილის დაყოფა"
+
+#: src/window.rs:450
+msgid "Processing Image"
+msgstr "დისკის ასლის ფაილის დამუშავება"
+
+#: src/window.rs:455
+msgid "Partitioning Drive"
+msgstr "დისკის დაყოფა"
+
+#: src/window.rs:459
+msgid "Building the installer filesystem"
+msgstr "დაყენების პროგრამის ფაილური სისტემის აგება"
+
+#: src/window.rs:460
+msgid "Preparing Installer Image"
+msgstr "დაყენების პროგრამის ასლის ფაილის მომზადება"
+
+#: src/window.rs:464
 msgid "This could take a while"
 msgstr "ამას საკმაო დრო დასჭირდება"
 
-#: src/window.rs:688 src/window.rs:744
+#: src/window.rs:681 src/window.rs:737
 msgid "Disk Images"
 msgstr "დისკის ასლის ფაილები"
 
-#: src/window.rs:788
+#: src/window.rs:781
 msgid "File is not a Disk Image"
 msgstr "ფაილი დისკის ასლის ფაილი არაა"
 
-#: src/window.rs:914
+#: src/window.rs:916
 msgid "translator-credits"
 msgstr "ეკატერინე პაპავა"
 
-#: src/window.rs:916
+#: src/window.rs:918
 msgid "Code borrowed from"
 msgstr "კოდი ვისესხეთ"
 
 #. Translators: Metainfo for the app Footage. <https://gitlab.com/adhami3310/Footage>
-#: src/window.rs:923
+#: src/window.rs:925
 msgid "Footage"
 msgstr "Footage"
 
 #. Translators: Metainfo for the app Footage. <https://gitlab.com/adhami3310/Footage>
-#: src/window.rs:925
+#: src/window.rs:927
 msgid "Polish your videos"
 msgstr "გააპრიალეთ თქვენი ვიდეოები"
 
 #. Translators: Metainfo for the app Switcheroo. <https://gitlab.com/adhami3310/Switcheroo>
-#: src/window.rs:931
+#: src/window.rs:933
 msgid "Switcheroo"
 msgstr "Switcheroo"
 
 #. Translators: Metainfo for the app Switcheroo. <https://gitlab.com/adhami3310/Switcheroo>
-#: src/window.rs:933
+#: src/window.rs:935
 msgid "Convert and manipulate images"
 msgstr "გადაიყვანეთ და შეცვალეთ გამოსახულებები"
