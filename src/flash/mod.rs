@@ -413,13 +413,11 @@ impl FlashRequest {
             }
         }
 
-        if let Err(e) = target.flush().await {
-            error!("Error flushing data to target, will be ignored: {e}");
-        }
-
-        if let Err(e) = target_file.sync_all().await {
-            error!("Error syncing data to target, will be ignored: {e}");
-        }
+        // A flush/sync failure here means the device dropped writes (typically a
+        // USB disconnect), so fail honestly rather than report a corrupt write as
+        // success.
+        target.flush().await.map_err(OneOf::new)?;
+        target_file.sync_all().await.map_err(OneOf::new)?;
 
         Ok(())
     }

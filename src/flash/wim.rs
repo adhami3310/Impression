@@ -60,8 +60,8 @@ pub fn split(input: &Path, output: &Path, is_running: &AtomicBool) -> Result<(),
 
     let input_c =
         CString::new(input.as_os_str().as_bytes()).map_err(|e| WimError::Failed(e.to_string()))?;
-    let output_c = CString::new(output.as_os_str().as_bytes())
-        .map_err(|e| WimError::Failed(e.to_string()))?;
+    let output_c =
+        CString::new(output.as_os_str().as_bytes()).map_err(|e| WimError::Failed(e.to_string()))?;
 
     // SAFETY: the pointers are valid for the duration of each call, the strings
     // are NUL-terminated, and `is_running` outlives the split, so the context
