@@ -391,9 +391,13 @@ impl ImpressionAppWindow {
                             this.update_flashing_page(&phase);
                             match progress {
                                 Progress::Fraction(x) => {
+                                    // `None` restores the default percentage text.
+                                    this.imp().progress_bar.set_text(None);
                                     this.imp().progress_bar.set_fraction(x);
                                 }
                                 Progress::Pulse => {
+                                    // No meaningful percentage during a pulse.
+                                    this.imp().progress_bar.set_text(Some(""));
                                     this.imp().progress_bar.pulse();
                                 }
                             }
@@ -435,6 +439,26 @@ impl ImpressionAppWindow {
                 )));
                 flashing_page.set_title(&gettext("Downloading Image"));
                 flashing_page.set_icon_name(Some("folder-download-symbolic"));
+            }
+            FlashPhase::Extract => {
+                flashing_page.set_description(Some(&gettext("Reading the source image")));
+                flashing_page.set_title(&gettext("Extracting Image"));
+                flashing_page.set_icon_name(Some("media-optical-cd-symbolic"));
+            }
+            FlashPhase::ProcessImage => {
+                flashing_page.set_description(Some(&gettext("Splitting the install image")));
+                flashing_page.set_title(&gettext("Processing Image"));
+                flashing_page.set_icon_name(Some("media-optical-cd-symbolic"));
+            }
+            FlashPhase::Partition => {
+                flashing_page.set_description(Some(&gettext("Do not remove the drive")));
+                flashing_page.set_title(&gettext("Partitioning Drive"));
+                flashing_page.set_icon_name(Some("usb-stick-symbolic"));
+            }
+            FlashPhase::BuildImage => {
+                flashing_page.set_description(Some(&gettext("Building the installer filesystem")));
+                flashing_page.set_title(&gettext("Preparing Installer Image"));
+                flashing_page.set_icon_name(Some("flash-symbolic"));
             }
             FlashPhase::Copy => {
                 flashing_page.set_description(Some(&gettext("This could take a while")));
@@ -852,14 +876,28 @@ impl ImpressionAppWindow {
 
         if devices.is_empty() {
             self.set_selected_device_object_path_for_writing(None);
-            self.imp().stack.set_visible_child_name("no_devices");
-            self.imp().main_stack.set_visible_child_name("status");
         } else {
-            let devices = device_list::new(self, devices, selected_device.as_deref());
-            for device in devices {
+            let device_rows = device_list::new(self, devices, selected_device.as_deref());
+            for device in device_rows {
                 imp.available_devices_list.append(&device);
             }
-            self.imp().main_stack.set_visible_child_name("choose");
+        }
+
+        // A flash owns the view: its end-of-run rescan/eject fires a device
+        // change, but the flashing/failure/success page is dismissed manually,
+        // so don't navigate away from it here.
+        if matches!(
+            imp.stack.visible_child_name().as_deref(),
+            Some("flashing" | "failure" | "success")
+        ) {
+            return;
+        }
+
+        if devices.is_empty() {
+            imp.stack.set_visible_child_name("no_devices");
+            imp.main_stack.set_visible_child_name("status");
+        } else {
+            imp.main_stack.set_visible_child_name("choose");
         }
     }
 
