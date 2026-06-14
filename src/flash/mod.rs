@@ -9,6 +9,8 @@ use terrors::OneOf;
 use tokio::time::Instant;
 use tokio::{fs::File, io::AsyncWriteExt};
 
+mod udf;
+mod wim;
 mod windows_installer;
 
 use crate::window::{Compression, DiskImage};
