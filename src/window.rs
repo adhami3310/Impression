@@ -41,7 +41,7 @@ mod imp {
 
     use crate::{
         config::{APP_ID, PROFILE},
-        drag_overlay::DragOverlay,
+        widgets::drag_overlay::DragOverlay,
     };
 
     use super::*;

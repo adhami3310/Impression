@@ -21,8 +21,8 @@ use std::time::Duration;
 use log::{error, info};
 use terrors::OneOf;
 
-use crate::udf::{UdfError, UdfImage};
-use crate::wim::{self, WimError};
+use super::udf::{UdfError, UdfImage};
+use super::wim::{self, WimError};
 
 use super::{
     FlashPhase, FlashRequest, FlashStatus, Progress, ProcessStoppedByUser, udisks_open_fd,

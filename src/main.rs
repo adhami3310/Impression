@@ -1,12 +1,9 @@
 mod application;
 #[rustfmt::skip]
 mod config;
-mod drag_overlay;
 mod flash;
 mod online;
-mod udf;
 mod widgets;
-mod wim;
 mod window;
 
 use gettextrs::{LocaleCategory, gettext};
