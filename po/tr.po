@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: io.gitlab.adhami3310.Impression\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-21 14:01+0300\n"
-"PO-Revision-Date: 2024-03-21 14:04+0300\n"
+"POT-Creation-Date: 2026-06-14 09:51+0300\n"
+"PO-Revision-Date: 2026-06-14 11:33+0300\n"
 "Last-Translator: Sabri Ünal <yakushabb@gmail.com>\n"
 "Language-Team: Türkçe <takim@gnome.org.tr>\n"
 "Language: tr\n"
@@ -17,106 +17,76 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 3.4.2\n"
+"X-Generator: Poedit 3.9\n"
 
-#: data/io.gitlab.adhami3310.Impression.desktop.in.in:3
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:5
-#: data/resources/blueprints/window.blp:9
-#: data/resources/blueprints/window.blp:21
-#: data/resources/blueprints/window.blp:146 src/main.rs:57 src/window.rs:424
+#: data/io.gitlab.adhami3310.Impression.desktop.in.in:2 data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:5
+#: data/resources/blueprints/window.blp:9 data/resources/blueprints/window.blp:20
+#: data/resources/blueprints/window.blp:166 src/main.rs:45 src/window.rs:988
 msgid "Impression"
 msgstr "Impression"
 
-#: data/io.gitlab.adhami3310.Impression.desktop.in.in:4
+#: data/io.gitlab.adhami3310.Impression.desktop.in.in:3
 msgid "Media Writer"
 msgstr "Ortam Yazıcı"
 
-#: data/io.gitlab.adhami3310.Impression.desktop.in.in:5
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:11
+#: data/io.gitlab.adhami3310.Impression.desktop.in.in:4 data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:9
 msgid "Create bootable drives"
 msgstr "Önyüklenebilir USB sürücü oluştur"
 
-#: data/io.gitlab.adhami3310.Impression.desktop.in.in:11
+#: data/io.gitlab.adhami3310.Impression.desktop.in.in:10
 msgid "usb;flash;writer;bootable;drive;iso;img;disk;image"
-msgstr ""
-"usb;flash;writer;bootable;drive;iso;img;disk;image;flaş;başlatılabilir;"
-"önyüklenebilir;USB;sürücü;disk;görüntü;"
+msgstr "usb;flash;writer;bootable;drive;iso;img;disk;image;flaş;başlatılabilir;önyüklenebilir;USB;sürücü;disk;görüntü;"
 
-#: data/io.gitlab.adhami3310.Impression.gschema.xml.in:6
+#: data/io.gitlab.adhami3310.Impression.gschema.xml.in:7
 msgid "Window width"
 msgstr "Pencere genişliği"
 
-#: data/io.gitlab.adhami3310.Impression.gschema.xml.in:10
+#: data/io.gitlab.adhami3310.Impression.gschema.xml.in:11
 msgid "Window height"
 msgstr "Pencere yüksekliği"
 
-#: data/io.gitlab.adhami3310.Impression.gschema.xml.in:14
+#: data/io.gitlab.adhami3310.Impression.gschema.xml.in:15
 msgid "Window maximized state"
 msgstr "Pencerenin ekranı kaplama durumu"
 
-#. developer_name tag deprecated with Appstream 1.0
+#: data/io.gitlab.adhami3310.Impression.gschema.xml.in:24
+msgid "List of downloadable distros (distro_id, must_include, invert_must_include) tuples"
+msgstr "İndirilebilir dağıtım (distro_id, must_include, invert_must_include) demetlerinin listesi"
+
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:7
 msgid "Khaleel Al-Adhami"
 msgstr "Khaleel Al-Adhami"
 
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:17
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:15
 msgid ""
-"Write disk images to your drives with ease. Select an image, insert your "
-"drive, and you're good to go! Impression is a useful tool for both avid "
-"distro-hoppers and casual computer users."
+"Write disk images to your drives with ease. Select an image, insert your drive, and you're good to go! Impression is "
+"a useful tool for both avid distro-hoppers and casual computer users."
 msgstr ""
-"Disk görüntülerini sürücülerinize kolaylıkla yazın. Bir görüntü seçin, "
-"sürücünüzü takın ve işlem tamam! Impression, hem dağıtım denemeyi seven, hem "
-"de günlük bilgisayar kullanıcıları için kullanışlı bir araçtır."
+"Disk görüntülerini sürücülerinize kolaylıkla yazın. Bir görüntü seçin, sürücünüzü takın ve işlem tamam! Impression, "
+"hem dağıtım denemeyi seven, hem de günlük bilgisayar kullanıcıları için kullanışlı bir araçtır."
 
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:38
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:41
 msgid "Screen with a choice of a local image or internet download"
 msgstr "Yerel görüntü ya da internetten indirme seçenekli ekran"
 
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:42
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:45
 msgid "Screen with a chosen ISO and available USB memories"
 msgstr "Seçilen ISO ve kullanılabilir USB belleklere sahip ekran"
 
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:46
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:49
 msgid "Writing the ISO in progress"
 msgstr "ISO yazımı devam ediyor"
 
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:50
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:53
 msgid "Success screen with a big check mark"
 msgstr "Büyük bir onay işareti ile başarı ekranı"
 
-#: data/resources/blueprints/help-overlay.blp:11
-msgctxt "shortcut window"
-msgid "General"
-msgstr "Genel"
-
-#: data/resources/blueprints/help-overlay.blp:14
-msgctxt "shortcut window"
-msgid "Open File"
-msgstr "Dosya Aç"
-
-#: data/resources/blueprints/help-overlay.blp:19
-msgctxt "shortcut window"
-msgid "New Window"
-msgstr "Yeni Pencere"
-
-#: data/resources/blueprints/help-overlay.blp:24
-msgctxt "shortcut window"
-msgid "Show Shortcuts"
-msgstr "Kısayolları Göster"
-
-#: data/resources/blueprints/help-overlay.blp:29
-msgctxt "shortcut window"
-msgid "Quit"
-msgstr "Çık"
-
-#: data/resources/blueprints/window.blp:25
+#: data/resources/blueprints/window.blp:23
 msgid "Drop Here to Open"
 msgstr "Açmak için Buraya Bırakın"
 
-#: data/resources/blueprints/window.blp:35
-#: data/resources/blueprints/window.blp:156
-#: data/resources/blueprints/window.blp:254
+#: data/resources/blueprints/window.blp:32 data/resources/blueprints/window.blp:175
+#: data/resources/blueprints/window.blp:268
 msgid "Main Menu"
 msgstr "Ana Menü"
 
@@ -124,147 +94,222 @@ msgstr "Ana Menü"
 msgid "Choose Image"
 msgstr "Görüntü Seç"
 
-#: data/resources/blueprints/window.blp:64
+#: data/resources/blueprints/window.blp:67
 msgid "Open File…"
 msgstr "Dosya Aç…"
 
-#: data/resources/blueprints/window.blp:74
+#: data/resources/blueprints/window.blp:78
 msgid "Direct Download"
 msgstr "Doğrudan İndir"
 
-#: data/resources/blueprints/window.blp:108
+#: data/resources/blueprints/window.blp:122
 msgid "No Connection"
 msgstr "Bağlantı Yok"
 
-#: data/resources/blueprints/window.blp:109
+#: data/resources/blueprints/window.blp:123
 msgid "Connect to the internet to view available images"
 msgstr "Kullanılabilir görüntüleri görmek için internete bağlanın"
 
-#: data/resources/blueprints/window.blp:218
+#: data/resources/blueprints/window.blp:238
 msgid "All data on the selected drive will be erased"
 msgstr "Seçilen USB sürücüdeki tüm veriler silecek"
 
-#: data/resources/blueprints/window.blp:221
+#: data/resources/blueprints/window.blp:241
 msgid "Write"
 msgstr "Yazdır"
 
-#: data/resources/blueprints/window.blp:283
+#: data/resources/blueprints/window.blp:293
 msgid "No Drives"
 msgstr "USB Sürücü Yok"
 
-#: data/resources/blueprints/window.blp:284
+#: data/resources/blueprints/window.blp:294
 msgid "Insert a drive to write to"
 msgstr "Yazdırmak için sürücü takın"
 
-#: data/resources/blueprints/window.blp:295
+#: data/resources/blueprints/window.blp:303
 msgid "Writing Completed"
 msgstr "Yazdırma Tamamlandı"
 
-#: data/resources/blueprints/window.blp:296
+#: data/resources/blueprints/window.blp:304
 msgid "The drive can be safely removed"
 msgstr "USB sürücü güvenle çıkarılabilir"
 
-#: data/resources/blueprints/window.blp:305
+#: data/resources/blueprints/window.blp:313
 msgid "Finish"
 msgstr "Bitir"
 
-#: data/resources/blueprints/window.blp:326
+#: data/resources/blueprints/window.blp:331
 msgid "Writing Unsuccessful"
 msgstr "Yazdırma Başarısız"
 
-#: data/resources/blueprints/window.blp:335
+#: data/resources/blueprints/window.blp:365
 msgid "Retry"
 msgstr "Yeniden Dene"
 
-#: data/resources/blueprints/window.blp:355 src/window.rs:331 src/window.rs:365
+#: data/resources/blueprints/window.blp:383 src/window.rs:368 src/window.rs:465
 msgid "Writing"
 msgstr "Yazdırılıyor"
 
-#: data/resources/blueprints/window.blp:357 src/window.rs:330
+#: data/resources/blueprints/window.blp:385 src/window.rs:367 src/window.rs:454
 msgid "Do not remove the drive"
 msgstr "USB sürücüyü çıkarmayın"
 
-#: data/resources/blueprints/window.blp:372 src/window.rs:250 src/window.rs:286
+#: data/resources/blueprints/window.blp:400 src/window.rs:265 src/window.rs:315
 msgid "_Cancel"
 msgstr "_İptal"
 
-#: data/resources/blueprints/window.blp:400
+#: data/resources/blueprints/window.blp:420
+msgctxt "shortcut window"
+msgid "General"
+msgstr "Genel"
+
+#: data/resources/blueprints/window.blp:423
+msgctxt "shortcut window"
+msgid "Open File"
+msgstr "Dosya Aç"
+
+#: data/resources/blueprints/window.blp:428
+msgctxt "shortcut window"
+msgid "Show Shortcuts"
+msgstr "Kısayolları Göster"
+
+#: data/resources/blueprints/window.blp:433
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "Çık"
+
+#: data/resources/blueprints/window.blp:442
 msgid "Keyboard Shortcuts"
 msgstr "Klavye Kısayolları"
 
-#: data/resources/blueprints/window.blp:405
+#: data/resources/blueprints/window.blp:447
 msgid "About Impression"
 msgstr "Impression Hakkında"
 
-#: src/window.rs:246
+#: src/window.rs:260
 msgid "Stop Writing?"
 msgstr "Yazdırma Durdurulsun Mu?"
 
-#: src/window.rs:247
+#: src/window.rs:261
 msgid "This might leave the drive in a faulty state"
 msgstr "Bu, USB sürücüyü hatalı bir durumda bırakabilir"
 
-#: src/window.rs:250
-msgid "_Stop"
-msgstr "_Durdur"
+#: src/window.rs:266
+msgid "_Stop Writing"
+msgstr "Yazdırmayı _Durdur"
 
-#: src/window.rs:279
+#: src/window.rs:308
 msgid "Erase Drive?"
 msgstr "Sürüsü Silinsin Mi?"
 
-#: src/window.rs:287
+#: src/window.rs:310
+#, rust-format
+msgid "You will lose all data stored on {}"
+msgstr "{} içinde depolanmış tüm veriler silinecek"
+
+#: src/window.rs:316
 msgid "_Erase"
 msgstr "_Sil"
 
-#: src/window.rs:324 src/window.rs:353
+#: src/window.rs:362 src/window.rs:438
 msgid "Writing will begin once the download is completed"
 msgstr "İndirme tamamlandığında yazdırma başlayacak"
 
-#: src/window.rs:326 src/window.rs:362
+#: src/window.rs:364 src/window.rs:440
 msgid "Downloading Image"
 msgstr "Görüntü İndiriliyor"
 
-#: src/window.rs:356
-msgid "This could take a while"
-msgstr "Biraz uzun sürebilir"
-
-#: src/window.rs:391
+#: src/window.rs:413
 msgid "Failed to write image"
 msgstr "Görüntü yazdırılamadı"
 
-#: src/window.rs:399
+#: src/window.rs:420
 msgid "Image Written"
 msgstr "Görüntü Yazıldı"
 
-#: src/window.rs:603
+#: src/window.rs:444
+msgid "Reading the source image"
+msgstr "Kaynak görüntü okunuyor"
+
+#: src/window.rs:445
+msgid "Extracting Image"
+msgstr "Görüntü Çıkarılıyor"
+
+#: src/window.rs:449
+msgid "Splitting the install image"
+msgstr "Kurulum görüntüsü ayrılıyor"
+
+#: src/window.rs:450
+msgid "Processing Image"
+msgstr "Görüntü İşleniyor"
+
+#: src/window.rs:455
+msgid "Partitioning Drive"
+msgstr "Sürücü Bölümleniyor"
+
+#: src/window.rs:459
+msgid "Building the installer filesystem"
+msgstr "Kurucu dosya sistemi inşa ediliyor"
+
+#: src/window.rs:460
+msgid "Preparing Installer Image"
+msgstr "Kurucu Görüntüsü Hazırlanıyor"
+
+#: src/window.rs:464
+msgid "This could take a while"
+msgstr "Biraz uzun sürebilir"
+
+#: src/window.rs:681 src/window.rs:737
 msgid "Disk Images"
 msgstr "Disk Görüntüleri"
 
-#: src/window.rs:629
+#: src/window.rs:781
 msgid "File is not a Disk Image"
 msgstr "Dosya bir Disk Görüntüsü değil"
 
-#: src/window.rs:734
+#: src/window.rs:916
 msgid "translator-credits"
-msgstr "Sabri Ünal <libreajans@gmail.com>"
+msgstr "Sabri Ünal <yakushabb@gmail.com>"
 
-#: src/window.rs:736
+#: src/window.rs:918
 msgid "Code borrowed from"
 msgstr "Kodun ödünç alındığı kaynak"
 
-#: src/flash.rs:95
-msgid "Failed to open disk"
-msgstr "Disk açılamadı"
+#. Translators: Metainfo for the app Footage. <https://gitlab.com/adhami3310/Footage>
+#: src/window.rs:925
+msgid "Footage"
+msgstr "Footage"
 
-#: src/flash.rs:145
-msgid "Failed to extract drive"
-msgstr "Sürücü çıkarılamadı"
+#. Translators: Metainfo for the app Footage. <https://gitlab.com/adhami3310/Footage>
+#: src/window.rs:927
+msgid "Polish your videos"
+msgstr "Videolarınıza ince ayar çekin"
 
-#: src/flash.rs:203
-msgid "Failed to download image"
-msgstr "Görüntü indirilemedi"
+#. Translators: Metainfo for the app Switcheroo. <https://gitlab.com/adhami3310/Switcheroo>
+#: src/window.rs:933
+msgid "Switcheroo"
+msgstr "Switcheroo"
 
-#: src/flash.rs:256
-msgid "Writing to disk failed"
-msgstr "Diske yazılamadı"
+#. Translators: Metainfo for the app Switcheroo. <https://gitlab.com/adhami3310/Switcheroo>
+#: src/window.rs:935
+msgid "Convert and manipulate images"
+msgstr "Görüntüleri dönüştür ve düzenle"
 
+#~ msgctxt "shortcut window"
+#~ msgid "New Window"
+#~ msgstr "Yeni Pencere"
+
+#~ msgid "_Stop"
+#~ msgstr "_Durdur"
+
+#~ msgid "Failed to open disk"
+#~ msgstr "Disk açılamadı"
+
+#~ msgid "Failed to extract drive"
+#~ msgstr "Sürücü çıkarılamadı"
+
+#~ msgid "Failed to download image"
+#~ msgstr "Görüntü indirilemedi"
+
+#~ msgid "Writing to disk failed"
+#~ msgstr "Diske yazılamadı"
