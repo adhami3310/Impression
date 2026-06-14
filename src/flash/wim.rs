@@ -9,6 +9,8 @@ use std::os::unix::ffi::OsStrExt;
 use std::path::Path;
 use std::sync::atomic::{AtomicBool, Ordering};
 
+use log::info;
+
 /// Opaque `WIMStruct` from wimlib.
 enum WimStruct {}
 
@@ -85,11 +87,15 @@ pub fn split(input: &Path, output: &Path, is_running: &AtomicBool) -> Result<(),
             std::ptr::from_ref(is_running).cast_mut().cast::<c_void>(),
         );
 
+        info!("Splitting WIM into {} MiB parts", PART_SIZE / (1024 * 1024));
         let split_rc = wimlib_split(wim, output_c.as_ptr(), PART_SIZE, 0);
         wimlib_free(wim);
 
         match split_rc {
-            WIMLIB_ERR_SUCCESS => Ok(()),
+            WIMLIB_ERR_SUCCESS => {
+                info!("WIM split complete");
+                Ok(())
+            }
             WIMLIB_ERR_ABORTED_BY_PROGRESS => Err(WimError::Cancelled),
             other => Err(WimError::Failed(format!(
                 "wimlib_split failed (code {other})"

@@ -16,6 +16,8 @@ use std::ffi::{CStr, CString, c_char, c_int, c_uint, c_void};
 use std::io::Write;
 use std::path::{Path, PathBuf};
 
+use log::info;
+
 /// Opaque `udf_t` from libcdio.
 enum UdfT {}
 /// Opaque `udf_dirent_t` from libcdio. Held only by pointer; the prototypes'
@@ -147,11 +149,13 @@ impl UdfImage {
         should_cancel: &mut dyn FnMut() -> bool,
     ) -> Result<(), UdfError> {
         let entries = self.list()?;
-        let total: u64 = entries
-            .iter()
-            .filter(|entry| !entry.is_dir)
-            .map(|entry| entry.len)
-            .sum();
+        let files = entries.iter().filter(|entry| !entry.is_dir);
+        let total: u64 = files.clone().map(|entry| entry.len).sum();
+        info!(
+            "Extracting {} files ({} MiB) from UDF image",
+            files.count(),
+            total / (1024 * 1024),
+        );
 
         for directory in entries.iter().filter(|entry| entry.is_dir) {
             std::fs::create_dir_all(dest.join(&directory.path))?;

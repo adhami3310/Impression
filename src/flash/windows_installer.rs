@@ -116,6 +116,7 @@ impl FlashRequest {
         )>,
     > {
         let label = fat_label(source_label);
+        info!("Using FAT32 volume label \"{label}\"");
 
         self.split_oversized_install_image(work_dir)
             .await
@@ -138,6 +139,21 @@ impl FlashRequest {
         } else {
             requested_size
         };
+
+        if partition_arg == 0 {
+            info!(
+                "Installer content {} MiB; using whole {} MiB drive",
+                as_mib(content_total),
+                as_mib(device_size),
+            );
+        } else {
+            info!(
+                "Installer content {} MiB; partitioning {} MiB of {} MiB drive, rest left unallocated",
+                as_mib(content_total),
+                as_mib(requested_size),
+                as_mib(device_size),
+            );
+        }
 
         self.set_status(FlashStatus::Active(FlashPhase::Partition, Progress::Pulse));
         self.stopped_running().map_err(OneOf::broaden)?;
@@ -181,8 +197,13 @@ impl FlashRequest {
     > {
         let partition_block = partition.block().await.map_err(OneOf::new)?;
         let partition_size = partition_block.size().await.map_err(OneOf::new)?;
+        info!("Created FAT32 partition ({} MiB)", as_mib(partition_size));
 
         self.set_status(FlashStatus::Active(FlashPhase::BuildImage, Progress::Pulse));
+        info!(
+            "Building installer filesystem into {}",
+            image_path.display()
+        );
         self.build_fat_image(work_dir, image_path, partition_size, label, content_total)
             .await
             .map_err(OneOf::broaden)?;
@@ -198,6 +219,7 @@ impl FlashRequest {
             .map_err(OneOf::new)?;
 
         // The image is partition-sized and dense, so this is a plain full copy.
+        info!("Cloning {} MiB image to USB", as_mib(partition_size));
         let image_file = tokio::fs::File::open(image_path)
             .await
             .map_err(OneOf::new)?;
@@ -639,6 +661,11 @@ fn fat_label_bytes(label: &str) -> [u8; 11] {
         *slot = byte;
     }
     bytes
+}
+
+/// Bytes rendered as whole MiB, for log readability.
+const fn as_mib(bytes: u64) -> u64 {
+    bytes / (1024 * 1024)
 }
 
 /// Heuristic: does this path look like an ISO image worth probing for a Windows
