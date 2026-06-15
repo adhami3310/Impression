@@ -19,6 +19,21 @@
     </p>
   </description>
 
+  <keywords>
+    <keyword>usb</keyword>
+    <keyword>flash</keyword>
+    <keyword>writer</keyword>
+    <keyword>bootable</keyword>
+    <keyword>drive</keyword>
+    <keyword>iso</keyword>
+    <keyword>img</keyword>
+    <keyword>disk</keyword>
+    <keyword>image</keyword>
+    <keyword>media</keyword>
+    <keyword>creator</keyword>
+    <keyword>live</keyword>
+  </keywords>
+
   <translation type="gettext">@gettext-package@</translation>
 
   <requires>
