@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: impression\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-12 11:50-0700\n"
-"PO-Revision-Date: 2026-04-14 15:23+0200\n"
+"POT-Creation-Date: 2026-06-15 11:19-0700\n"
+"PO-Revision-Date: 2026-06-17 11:52+0200\n"
 "Last-Translator: Mattia Borda <mattiagiovanni.borda@icloud.com>\n"
 "Language-Team: Italian\n"
 "Language: it\n"
@@ -24,13 +24,13 @@ msgstr ""
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:5
 #: data/resources/blueprints/window.blp:9
 #: data/resources/blueprints/window.blp:20
-#: data/resources/blueprints/window.blp:166 src/main.rs:46 src/window.rs:950
+#: data/resources/blueprints/window.blp:166 src/main.rs:45 src/window.rs:988
 msgid "Impression"
 msgstr "Impression"
 
 #: data/io.gitlab.adhami3310.Impression.desktop.in.in:3
 msgid "Media Writer"
-msgstr "Scrittore multimediale"
+msgstr "Scrittore di supporti"
 
 #: data/io.gitlab.adhami3310.Impression.desktop.in.in:4
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:9
@@ -38,8 +38,8 @@ msgid "Create bootable drives"
 msgstr "Crea unità avviabili"
 
 #: data/io.gitlab.adhami3310.Impression.desktop.in.in:10
-msgid "usb;flash;writer;bootable;drive;iso;img;disk;image"
-msgstr "usb;flash;writer;bootable;drive;iso;img;disk;image;chiavetta;avviabile;scrivi;scrivere;disco;unità"
+msgid "usb;flash;writer;bootable;drive;iso;img;disk;image;media;creator;live"
+msgstr "usb;flash;writer;bootable;drive;iso;img;disk;image;media;creator;live;chiavetta;avviabile;scrivi;scrivere;disco;unità;creatore;multimedia"
 
 #: data/io.gitlab.adhami3310.Impression.gschema.xml.in:7
 msgid "Window width"
@@ -51,7 +51,7 @@ msgstr "Altezza della finestra"
 
 #: data/io.gitlab.adhami3310.Impression.gschema.xml.in:15
 msgid "Window maximized state"
-msgstr "Stato della finestra massimizzato"
+msgstr "Stato di massimizzazione della finestra"
 
 #: data/io.gitlab.adhami3310.Impression.gschema.xml.in:24
 msgid ""
@@ -71,24 +71,72 @@ msgid ""
 "drive, and you're good to go! Impression is a useful tool for both avid "
 "distro-hoppers and casual computer users."
 msgstr ""
-"Scrivi immagini disco sulle tue unità con facilità. Seleziona un'immagine, "
+"Scrivi facilmente immagini disco sulle tue unità. Seleziona un'immagine, "
 "inserisci la tua unità e sei a posto! Impression è uno strumento utile sia "
-"per gli avidi distro-hopper sia per normali utenti."
+"per avidi distro-hopper sia per utenti occasionali."
 
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:41
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:23
+msgid "usb"
+msgstr "usb"
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:24
+msgid "flash"
+msgstr "flash"
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:25
+msgid "writer"
+msgstr "scrittore"
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:26
+msgid "bootable"
+msgstr "avviabile"
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:27
+msgid "drive"
+msgstr "unità"
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:28
+msgid "iso"
+msgstr "iso"
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:29
+msgid "img"
+msgstr "img"
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:30
+msgid "disk"
+msgstr "disco"
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:31
+msgid "image"
+msgstr "immagine"
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:32
+msgid "media"
+msgstr "supporto"
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:33
+msgid "creator"
+msgstr "creatore"
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:34
+msgid "live"
+msgstr "live"
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:56
 msgid "Screen with a choice of a local image or internet download"
 msgstr ""
 "Schermata con la scelta di un'immagine locale o di un'immagine da scaricare"
 
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:45
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:60
 msgid "Screen with a chosen ISO and available USB memories"
-msgstr "Schermata con l'immagine ISO scelta e le memorie USB disponibili"
+msgstr "Schermata con l'immagine ISO scelta e le unità USB disponibili"
 
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:49
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:64
 msgid "Writing the ISO in progress"
 msgstr "Scrittura dell'immagine ISO in corso"
 
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:53
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:68
 msgid "Success screen with a big check mark"
 msgstr "Schermata di successo con un segno di spunta grande"
 
@@ -104,7 +152,7 @@ msgstr "Menu principale"
 
 #: data/resources/blueprints/window.blp:54
 msgid "Choose Image"
-msgstr "Scegli un'immagine"
+msgstr "Scegli immagine"
 
 #: data/resources/blueprints/window.blp:67
 msgid "Open File…"
@@ -148,7 +196,7 @@ msgstr "L'unità può essere rimossa"
 
 #: data/resources/blueprints/window.blp:313
 msgid "Finish"
-msgstr "Completato"
+msgstr "Fine"
 
 #: data/resources/blueprints/window.blp:331
 msgid "Writing Unsuccessful"
@@ -158,11 +206,11 @@ msgstr "Scrittura non riuscita"
 msgid "Retry"
 msgstr "Riprova"
 
-#: data/resources/blueprints/window.blp:383 src/window.rs:368 src/window.rs:441
+#: data/resources/blueprints/window.blp:383 src/window.rs:368 src/window.rs:465
 msgid "Writing"
 msgstr "Scrittura"
 
-#: data/resources/blueprints/window.blp:385 src/window.rs:367
+#: data/resources/blueprints/window.blp:385 src/window.rs:367 src/window.rs:454
 msgid "Do not remove the drive"
 msgstr "Non rimuovere l'unità"
 
@@ -204,11 +252,11 @@ msgstr "Interrompere la scrittura?"
 
 #: src/window.rs:261
 msgid "This might leave the drive in a faulty state"
-msgstr "Questo potrebbe lasciare la tua unità in uno stato non funzionante"
+msgstr "Questo potrebbe lasciare l'unità in uno stato non funzionante"
 
 #: src/window.rs:266
 msgid "_Stop Writing"
-msgstr "Interrompere la scrittura"
+msgstr "_Interrompi la scrittura"
 
 #: src/window.rs:308
 msgid "Erase Drive?"
@@ -223,71 +271,95 @@ msgstr "Si perderanno tutti i dati su {}"
 msgid "_Erase"
 msgstr "_Cancella"
 
-#: src/window.rs:362 src/window.rs:434
+#: src/window.rs:362 src/window.rs:438
 msgid "Writing will begin once the download is completed"
-msgstr "La scrittura inizierà una volta completato lo scaricamento"
+msgstr "La scrittura inizierà al termine dello scaricamento"
 
-#: src/window.rs:364 src/window.rs:436
+#: src/window.rs:364 src/window.rs:440
 msgid "Downloading Image"
 msgstr "Scaricamento dell'immagine"
 
-#: src/window.rs:409
+#: src/window.rs:413
 msgid "Failed to write image"
 msgstr "Errore nella scrittura dell'immagine"
 
-#: src/window.rs:416
+#: src/window.rs:420
 msgid "Image Written"
 msgstr "Immagine scritta"
 
-#: src/window.rs:440
+#: src/window.rs:444
+msgid "Reading the source image"
+msgstr "Lettura dell'immagine sorgente"
+
+#: src/window.rs:445
+msgid "Extracting Image"
+msgstr "Estrazione dell'immagine"
+
+#: src/window.rs:449
+msgid "Splitting the install image"
+msgstr "Divisione dell'immagine di installazione"
+
+#: src/window.rs:450
+msgid "Processing Image"
+msgstr "Elaborazione dell'immagine"
+
+#: src/window.rs:455
+msgid "Partitioning Drive"
+msgstr "Partizionamento dell'unità"
+
+#: src/window.rs:459
+msgid "Building the installer filesystem"
+msgstr "Costruzione del file system del programma di installazione"
+
+#: src/window.rs:460
+msgid "Preparing Installer Image"
+msgstr "Preparazione dell'immagine di installazione"
+
+#: src/window.rs:464
 msgid "This could take a while"
 msgstr "Potrebbe richiedere molto tempo"
 
-#: src/window.rs:657 src/window.rs:713
+#: src/window.rs:681 src/window.rs:737
 msgid "Disk Images"
 msgstr "Immagini disco"
 
-#: src/window.rs:757
+#: src/window.rs:781
 msgid "File is not a Disk Image"
 msgstr "Il file non è un'immagine disco"
 
-#: src/window.rs:878
+#: src/window.rs:916
 msgid "translator-credits"
 msgstr ""
 "Mattia Borda <mattiagiovanni.borda@icloud.com>, 2026\n"
-"Raffaele Gualtieri, 2025\n"
-"Albano Battistella, 2023"
+"Raffaele Gualtieri <raffaelegual@tutamail.com>, 2025\n"
+"Albano Battistella <ALBANOBATTISTELLA@HOTMAIL.COM>, 2023"
 
-#: src/window.rs:880
+#: src/window.rs:918
 msgid "Code borrowed from"
 msgstr "Codice preso in prestito da"
 
 #. Translators: Metainfo for the app Footage. <https://gitlab.com/adhami3310/Footage>
-#: src/window.rs:887
+#: src/window.rs:925
 msgid "Footage"
 msgstr "Footage"
 
 #. Translators: Metainfo for the app Footage. <https://gitlab.com/adhami3310/Footage>
-#: src/window.rs:889
+#: src/window.rs:927
 msgid "Polish your videos"
 msgstr "Rifinisci i tuoi video"
 
 #. Translators: Metainfo for the app Switcheroo. <https://gitlab.com/adhami3310/Switcheroo>
-#: src/window.rs:895
+#: src/window.rs:933
 msgid "Switcheroo"
 msgstr "Switcheroo"
 
 #. Translators: Metainfo for the app Switcheroo. <https://gitlab.com/adhami3310/Switcheroo>
-#: src/window.rs:897
+#: src/window.rs:935
 msgid "Convert and manipulate images"
 msgstr "Converti e manipola immagini"
 
 #~ msgid "Support for .xz files"
 #~ msgstr "Supporto per i file .xz"
-
-#, fuzzy
-#~ msgid "Faster downloading of images"
-#~ msgstr "Impossibile eseguire il flashing dell'immagine"
 
 #~ msgid "Initial version."
 #~ msgstr "Versione iniziale."
@@ -296,93 +368,20 @@ msgstr "Converti e manipola immagini"
 #~ msgid "New Window"
 #~ msgstr "Nuova finestra"
 
-#~ msgid "_Stop"
-#~ msgstr "_Ferma"
-
 #~ msgid "Copying files…"
 #~ msgstr "Copia dei file…"
-
-#, fuzzy
-#~ msgid "Failed to open disk"
-#~ msgstr "Impossibile eseguire il flashing dell'immagine"
-
-#, fuzzy
-#~ msgid "Failed to extract drive"
-#~ msgstr "Impossibile eseguire il flashing dell'immagine"
-
-#, fuzzy
-#~ msgid "Failed to download image"
-#~ msgstr "Impossibile eseguire il flashing dell'immagine"
-
-#~ msgid "Writing to disk failed"
-#~ msgstr "Scrittura su disco fallita"
-
-#~ msgid "usb"
-#~ msgstr "usb"
-
-#~ msgid "flash"
-#~ msgstr "flash"
-
-#~ msgid "drive"
-#~ msgstr "drive"
-
-#, fuzzy
-#~ msgid "img"
-#~ msgstr "immagine"
-
-#~ msgid "image"
-#~ msgstr "immagine"
 
 #~ msgid "Validating…"
 #~ msgstr "Validazione…"
 
-#~ msgid "Flash"
-#~ msgstr "Flash"
-
-#~ msgid "Flashing…"
-#~ msgstr "Flasching in corso…"
-
 #~ msgid "New Window"
 #~ msgstr "Nuova finestra"
 
-#~ msgid "Image flashed"
-#~ msgstr "Immagine fleshata"
-
-#~ msgid "flash;usb;drive;bootable"
-#~ msgstr "flash;usb;drive;avviabile"
-
 #~ msgid "Refresh Devices"
 #~ msgstr "Aggiorna dispositivi"
-
-#~ msgid "Image Flashed"
-#~ msgstr "Immagine fleshata"
-
-#~ msgid "Flash disk images (ISOs/IMGs) to create bootable devices"
-#~ msgstr "Flash immagini disco (ISO/IMAGE) per creare dispositivi avviabili"
-
-#~ msgid "Flash Images"
-#~ msgstr "Flach immagine"
-
-#~ msgid "Open a disk image to flash to a USB drive"
-#~ msgstr "Apri un'immagine disco da flashare su un'unità USB"
-
-#~ msgid "Warning: This will erase all data on the selected drive"
-#~ msgstr "Avviso: questo cancellerà tutti i dati sull'unità selezionata"
-
-#~ msgid "Updating device list…"
-#~ msgstr "Aggiornamento elenco dispositivi…"
 
 #~ msgid "Have a nice day!"
 #~ msgstr "Buona giornata!"
 
 #~ msgid "Done"
 #~ msgstr "Fatto"
-
-#~ msgid "Flash Again"
-#~ msgstr "Flash ancora"
-
-#~ msgid "Open File"
-#~ msgstr "APri file"
-
-#~ msgid "Primary Menu"
-#~ msgstr "Menu principale"
