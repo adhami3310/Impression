@@ -3,14 +3,14 @@
 # This file is distributed under the same license as the impression package.
 # Сергей Ворон <voron@duck.com>, 2023.
 #
-# SPDX-FileCopyrightText: 2025 Olesya Gerasimenko <translation-team@basealt.ru>
+# SPDX-FileCopyrightText: 2025, 2026 Olesya Gerasimenko <translation-team@basealt.ru>
 msgid ""
 msgstr ""
 "Project-Id-Version: impression\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-14 22:38-0700\n"
-"PO-Revision-Date: 2025-04-28 11:53+0300\n"
-"Last-Translator: Olesya Gerasimenko <translation-team@basealt.ru>\n"
+"POT-Creation-Date: 2026-06-15 11:19-0700\n"
+"PO-Revision-Date: 2026-06-16 10:41+0300\n"
+"Last-Translator: Olesya Gerasimenko <goa@altlinux.org>\n"
 "Language-Team: Basealt Translation Team\n"
 "Language: ru_RU\n"
 "MIME-Version: 1.0\n"
@@ -23,8 +23,8 @@ msgstr ""
 #: data/io.gitlab.adhami3310.Impression.desktop.in.in:2
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:5
 #: data/resources/blueprints/window.blp:9
-#: data/resources/blueprints/window.blp:21
-#: data/resources/blueprints/window.blp:146 src/main.rs:51 src/window.rs:443
+#: data/resources/blueprints/window.blp:20
+#: data/resources/blueprints/window.blp:166 src/main.rs:45 src/window.rs:988
 msgid "Impression"
 msgstr "Impression"
 
@@ -38,22 +38,30 @@ msgid "Create bootable drives"
 msgstr "Создание загрузочных дисков"
 
 #: data/io.gitlab.adhami3310.Impression.desktop.in.in:10
-msgid "usb;flash;writer;bootable;drive;iso;img;disk;image"
+msgid "usb;flash;writer;bootable;drive;iso;img;disk;image;media;creator;live"
 msgstr ""
-"usb;flash;bootable;drive;iso;disk;image;запись;загрузочный;накопитель;диск;"
-"образ"
+"usb;flash;writer;bootable;drive;iso;img;disk;image;media;creator;live;запись;п"
+"исатель;загрузочный;накопитель;диск;образ;носитель;создатель;живой"
 
-#: data/io.gitlab.adhami3310.Impression.gschema.xml.in:6
+#: data/io.gitlab.adhami3310.Impression.gschema.xml.in:7
 msgid "Window width"
 msgstr "Ширина окна"
 
-#: data/io.gitlab.adhami3310.Impression.gschema.xml.in:10
+#: data/io.gitlab.adhami3310.Impression.gschema.xml.in:11
 msgid "Window height"
 msgstr "Высота окна"
 
-#: data/io.gitlab.adhami3310.Impression.gschema.xml.in:14
+#: data/io.gitlab.adhami3310.Impression.gschema.xml.in:15
 msgid "Window maximized state"
 msgstr "Окно развернуто"
+
+#: data/io.gitlab.adhami3310.Impression.gschema.xml.in:24
+msgid ""
+"List of downloadable distros (distro_id, must_include, invert_must_include) "
+"tuples"
+msgstr ""
+"Список кортежей доступных для загрузки дистрибутивов (distro_id,"
+" must_include, invert_must_include)"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:7
 msgid "Khaleel Al-Adhami"
@@ -69,54 +77,77 @@ msgstr ""
 "и все готово! Impression — полезный инструмент как для заядлых любителей "
 "дистрибутивов, так и для обычных пользователей компьютеров."
 
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:41
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:23
+msgid "usb"
+msgstr "usb"
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:24
+msgid "flash"
+msgstr "запись"
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:25
+msgid "writer"
+msgstr "писатель"
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:26
+msgid "bootable"
+msgstr "загрузочный"
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:27
+msgid "drive"
+msgstr "накопитель"
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:28
+msgid "iso"
+msgstr "iso"
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:29
+msgid "img"
+msgstr "образ"
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:30
+msgid "disk"
+msgstr "диск"
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:31
+msgid "image"
+msgstr "образ"
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:32
+msgid "media"
+msgstr "носитель"
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:33
+msgid "creator"
+msgstr "создатель"
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:34
+msgid "live"
+msgstr "живой"
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:56
 msgid "Screen with a choice of a local image or internet download"
 msgstr "Экран с выбором локального образа или загрузки из интернета"
 
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:45
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:60
 msgid "Screen with a chosen ISO and available USB memories"
 msgstr "Экран с выбранным ISO и доступными USB-накопителями"
 
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:49
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:64
 msgid "Writing the ISO in progress"
 msgstr "Выполняется запись ISO"
 
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:53
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:68
 msgid "Success screen with a big check mark"
 msgstr "Экран успешного выполнения с большой галочкой"
 
-#: data/resources/blueprints/help-overlay.blp:11
-msgctxt "shortcut window"
-msgid "General"
-msgstr "Общие"
-
-#: data/resources/blueprints/help-overlay.blp:14
-msgctxt "shortcut window"
-msgid "Open File"
-msgstr "Открыть файл"
-
-#: data/resources/blueprints/help-overlay.blp:19
-msgctxt "shortcut window"
-msgid "New Window"
-msgstr "Новое окно"
-
-#: data/resources/blueprints/help-overlay.blp:24
-msgctxt "shortcut window"
-msgid "Show Shortcuts"
-msgstr "Показать комбинации клавиш"
-
-#: data/resources/blueprints/help-overlay.blp:29
-msgctxt "shortcut window"
-msgid "Quit"
-msgstr "Выйти"
-
-#: data/resources/blueprints/window.blp:25
+#: data/resources/blueprints/window.blp:23
 msgid "Drop Here to Open"
 msgstr "Перетащите сюда, чтобы открыть"
 
-#: data/resources/blueprints/window.blp:35
-#: data/resources/blueprints/window.blp:156
-#: data/resources/blueprints/window.blp:255
+#: data/resources/blueprints/window.blp:32
+#: data/resources/blueprints/window.blp:175
+#: data/resources/blueprints/window.blp:268
 msgid "Main Menu"
 msgstr "Главное меню"
 
@@ -124,180 +155,227 @@ msgstr "Главное меню"
 msgid "Choose Image"
 msgstr "Выберите образ"
 
-#: data/resources/blueprints/window.blp:64
+#: data/resources/blueprints/window.blp:67
 msgid "Open File…"
 msgstr "Открыть файл…"
 
-#: data/resources/blueprints/window.blp:74
+#: data/resources/blueprints/window.blp:78
 msgid "Direct Download"
 msgstr "Прямая загрузка"
 
-#: data/resources/blueprints/window.blp:108
+#: data/resources/blueprints/window.blp:122
 msgid "No Connection"
 msgstr "Нет соединения"
 
-#: data/resources/blueprints/window.blp:109
+#: data/resources/blueprints/window.blp:123
 msgid "Connect to the internet to view available images"
 msgstr "Подключитесь к Интернету для просмотра доступных образов"
 
-#: data/resources/blueprints/window.blp:218
+#: data/resources/blueprints/window.blp:238
 msgid "All data on the selected drive will be erased"
 msgstr "Все данные на выбранном диске будут удалены"
 
-#: data/resources/blueprints/window.blp:221
+#: data/resources/blueprints/window.blp:241
 msgid "Write"
 msgstr "Записать"
 
-#: data/resources/blueprints/window.blp:284
+#: data/resources/blueprints/window.blp:293
 msgid "No Drives"
 msgstr "Нет дисков"
 
-#: data/resources/blueprints/window.blp:285
+#: data/resources/blueprints/window.blp:294
 msgid "Insert a drive to write to"
 msgstr "Вставьте диск для записи"
 
-#: data/resources/blueprints/window.blp:296
+#: data/resources/blueprints/window.blp:303
 msgid "Writing Completed"
 msgstr "Запись завершена"
 
-#: data/resources/blueprints/window.blp:297
+#: data/resources/blueprints/window.blp:304
 msgid "The drive can be safely removed"
 msgstr "Диск можно безопасно извлечь"
 
-#: data/resources/blueprints/window.blp:306
+#: data/resources/blueprints/window.blp:313
 msgid "Finish"
 msgstr "Готово"
 
-#: data/resources/blueprints/window.blp:327
+#: data/resources/blueprints/window.blp:331
 msgid "Writing Unsuccessful"
 msgstr "Запись не удалась"
 
-#: data/resources/blueprints/window.blp:336
+#: data/resources/blueprints/window.blp:365
 msgid "Retry"
 msgstr "Повторить попытку"
 
-#: data/resources/blueprints/window.blp:356 src/window.rs:356 src/window.rs:385
+#: data/resources/blueprints/window.blp:383 src/window.rs:368 src/window.rs:465
 msgid "Writing"
 msgstr "Запись"
 
-#: data/resources/blueprints/window.blp:358 src/window.rs:355
+#: data/resources/blueprints/window.blp:385 src/window.rs:367 src/window.rs:454
 msgid "Do not remove the drive"
 msgstr "Не извлекайте диск"
 
-#: data/resources/blueprints/window.blp:373 src/window.rs:260 src/window.rs:307
+#: data/resources/blueprints/window.blp:400 src/window.rs:265 src/window.rs:315
 msgid "_Cancel"
 msgstr "_Отменить"
 
-#: data/resources/blueprints/window.blp:401
+#: data/resources/blueprints/window.blp:420
+msgctxt "shortcut window"
+msgid "General"
+msgstr "Общие"
+
+#: data/resources/blueprints/window.blp:423
+msgctxt "shortcut window"
+msgid "Open File"
+msgstr "Открыть файл"
+
+#: data/resources/blueprints/window.blp:428
+msgctxt "shortcut window"
+msgid "Show Shortcuts"
+msgstr "Показать комбинации клавиш"
+
+#: data/resources/blueprints/window.blp:433
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "Выйти"
+
+#: data/resources/blueprints/window.blp:442
 msgid "Keyboard Shortcuts"
 msgstr "Комбинации клавиш"
 
-#: data/resources/blueprints/window.blp:406
+#: data/resources/blueprints/window.blp:447
 msgid "About Impression"
 msgstr "О приложении"
 
-#: src/window.rs:255
+#: src/window.rs:260
 msgid "Stop Writing?"
 msgstr "Остановить запись?"
 
-#: src/window.rs:256
+#: src/window.rs:261
 msgid "This might leave the drive in a faulty state"
 msgstr "Это может привести к выходу накопителя из строя."
 
-#: src/window.rs:261
+#: src/window.rs:266
 msgid "_Stop Writing"
 msgstr "_Остановить запись"
 
-#: src/window.rs:303
+#: src/window.rs:308
 msgid "Erase Drive?"
 msgstr "Стереть диск?"
 
-#: src/window.rs:304
+#: src/window.rs:310
 msgid "You will lose all data stored on {}"
 msgstr "Будут потеряны все данные на {}"
 
-#: src/window.rs:308
+#: src/window.rs:316
 msgid "_Erase"
 msgstr "_Стереть"
 
-#: src/window.rs:349 src/window.rs:379
+#: src/window.rs:362 src/window.rs:438
 msgid "Writing will begin once the download is completed"
 msgstr "Запись начнется сразу после завершения загрузки"
 
-#: src/window.rs:351 src/window.rs:384
+#: src/window.rs:364 src/window.rs:440
 msgid "Downloading Image"
 msgstr "Загрузка образа"
 
-#: src/window.rs:381
-msgid "This could take a while"
-msgstr "Это может занять некоторое время"
-
-#: src/window.rs:409
+#: src/window.rs:413
 msgid "Failed to write image"
 msgstr "Не удалось записать образ"
 
-#: src/window.rs:422
+#: src/window.rs:420
 msgid "Image Written"
 msgstr "Образ записан"
 
-#: src/window.rs:675
+#: src/window.rs:444
+msgid "Reading the source image"
+msgstr "Чтение исходного образа"
+
+#: src/window.rs:445
+msgid "Extracting Image"
+msgstr "Извлечение образа"
+
+#: src/window.rs:449
+msgid "Splitting the install image"
+msgstr "Разделение установочного образа"
+
+#: src/window.rs:450
+msgid "Processing Image"
+msgstr "Обработка образа"
+
+#: src/window.rs:455
+msgid "Partitioning Drive"
+msgstr "Создание разделов на диске"
+
+#: src/window.rs:459
+msgid "Building the installer filesystem"
+msgstr "Сборка файловой системы установщика"
+
+#: src/window.rs:460
+msgid "Preparing Installer Image"
+msgstr "Подготовка установочного образа"
+
+#: src/window.rs:464
+msgid "This could take a while"
+msgstr "Это может занять некоторое время"
+
+#: src/window.rs:681 src/window.rs:737
 msgid "Disk Images"
 msgstr "Образы дисков"
 
-#: src/window.rs:701
+#: src/window.rs:781
 msgid "File is not a Disk Image"
 msgstr "Файл не является образом диска"
 
-#: src/window.rs:819
+#: src/window.rs:916
 msgid "translator-credits"
 msgstr ""
 "Сергей Ворон <voron@duck.com>\n"
 "Aleksandr Melman <Alexmelman88@gmail.com>\n"
 "Герасименко Олеся <goa@altlinux.org>"
 
-#: src/window.rs:821
+#: src/window.rs:918
 msgid "Code borrowed from"
 msgstr "Код заимствован из"
 
 #. Translators: Metainfo for the app Footage. <https://gitlab.com/adhami3310/Footage>
-#: src/window.rs:828
+#: src/window.rs:925
 msgid "Footage"
 msgstr "Footage"
 
 #. Translators: Metainfo for the app Footage. <https://gitlab.com/adhami3310/Footage>
-#: src/window.rs:830
+#: src/window.rs:927
 msgid "Polish your videos"
 msgstr "Улучшение ваших видео"
 
 #. Translators: Metainfo for the app Switcheroo. <https://gitlab.com/adhami3310/Switcheroo>
-#: src/window.rs:836
+#: src/window.rs:933
 msgid "Switcheroo"
 msgstr "Switcheroo"
 
 #. Translators: Metainfo for the app Switcheroo. <https://gitlab.com/adhami3310/Switcheroo>
-#: src/window.rs:838
+#: src/window.rs:935
 msgid "Convert and manipulate images"
 msgstr "Конвертирование и обработка изображений"
 
-#: src/flash.rs:93
-msgid "Failed to unmount disk"
-msgstr "Не удалось отключить диск"
+#~ msgctxt "shortcut window"
+#~ msgid "New Window"
+#~ msgstr "Новое окно"
 
-#: src/flash.rs:120
-msgid "Failed to open disk"
-msgstr "Не удалось открыть диск"
+#~ msgid "Failed to unmount disk"
+#~ msgstr "Не удалось отключить диск"
 
-#: src/flash.rs:170
-msgid "Failed to extract drive"
-msgstr "Не удалось извлечь диск"
+#~ msgid "Failed to open disk"
+#~ msgstr "Не удалось открыть диск"
 
-#: src/flash.rs:228
-msgid "Failed to download image"
-msgstr "Не удалось загрузить образ"
+#~ msgid "Failed to extract drive"
+#~ msgstr "Не удалось извлечь диск"
 
-#: src/flash.rs:285
-msgid "Writing to disk failed"
-msgstr "Запись на диск не удалась"
+#~ msgid "Failed to download image"
+#~ msgstr "Не удалось загрузить образ"
+
+#~ msgid "Writing to disk failed"
+#~ msgstr "Запись на диск не удалась"
 
 #~ msgid "This is a minor release of Impression with a few small improvements."
 #~ msgstr "Это минорный релиз Impression с несколькими небольшими улучшениями."
@@ -405,30 +483,6 @@ msgstr "Запись на диск не удалась"
 
 #~ msgid "Copying files…"
 #~ msgstr "Копирование файлов…"
-
-#~ msgid "usb"
-#~ msgstr "usb"
-
-#~ msgid "writer"
-#~ msgstr "писатель"
-
-#~ msgid "flash"
-#~ msgstr "запись"
-
-#~ msgid "drive"
-#~ msgstr "накопитель"
-
-#~ msgid "iso"
-#~ msgstr "iso"
-
-#~ msgid "img"
-#~ msgstr "образ"
-
-#~ msgid "disk"
-#~ msgstr "диск"
-
-#~ msgid "image"
-#~ msgstr "образ"
 
 #~ msgid "Validating…"
 #~ msgstr "Проверка…"
