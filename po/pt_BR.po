@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: impression\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-20 21:04-0400\n"
-"PO-Revision-Date: 2023-06-14 21:30-0300\n"
-"Last-Translator: Pedro Sader Azevedo <pedro.saderazevedo@protonmail.com>\n"
+"POT-Creation-Date: 2023-06-14 21:30-0400\n"
+"PO-Revision-Date: 2026-07-13 14:17 UTC\n"
+"Last-Translator: Elio Segundo <ecf.segundo@gmail.com>\n"
 "Language-Team: Brazilian Portuguese\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
@@ -360,6 +360,38 @@ msgstr "Falha ao gravar a imagem"
 #: src/window.rs:399
 msgid "Image Written"
 msgstr "Imagem escrita"
+
+#: src/window.rs:444
+msgid "Reading the source image"
+msgstr "Lendo a imagem de origem"
+
+#: src/window.rs:445
+msgid "Extracting Image"
+msgstr "Extraindo Imagem"
+
+#: src/window.rs:449
+msgid "Splitting the install image"
+msgstr "Separando a imagem de instalação"
+
+#: src/window.rs:450
+msgid "Processing Image"
+msgstr "Processando Imagem"
+
+#: src/window.rs:455
+msgid "Partitioning Drive"
+msgstr "Particionando Dispositivo"
+
+#: src/window.rs:459
+msgid "Building the installer filesystem"
+msgstr "Criando o sistema de arquivos do instalador"
+
+#: src/window.rs:460
+msgid "Preparing Installer Image"
+msgstr "Preparando Imagem de Instalação"
+
+#: src/window.rs:464
+msgid "This could take a while"
+msgstr "Isso pode demorar um pouco"
 
 #: src/window.rs:603
 msgid "Disk Images"
