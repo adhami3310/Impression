@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: impression\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-12 11:50-0700\n"
-"PO-Revision-Date: 2026-05-15 13:41+0200\n"
+"POT-Creation-Date: 2026-06-15 11:19-0700\n"
+"PO-Revision-Date: 2026-07-19 12:19+0200\n"
 "Last-Translator: Milo Ivir <mail@milotype.de>\n"
 "Language-Team: \n"
 "Language: hr\n"
@@ -20,7 +20,7 @@ msgstr ""
 #: data/io.gitlab.adhami3310.Impression.desktop.in.in:2
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:5
 #: data/resources/blueprints/window.blp:9 data/resources/blueprints/window.blp:20
-#: data/resources/blueprints/window.blp:166 src/main.rs:46 src/window.rs:950
+#: data/resources/blueprints/window.blp:166 src/main.rs:45 src/window.rs:988
 msgid "Impression"
 msgstr "Impression"
 
@@ -34,8 +34,8 @@ msgid "Create bootable drives"
 msgstr "Stvori diskove za pokretanje"
 
 #: data/io.gitlab.adhami3310.Impression.desktop.in.in:10
-msgid "usb;flash;writer;bootable;drive;iso;img;disk;image"
-msgstr "usb;flash;writer;pisač;bootable;pokretanje;drive;pogon;iso;img;disk;slika"
+msgid "usb;flash;writer;bootable;drive;iso;img;disk;image;media;creator;live"
+msgstr "usb;flash;writer;pisač;bootable;pokretanje;drive;pogon;iso;img;disk;slika;medij;kreator;live;uživo"
 
 #: data/io.gitlab.adhami3310.Impression.gschema.xml.in:7
 msgid "Window width"
@@ -71,19 +71,68 @@ msgstr ""
 "gotovo! Impression je koristan alat za korisnike s raznim distribucijama kao i "
 "za obične korisnike računala."
 
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:41
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:23
+msgid "usb"
+msgstr "usb"
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:24
+msgid "flash"
+msgstr "flash"
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:25
+#| msgid "Write"
+msgid "writer"
+msgstr "pisač"
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:26
+msgid "bootable"
+msgstr "pokretanje"
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:27
+msgid "drive"
+msgstr "pogon"
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:28
+msgid "iso"
+msgstr "iso"
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:29
+msgid "img"
+msgstr "img"
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:30
+msgid "disk"
+msgstr "disk"
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:31
+msgid "image"
+msgstr "slika"
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:32
+msgid "media"
+msgstr "medij"
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:33
+msgid "creator"
+msgstr "kreator"
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:34
+msgid "live"
+msgstr "uživo"
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:56
 msgid "Screen with a choice of a local image or internet download"
 msgstr "Ekran za biranje lokalne slike ili za preuzimanje s interneta"
 
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:45
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:60
 msgid "Screen with a chosen ISO and available USB memories"
 msgstr "Ekran s odabranom ISO datotekom i dostupnim USB memorijama"
 
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:49
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:64
 msgid "Writing the ISO in progress"
 msgstr "Zapisivanje ISO datoteke u tijeku"
 
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:53
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:68
 msgid "Success screen with a big check mark"
 msgstr "Ekran uspjeha s velikom kvačicom"
 
@@ -153,11 +202,11 @@ msgstr "Zapisivanje neuspjelo"
 msgid "Retry"
 msgstr "Pokušaj ponovo"
 
-#: data/resources/blueprints/window.blp:383 src/window.rs:368 src/window.rs:441
+#: data/resources/blueprints/window.blp:383 src/window.rs:368 src/window.rs:465
 msgid "Writing"
 msgstr "Zapisivanje"
 
-#: data/resources/blueprints/window.blp:385 src/window.rs:367
+#: data/resources/blueprints/window.blp:385 src/window.rs:367 src/window.rs:454
 msgid "Do not remove the drive"
 msgstr "Ne uklanjaj disk"
 
@@ -218,58 +267,86 @@ msgstr "Izgubit ćeš sve podatke spremljene na {}"
 msgid "_Erase"
 msgstr "_Izbriši"
 
-#: src/window.rs:362 src/window.rs:434
+#: src/window.rs:362 src/window.rs:438
 msgid "Writing will begin once the download is completed"
 msgstr "Zapisivanje će početi nakon završetka preuzimanja"
 
-#: src/window.rs:364 src/window.rs:436
+#: src/window.rs:364 src/window.rs:440
 msgid "Downloading Image"
 msgstr "Preuzimanje slike"
 
-#: src/window.rs:409
+#: src/window.rs:413
 msgid "Failed to write image"
 msgstr "Zapisivanje slike nije uspjelo"
 
-#: src/window.rs:416
+#: src/window.rs:420
 msgid "Image Written"
 msgstr "Slika zapisana"
 
-#: src/window.rs:440
+#: src/window.rs:444
+msgid "Reading the source image"
+msgstr "Čitanje izvorne slike"
+
+#: src/window.rs:445
+msgid "Extracting Image"
+msgstr "Otpakiravanje slike"
+
+#: src/window.rs:449
+msgid "Splitting the install image"
+msgstr "Razdvajanje instalacijske slike"
+
+#: src/window.rs:450
+msgid "Processing Image"
+msgstr "Obrada slike"
+
+#: src/window.rs:455
+msgid "Partitioning Drive"
+msgstr "Particioniranje diska"
+
+#: src/window.rs:459
+msgid "Building the installer filesystem"
+msgstr "Izgradnja instalacijskog datotečnog sustava"
+
+#: src/window.rs:460
+msgid "Preparing Installer Image"
+msgstr "Priprema instalacijske slike"
+
+#: src/window.rs:464
 msgid "This could take a while"
 msgstr "To može nešto potrajati"
 
-#: src/window.rs:657 src/window.rs:713
+#: src/window.rs:681 src/window.rs:737
 msgid "Disk Images"
 msgstr "Slike diskova"
 
-#: src/window.rs:757
+#: src/window.rs:781
 msgid "File is not a Disk Image"
 msgstr "Datoteka nije slika diska"
 
-#: src/window.rs:878
+#: src/window.rs:916
 msgid "translator-credits"
 msgstr "Milo Ivir <mail@milotype.de>"
 
-#: src/window.rs:880
+#: src/window.rs:918
 msgid "Code borrowed from"
 msgstr "Programski kod je posuđen od"
 
 #. Translators: Metainfo for the app Footage. <https://gitlab.com/adhami3310/Footage>
-#: src/window.rs:887
+#: src/window.rs:925
 msgid "Footage"
 msgstr "Footage"
 
 #. Translators: Metainfo for the app Footage. <https://gitlab.com/adhami3310/Footage>
-#: src/window.rs:889
+#: src/window.rs:927
 msgid "Polish your videos"
 msgstr "Dotjeraj svoja videa"
 
 #. Translators: Metainfo for the app Switcheroo. <https://gitlab.com/adhami3310/Switcheroo>
-#: src/window.rs:895
+#: src/window.rs:933
 msgid "Switcheroo"
 msgstr "Switcheroo"
 
 #. Translators: Metainfo for the app Switcheroo. <https://gitlab.com/adhami3310/Switcheroo>
-#: src/window.rs:897
+#: src/window.rs:935
 msgid "Convert and manipulate images"
 msgstr "Konvertiraj i uredi slike"
