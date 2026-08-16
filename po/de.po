@@ -40,7 +40,7 @@ msgstr "usb;flash;schreiber;bootfähig;laufwerk;iso;img;disk;Datenträger"
 
 #: data/io.gitlab.adhami3310.Impression.gschema.xml.in:6
 msgid "Window width"
-msgstr "Fensterberite"
+msgstr "Fensterbreite"
 
 #: data/io.gitlab.adhami3310.Impression.gschema.xml.in:10
 msgid "Window height"
@@ -83,7 +83,7 @@ msgstr "Schreiben der ISO in Arbeit"
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:50
 msgid "Success screen with a big check mark"
-msgstr "Erfolgsbildschirm mit einem großen Häkchen"
+msgstr "Erfolgsbildschirm mit einem großen Haken"
 
 #: data/resources/blueprints/help-overlay.blp:11
 msgctxt "shortcut window"
