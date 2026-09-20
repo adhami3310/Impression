@@ -1,7 +1,7 @@
 <div align="center">
 <h1>Impression</h1>
 
-A straight-forward and modern application to create bootable drives.
+Create bootable drives
 
 <img src="data/resources/icons/hicolor/scalable/apps/io.gitlab.adhami3310.Impression.svg" width="128" height="128" alt="Impression icon">
 
@@ -22,7 +22,7 @@ You may also be able to obtain Impression from your distribution's package manag
 
 ## About
 
-Write disk images onto your drives with ease. Select an image, insert your drive, and you're good to go! Impression is a useful tool for both avid distro-hoppers and casual computer users. See [Press](PRESS.md) for content mentioning Impression from various writers, content creators, etc.
+Write disk images onto your drives with ease, from Linux distros to Windows installers. Select an image, insert your drive, and you're good to go! Impression is a useful tool for both avid distro-hoppers and casual computer users. See [Press](PRESS.md) for content mentioning Impression from various writers, content creators, etc.
 
 <img src="data/resources/screenshots/3.png" alt="Screen with a choice of a local image or internet download">
 
@@ -64,4 +64,4 @@ Huge thanks to all of the translators who brought Impression to many other langu
 
 This app was inspired by [this mockup](https://gitlab.gnome.org/Teams/Design/whiteboards/-/issues/143) by [Saptarshi Mondal](https://gitlab.gnome.org/gitSaptarshi).
 
-The app uses significant portions of [popsicle](https://github.com/pop-os/popsicle).
+The app used to use significant portions of [popsicle](https://github.com/pop-os/popsicle).
