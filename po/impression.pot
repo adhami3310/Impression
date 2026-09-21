@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: impression\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-15 11:19-0700\n"
+"POT-Creation-Date: 2026-09-20 14:28-0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,7 +21,7 @@ msgstr ""
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:5
 #: data/resources/blueprints/window.blp:9
 #: data/resources/blueprints/window.blp:20
-#: data/resources/blueprints/window.blp:166 src/main.rs:45 src/window.rs:988
+#: data/resources/blueprints/window.blp:166 src/main.rs:60 src/window.rs:988
 msgid "Impression"
 msgstr ""
 
@@ -35,7 +35,7 @@ msgid "Create bootable drives"
 msgstr ""
 
 #: data/io.gitlab.adhami3310.Impression.desktop.in.in:10
-msgid "usb;flash;writer;bootable;drive;iso;img;disk;image;media;creator;live"
+msgid "usb;flash;writer;bootable;drive;iso;img;disk;image;media;creator;live;windows;installer"
 msgstr ""
 
 #: data/io.gitlab.adhami3310.Impression.gschema.xml.in:7
@@ -62,9 +62,10 @@ msgstr ""
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:15
 msgid ""
-"Write disk images to your drives with ease. Select an image, insert your "
-"drive, and you're good to go! Impression is a useful tool for both avid "
-"distro-hoppers and casual computer users."
+"Write disk images to your drives with ease, from Linux distros to Windows "
+"installers. Select an image, insert your drive, and you're good to go! "
+"Impression is a useful tool for both avid distro-hoppers and casual computer "
+"users."
 msgstr ""
 
 #: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:23
@@ -115,19 +116,27 @@ msgstr ""
 msgid "live"
 msgstr ""
 
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:56
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:35
+msgid "windows"
+msgstr ""
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:36
+msgid "installer"
+msgstr ""
+
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:58
 msgid "Screen with a choice of a local image or internet download"
 msgstr ""
 
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:60
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:62
 msgid "Screen with a chosen ISO and available USB memories"
 msgstr ""
 
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:64
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:66
 msgid "Writing the ISO in progress"
 msgstr ""
 
-#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:68
+#: data/io.gitlab.adhami3310.Impression.metainfo.xml.in.in:70
 msgid "Success screen with a big check mark"
 msgstr ""
 

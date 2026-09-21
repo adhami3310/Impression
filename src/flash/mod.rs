@@ -45,6 +45,7 @@ impl From<(u64, u64)> for Progress {
         if denominator == 0 {
             Self::Pulse
         } else {
+            #[allow(clippy::cast_precision_loss)]
             Self::Fraction(nominator as f64 / denominator as f64)
         }
     }

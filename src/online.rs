@@ -213,7 +213,7 @@ fn get_releases_for_distro(
     let distro_dir = temp_dir.join(distro);
 
     let Ok(files) = std::fs::read_dir(temp_dir.join(distro)) else {
-        warn!("Failed to read directory: {}", &distro_dir.display());
+        warn!("Failed to read directory: {}", distro_dir.display());
         return DistroInfo::default();
     };
 
@@ -250,7 +250,7 @@ pub async fn collect_online_distros(
     let temp_dir = glib::user_cache_dir();
 
     if std::fs::create_dir_all(&temp_dir).is_err() {
-        warn!("Failed to create cache directory: {}", &temp_dir.display());
+        warn!("Failed to create cache directory: {}", temp_dir.display());
         return None;
     }
 
@@ -266,12 +266,12 @@ pub async fn collect_online_distros(
     };
 
     let Ok(mut out) = std::fs::File::create(&result_file_path) else {
-        warn!("Failed to create file: {}", &result_file_path.display());
+        warn!("Failed to create file: {}", result_file_path.display());
         return None;
     };
 
     if std::io::Write::write(&mut out, &body).is_err() {
-        warn!("Failed to write to file: {}", &result_file_path.display());
+        warn!("Failed to write to file: {}", result_file_path.display());
         return None;
     }
 

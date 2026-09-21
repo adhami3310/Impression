@@ -10,15 +10,14 @@ nursery = { level = "warn", priority = -1 }
 unwrap_used = "deny"
 wildcard_imports = "allow"
 future_not_send = "allow"
-cast_precision_loss = "allow"
 
 [dependencies]
-gettext-rs = { version = "0.7", features = ["gettext-system"] }
+gettext-rs = { version = "0.8", features = ["gettext-system"] }
 glib = "0.22"
 gtk = { version = "0.11", package = "gtk4", features = ["gnome_50"] }
-adw = { version = "0.9", package = "libadwaita", features = ["v1_9"] }
+adw = { version = "0.9", package = "libadwaita", features = ["v1_10"] }
 log = "0.4"
-itertools = "0.14"
+itertools = "0.15"
 ashpd = { version = "0.13", default-features = false, features = [
     "tokio",
     "notification",
@@ -36,9 +35,9 @@ roxmltree = "0.21"
 chrono = "0.4"
 thiserror = "2.0"
 derivative = "2.2"
-tokio = { version = "1.51", features = ["process", "rt-multi-thread", "time"] }
+tokio = { version = "1.53", features = ["process", "rt-multi-thread", "time"] }
 serde_json = "1.0"
-rayon = "1.11"
+rayon = "1.12"
 futures = "0.3"
 tracing-subscriber = "0.3"
 terrors = "0.3"

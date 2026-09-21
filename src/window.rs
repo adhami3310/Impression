@@ -149,7 +149,7 @@ mod imp {
             let obj = self.obj();
 
             if let Err(err) = obj.save_window_size() {
-                error!("Failed to save window state, {}", &err);
+                error!("Failed to save window state, {err}");
             }
 
             if obj.is_running() {
